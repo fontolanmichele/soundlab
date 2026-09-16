@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>SoundLab</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f1720;
+      color: white;
+      overflow: hidden;
+    }
+
+
+    /* =========================
+       BARRA SUPERIORE
+       ========================= */
+
+    .topbar {
+      height: 70px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 24px;
+
+      background: #111c28;
+      border-bottom: 1px solid #263544;
+    }
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 12px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: #45c4b0;
+
+      font-size: 22px;
+    }
+
+
+    .logo-text h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+
+    .logo-text p {
+      margin: 3px 0 0;
+
+      font-size: 12px;
+
+      color: #8fa4b8;
+    }
+
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+
+    .button {
+      border: 0;
+
+      border-radius: 10px;
+
+      padding: 10px 15px;
+
+      font-weight: bold;
+
+      background: #243343;
+      color: white;
+    }
+
+
+    .button:hover {
+      background: #304456;
+    }
+
+
+    .button-primary {
+      background: #45c4b0;
+      color: #071712;
+    }
+
+
+    .button-primary:hover {
+      background: #62d6c2;
+    }
+
+
+
+    /* =========================
+       AREA PRINCIPALE
+       ========================= */
+
+    .workspace {
+      display: grid;
+
+      grid-template-columns:
+        260px
+        1fr;
+
+      height: calc(100vh - 70px);
+    }
+
+
+
+    /* =========================
+       LIBRERIA SINISTRA
+       ========================= */
+
+    .library {
+      background: #131e29;
+
+      border-right: 1px solid #263544;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+    }
+
+
+    .library-header {
+      padding: 20px;
+
+      border-bottom: 1px solid #263544;
+    }
+
+
+    .library-header h2 {
+      margin: 0 0 5px;
+
+      font-size: 16px;
+    }
+
+
+    .library-header p {
+      margin: 0;
+
+      font-size: 12px;
+
+      color: #8fa4b8;
+    }
+
+
+    .search-box {
+      padding: 14px;
+    }
+
+
+    .search-box input {
+      width: 100%;
+
+      border: 1px solid #314457;
+
+      background: #0e1720;
+
+      color: white;
+
+      border-radius: 10px;
+
+      padding: 11px 12px;
+
+      outline: none;
+    }
+
+
+    .search-box input:focus {
+      border-color: #45c4b0;
+    }
+
+
+    .categories {
+      padding: 8px 12px;
+
+      overflow-y: auto;
+    }
+
+
+    .category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      width: 100%;
+
+      padding: 11px 12px;
+      margin-bottom: 4px;
+
+      border: 0;
+      border-radius: 9px;
+
+      background: transparent;
+      color: #dce7ef;
+
+      text-align: left;
+
+      font-size: 14px;
+    }
+
+
+    .category:hover {
+      background: #1d2c3a;
+    }
+
+
+    .category.active {
+      background: #223c43;
+      color: #74e0ce;
+    }
+
+
+    .my-sounds {
+      margin-top: 16px;
+      padding-top: 14px;
+
+      border-top: 1px solid #263544;
+    }
+
+
+
+    /* =========================
+       AREA EDITOR
+       ========================= */
+
+    .editor {
+      display: flex;
+      flex-direction: column;
+
+      min-width: 0;
+
+      background: #0d141c;
+    }
+
+
+
+    /* =========================
+       CONTROLLI EDITOR
+       ========================= */
+
+    .editor-toolbar {
+      height: 64px;
+
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 0 18px;
+
+      background: #121d27;
+
+      border-bottom: 1px solid #263544;
+    }
+
+
+    .transport {
+      display: flex;
+      gap: 8px;
+
+      margin-left: auto;
+    }
+
+
+    .transport-button {
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+
+      border-radius: 50%;
+
+      background: #263746;
+      color: white;
+
+      font-size: 17px;
+    }
+
+
+    .transport-button:hover {
+      background: #355064;
+    }
+
+
+    .play {
+      background: #45c4b0;
+      color: #071712;
+    }
+
+
+
+    /* =========================
+       TIMELINE
+       ========================= */
+
+    .timeline-area {
+      flex: 1;
+
+      position: relative;
+
+      overflow: auto;
+
+      background:
+        linear-gradient(
+          to right,
+          rgba(255,255,255,0.035) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.025) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        70px 100%,
+        100% 100px;
+    }
+
+
+
+    /* =========================
+       RIGHELLO
+       ========================= */
+
+    .ruler {
+      position: sticky;
+      top: 0;
+
+      height: 42px;
+
+      display: flex;
+
+      min-width: 1000px;
+
+      background: #121c26;
+
+      border-bottom: 1px solid #263544;
+
+      z-index: 2;
+    }
+
+
+    .time-mark {
+      width: 70px;
+      min-width: 70px;
+
+      padding: 7px 0 0 6px;
+
+      border-left: 1px solid #344454;
+
+      color: #8294a5;
+
+      font-size: 10px;
+    }
+
+
+
+    /* =========================
+       STATO VUOTO
+       ========================= */
+
+    .empty-project {
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      text-align: center;
+
+      max-width: 520px;
+
+      padding: 30px;
+    }
+
+
+    .empty-icon {
+      width: 74px;
+      height: 74px;
+
+      margin: 0 auto 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 22px;
+
+      background: #172a31;
+
+      color: #45c4b0;
+
+      font-size: 32px;
+    }
+
+
+    .empty-project h2 {
+      margin: 0 0 10px;
+
+      font-size: 23px;
+    }
+
+
+    .empty-project p {
+      margin: 0 0 22px;
+
+      color: #8fa4b8;
+
+      font-size: 14px;
+
+      line-height: 1.6;
+    }
+
+
+
+    /* =========================
+       BARRA INFERIORE
+       ========================= */
+
+    .bottom-bar {
+      height: 52px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 18px;
+
+      background: #111c26;
+
+      border-top: 1px solid #263544;
+
+      color: #8294a5;
+
+      font-size: 12px;
+    }
+
+
+    .time-display {
+      margin-left: auto;
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      font-variant-numeric: tabular-nums;
+    }
+
+
+
+    /* =========================
+       TABLET
+       ========================= */
+
+    @media (max-width: 800px) {
+
+      .workspace {
+        grid-template-columns:
+          210px
+          1fr;
+      }
+
+
+      .library-header {
+        padding: 14px;
+      }
+
+
+      .category {
+        font-size: 13px;
+      }
+
+
+      .logo-text p {
+        display: none;
+      }
+
+
+      .button span {
+        display: none;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       BARRA SUPERIORE
+       ========================= -->
+
+  <header class="topbar">
+
+    <div class="logo">
+
+      <div class="logo-icon">
+        🎧
+      </div>
+
+      <div class="logo-text">
+
+        <h1>SoundLab</h1>
+
+        <p>
+          Laboratorio di composizione sonora
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="top-actions">
+
+      <button class="button">
+        Nuovo progetto
+      </button>
+
+      <button class="button">
+        Salva
+      </button>
+
+      <button class="button button-primary">
+        Esporta
+      </button>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- =========================
+       WORKSPACE
+       ========================= -->
+
+  <main class="workspace">
+
+
+    <!-- =========================
+         LIBRERIA SONORA
+         ========================= -->
+
+    <aside class="library">
+
+
+      <div class="library-header">
+
+        <h2>
+          🔊 Libreria sonora
+        </h2>
+
+        <p>
+          Esplora i paesaggi sonori
+        </p>
+
+      </div>
+
+
+
+      <div class="search-box">
+
+        <input
+          type="text"
+          placeholder="Cerca un suono..."
+        >
+
+      </div>
+
+
+
+      <div class="categories">
+
+
+        <button class="category active">
+          🏙️ Città
+        </button>
+
+
+        <button class="category">
+          🌾 Campagna
+        </button>
+
+
+        <button class="category">
+          🌊 Mare
+        </button>
+
+
+        <button class="category">
+          🌲 Bosco e montagna
+        </button>
+
+
+        <button class="category">
+          🏫 Scuola
+        </button>
+
+
+        <button class="category">
+          💻 Ufficio
+        </button>
+
+
+        <button class="category">
+          🏭 Lavoro
+        </button>
+
+
+        <button class="category">
+          🏠 Casa
+        </button>
+
+
+        <button class="category">
+          🚆 Trasporti
+        </button>
+
+
+        <button class="category">
+          🌦️ Meteo
+        </button>
+
+
+        <button class="category">
+          🚀 Spazio
+        </button>
+
+
+
+        <div class="my-sounds">
+
+          <button class="category">
+            🎙️ I miei suoni
+          </button>
+
+        </div>
+
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- =========================
+         EDITOR
+         ========================= -->
+
+    <section class="editor">
+
+
+      <!-- TOOLBAR -->
+
+      <div class="editor-toolbar">
+
+
+        <button
+          class="button button-primary"
+          id="addTrackButton"
+        >
+          ＋ Traccia
+        </button>
+
+
+        <button class="button">
+          🎙️ Registra
+        </button>
+
+
+        <div class="transport">
+
+          <button class="transport-button">
+            ■
+          </button>
+
+          <button class="transport-button play">
+            ▶
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- TIMELINE -->
+
+      <div class="timeline-area">
+
+
+        <div class="ruler">
+
+          <div class="time-mark">
+            0 s
+          </div>
+
+          <div class="time-mark">
+            5 s
+          </div>
+
+          <div class="time-mark">
+            10 s
+          </div>
+
+          <div class="time-mark">
+            15 s
+          </div>
+
+          <div class="time-mark">
+            20 s
+          </div>
+
+          <div class="time-mark">
+            25 s
+          </div>
+
+          <div class="time-mark">
+            30 s
+          </div>
+
+          <div class="time-mark">
+            35 s
+          </div>
+
+          <div class="time-mark">
+            40 s
+          </div>
+
+          <div class="time-mark">
+            45 s
+          </div>
+
+          <div class="time-mark">
+            50 s
+          </div>
+
+          <div class="time-mark">
+            55 s
+          </div>
+
+        </div>
+
+
+
+        <div
+          class="empty-project"
+          id="emptyProject"
+        >
+
+
+          <div class="empty-icon">
+            ♪
+          </div>
+
+
+          <h2>
+            Il tuo progetto è vuoto
+          </h2>
+
+
+          <p>
+            Crea la prima traccia e inizia a costruire
+            il tuo paesaggio sonoro.
+          </p>
+
+
+          <button
+            class="button button-primary"
+            id="createFirstTrack"
+          >
+            ＋ Crea la prima traccia
+          </button>
+
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- BARRA INFERIORE -->
+
+      <div class="bottom-bar">
+
+        SoundLab • Progetto vuoto
+
+        <div class="time-display">
+          00:00.0
+        </div>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+
+  <script>
+
+    /*
+      Per ora il pulsante crea solo
+      una piccola prova visiva.
+
+      Nel prossimo passaggio costruiremo
+      le vere tracce audio.
+    */
+
+
+    const firstTrackButton =
+      document.getElementById(
+        "createFirstTrack"
+      );
+
+
+    const addTrackButton =
+      document.getElementById(
+        "addTrackButton"
+      );
+
+
+    function provaTraccia() {
+
+      alert(
+        "Perfetto! Nel prossimo passaggio creeremo qui una vera traccia audio."
+      );
+
+    }
+
+
+    firstTrackButton.addEventListener(
+      "click",
+      provaTraccia
+    );
+
+
+    addTrackButton.addEventListener(
+      "click",
+      provaTraccia
+    );
+
+  </script>
+
+
+</body>
+
+</html>
