@@ -5,41 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SoundLab</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
     }
 
     :root {
-      --bg-1: #0b1420;
-      --bg-2: #102231;
-      --panel: rgba(18, 31, 43, 0.88);
-      --panel-2: rgba(24, 41, 57, 0.95);
-      --line: rgba(255,255,255,0.08);
-      --text: #f2f8fb;
-      --muted: #9cb2c3;
-      --accent: #5fd7c4;
-      --accent-2: #86e6a6;
-      --accent-3: #71cfff;
-      --card: rgba(255,255,255,0.04);
-      --card-hover: rgba(255,255,255,0.08);
-      --shadow: 0 12px 35px rgba(0,0,0,0.28);
-      --radius-xl: 22px;
-      --radius-lg: 18px;
-      --radius-md: 14px;
-      --radius-sm: 10px;
+      --bg-1: #dff8f7;
+      --bg-2: #cfefff;
+      --bg-3: #edfdf6;
+      --panel: rgba(255,255,255,0.72);
+      --panel-strong: rgba(255,255,255,0.88);
+      --line: rgba(40, 109, 132, 0.12);
+      --text: #1b4553;
+      --muted: #587b89;
+      --accent: #45d2bf;
+      --accent-2: #74e7a0;
+      --accent-3: #75cfff;
+      --accent-4: #4eb3d9;
+      --dark-button: #2c738a;
+      --soft-card: rgba(255,255,255,0.45);
+      --soft-hover: rgba(255,255,255,0.65);
+      --shadow: 0 14px 40px rgba(71, 136, 164, 0.16);
+      --shadow-small: 0 8px 22px rgba(71, 136, 164, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
     }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       height: 100%;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: 'Nunito', Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 12% 18%, rgba(95,215,196,0.15), transparent 25%),
-        radial-gradient(circle at 85% 12%, rgba(134,230,166,0.12), transparent 24%),
-        radial-gradient(circle at 82% 82%, rgba(113,207,255,0.10), transparent 26%),
-        linear-gradient(160deg, var(--bg-1), var(--bg-2));
+        radial-gradient(circle at 12% 12%, rgba(116,231,160,0.25), transparent 22%),
+        radial-gradient(circle at 85% 16%, rgba(117,207,255,0.25), transparent 24%),
+        radial-gradient(circle at 80% 84%, rgba(69,210,191,0.16), transparent 26%),
+        linear-gradient(160deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
       overflow: hidden;
     }
 
@@ -47,7 +56,16 @@
       position: relative;
     }
 
-    /* DECORAZIONI DI SFONDO */
+    .app {
+      position: relative;
+      z-index: 2;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* SFONDO DECORATIVO */
+
     .bg-decor {
       position: fixed;
       inset: 0;
@@ -60,93 +78,129 @@
       position: absolute;
       border-radius: 50%;
       filter: blur(8px);
-      opacity: 0.28;
+      opacity: 0.55;
     }
 
     .blob.one {
-      width: 360px;
-      height: 360px;
-      left: -80px;
-      top: 90px;
-      background: radial-gradient(circle, rgba(95,215,196,0.40), transparent 70%);
+      width: 320px;
+      height: 320px;
+      top: 70px;
+      left: -90px;
+      background: radial-gradient(circle, rgba(116,231,160,0.40), transparent 70%);
     }
 
     .blob.two {
-      width: 300px;
-      height: 300px;
-      right: -60px;
-      top: 40px;
-      background: radial-gradient(circle, rgba(134,230,166,0.28), transparent 70%);
+      width: 280px;
+      height: 280px;
+      top: 10px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(117,207,255,0.34), transparent 70%);
     }
 
     .blob.three {
-      width: 420px;
-      height: 420px;
-      right: 18%;
+      width: 380px;
+      height: 380px;
       bottom: -140px;
-      background: radial-gradient(circle, rgba(113,207,255,0.16), transparent 70%);
+      right: 18%;
+      background: radial-gradient(circle, rgba(69,210,191,0.28), transparent 70%);
     }
 
-    .wave-shape {
+    .wave-band {
       position: absolute;
       left: -5%;
       right: -5%;
-      bottom: 68px;
-      height: 180px;
-      opacity: 0.18;
+      bottom: 62px;
+      height: 200px;
+      opacity: 0.22;
     }
 
-    .wave-shape svg {
+    .wave-band svg {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    .leaf-group {
+    .leaf-left {
       position: absolute;
-      right: 35px;
-      bottom: 95px;
-      opacity: 0.14;
-      transform: scale(1.1);
+      left: 18px;
+      bottom: 104px;
+      opacity: 0.20;
     }
 
-    .leaf-group svg {
-      width: 180px;
-      height: 180px;
+    .leaf-left svg {
+      width: 140px;
+      height: 140px;
       display: block;
     }
 
-    .city-line {
+    .leaf-right {
       position: absolute;
-      left: 30px;
-      bottom: 92px;
-      opacity: 0.10;
+      right: 18px;
+      bottom: 108px;
+      opacity: 0.18;
     }
 
-    .city-line svg {
-      width: 240px;
-      height: 90px;
+    .leaf-right svg {
+      width: 160px;
+      height: 160px;
       display: block;
     }
 
-    .app {
-      position: relative;
-      z-index: 1;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
+    .earth-small {
+      position: absolute;
+      opacity: 0.22;
     }
 
-    /* BARRA SUPERIORE */
-    .topbar {
+    .earth-small svg {
+      display: block;
+    }
+
+    .earth-a {
+      top: 88px;
+      right: 290px;
+    }
+
+    .earth-a svg {
+      width: 95px;
+      height: 95px;
+    }
+
+    .earth-b {
+      bottom: 150px;
+      left: 360px;
+    }
+
+    .earth-b svg {
+      width: 78px;
       height: 78px;
+    }
+
+    .hill-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 58px;
+      height: 120px;
+      opacity: 0.15;
+    }
+
+    .hill-line svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* TOPBAR */
+
+    .topbar {
+      height: 88px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 24px;
-      background: rgba(10, 18, 28, 0.72);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.34);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.35);
     }
 
     .brand {
@@ -156,28 +210,37 @@
     }
 
     .brand-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
+      width: 58px;
+      height: 58px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #7ad9ff, #73ebbd);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #072018;
-      box-shadow: 0 10px 24px rgba(95,215,196,0.20);
+      box-shadow: var(--shadow-small);
+      flex-shrink: 0;
+    }
+
+    .brand-icon svg {
+      width: 38px;
+      height: 38px;
+      display: block;
     }
 
     .brand-text h1 {
       margin: 0;
-      font-size: 24px;
+      font-family: 'Fredoka', cursive;
+      font-size: 32px;
+      line-height: 1;
       letter-spacing: 0.2px;
+      color: #1f6980;
     }
 
     .brand-text p {
-      margin: 3px 0 0;
+      margin: 5px 0 0;
       font-size: 12px;
-      color: var(--muted);
+      color: #5d8391;
+      font-weight: 700;
     }
 
     .top-actions {
@@ -193,63 +256,67 @@
     }
 
     .button {
-      border: 1px solid rgba(255,255,255,0.05);
-      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(69, 130, 157, 0.14);
+      background: rgba(255,255,255,0.58);
       color: var(--text);
       padding: 11px 16px;
-      border-radius: 12px;
-      font-weight: bold;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      border-radius: 14px;
+      font-weight: 800;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
     }
 
     .button:hover {
-      background: rgba(255,255,255,0.10);
       transform: translateY(-1px);
+      background: rgba(255,255,255,0.78);
     }
 
     .button-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #072018;
       border: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b4d3d;
     }
 
     .button-primary:hover {
-      filter: brightness(1.05);
+      filter: brightness(1.03);
     }
 
     /* LAYOUT */
+
     .workspace {
       display: grid;
-      grid-template-columns: 290px 1fr;
-      height: calc(100vh - 78px);
+      grid-template-columns: 310px 1fr;
+      height: calc(100vh - 88px);
       min-height: 0;
     }
 
     /* SIDEBAR */
+
     .library {
       display: flex;
       flex-direction: column;
       min-height: 0;
-      background: rgba(13, 22, 32, 0.75);
+      background: rgba(255,255,255,0.30);
       backdrop-filter: blur(14px);
-      border-right: 1px solid var(--line);
+      border-right: 1px solid rgba(255,255,255,0.35);
     }
 
     .library-header {
-      padding: 20px 18px 16px;
+      padding: 20px 18px 14px;
       border-bottom: 1px solid var(--line);
     }
 
     .library-header h2 {
       margin: 0;
-      font-size: 18px;
+      font-size: 20px;
+      font-family: 'Fredoka', cursive;
+      color: #23748c;
     }
 
     .library-header p {
       margin: 6px 0 0;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .search-box {
@@ -258,18 +325,19 @@
 
     .search-box input {
       width: 100%;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(0,0,0,0.18);
-      color: white;
-      border-radius: 12px;
+      border: 1px solid rgba(69,130,157,0.14);
+      background: rgba(255,255,255,0.68);
+      color: var(--text);
+      border-radius: 14px;
       padding: 12px 14px;
       outline: none;
       font-size: 14px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
     }
 
     .search-box input:focus {
-      border-color: rgba(95,215,196,0.55);
-      box-shadow: 0 0 0 3px rgba(95,215,196,0.10);
+      border-color: rgba(69,210,191,0.40);
+      box-shadow: 0 0 0 4px rgba(69,210,191,0.10);
     }
 
     .categories {
@@ -280,40 +348,40 @@
     .section-label {
       margin: 12px 8px 10px;
       font-size: 11px;
-      font-weight: bold;
+      font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: #88a3b7;
+      color: #6590a0;
     }
 
     .category {
       width: 100%;
-      border: 1px solid rgba(255,255,255,0.05);
-      background: var(--card);
+      border: 1px solid rgba(69,130,157,0.10);
+      background: var(--soft-card);
       color: var(--text);
-      border-radius: 14px;
-      padding: 13px 14px;
-      margin-bottom: 8px;
+      border-radius: 18px;
+      padding: 12px 12px;
+      margin-bottom: 9px;
       text-align: left;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
     }
 
     .category:hover {
-      background: var(--card-hover);
+      background: var(--soft-hover);
       transform: translateY(-1px);
     }
 
     .category.active {
       background: linear-gradient(
         135deg,
-        rgba(95,215,196,0.20),
-        rgba(134,230,166,0.14)
+        rgba(117,207,255,0.30),
+        rgba(116,231,160,0.24)
       );
-      border-color: rgba(95,215,196,0.18);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.16);
+      border-color: rgba(69,210,191,0.20);
     }
 
     .category-main {
@@ -324,15 +392,21 @@
     }
 
     .category-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.08);
-      font-size: 19px;
+      background: rgba(255,255,255,0.65);
       flex-shrink: 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+    }
+
+    .category-icon svg {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
 
     .category-text {
@@ -343,6 +417,7 @@
       display: block;
       font-size: 14px;
       margin-bottom: 3px;
+      color: #235e70;
     }
 
     .category-text span {
@@ -354,43 +429,73 @@
 
     .category-badge {
       font-size: 11px;
-      color: #9fdccf;
-      background: rgba(95,215,196,0.12);
-      padding: 5px 8px;
+      color: #1b7f6c;
+      background: rgba(116,231,160,0.22);
+      padding: 5px 9px;
       border-radius: 999px;
       white-space: nowrap;
+      font-weight: 800;
     }
 
     /* EDITOR */
+
     .editor {
       display: flex;
       flex-direction: column;
       min-width: 0;
       min-height: 0;
-      background: rgba(7, 13, 20, 0.28);
+      background: rgba(255,255,255,0.10);
     }
 
     .hero-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 16px;
       padding: 18px 20px;
       border-bottom: 1px solid var(--line);
-      background: rgba(8, 14, 22, 0.28);
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .hero-planet {
+      width: 66px;
+      height: 66px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.56);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-small);
+      flex-shrink: 0;
+    }
+
+    .hero-planet svg {
+      width: 46px;
+      height: 46px;
+      display: block;
     }
 
     .hero-text h2 {
       margin: 0;
-      font-size: 21px;
+      font-family: 'Fredoka', cursive;
+      font-size: 25px;
+      color: #236f84;
     }
 
     .hero-text p {
       margin: 6px 0 0;
       color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 640px;
     }
 
     .hero-tags {
@@ -400,22 +505,23 @@
     }
 
     .tag {
-      padding: 7px 10px;
+      padding: 8px 11px;
       border-radius: 999px;
       font-size: 12px;
-      background: rgba(255,255,255,0.05);
-      color: #b9d6e7;
-      border: 1px solid rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.46);
+      color: #3d7284;
+      border: 1px solid rgba(69,130,157,0.10);
+      font-weight: 800;
     }
 
     .editor-toolbar {
-      height: 68px;
+      height: 70px;
       display: flex;
       align-items: center;
       gap: 10px;
       padding: 0 18px;
       border-bottom: 1px solid var(--line);
-      background: rgba(17, 28, 38, 0.68);
+      background: rgba(255,255,255,0.28);
       backdrop-filter: blur(8px);
     }
 
@@ -433,22 +539,24 @@
     }
 
     .transport-button {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       border: none;
-      font-size: 18px;
-      color: white;
-      background: rgba(255,255,255,0.08);
+      font-size: 17px;
+      color: #2f6d81;
+      background: rgba(255,255,255,0.62);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      font-weight: 800;
     }
 
     .transport-button:hover {
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.82);
     }
 
     .transport-button.play {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #062019;
+      color: #0b4d3d;
     }
 
     .timeline-area {
@@ -457,9 +565,9 @@
       overflow: auto;
       position: relative;
       background:
-        linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
-      background-size: 90px 100%, 100% 100px;
+        linear-gradient(to right, rgba(51,146,173,0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(51,146,173,0.06) 1px, transparent 1px);
+      background-size: 95px 100%, 100% 100px;
     }
 
     .ruler {
@@ -467,21 +575,21 @@
       top: 0;
       z-index: 3;
       display: flex;
-      min-width: 1400px;
-      height: 48px;
-      background: rgba(12, 22, 31, 0.94);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
+      min-width: 1450px;
+      height: 50px;
+      background: rgba(255,255,255,0.74);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(69,130,157,0.14);
     }
 
     .time-mark {
-      width: 90px;
-      min-width: 90px;
-      border-left: 1px solid rgba(255,255,255,0.10);
-      padding: 8px 0 0 8px;
-      color: #8ea5b6;
+      width: 95px;
+      min-width: 95px;
+      border-left: 1px solid rgba(69,130,157,0.15);
+      padding: 9px 0 0 8px;
+      color: #6890a0;
       font-size: 11px;
-      font-weight: bold;
+      font-weight: 800;
     }
 
     .empty-project {
@@ -489,39 +597,44 @@
       left: 50%;
       top: 54%;
       transform: translate(-50%, -50%);
-      width: min(620px, calc(100% - 40px));
+      width: min(700px, calc(100% - 40px));
       text-align: center;
       padding: 34px 28px;
-      border-radius: 24px;
-      background: rgba(16, 29, 41, 0.82);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.45);
       box-shadow: var(--shadow);
     }
 
     .empty-visual {
-      width: 96px;
-      height: 96px;
+      width: 108px;
+      height: 108px;
       margin: 0 auto 18px;
       border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(95,215,196,0.22), rgba(134,230,166,0.16));
+      background: linear-gradient(135deg, rgba(117,207,255,0.35), rgba(116,231,160,0.30));
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
-      color: #8af0c0;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.60);
+    }
+
+    .empty-visual svg {
+      width: 64px;
+      height: 64px;
+      display: block;
     }
 
     .empty-project h2 {
       margin: 0 0 10px;
-      font-size: 28px;
+      font-family: 'Fredoka', cursive;
+      font-size: 30px;
+      color: #226e83;
     }
 
     .empty-project p {
       margin: 0 auto 22px;
-      max-width: 470px;
+      max-width: 500px;
       color: var(--muted);
       line-height: 1.6;
       font-size: 15px;
@@ -543,18 +656,19 @@
     }
 
     .info-card {
-      min-width: 135px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.05);
+      min-width: 138px;
+      padding: 13px 15px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(69,130,157,0.08);
     }
 
     .info-card strong {
       display: block;
       font-size: 18px;
       margin-bottom: 4px;
-      color: #dffcf4;
+      color: #23778f;
+      font-family: 'Fredoka', cursive;
     }
 
     .info-card span {
@@ -563,65 +677,69 @@
     }
 
     .bottom-bar {
-      height: 56px;
+      height: 58px;
       display: flex;
       align-items: center;
       gap: 12px;
       padding: 0 18px;
-      background: rgba(11, 20, 30, 0.9);
-      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.36);
+      border-top: 1px solid rgba(255,255,255,0.42);
       color: var(--muted);
       font-size: 12px;
+      backdrop-filter: blur(8px);
     }
 
     .status-pill {
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 8px 10px;
+      padding: 8px 11px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.54);
+      font-weight: 700;
+      color: #4f7a88;
     }
 
     .dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(95,215,196,0.08);
+      box-shadow: 0 0 0 6px rgba(69,210,191,0.12);
     }
 
     .time-display {
       margin-left: auto;
-      color: white;
+      color: #2a7085;
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 800;
       font-variant-numeric: tabular-nums;
       letter-spacing: 0.5px;
     }
 
     /* RESPONSIVE */
+
     @media (max-width: 980px) {
       .workspace {
-        grid-template-columns: 235px 1fr;
-      }
-
-      .hero-bar {
-        padding: 16px;
-      }
-
-      .hero-text h2 {
-        font-size: 18px;
+        grid-template-columns: 250px 1fr;
       }
 
       .hero-tags {
         display: none;
       }
+
+      .hero-left {
+        align-items: flex-start;
+      }
+
+      .hero-text h2 {
+        font-size: 22px;
+      }
     }
 
     @media (max-width: 760px) {
       .workspace {
-        grid-template-columns: 210px 1fr;
+        grid-template-columns: 220px 1fr;
       }
 
       .topbar {
@@ -636,10 +754,6 @@
         padding: 10px 12px;
       }
 
-      .top-actions .button span {
-        display: none;
-      }
-
       .hero-text p {
         display: none;
       }
@@ -649,11 +763,7 @@
       }
 
       .empty-project h2 {
-        font-size: 23px;
-      }
-
-      .info-card {
-        min-width: 110px;
+        font-size: 24px;
       }
     }
   </style>
@@ -662,43 +772,79 @@
 <body>
 
   <div class="bg-decor">
+
     <div class="blob one"></div>
     <div class="blob two"></div>
     <div class="blob three"></div>
 
-    <div class="wave-shape">
+    <div class="wave-band">
       <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path d="M0,130 C160,80 280,180 430,145 C570,115 680,40 820,70 C990,108 1120,188 1440,120 L1440,220 L0,220 Z"
-          fill="rgba(95,215,196,0.22)"></path>
+        <path d="M0,140 C150,95 270,185 420,150 C590,111 680,48 830,76 C980,104 1100,192 1440,132 L1440,220 L0,220 Z"
+          fill="rgba(69,210,191,0.46)"></path>
       </svg>
     </div>
 
-    <div class="leaf-group">
+    <div class="hill-line">
+      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+        <path d="M0,95 C120,60 210,102 330,76 C460,48 560,110 700,82 C840,54 930,20 1050,45 C1180,73 1290,118 1440,82"
+          fill="none" stroke="rgba(60,150,170,0.55)" stroke-width="6" stroke-linecap="round"></path>
+      </svg>
+    </div>
+
+    <div class="leaf-left">
       <svg viewBox="0 0 200 200">
-        <path d="M82 150 C40 125, 28 76, 57 42 C90 52, 117 92, 82 150 Z" fill="rgba(134,230,166,0.75)"/>
-        <path d="M118 158 C160 132, 176 88, 148 46 C116 58, 89 105, 118 158 Z" fill="rgba(95,215,196,0.68)"/>
-        <path d="M100 30 L102 164" stroke="rgba(255,255,255,0.35)" stroke-width="3" stroke-linecap="round"/>
+        <path d="M85 164 C37 132, 28 83, 62 40 C96 54, 126 104, 85 164 Z" fill="rgba(116,231,160,0.9)"/>
+        <path d="M102 42 C99 75, 94 112, 84 162" stroke="rgba(47,122,96,0.40)" stroke-width="4" stroke-linecap="round"/>
       </svg>
     </div>
 
-    <div class="city-line">
-      <svg viewBox="0 0 300 110">
-        <path d="M0 110 L0 78 L18 78 L18 50 L45 50 L45 90 L65 90 L65 62 L85 62 L85 32 L112 32 L112 84 L132 84 L132 58 L156 58 L156 110 Z"
-          fill="rgba(113,207,255,0.55)"/>
-        <path d="M165 110 L165 70 L188 70 L188 48 L212 48 L212 90 L233 90 L233 38 L258 38 L258 60 L280 60 L280 110 Z"
-          fill="rgba(95,215,196,0.45)"/>
+    <div class="leaf-right">
+      <svg viewBox="0 0 200 200">
+        <path d="M108 166 C154 132, 167 84, 137 38 C102 50, 74 98, 108 166 Z" fill="rgba(117,207,255,0.92)"/>
+        <path d="M121 42 C120 70, 116 112, 108 164" stroke="rgba(40,108,132,0.35)" stroke-width="4" stroke-linecap="round"/>
       </svg>
     </div>
+
+    <div class="earth-small earth-a">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="34" fill="#7fd8ff"/>
+        <path d="M30 45 C24 38, 32 28, 41 30 C49 31, 52 40, 46 45 C40 50, 35 50, 30 45 Z" fill="#6adf9b"/>
+        <path d="M58 38 C66 30, 76 35, 77 44 C78 52, 71 56, 64 56 C57 56, 52 45, 58 38 Z" fill="#6adf9b"/>
+        <path d="M44 60 C52 55, 64 60, 65 69 C66 76, 55 79, 48 76 C42 73, 38 65, 44 60 Z" fill="#6adf9b"/>
+        <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(38,96,117,0.28)" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <div class="earth-small earth-b">
+      <svg viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="34" fill="#81dcff"/>
+        <path d="M34 40 C40 30, 54 33, 57 42 C60 50, 52 55, 44 54 C36 53, 30 48, 34 40 Z" fill="#79e9a7"/>
+        <path d="M60 56 C67 53, 74 60, 72 68 C70 76, 58 76, 54 69 C51 63, 55 58, 60 56 Z" fill="#79e9a7"/>
+        <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(38,96,117,0.26)" stroke-width="3"/>
+      </svg>
+    </div>
+
   </div>
 
   <div class="app">
 
     <header class="topbar">
       <div class="brand">
-        <div class="brand-icon">🎧</div>
+        <div class="brand-icon">
+          <svg viewBox="0 0 64 64">
+            <circle cx="32" cy="32" r="18" fill="#7fdcff"/>
+            <path d="M22 28 C18 23, 24 18, 29 19 C34 20, 36 26, 32 29 C28 32, 25 31, 22 28 Z" fill="#6de39d"/>
+            <path d="M36 24 C40 19, 47 21, 48 27 C49 32, 44 35, 39 35 C35 35, 32 28, 36 24 Z" fill="#6de39d"/>
+            <path d="M27 37 C32 34, 39 37, 40 43 C41 48, 34 51, 29 49 C24 47, 22 40, 27 37 Z" fill="#6de39d"/>
+            <path d="M10 32 C10 20 18 12 30 10" stroke="#1f6d80" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M54 32 C54 20 46 12 34 10" stroke="#1f6d80" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M14 37 C15 45 22 52 32 52 C42 52 49 45 50 37" stroke="#1f6d80" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+
         <div class="brand-text">
           <h1>SoundLab</h1>
-          <p>Ascolta • Crea • Trasforma il tuo paesaggio sonoro</p>
+          <p>Una risorsa didattica del Prof. Fontolan Michele</p>
         </div>
       </div>
 
@@ -713,8 +859,8 @@
 
       <aside class="library">
         <div class="library-header">
-          <h2>🔊 Libreria sonora</h2>
-          <p>Esplora ambienti, suoni e idee per costruire il tuo soundscape.</p>
+          <h2>Libreria sonora</h2>
+          <p>Scopri ambienti e suoni per creare paesaggi sonori legati al mondo che ci circonda.</p>
         </div>
 
         <div class="search-box">
@@ -722,11 +868,18 @@
         </div>
 
         <div class="categories">
+
           <div class="section-label">Ambienti</div>
 
           <button class="category active">
             <div class="category-main">
-              <div class="category-icon">🏙️</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="11" width="4" height="8" rx="1.2" fill="#4cb8de"/>
+                  <rect x="9" y="7" width="5" height="12" rx="1.2" fill="#45d2bf"/>
+                  <rect x="16" y="4" width="5" height="15" rx="1.2" fill="#78e5a1"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Città</strong>
                 <span>Traffico, folla, segnali, ritmi urbani</span>
@@ -737,17 +890,28 @@
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🌾</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 17 C8 11, 11 11, 14 17 Z" fill="#78e5a1"/>
+                  <path d="M11 17 C14 9, 18 9, 21 17 Z" fill="#4cb8de"/>
+                  <rect x="3" y="17" width="18" height="2" rx="1" fill="#66b882"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Campagna</strong>
-                <span>Animali, vento, terra, quiete rurale</span>
+                <span>Animali, vento, campi, quiete rurale</span>
               </div>
             </div>
           </button>
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🌊</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M2 14 C5 12, 8 16, 11 14 C14 12, 17 16, 22 13" stroke="#4cb8de" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                  <path d="M2 18 C5 16, 8 20, 11 18 C14 16, 17 20, 22 17" stroke="#45d2bf" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Mare</strong>
                 <span>Onde, gabbiani, porto, acqua</span>
@@ -757,7 +921,12 @@
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🌲</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 18 L9 9 L15 18 Z" fill="#4cb8de"/>
+                  <path d="M10 18 L16 7 L22 18 Z" fill="#78e5a1"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Bosco e montagna</strong>
                 <span>Foglie, ruscelli, uccelli, vento</span>
@@ -767,7 +936,13 @@
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🏫</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <rect x="4" y="5" width="16" height="14" rx="2" fill="#75cfff"/>
+                  <rect x="7" y="8" width="10" height="2" rx="1" fill="#ffffff"/>
+                  <rect x="7" y="12" width="7" height="2" rx="1" fill="#ffffff"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Scuola</strong>
                 <span>Aule, corridoi, campanella, voci</span>
@@ -777,57 +952,93 @@
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">💻</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <rect x="4" y="6" width="16" height="10" rx="2" fill="#4cb8de"/>
+                  <rect x="9" y="17" width="6" height="2" rx="1" fill="#78e5a1"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Ufficio</strong>
-                <span>Tastiere, stampanti, ambienti di lavoro</span>
+                <span>Tastiere, stampanti, lavoro quotidiano</span>
               </div>
             </div>
           </button>
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🏭</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="8" cy="16" r="3" fill="#78e5a1"/>
+                  <circle cx="16" cy="16" r="3" fill="#4cb8de"/>
+                  <rect x="6" y="6" width="12" height="6" rx="1.5" fill="#5ad0c1"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Lavoro</strong>
-                <span>Officina, cantiere, produzione</span>
+                <span>Officina, cantiere, macchine, produzione</span>
               </div>
             </div>
           </button>
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🏠</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 18 V10 L12 5 L20 10 V18 Z" fill="#78e5a1"/>
+                  <rect x="10" y="13" width="4" height="5" rx="1" fill="#ffffff"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Casa</strong>
-                <span>Cucina, acqua, passi, porte</span>
+                <span>Cucina, acqua, passi, oggetti domestici</span>
               </div>
             </div>
           </button>
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🚆</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <rect x="4" y="8" width="16" height="7" rx="2" fill="#75cfff"/>
+                  <circle cx="8" cy="17" r="2" fill="#4cb8de"/>
+                  <circle cx="16" cy="17" r="2" fill="#4cb8de"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Trasporti</strong>
-                <span>Treni, stazioni, autobus, viaggio</span>
+                <span>Treni, autobus, stazioni, viaggio</span>
               </div>
             </div>
           </button>
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🌦️</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M8 7 C8 5, 9.5 4, 11 4 C12.5 4, 14 5, 14 7 C14 9, 12 10, 12 12" stroke="#4cb8de" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M8 14 C8 12, 9.5 11, 11 11 C12.5 11, 14 12, 14 14 C14 16, 12 17, 12 19" stroke="#78e5a1" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <circle cx="17.5" cy="6.5" r="2" fill="#75cfff"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Meteo</strong>
-                <span>Pioggia, tuono, vento, tempesta</span>
+                <span>Pioggia, vento, tuono, tempesta</span>
               </div>
             </div>
           </button>
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🚀</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5" fill="#75cfff"/>
+                  <path d="M12 2 V5" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M12 19 V22" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M2 12 H5" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M19 12 H22" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>Spazio</strong>
                 <span>Ambienti immaginari e fantascientifici</span>
@@ -839,7 +1050,13 @@
 
           <button class="category">
             <div class="category-main">
-              <div class="category-icon">🎙️</div>
+              <div class="category-icon">
+                <svg viewBox="0 0 24 24">
+                  <rect x="9" y="4" width="6" height="10" rx="3" fill="#4cb8de"/>
+                  <path d="M6 11 C6 14.5 8.5 17 12 17 C15.5 17 18 14.5 18 11" stroke="#78e5a1" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <path d="M12 17 V20" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
               <div class="category-text">
                 <strong>I miei suoni</strong>
                 <span>Registrazioni personali e idee originali</span>
@@ -847,28 +1064,41 @@
             </div>
             <div class="category-badge">rec</div>
           </button>
+
         </div>
       </aside>
 
       <section class="editor">
 
         <div class="hero-bar">
-          <div class="hero-text">
-            <h2>Costruisci il tuo paesaggio sonoro</h2>
-            <p>Un laboratorio creativo per ascoltare l’ambiente, riflettere sulla sostenibilità e trasformare i suoni in composizione.</p>
+          <div class="hero-left">
+            <div class="hero-planet">
+              <svg viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="21" fill="#81dcff"/>
+                <path d="M22 27 C18 22, 24 18, 30 19 C36 20, 38 26, 34 30 C30 34, 25 33, 22 27 Z" fill="#79e9a7"/>
+                <path d="M38 24 C43 20, 49 22, 50 28 C51 33, 46 37, 41 37 C36 37, 34 28, 38 24 Z" fill="#79e9a7"/>
+                <path d="M28 38 C33 34, 42 36, 43 43 C44 49, 36 52, 30 49 C25 46, 23 41, 28 38 Z" fill="#79e9a7"/>
+                <circle cx="32" cy="32" r="21" fill="none" stroke="rgba(38,96,117,0.28)" stroke-width="2.6"/>
+              </svg>
+            </div>
+
+            <div class="hero-text">
+              <h2>Costruisci il tuo paesaggio sonoro</h2>
+              <p>Ascolta il mondo, seleziona i suoni, registra nuove idee e trasforma l’ambiente in una composizione creativa e sostenibile.</p>
+            </div>
           </div>
 
           <div class="hero-tags">
-            <div class="tag">🌍 sostenibilità</div>
-            <div class="tag">🎧 soundscape</div>
-            <div class="tag">🎙️ creatività</div>
+            <div class="tag">sostenibilità</div>
+            <div class="tag">soundscape</div>
+            <div class="tag">creatività</div>
           </div>
         </div>
 
         <div class="editor-toolbar">
           <div class="toolbar-group">
             <button class="button button-primary" id="addTrackButton">＋ Traccia</button>
-            <button class="button">🎙️ Registra</button>
+            <button class="button">Registra</button>
           </div>
 
           <div class="transport">
@@ -897,13 +1127,21 @@
           </div>
 
           <div class="empty-project" id="emptyProject">
-            <div class="empty-visual">♪</div>
+
+            <div class="empty-visual">
+              <svg viewBox="0 0 64 64">
+                <circle cx="32" cy="32" r="18" fill="#82dbff"/>
+                <path d="M23 28 C19 23, 24 18, 30 19 C35 20, 37 26, 33 29 C29 32, 25 32, 23 28 Z" fill="#7be8a8"/>
+                <path d="M38 25 C42 21, 48 22, 49 28 C50 33, 45 36, 40 36 C35 36, 34 29, 38 25 Z" fill="#7be8a8"/>
+                <path d="M14 42 C20 36, 26 44, 32 38 C38 32, 44 40, 50 34" stroke="#2e96b7" stroke-width="3" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
 
             <h2>Il tuo progetto è vuoto</h2>
 
             <p>
-              Inizia creando la prima traccia. Poi potrai aggiungere suoni della libreria,
-              registrazioni personali e costruire un vero paesaggio sonoro.
+              Crea la prima traccia e inizia a costruire un paesaggio sonoro con suoni ambientali,
+              registrazioni personali e idee creative.
             </p>
 
             <div class="empty-actions">
@@ -925,6 +1163,7 @@
                 <span>nella timeline</span>
               </div>
             </div>
+
           </div>
         </div>
 
@@ -935,7 +1174,7 @@
           </div>
 
           <div class="status-pill">
-            <span>Modalità: bozza grafica</span>
+            <span>Bozza grafica</span>
           </div>
 
           <div class="time-display">00:00.0</div>
