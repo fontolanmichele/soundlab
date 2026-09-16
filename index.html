@@ -1,1199 +1,3055 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>SoundLab</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
+
     * {
       box-sizing: border-box;
     }
 
     :root {
-      --bg-1: #dff8f7;
-      --bg-2: #cfefff;
-      --bg-3: #edfdf6;
-      --panel: rgba(255,255,255,0.72);
-      --panel-strong: rgba(255,255,255,0.88);
-      --line: rgba(40, 109, 132, 0.12);
-      --text: #1b4553;
-      --muted: #587b89;
-      --accent: #45d2bf;
-      --accent-2: #74e7a0;
-      --accent-3: #75cfff;
-      --accent-4: #4eb3d9;
-      --dark-button: #2c738a;
-      --soft-card: rgba(255,255,255,0.45);
-      --soft-hover: rgba(255,255,255,0.65);
-      --shadow: 0 14px 40px rgba(71, 136, 164, 0.16);
-      --shadow-small: 0 8px 22px rgba(71, 136, 164, 0.12);
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-      --radius-sm: 12px;
+      --bg1: #dff8f7;
+      --bg2: #d4efff;
+      --bg3: #edfff5;
+
+      --text: #1c5364;
+      --muted: #648795;
+
+      --blue: #72cfff;
+      --blue-dark: #2e8fac;
+
+      --green: #6fe0a0;
+      --mint: #50d7c3;
+
+      --white: rgba(255,255,255,.75);
+      --line: rgba(46,115,140,.13);
+
+      --shadow:
+        0 14px 40px rgba(56,119,144,.13);
     }
+
 
     html,
     body {
       margin: 0;
       height: 100%;
-      font-family: 'Nunito', Arial, sans-serif;
+
+      font-family: "Nunito", sans-serif;
+
       color: var(--text);
+
       background:
-        radial-gradient(circle at 12% 12%, rgba(116,231,160,0.25), transparent 22%),
-        radial-gradient(circle at 85% 16%, rgba(117,207,255,0.25), transparent 24%),
-        radial-gradient(circle at 80% 84%, rgba(69,210,191,0.16), transparent 26%),
-        linear-gradient(160deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+        radial-gradient(
+          circle at 12% 12%,
+          rgba(111,224,160,.30),
+          transparent 23%
+        ),
+        radial-gradient(
+          circle at 87% 15%,
+          rgba(114,207,255,.30),
+          transparent 25%
+        ),
+        linear-gradient(
+          150deg,
+          var(--bg1),
+          var(--bg2) 48%,
+          var(--bg3)
+        );
+
       overflow: hidden;
     }
 
-    body {
-      position: relative;
+
+    button,
+    input {
+      font-family: inherit;
     }
+
+
+    button {
+      cursor: pointer;
+    }
+
+
+    /* ==============================
+       ICONE
+       ============================== */
+
+    .icon {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+
+    /* ==============================
+       SFONDO
+       ============================== */
+
+    .background-art {
+      position: fixed;
+      inset: 0;
+
+      overflow: hidden;
+      pointer-events: none;
+
+      z-index: 0;
+    }
+
+
+    .background-art::before {
+      content: "";
+
+      position: absolute;
+
+      width: 450px;
+      height: 450px;
+
+      border-radius: 50%;
+
+      left: -160px;
+      bottom: -140px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(93,218,184,.35),
+          transparent 68%
+        );
+    }
+
+
+    .background-art::after {
+      content: "";
+
+      position: absolute;
+
+      width: 440px;
+      height: 440px;
+
+      border-radius: 50%;
+
+      right: -170px;
+      top: 80px;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(91,191,238,.28),
+          transparent 70%
+        );
+    }
+
+
+    .earth-decoration {
+      position: absolute;
+
+      right: 6%;
+      bottom: 10%;
+
+      opacity: .14;
+
+      width: 170px;
+      height: 170px;
+    }
+
+
+    .leaf-decoration {
+      position: absolute;
+
+      left: 18%;
+      bottom: 5%;
+
+      width: 190px;
+      height: 190px;
+
+      opacity: .12;
+    }
+
+
+    /* ==============================
+       APP
+       ============================== */
 
     .app {
       position: relative;
-      z-index: 2;
+      z-index: 1;
+
       height: 100vh;
+
       display: flex;
       flex-direction: column;
     }
 
-    /* SFONDO DECORATIVO */
 
-    .bg-decor {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(8px);
-      opacity: 0.55;
-    }
-
-    .blob.one {
-      width: 320px;
-      height: 320px;
-      top: 70px;
-      left: -90px;
-      background: radial-gradient(circle, rgba(116,231,160,0.40), transparent 70%);
-    }
-
-    .blob.two {
-      width: 280px;
-      height: 280px;
-      top: 10px;
-      right: -80px;
-      background: radial-gradient(circle, rgba(117,207,255,0.34), transparent 70%);
-    }
-
-    .blob.three {
-      width: 380px;
-      height: 380px;
-      bottom: -140px;
-      right: 18%;
-      background: radial-gradient(circle, rgba(69,210,191,0.28), transparent 70%);
-    }
-
-    .wave-band {
-      position: absolute;
-      left: -5%;
-      right: -5%;
-      bottom: 62px;
-      height: 200px;
-      opacity: 0.22;
-    }
-
-    .wave-band svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .leaf-left {
-      position: absolute;
-      left: 18px;
-      bottom: 104px;
-      opacity: 0.20;
-    }
-
-    .leaf-left svg {
-      width: 140px;
-      height: 140px;
-      display: block;
-    }
-
-    .leaf-right {
-      position: absolute;
-      right: 18px;
-      bottom: 108px;
-      opacity: 0.18;
-    }
-
-    .leaf-right svg {
-      width: 160px;
-      height: 160px;
-      display: block;
-    }
-
-    .earth-small {
-      position: absolute;
-      opacity: 0.22;
-    }
-
-    .earth-small svg {
-      display: block;
-    }
-
-    .earth-a {
-      top: 88px;
-      right: 290px;
-    }
-
-    .earth-a svg {
-      width: 95px;
-      height: 95px;
-    }
-
-    .earth-b {
-      bottom: 150px;
-      left: 360px;
-    }
-
-    .earth-b svg {
-      width: 78px;
-      height: 78px;
-    }
-
-    .hill-line {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 58px;
-      height: 120px;
-      opacity: 0.15;
-    }
-
-    .hill-line svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* TOPBAR */
+    /* ==============================
+       HEADER
+       ============================== */
 
     .topbar {
       height: 88px;
+
+      flex-shrink: 0;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 0 24px;
-      background: rgba(255,255,255,0.34);
+
+      background:
+        rgba(255,255,255,.38);
+
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.35);
+
+      border-bottom:
+        1px solid rgba(255,255,255,.5);
     }
+
 
     .brand {
       display: flex;
       align-items: center;
+
       gap: 14px;
     }
 
-    .brand-icon {
+
+    .brand-logo {
       width: 58px;
       height: 58px;
+
       border-radius: 20px;
-      background: linear-gradient(135deg, #7ad9ff, #73ebbd);
+
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-small);
-      flex-shrink: 0;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue),
+          var(--green)
+        );
+
+      box-shadow:
+        0 10px 25px rgba(66,170,182,.18);
     }
 
-    .brand-icon svg {
-      width: 38px;
-      height: 38px;
-      display: block;
+
+    .brand-logo svg {
+      width: 39px;
+      height: 39px;
     }
 
-    .brand-text h1 {
+
+    .brand h1 {
       margin: 0;
-      font-family: 'Fredoka', cursive;
+
+      font-family: "Fredoka", sans-serif;
+
       font-size: 32px;
       line-height: 1;
-      letter-spacing: 0.2px;
-      color: #1f6980;
+
+      color: #28778e;
     }
 
-    .brand-text p {
+
+    .brand p {
       margin: 5px 0 0;
+
+      color: #5d8492;
+
       font-size: 12px;
-      color: #5d8391;
-      font-weight: 700;
+      font-weight: 800;
     }
+
 
     .top-actions {
       display: flex;
-      gap: 10px;
       align-items: center;
+
+      gap: 10px;
     }
 
-    button {
-      font-family: inherit;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
+
+    /* ==============================
+       PULSANTI
+       ============================== */
 
     .button {
-      border: 1px solid rgba(69, 130, 157, 0.14);
-      background: rgba(255,255,255,0.58);
-      color: var(--text);
       padding: 11px 16px;
+
       border-radius: 14px;
+
+      border:
+        1px solid rgba(58,126,151,.12);
+
+      background:
+        rgba(255,255,255,.62);
+
+      color: var(--text);
+
       font-weight: 800;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,.05);
+
+      transition: .18s;
     }
+
 
     .button:hover {
       transform: translateY(-1px);
-      background: rgba(255,255,255,0.78);
+
+      background:
+        rgba(255,255,255,.88);
     }
+
 
     .button-primary {
       border: none;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b4d3d;
+
+      color: #0b5344;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--mint),
+          var(--green)
+        );
     }
 
-    .button-primary:hover {
-      filter: brightness(1.03);
-    }
 
-    /* LAYOUT */
+    /* ==============================
+       WORKSPACE
+       ============================== */
 
     .workspace {
-      display: grid;
-      grid-template-columns: 310px 1fr;
-      height: calc(100vh - 88px);
+      flex: 1;
+
       min-height: 0;
+
+      display: grid;
+
+      grid-template-columns:
+        300px
+        minmax(0, 1fr);
     }
 
-    /* SIDEBAR */
+
+    /* ==============================
+       LIBRERIA
+       ============================== */
 
     .library {
+      min-height: 0;
+
       display: flex;
       flex-direction: column;
-      min-height: 0;
-      background: rgba(255,255,255,0.30);
-      backdrop-filter: blur(14px);
-      border-right: 1px solid rgba(255,255,255,0.35);
+
+      background:
+        rgba(255,255,255,.30);
+
+      backdrop-filter: blur(12px);
+
+      border-right:
+        1px solid rgba(255,255,255,.45);
     }
 
+
     .library-header {
-      padding: 20px 18px 14px;
-      border-bottom: 1px solid var(--line);
+      padding:
+        20px
+        18px
+        15px;
+
+      border-bottom:
+        1px solid var(--line);
     }
+
 
     .library-header h2 {
       margin: 0;
+
+      font-family:
+        "Fredoka",
+        sans-serif;
+
       font-size: 20px;
-      font-family: 'Fredoka', cursive;
-      color: #23748c;
+
+      color: #267a91;
     }
+
 
     .library-header p {
-      margin: 6px 0 0;
-      color: var(--muted);
+      margin:
+        6px
+        0
+        0;
+
       font-size: 13px;
-      line-height: 1.45;
+
+      line-height: 1.4;
+
+      color: var(--muted);
     }
 
+
     .search-box {
-      padding: 14px 16px 10px;
+      padding:
+        14px
+        15px
+        8px;
     }
+
 
     .search-box input {
       width: 100%;
-      border: 1px solid rgba(69,130,157,0.14);
-      background: rgba(255,255,255,0.68);
-      color: var(--text);
+
       border-radius: 14px;
-      padding: 12px 14px;
+
+      border:
+        1px solid rgba(54,130,154,.13);
+
+      background:
+        rgba(255,255,255,.70);
+
+      padding:
+        12px
+        14px;
+
       outline: none;
-      font-size: 14px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+
+      color: var(--text);
     }
+
 
     .search-box input:focus {
-      border-color: rgba(69,210,191,0.40);
-      box-shadow: 0 0 0 4px rgba(69,210,191,0.10);
+      border-color:
+        rgba(80,215,195,.50);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(80,215,195,.10);
     }
+
 
     .categories {
-      padding: 8px 12px 18px;
+      flex: 1;
+
+      min-height: 0;
+
       overflow-y: auto;
+
+      padding:
+        8px
+        12px
+        20px;
     }
 
+
     .section-label {
-      margin: 12px 8px 10px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      margin:
+        12px
+        8px
+        9px;
+
       text-transform: uppercase;
-      color: #6590a0;
+
+      letter-spacing: 1px;
+
+      font-size: 10px;
+      font-weight: 800;
+
+      color: #6d93a0;
     }
+
 
     .category {
       width: 100%;
-      border: 1px solid rgba(69,130,157,0.10);
-      background: var(--soft-card);
-      color: var(--text);
-      border-radius: 18px;
-      padding: 12px 12px;
-      margin-bottom: 9px;
-      text-align: left;
+
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+
+      gap: 11px;
+
+      padding: 11px;
+
+      margin-bottom: 8px;
+
+      border-radius: 17px;
+
+      border:
+        1px solid rgba(64,130,155,.10);
+
+      background:
+        rgba(255,255,255,.45);
+
+      color: var(--text);
+
+      text-align: left;
+
+      transition: .17s;
     }
+
 
     .category:hover {
-      background: var(--soft-hover);
-      transform: translateY(-1px);
+      transform:
+        translateY(-1px);
+
+      background:
+        rgba(255,255,255,.72);
     }
+
 
     .category.active {
-      background: linear-gradient(
-        135deg,
-        rgba(117,207,255,0.30),
-        rgba(116,231,160,0.24)
-      );
-      border-color: rgba(69,210,191,0.20);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(114,207,255,.30),
+          rgba(111,224,160,.28)
+        );
     }
 
-    .category-main {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-    }
 
     .category-icon {
-      width: 44px;
-      height: 44px;
+      width: 42px;
+      height: 42px;
+
+      flex-shrink: 0;
+
       border-radius: 14px;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.65);
-      flex-shrink: 0;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+
+      background:
+        rgba(255,255,255,.74);
     }
+
 
     .category-icon svg {
-      width: 24px;
-      height: 24px;
-      display: block;
+      width: 25px;
+      height: 25px;
     }
 
-    .category-text {
-      min-width: 0;
-    }
 
-    .category-text strong {
+    .category strong {
       display: block;
+
       font-size: 14px;
-      margin-bottom: 3px;
-      color: #235e70;
+
+      color: #285f70;
     }
 
-    .category-text span {
+
+    .category span {
       display: block;
+
+      margin-top: 2px;
+
       color: var(--muted);
-      font-size: 11px;
-      line-height: 1.3;
+
+      font-size: 10px;
     }
 
-    .category-badge {
-      font-size: 11px;
-      color: #1b7f6c;
-      background: rgba(116,231,160,0.22);
-      padding: 5px 9px;
-      border-radius: 999px;
-      white-space: nowrap;
-      font-weight: 800;
-    }
 
-    /* EDITOR */
+    /* ==============================
+       EDITOR
+       ============================== */
 
     .editor {
-      display: flex;
-      flex-direction: column;
       min-width: 0;
       min-height: 0;
-      background: rgba(255,255,255,0.10);
+
+      display: flex;
+      flex-direction: column;
     }
 
-    .hero-bar {
+
+    .hero {
+      min-height: 94px;
+
       display: flex;
       align-items: center;
-      justify-content: space-between;
+
       gap: 16px;
-      padding: 18px 20px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(6px);
+
+      padding:
+        14px
+        20px;
+
+      background:
+        rgba(255,255,255,.22);
+
+      border-bottom:
+        1px solid var(--line);
     }
 
-    .hero-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      min-width: 0;
-    }
 
-    .hero-planet {
-      width: 66px;
-      height: 66px;
+    .hero-earth {
+      width: 64px;
+      height: 64px;
+
+      flex-shrink: 0;
+
       border-radius: 20px;
-      background: rgba(255,255,255,0.56);
+
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: var(--shadow-small);
-      flex-shrink: 0;
-    }
 
-    .hero-planet svg {
-      width: 46px;
-      height: 46px;
-      display: block;
-    }
-
-    .hero-text h2 {
-      margin: 0;
-      font-family: 'Fredoka', cursive;
-      font-size: 25px;
-      color: #236f84;
-    }
-
-    .hero-text p {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-      max-width: 640px;
-    }
-
-    .hero-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      padding: 8px 11px;
-      border-radius: 999px;
-      font-size: 12px;
-      background: rgba(255,255,255,0.46);
-      color: #3d7284;
-      border: 1px solid rgba(69,130,157,0.10);
-      font-weight: 800;
-    }
-
-    .editor-toolbar {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0 18px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,0.28);
-      backdrop-filter: blur(8px);
-    }
-
-    .toolbar-group {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .transport {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .transport-button {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: none;
-      font-size: 17px;
-      color: #2f6d81;
-      background: rgba(255,255,255,0.62);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-      font-weight: 800;
-    }
-
-    .transport-button:hover {
-      background: rgba(255,255,255,0.82);
-    }
-
-    .transport-button.play {
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b4d3d;
-    }
-
-    .timeline-area {
-      flex: 1;
-      min-height: 0;
-      overflow: auto;
-      position: relative;
       background:
-        linear-gradient(to right, rgba(51,146,173,0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(51,146,173,0.06) 1px, transparent 1px);
-      background-size: 95px 100%, 100% 100px;
-    }
+        rgba(255,255,255,.60);
 
-    .ruler {
-      position: sticky;
-      top: 0;
-      z-index: 3;
-      display: flex;
-      min-width: 1450px;
-      height: 50px;
-      background: rgba(255,255,255,0.74);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(69,130,157,0.14);
-    }
-
-    .time-mark {
-      width: 95px;
-      min-width: 95px;
-      border-left: 1px solid rgba(69,130,157,0.15);
-      padding: 9px 0 0 8px;
-      color: #6890a0;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .empty-project {
-      position: absolute;
-      left: 50%;
-      top: 54%;
-      transform: translate(-50%, -50%);
-      width: min(700px, calc(100% - 40px));
-      text-align: center;
-      padding: 34px 28px;
-      border-radius: 30px;
-      background: rgba(255,255,255,0.72);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.45);
       box-shadow: var(--shadow);
     }
 
-    .empty-visual {
-      width: 108px;
-      height: 108px;
-      margin: 0 auto 18px;
-      border-radius: 28px;
-      background: linear-gradient(135deg, rgba(117,207,255,0.35), rgba(116,231,160,0.30));
+
+    .hero-earth svg {
+      width: 48px;
+      height: 48px;
+    }
+
+
+    .hero h2 {
+      margin: 0;
+
+      font-family:
+        "Fredoka",
+        sans-serif;
+
+      font-size: 24px;
+
+      color: #27788e;
+    }
+
+
+    .hero p {
+      margin:
+        4px
+        0
+        0;
+
+      color: var(--muted);
+
+      font-size: 13px;
+
+      max-width: 680px;
+    }
+
+
+    /* ==============================
+       TOOLBAR
+       ============================== */
+
+    .toolbar {
+      height: 68px;
+
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      padding:
+        0
+        18px;
+
+      background:
+        rgba(255,255,255,.30);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .transport {
+      margin-left: auto;
+
+      display: flex;
+
+      gap: 9px;
+    }
+
+
+    .transport-button {
+      width: 45px;
+      height: 45px;
+
+      border-radius: 50%;
+
+      border: none;
+
+      background:
+        rgba(255,255,255,.65);
+
+      color: #33778b;
+
+      font-weight: 900;
+
+      font-size: 16px;
+
+      box-shadow:
+        0 5px 15px rgba(0,0,0,.05);
+    }
+
+
+    .transport-button.play {
+      background:
+        linear-gradient(
+          135deg,
+          var(--mint),
+          var(--green)
+        );
+
+      color: #0d5546;
+    }
+
+
+    /* ==============================
+       TIMELINE
+       ============================== */
+
+    .timeline-shell {
+      position: relative;
+
+      flex: 1;
+
+      min-height: 0;
+    }
+
+
+    .timeline-scroll {
+      position: absolute;
+
+      inset: 0;
+
+      overflow: auto;
+    }
+
+
+    .timeline-canvas {
+      min-width: 1600px;
+
+      min-height: 100%;
+    }
+
+
+    .timeline-header {
+      height: 50px;
+
+      position: sticky;
+      top: 0;
+
+      z-index: 20;
+
+      display: grid;
+
+      grid-template-columns:
+        190px
+        1fr;
+    }
+
+
+    .track-header {
+      position: sticky;
+      left: 0;
+
+      z-index: 22;
+
+      display: flex;
+      align-items: center;
+
+      padding:
+        0
+        14px;
+
+      background:
+        rgba(240,253,255,.97);
+
+      border-right:
+        1px solid var(--line);
+
+      border-bottom:
+        1px solid var(--line);
+
+      font-size: 11px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      font-weight: 800;
+
+      color: #668b99;
+    }
+
+
+    .ruler {
+      display: flex;
+
+      min-width: 1410px;
+
+      background:
+        rgba(255,255,255,.84);
+
+      backdrop-filter: blur(8px);
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .time-mark {
+      width: 95px;
+
+      flex:
+        0
+        0
+        95px;
+
+      padding:
+        8px
+        0
+        0
+        8px;
+
+      border-left:
+        1px solid rgba(66,125,149,.14);
+
+      color: #7493a0;
+
+      font-size: 10px;
+
+      font-weight: 800;
+    }
+
+
+    /* ==============================
+       TRACCE
+       ============================== */
+
+    .track-row {
+      height: 116px;
+
+      display: grid;
+
+      grid-template-columns:
+        190px
+        1fr;
+
+      border-bottom:
+        1px solid var(--line);
+    }
+
+
+    .track-controls {
+      position: sticky;
+      left: 0;
+
+      z-index: 8;
+
+      padding: 10px;
+
+      background:
+        rgba(244,253,255,.94);
+
+      backdrop-filter: blur(10px);
+
+      border-right:
+        1px solid var(--line);
+
+      transition: .15s;
+    }
+
+
+    .track-lane {
+      position: relative;
+
+      min-width: 1410px;
+
+      background:
+        linear-gradient(
+          to right,
+          rgba(54,130,154,.08) 1px,
+          transparent 1px
+        );
+
+      background-size:
+        95px 100%;
+
+      transition: .15s;
+    }
+
+
+    .track-row:nth-child(even)
+    .track-lane {
+      background-color:
+        rgba(255,255,255,.11);
+    }
+
+
+    .track-row.selected
+    .track-controls {
+      background:
+        linear-gradient(
+          135deg,
+          rgba(203,246,255,.98),
+          rgba(220,255,233,.98)
+        );
+
+      box-shadow:
+        inset 4px 0 0 var(--mint);
+    }
+
+
+    .track-row.selected
+    .track-lane {
+      background-color:
+        rgba(104,218,195,.08);
+    }
+
+
+    .track-title-row {
+      display: flex;
+
+      align-items: center;
+
+      gap: 6px;
+
+      margin-bottom: 8px;
+    }
+
+
+    .track-number {
+      width: 25px;
+      height: 25px;
+
+      flex-shrink: 0;
+
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.60);
+
+      border-radius: 9px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--blue),
+          var(--green)
+        );
+
+      color: #18536a;
+
+      font-family:
+        "Fredoka",
+        sans-serif;
+
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    .empty-visual svg {
-      width: 64px;
-      height: 64px;
-      display: block;
+
+    .track-name {
+      min-width: 0;
+
+      flex: 1;
+
+      border:
+        1px solid rgba(62,126,151,.12);
+
+      border-radius: 9px;
+
+      background:
+        rgba(255,255,255,.70);
+
+      padding:
+        6px
+        7px;
+
+      color: #285f70;
+
+      font-weight: 800;
+
+      outline: none;
     }
 
-    .empty-project h2 {
-      margin: 0 0 10px;
-      font-family: 'Fredoka', cursive;
-      font-size: 30px;
-      color: #226e83;
+
+    .track-name:focus {
+      border-color:
+        rgba(80,215,195,.60);
     }
+
+
+    .track-actions {
+      display: flex;
+
+      gap: 5px;
+    }
+
+
+    .small-button {
+      width: 27px;
+      height: 27px;
+
+      padding: 0;
+
+      border-radius: 8px;
+
+      border:
+        1px solid rgba(58,126,151,.12);
+
+      background:
+        rgba(255,255,255,.70);
+
+      color: #4d7887;
+
+      font-weight: 900;
+    }
+
+
+    .small-button:hover {
+      background: white;
+    }
+
+
+    .small-button.active {
+      background:
+        var(--mint);
+
+      color: #0f5144;
+
+      border-color:
+        transparent;
+    }
+
+
+    .delete-button {
+      color: #b15f69;
+    }
+
+
+    .volume-row {
+      display: flex;
+      align-items: center;
+
+      gap: 6px;
+
+      margin-top: 8px;
+
+      font-size: 10px;
+
+      color: #72909c;
+    }
+
+
+    .volume-row input {
+      min-width: 0;
+
+      flex: 1;
+
+      accent-color:
+        var(--mint);
+    }
+
+
+    .volume-value {
+      width: 34px;
+
+      text-align: right;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      color: #56808e;
+    }
+
+
+    .lane-hint {
+      position: absolute;
+
+      left: 24px;
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      color:
+        rgba(69,117,134,.34);
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      pointer-events: none;
+    }
+
+
+    /* ==============================
+       EMPTY STATE
+       ============================== */
+
+    .empty-project {
+      position: absolute;
+
+      z-index: 12;
+
+      left: 50%;
+      top: 51%;
+
+      transform:
+        translate(-50%, -50%);
+
+      width:
+        min(
+          680px,
+          calc(100% - 40px)
+        );
+
+      text-align: center;
+
+      padding:
+        31px
+        25px;
+
+      border-radius: 29px;
+
+      background:
+        rgba(255,255,255,.78);
+
+      backdrop-filter: blur(14px);
+
+      border:
+        1px solid rgba(255,255,255,.65);
+
+      box-shadow: var(--shadow);
+    }
+
+
+    .empty-project.hidden {
+      display: none;
+    }
+
+
+    .empty-planet {
+      width: 100px;
+      height: 100px;
+
+      margin:
+        0
+        auto
+        16px;
+
+      border-radius: 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(114,207,255,.35),
+          rgba(111,224,160,.32)
+        );
+    }
+
+
+    .empty-planet svg {
+      width: 66px;
+      height: 66px;
+    }
+
+
+    .empty-project h3 {
+      margin:
+        0
+        0
+        8px;
+
+      font-family:
+        "Fredoka",
+        sans-serif;
+
+      font-size: 29px;
+
+      color: #26788e;
+    }
+
 
     .empty-project p {
-      margin: 0 auto 22px;
       max-width: 500px;
+
+      margin:
+        0
+        auto
+        20px;
+
       color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
+
+      font-size: 14px;
+
+      line-height: 1.55;
     }
 
-    .empty-actions {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
 
-    .info-cards {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 22px;
-      flex-wrap: wrap;
-    }
-
-    .info-card {
-      min-width: 138px;
-      padding: 13px 15px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.48);
-      border: 1px solid rgba(69,130,157,0.08);
-    }
-
-    .info-card strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 4px;
-      color: #23778f;
-      font-family: 'Fredoka', cursive;
-    }
-
-    .info-card span {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    /* ==============================
+       BOTTOM BAR
+       ============================== */
 
     .bottom-bar {
-      height: 58px;
+      height: 55px;
+
+      flex-shrink: 0;
+
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 0 18px;
-      background: rgba(255,255,255,0.36);
-      border-top: 1px solid rgba(255,255,255,0.42);
-      color: var(--muted);
-      font-size: 12px;
-      backdrop-filter: blur(8px);
+
+      gap: 10px;
+
+      padding:
+        0
+        18px;
+
+      background:
+        rgba(255,255,255,.38);
+
+      border-top:
+        1px solid rgba(255,255,255,.50);
     }
 
-    .status-pill {
-      display: inline-flex;
+
+    .status {
+      display: flex;
+
       align-items: center;
+
       gap: 7px;
-      padding: 8px 11px;
+
+      padding:
+        7px
+        11px;
+
       border-radius: 999px;
-      background: rgba(255,255,255,0.54);
-      font-weight: 700;
-      color: #4f7a88;
-    }
 
-    .dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(69,210,191,0.12);
-    }
+      background:
+        rgba(255,255,255,.62);
 
-    .time-display {
-      margin-left: auto;
-      color: #2a7085;
-      font-size: 15px;
+      color: #567f8d;
+
+      font-size: 11px;
+
       font-weight: 800;
-      font-variant-numeric: tabular-nums;
-      letter-spacing: 0.5px;
     }
 
-    /* RESPONSIVE */
 
-    @media (max-width: 980px) {
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background:
+        var(--mint);
+
+      box-shadow:
+        0 0 0 5px
+        rgba(80,215,195,.10);
+    }
+
+
+    .time {
+      margin-left: auto;
+
+      font-weight: 800;
+
+      font-size: 15px;
+
+      color: #34788d;
+    }
+
+
+    /* ==============================
+       TABLET
+       ============================== */
+
+    @media (max-width: 850px) {
+
       .workspace {
-        grid-template-columns: 250px 1fr;
+        grid-template-columns:
+          230px
+          minmax(0, 1fr);
       }
 
-      .hero-tags {
+      .brand p {
         display: none;
       }
 
-      .hero-left {
-        align-items: flex-start;
+      .hero p {
+        display: none;
       }
 
-      .hero-text h2 {
-        font-size: 22px;
+      .hero {
+        min-height: 80px;
       }
+
     }
 
-    @media (max-width: 760px) {
-      .workspace {
-        grid-template-columns: 220px 1fr;
-      }
-
-      .topbar {
-        padding: 0 14px;
-      }
-
-      .brand-text p {
-        display: none;
-      }
-
-      .top-actions .button {
-        padding: 10px 12px;
-      }
-
-      .hero-text p {
-        display: none;
-      }
-
-      .empty-project {
-        padding: 26px 18px;
-      }
-
-      .empty-project h2 {
-        font-size: 24px;
-      }
-    }
   </style>
 </head>
 
+
 <body>
 
-  <div class="bg-decor">
 
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
+<!-- ==============================
+     ICONE SVG
+     ============================== -->
 
-    <div class="wave-band">
-      <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
-        <path d="M0,140 C150,95 270,185 420,150 C590,111 680,48 830,76 C980,104 1100,192 1440,132 L1440,220 L0,220 Z"
-          fill="rgba(69,210,191,0.46)"></path>
-      </svg>
+<svg
+  width="0"
+  height="0"
+  style="position:absolute"
+>
+
+  <defs>
+
+    <symbol id="earth" viewBox="0 0 64 64">
+
+      <circle
+        cx="32"
+        cy="32"
+        r="23"
+        fill="#7bd6ff"
+      />
+
+      <path
+        d="M18 25 C18 18 25 16 31 19 C35 21 34 27 30 30 C26 33 19 31 18 25Z"
+        fill="#71dfa0"
+      />
+
+      <path
+        d="M38 20 C45 18 50 23 49 29 C48 35 41 36 37 33 C33 29 34 23 38 20Z"
+        fill="#71dfa0"
+      />
+
+      <path
+        d="M26 39 C32 35 42 38 43 45 C44 51 35 54 29 50 C24 47 22 42 26 39Z"
+        fill="#71dfa0"
+      />
+
+      <circle
+        cx="32"
+        cy="32"
+        r="23"
+        fill="none"
+        stroke="#3d96b2"
+        stroke-width="2"
+        opacity=".45"
+      />
+
+    </symbol>
+
+
+    <symbol id="city" viewBox="0 0 24 24">
+
+      <rect
+        x="3"
+        y="10"
+        width="5"
+        height="10"
+        rx="1"
+        fill="#63c5ef"
+      />
+
+      <rect
+        x="10"
+        y="6"
+        width="5"
+        height="14"
+        rx="1"
+        fill="#53d4c0"
+      />
+
+      <rect
+        x="17"
+        y="3"
+        width="4"
+        height="17"
+        rx="1"
+        fill="#75df9e"
+      />
+
+    </symbol>
+
+
+    <symbol id="field" viewBox="0 0 24 24">
+
+      <path
+        d="M3 18 C6 12 10 12 13 18 Z"
+        fill="#68d899"
+      />
+
+      <path
+        d="M10 18 C14 9 18 9 22 18 Z"
+        fill="#70cbee"
+      />
+
+      <path
+        d="M3 18 H22"
+        stroke="#469f7f"
+        stroke-width="2"
+      />
+
+    </symbol>
+
+
+    <symbol id="sea" viewBox="0 0 24 24">
+
+      <path
+        d="M2 10 C6 7 8 13 12 10 C16 7 18 13 22 10"
+        stroke="#5cbdea"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+      />
+
+      <path
+        d="M2 16 C6 13 8 19 12 16 C16 13 18 19 22 16"
+        stroke="#51d5c1"
+        stroke-width="2.5"
+        fill="none"
+        stroke-linecap="round"
+      />
+
+    </symbol>
+
+
+    <symbol id="mountain" viewBox="0 0 24 24">
+
+      <path
+        d="M2 19 L8 8 L14 19Z"
+        fill="#64c4ed"
+      />
+
+      <path
+        d="M9 19 L16 5 L23 19Z"
+        fill="#71df9f"
+      />
+
+    </symbol>
+
+
+    <symbol id="school" viewBox="0 0 24 24">
+
+      <rect
+        x="4"
+        y="6"
+        width="16"
+        height="14"
+        rx="2"
+        fill="#6dc9ef"
+      />
+
+      <rect
+        x="9"
+        y="13"
+        width="6"
+        height="7"
+        fill="white"
+        opacity=".9"
+      />
+
+      <rect
+        x="7"
+        y="9"
+        width="3"
+        height="2"
+        rx="1"
+        fill="white"
+      />
+
+      <rect
+        x="14"
+        y="9"
+        width="3"
+        height="2"
+        rx="1"
+        fill="white"
+      />
+
+    </symbol>
+
+
+    <symbol id="office" viewBox="0 0 24 24">
+
+      <rect
+        x="4"
+        y="5"
+        width="16"
+        height="11"
+        rx="2"
+        fill="#64c5eb"
+      />
+
+      <rect
+        x="9"
+        y="18"
+        width="6"
+        height="2"
+        rx="1"
+        fill="#68d89a"
+      />
+
+    </symbol>
+
+
+    <symbol id="work" viewBox="0 0 24 24">
+
+      <circle
+        cx="8"
+        cy="15"
+        r="3"
+        fill="#6cda9d"
+      />
+
+      <circle
+        cx="16"
+        cy="15"
+        r="3"
+        fill="#65c6ed"
+      />
+
+      <rect
+        x="6"
+        y="6"
+        width="12"
+        height="5"
+        rx="1.5"
+        fill="#4fd4c0"
+      />
+
+    </symbol>
+
+
+    <symbol id="home" viewBox="0 0 24 24">
+
+      <path
+        d="M3 11 L12 4 L21 11 V20 H3Z"
+        fill="#6dda9e"
+      />
+
+      <rect
+        x="10"
+        y="14"
+        width="4"
+        height="6"
+        fill="white"
+      />
+
+    </symbol>
+
+
+    <symbol id="transport" viewBox="0 0 24 24">
+
+      <rect
+        x="4"
+        y="7"
+        width="16"
+        height="8"
+        rx="2"
+        fill="#67c7ef"
+      />
+
+      <circle
+        cx="8"
+        cy="17"
+        r="2"
+        fill="#3d91ac"
+      />
+
+      <circle
+        cx="16"
+        cy="17"
+        r="2"
+        fill="#3d91ac"
+      />
+
+    </symbol>
+
+
+    <symbol id="weather" viewBox="0 0 24 24">
+
+      <circle
+        cx="16"
+        cy="7"
+        r="3"
+        fill="#6ac9ed"
+      />
+
+      <path
+        d="M5 15 C5 11 9 10 11 12 C13 9 18 11 18 15 C18 18 15 19 11 19 H8 C6 19 5 17 5 15Z"
+        fill="#65d7c1"
+      />
+
+    </symbol>
+
+
+    <symbol id="space" viewBox="0 0 24 24">
+
+      <circle
+        cx="12"
+        cy="12"
+        r="5"
+        fill="#68c9ef"
+      />
+
+      <path
+        d="M12 2V5M12 19V22M2 12H5M19 12H22"
+        stroke="#6ddd9e"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+
+    </symbol>
+
+
+    <symbol id="mic" viewBox="0 0 24 24">
+
+      <rect
+        x="9"
+        y="3"
+        width="6"
+        height="11"
+        rx="3"
+        fill="#61c5eb"
+      />
+
+      <path
+        d="M6 11 C6 15 8.5 17.5 12 17.5 C15.5 17.5 18 15 18 11"
+        stroke="#6ddd9f"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+      />
+
+      <path
+        d="M12 18V21"
+        stroke="#4594ac"
+        stroke-width="2"
+      />
+
+    </symbol>
+
+  </defs>
+
+</svg>
+
+
+<div class="background-art">
+
+  <svg class="earth-decoration">
+    <use href="#earth"></use>
+  </svg>
+
+  <svg
+    class="leaf-decoration"
+    viewBox="0 0 200 200"
+  >
+
+    <path
+      d="M82 166 C34 137 24 83 58 39 C96 51 128 101 82 166Z"
+      fill="#59ce93"
+    />
+
+    <path
+      d="M120 165 C165 133 178 82 144 41 C106 54 82 105 120 165Z"
+      fill="#5ebee7"
+    />
+
+  </svg>
+
+</div>
+
+
+<div class="app">
+
+
+  <!-- HEADER -->
+
+  <header class="topbar">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+
+        <svg>
+          <use href="#earth"></use>
+        </svg>
+
+      </div>
+
+
+      <div>
+
+        <h1>
+          SoundLab
+        </h1>
+
+        <p>
+          Una risorsa didattica del Prof. Fontolan Michele
+        </p>
+
+      </div>
+
     </div>
 
-    <div class="hill-line">
-      <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <path d="M0,95 C120,60 210,102 330,76 C460,48 560,110 700,82 C840,54 930,20 1050,45 C1180,73 1290,118 1440,82"
-          fill="none" stroke="rgba(60,150,170,0.55)" stroke-width="6" stroke-linecap="round"></path>
-      </svg>
+
+    <div class="top-actions">
+
+      <button
+        class="button"
+        id="newProjectButton"
+      >
+        Nuovo progetto
+      </button>
+
+
+      <button
+        class="button"
+        id="saveButton"
+      >
+        Salva
+      </button>
+
+
+      <button
+        class="button button-primary"
+        id="exportButton"
+      >
+        Esporta
+      </button>
+
     </div>
 
-    <div class="leaf-left">
-      <svg viewBox="0 0 200 200">
-        <path d="M85 164 C37 132, 28 83, 62 40 C96 54, 126 104, 85 164 Z" fill="rgba(116,231,160,0.9)"/>
-        <path d="M102 42 C99 75, 94 112, 84 162" stroke="rgba(47,122,96,0.40)" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-    </div>
+  </header>
 
-    <div class="leaf-right">
-      <svg viewBox="0 0 200 200">
-        <path d="M108 166 C154 132, 167 84, 137 38 C102 50, 74 98, 108 166 Z" fill="rgba(117,207,255,0.92)"/>
-        <path d="M121 42 C120 70, 116 112, 108 164" stroke="rgba(40,108,132,0.35)" stroke-width="4" stroke-linecap="round"/>
-      </svg>
-    </div>
 
-    <div class="earth-small earth-a">
-      <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="34" fill="#7fd8ff"/>
-        <path d="M30 45 C24 38, 32 28, 41 30 C49 31, 52 40, 46 45 C40 50, 35 50, 30 45 Z" fill="#6adf9b"/>
-        <path d="M58 38 C66 30, 76 35, 77 44 C78 52, 71 56, 64 56 C57 56, 52 45, 58 38 Z" fill="#6adf9b"/>
-        <path d="M44 60 C52 55, 64 60, 65 69 C66 76, 55 79, 48 76 C42 73, 38 65, 44 60 Z" fill="#6adf9b"/>
-        <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(38,96,117,0.28)" stroke-width="3"/>
-      </svg>
-    </div>
 
-    <div class="earth-small earth-b">
-      <svg viewBox="0 0 100 100">
-        <circle cx="50" cy="50" r="34" fill="#81dcff"/>
-        <path d="M34 40 C40 30, 54 33, 57 42 C60 50, 52 55, 44 54 C36 53, 30 48, 34 40 Z" fill="#79e9a7"/>
-        <path d="M60 56 C67 53, 74 60, 72 68 C70 76, 58 76, 54 69 C51 63, 55 58, 60 56 Z" fill="#79e9a7"/>
-        <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(38,96,117,0.26)" stroke-width="3"/>
-      </svg>
-    </div>
+  <main class="workspace">
 
-  </div>
 
-  <div class="app">
+    <!-- LIBRERIA -->
 
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-icon">
-          <svg viewBox="0 0 64 64">
-            <circle cx="32" cy="32" r="18" fill="#7fdcff"/>
-            <path d="M22 28 C18 23, 24 18, 29 19 C34 20, 36 26, 32 29 C28 32, 25 31, 22 28 Z" fill="#6de39d"/>
-            <path d="M36 24 C40 19, 47 21, 48 27 C49 32, 44 35, 39 35 C35 35, 32 28, 36 24 Z" fill="#6de39d"/>
-            <path d="M27 37 C32 34, 39 37, 40 43 C41 48, 34 51, 29 49 C24 47, 22 40, 27 37 Z" fill="#6de39d"/>
-            <path d="M10 32 C10 20 18 12 30 10" stroke="#1f6d80" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <path d="M54 32 C54 20 46 12 34 10" stroke="#1f6d80" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <path d="M14 37 C15 45 22 52 32 52 C42 52 49 45 50 37" stroke="#1f6d80" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <aside class="library">
+
+      <div class="library-header">
+
+        <h2>
+          Libreria sonora
+        </h2>
+
+        <p>
+          Esplora ambienti e suoni per costruire
+          il tuo paesaggio sonoro.
+        </p>
+
+      </div>
+
+
+      <div class="search-box">
+
+        <input
+          id="soundSearch"
+          type="text"
+          placeholder="Cerca un suono..."
+        >
+
+      </div>
+
+
+      <div class="categories">
+
+        <div class="section-label">
+          Ambienti
+        </div>
+
+
+        <button class="category active">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#city"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Città</strong>
+            <span>Traffico, folla, segnali</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#field"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Campagna</strong>
+            <span>Campi, animali, quiete</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#sea"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Mare</strong>
+            <span>Onde, porto, acqua</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#mountain"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Bosco e montagna</strong>
+            <span>Foglie, vento, ruscelli</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#school"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Scuola</strong>
+            <span>Aule, corridoi, voci</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#office"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Ufficio</strong>
+            <span>Tastiere, stampanti, lavoro</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#work"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Lavoro</strong>
+            <span>Officina, cantiere, macchine</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#home"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Casa</strong>
+            <span>Oggetti e vita quotidiana</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#transport"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Trasporti</strong>
+            <span>Treni, autobus, stazioni</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#weather"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Meteo</strong>
+            <span>Pioggia, vento, temporali</span>
+          </div>
+
+        </button>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#space"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>Spazio</strong>
+            <span>Paesaggi immaginari</span>
+          </div>
+
+        </button>
+
+
+        <div class="section-label">
+          Creazione personale
+        </div>
+
+
+        <button class="category">
+
+          <div class="category-icon">
+            <svg>
+              <use href="#mic"></use>
+            </svg>
+          </div>
+
+          <div>
+            <strong>I miei suoni</strong>
+            <span>Registrazioni personali</span>
+          </div>
+
+        </button>
+
+      </div>
+
+    </aside>
+
+
+
+    <!-- EDITOR -->
+
+    <section class="editor">
+
+
+      <div class="hero">
+
+        <div class="hero-earth">
+
+          <svg>
+            <use href="#earth"></use>
           </svg>
+
         </div>
 
-        <div class="brand-text">
-          <h1>SoundLab</h1>
-          <p>Una risorsa didattica del Prof. Fontolan Michele</p>
+
+        <div>
+
+          <h2>
+            Costruisci il tuo paesaggio sonoro
+          </h2>
+
+          <p>
+            Ascolta il mondo, scegli i suoni,
+            registrane di nuovi e trasformali
+            in una composizione.
+          </p>
+
         </div>
+
       </div>
 
-      <div class="top-actions">
-        <button class="button">Nuovo progetto</button>
-        <button class="button">Salva</button>
-        <button class="button button-primary">Esporta</button>
+
+
+      <!-- TOOLBAR -->
+
+      <div class="toolbar">
+
+        <button
+          class="button button-primary"
+          id="addTrackButton"
+        >
+          ＋ Traccia
+        </button>
+
+
+        <button
+          class="button"
+          id="recordButton"
+        >
+          Registra
+        </button>
+
+
+        <div class="transport">
+
+          <button
+            class="transport-button"
+            id="stopButton"
+          >
+            ■
+          </button>
+
+          <button
+            class="transport-button play"
+            id="playButton"
+          >
+            ▶
+          </button>
+
+        </div>
+
       </div>
-    </header>
 
-    <main class="workspace">
 
-      <aside class="library">
-        <div class="library-header">
-          <h2>Libreria sonora</h2>
-          <p>Scopri ambienti e suoni per creare paesaggi sonori legati al mondo che ci circonda.</p>
+
+      <!-- TIMELINE -->
+
+      <div class="timeline-shell">
+
+
+        <div class="timeline-scroll">
+
+
+          <div class="timeline-canvas">
+
+
+            <div class="timeline-header">
+
+              <div class="track-header">
+                Tracce
+              </div>
+
+
+              <div class="ruler">
+
+                <div class="time-mark">0 s</div>
+                <div class="time-mark">5 s</div>
+                <div class="time-mark">10 s</div>
+                <div class="time-mark">15 s</div>
+                <div class="time-mark">20 s</div>
+                <div class="time-mark">25 s</div>
+                <div class="time-mark">30 s</div>
+                <div class="time-mark">35 s</div>
+                <div class="time-mark">40 s</div>
+                <div class="time-mark">45 s</div>
+                <div class="time-mark">50 s</div>
+                <div class="time-mark">55 s</div>
+                <div class="time-mark">60 s</div>
+                <div class="time-mark">65 s</div>
+                <div class="time-mark">70 s</div>
+
+              </div>
+
+            </div>
+
+
+            <div id="trackRows"></div>
+
+
+          </div>
+
         </div>
 
-        <div class="search-box">
-          <input type="text" placeholder="Cerca un suono o un ambiente...">
-        </div>
 
-        <div class="categories">
 
-          <div class="section-label">Ambienti</div>
+        <!-- STATO VUOTO -->
 
-          <button class="category active">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="11" width="4" height="8" rx="1.2" fill="#4cb8de"/>
-                  <rect x="9" y="7" width="5" height="12" rx="1.2" fill="#45d2bf"/>
-                  <rect x="16" y="4" width="5" height="15" rx="1.2" fill="#78e5a1"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Città</strong>
-                <span>Traffico, folla, segnali, ritmi urbani</span>
-              </div>
-            </div>
-            <div class="category-badge">soundscape</div>
-          </button>
+        <div
+          class="empty-project"
+          id="emptyProject"
+        >
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 17 C8 11, 11 11, 14 17 Z" fill="#78e5a1"/>
-                  <path d="M11 17 C14 9, 18 9, 21 17 Z" fill="#4cb8de"/>
-                  <rect x="3" y="17" width="18" height="2" rx="1" fill="#66b882"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Campagna</strong>
-                <span>Animali, vento, campi, quiete rurale</span>
-              </div>
-            </div>
-          </button>
+          <div class="empty-planet">
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M2 14 C5 12, 8 16, 11 14 C14 12, 17 16, 22 13" stroke="#4cb8de" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-                  <path d="M2 18 C5 16, 8 20, 11 18 C14 16, 17 20, 22 17" stroke="#45d2bf" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Mare</strong>
-                <span>Onde, gabbiani, porto, acqua</span>
-              </div>
-            </div>
-          </button>
+            <svg>
+              <use href="#earth"></use>
+            </svg>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M3 18 L9 9 L15 18 Z" fill="#4cb8de"/>
-                  <path d="M10 18 L16 7 L22 18 Z" fill="#78e5a1"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Bosco e montagna</strong>
-                <span>Foglie, ruscelli, uccelli, vento</span>
-              </div>
-            </div>
-          </button>
+          </div>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x="4" y="5" width="16" height="14" rx="2" fill="#75cfff"/>
-                  <rect x="7" y="8" width="10" height="2" rx="1" fill="#ffffff"/>
-                  <rect x="7" y="12" width="7" height="2" rx="1" fill="#ffffff"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Scuola</strong>
-                <span>Aule, corridoi, campanella, voci</span>
-              </div>
-            </div>
-          </button>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x="4" y="6" width="16" height="10" rx="2" fill="#4cb8de"/>
-                  <rect x="9" y="17" width="6" height="2" rx="1" fill="#78e5a1"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Ufficio</strong>
-                <span>Tastiere, stampanti, lavoro quotidiano</span>
-              </div>
-            </div>
-          </button>
+          <h3>
+            Il tuo progetto è vuoto
+          </h3>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="8" cy="16" r="3" fill="#78e5a1"/>
-                  <circle cx="16" cy="16" r="3" fill="#4cb8de"/>
-                  <rect x="6" y="6" width="12" height="6" rx="1.5" fill="#5ad0c1"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Lavoro</strong>
-                <span>Officina, cantiere, macchine, produzione</span>
-              </div>
-            </div>
-          </button>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 18 V10 L12 5 L20 10 V18 Z" fill="#78e5a1"/>
-                  <rect x="10" y="13" width="4" height="5" rx="1" fill="#ffffff"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Casa</strong>
-                <span>Cucina, acqua, passi, oggetti domestici</span>
-              </div>
-            </div>
-          </button>
+          <p>
+            Crea la prima traccia e inizia a costruire
+            il tuo paesaggio sonoro.
+            Più avanti potrai trascinare qui
+            suoni e registrazioni.
+          </p>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x="4" y="8" width="16" height="7" rx="2" fill="#75cfff"/>
-                  <circle cx="8" cy="17" r="2" fill="#4cb8de"/>
-                  <circle cx="16" cy="17" r="2" fill="#4cb8de"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Trasporti</strong>
-                <span>Treni, autobus, stazioni, viaggio</span>
-              </div>
-            </div>
-          </button>
 
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <path d="M8 7 C8 5, 9.5 4, 11 4 C12.5 4, 14 5, 14 7 C14 9, 12 10, 12 12" stroke="#4cb8de" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M8 14 C8 12, 9.5 11, 11 11 C12.5 11, 14 12, 14 14 C14 16, 12 17, 12 19" stroke="#78e5a1" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <circle cx="17.5" cy="6.5" r="2" fill="#75cfff"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Meteo</strong>
-                <span>Pioggia, vento, tuono, tempesta</span>
-              </div>
-            </div>
-          </button>
-
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="5" fill="#75cfff"/>
-                  <path d="M12 2 V5" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M12 19 V22" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M2 12 H5" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M19 12 H22" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>Spazio</strong>
-                <span>Ambienti immaginari e fantascientifici</span>
-              </div>
-            </div>
-          </button>
-
-          <div class="section-label">Creazione personale</div>
-
-          <button class="category">
-            <div class="category-main">
-              <div class="category-icon">
-                <svg viewBox="0 0 24 24">
-                  <rect x="9" y="4" width="6" height="10" rx="3" fill="#4cb8de"/>
-                  <path d="M6 11 C6 14.5 8.5 17 12 17 C15.5 17 18 14.5 18 11" stroke="#78e5a1" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <path d="M12 17 V20" stroke="#78e5a1" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-              </div>
-              <div class="category-text">
-                <strong>I miei suoni</strong>
-                <span>Registrazioni personali e idee originali</span>
-              </div>
-            </div>
-            <div class="category-badge">rec</div>
+          <button
+            class="button button-primary"
+            id="createFirstTrack"
+          >
+            ＋ Crea la prima traccia
           </button>
 
         </div>
-      </aside>
 
-      <section class="editor">
 
-        <div class="hero-bar">
-          <div class="hero-left">
-            <div class="hero-planet">
-              <svg viewBox="0 0 64 64">
-                <circle cx="32" cy="32" r="21" fill="#81dcff"/>
-                <path d="M22 27 C18 22, 24 18, 30 19 C36 20, 38 26, 34 30 C30 34, 25 33, 22 27 Z" fill="#79e9a7"/>
-                <path d="M38 24 C43 20, 49 22, 50 28 C51 33, 46 37, 41 37 C36 37, 34 28, 38 24 Z" fill="#79e9a7"/>
-                <path d="M28 38 C33 34, 42 36, 43 43 C44 49, 36 52, 30 49 C25 46, 23 41, 28 38 Z" fill="#79e9a7"/>
-                <circle cx="32" cy="32" r="21" fill="none" stroke="rgba(38,96,117,0.28)" stroke-width="2.6"/>
-              </svg>
-            </div>
+      </div>
 
-            <div class="hero-text">
-              <h2>Costruisci il tuo paesaggio sonoro</h2>
-              <p>Ascolta il mondo, seleziona i suoni, registra nuove idee e trasforma l’ambiente in una composizione creativa e sostenibile.</p>
-            </div>
-          </div>
 
-          <div class="hero-tags">
-            <div class="tag">sostenibilità</div>
-            <div class="tag">soundscape</div>
-            <div class="tag">creatività</div>
-          </div>
+
+      <!-- BOTTOM BAR -->
+
+      <div class="bottom-bar">
+
+        <div class="status">
+
+          <div class="status-dot"></div>
+
+          <span id="projectStatus">
+            Progetto vuoto
+          </span>
+
         </div>
 
-        <div class="editor-toolbar">
-          <div class="toolbar-group">
-            <button class="button button-primary" id="addTrackButton">＋ Traccia</button>
-            <button class="button">Registra</button>
-          </div>
 
-          <div class="transport">
-            <button class="transport-button">■</button>
-            <button class="transport-button play">▶</button>
-          </div>
+        <div class="status">
+
+          <span id="selectedStatus">
+            Nessuna traccia selezionata
+          </span>
+
         </div>
 
-        <div class="timeline-area">
-          <div class="ruler">
-            <div class="time-mark">0 s</div>
-            <div class="time-mark">5 s</div>
-            <div class="time-mark">10 s</div>
-            <div class="time-mark">15 s</div>
-            <div class="time-mark">20 s</div>
-            <div class="time-mark">25 s</div>
-            <div class="time-mark">30 s</div>
-            <div class="time-mark">35 s</div>
-            <div class="time-mark">40 s</div>
-            <div class="time-mark">45 s</div>
-            <div class="time-mark">50 s</div>
-            <div class="time-mark">55 s</div>
-            <div class="time-mark">60 s</div>
-            <div class="time-mark">65 s</div>
-            <div class="time-mark">70 s</div>
-          </div>
 
-          <div class="empty-project" id="emptyProject">
-
-            <div class="empty-visual">
-              <svg viewBox="0 0 64 64">
-                <circle cx="32" cy="32" r="18" fill="#82dbff"/>
-                <path d="M23 28 C19 23, 24 18, 30 19 C35 20, 37 26, 33 29 C29 32, 25 32, 23 28 Z" fill="#7be8a8"/>
-                <path d="M38 25 C42 21, 48 22, 49 28 C50 33, 45 36, 40 36 C35 36, 34 29, 38 25 Z" fill="#7be8a8"/>
-                <path d="M14 42 C20 36, 26 44, 32 38 C38 32, 44 40, 50 34" stroke="#2e96b7" stroke-width="3" fill="none" stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <h2>Il tuo progetto è vuoto</h2>
-
-            <p>
-              Crea la prima traccia e inizia a costruire un paesaggio sonoro con suoni ambientali,
-              registrazioni personali e idee creative.
-            </p>
-
-            <div class="empty-actions">
-              <button class="button button-primary" id="createFirstTrack">＋ Crea la prima traccia</button>
-              <button class="button">Esplora la libreria</button>
-            </div>
-
-            <div class="info-cards">
-              <div class="info-card">
-                <strong>200</strong>
-                <span>suoni ambientali</span>
-              </div>
-              <div class="info-card">
-                <strong>∞</strong>
-                <span>tracce possibili</span>
-              </div>
-              <div class="info-card">
-                <strong>drag</strong>
-                <span>nella timeline</span>
-              </div>
-            </div>
-
-          </div>
+        <div class="time">
+          00:00.0
         </div>
 
-        <div class="bottom-bar">
-          <div class="status-pill">
-            <div class="dot"></div>
-            <span>Progetto vuoto</span>
-          </div>
+      </div>
 
-          <div class="status-pill">
-            <span>Bozza grafica</span>
-          </div>
 
-          <div class="time-display">00:00.0</div>
-        </div>
-      </section>
-    </main>
-  </div>
+    </section>
 
-  <script>
-    const firstTrackButton = document.getElementById("createFirstTrack");
-    const addTrackButton = document.getElementById("addTrackButton");
 
-    function provaTraccia() {
-      alert("Perfetto! Nel prossimo passaggio creeremo qui una vera traccia audio.");
+  </main>
+
+
+</div>
+
+
+
+<script>
+
+
+  /* ==============================
+     DATI DEL PROGETTO
+     ============================== */
+
+  let tracks = [];
+
+  let trackCounter = 0;
+
+  let selectedTrackId = null;
+
+
+
+  /* ==============================
+     ELEMENTI PAGINA
+     ============================== */
+
+  const trackRows =
+    document.getElementById("trackRows");
+
+
+  const emptyProject =
+    document.getElementById("emptyProject");
+
+
+  const addTrackButton =
+    document.getElementById("addTrackButton");
+
+
+  const createFirstTrack =
+    document.getElementById("createFirstTrack");
+
+
+  const projectStatus =
+    document.getElementById("projectStatus");
+
+
+  const selectedStatus =
+    document.getElementById("selectedStatus");
+
+
+  const newProjectButton =
+    document.getElementById("newProjectButton");
+
+
+
+  /* ==============================
+     CREA UNA TRACCIA
+     ============================== */
+
+  function addTrack() {
+
+    trackCounter++;
+
+
+    const track = {
+
+      id:
+        "track-" + trackCounter,
+
+      number:
+        trackCounter,
+
+      name:
+        "Traccia " + trackCounter,
+
+      volume:
+        100,
+
+      mute:
+        false,
+
+      solo:
+        false
+
+    };
+
+
+    tracks.push(track);
+
+
+    selectedTrackId =
+      track.id;
+
+
+    renderTracks();
+
+
+    requestAnimationFrame(() => {
+
+      const newRow =
+        document.querySelector(
+          `[data-track-id="${track.id}"]`
+        );
+
+
+      if (newRow) {
+
+        newRow.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+
+      }
+
+    });
+
+  }
+
+
+
+  /* ==============================
+     SELEZIONA TRACCIA
+     ============================== */
+
+  function selectTrack(id) {
+
+    selectedTrackId =
+      id;
+
+
+    renderTracks();
+
+  }
+
+
+
+  /* ==============================
+     ELIMINA TRACCIA
+     ============================== */
+
+  function deleteTrack(id) {
+
+    tracks =
+      tracks.filter(
+        track =>
+          track.id !== id
+      );
+
+
+    if (
+      selectedTrackId === id
+    ) {
+
+      selectedTrackId =
+        tracks.length
+
+          ? tracks[
+              tracks.length - 1
+            ].id
+
+          : null;
+
     }
 
-    firstTrackButton.addEventListener("click", provaTraccia);
-    addTrackButton.addEventListener("click", provaTraccia);
-  </script>
+
+    renderTracks();
+
+  }
+
+
+
+  /* ==============================
+     AGGIORNA NOME
+     ============================== */
+
+  function renameTrack(
+    id,
+    value
+  ) {
+
+    const track =
+      tracks.find(
+        track =>
+          track.id === id
+      );
+
+
+    if (track) {
+
+      track.name =
+        value;
+
+      updateBottomStatus();
+
+    }
+
+  }
+
+
+
+  /* ==============================
+     MUTE
+     ============================== */
+
+  function toggleMute(id) {
+
+    const track =
+      tracks.find(
+        track =>
+          track.id === id
+      );
+
+
+    if (!track)
+      return;
+
+
+    track.mute =
+      !track.mute;
+
+
+    renderTracks();
+
+  }
+
+
+
+  /* ==============================
+     SOLO
+     ============================== */
+
+  function toggleSolo(id) {
+
+    const track =
+      tracks.find(
+        track =>
+          track.id === id
+      );
+
+
+    if (!track)
+      return;
+
+
+    track.solo =
+      !track.solo;
+
+
+    renderTracks();
+
+  }
+
+
+
+  /* ==============================
+     VOLUME
+     ============================== */
+
+  function changeVolume(
+    id,
+    value
+  ) {
+
+    const track =
+      tracks.find(
+        track =>
+          track.id === id
+      );
+
+
+    if (!track)
+      return;
+
+
+    track.volume =
+      Number(value);
+
+
+    const label =
+      document.querySelector(
+        `[data-volume-label="${id}"]`
+      );
+
+
+    if (label) {
+
+      label.textContent =
+        value + "%";
+
+    }
+
+  }
+
+
+
+  /* ==============================
+     DISEGNA LE TRACCE
+     ============================== */
+
+  function renderTracks() {
+
+    trackRows.innerHTML =
+      "";
+
+
+    tracks.forEach(
+      (track, index) => {
+
+
+        const row =
+          document.createElement(
+            "div"
+          );
+
+
+        row.className =
+          "track-row";
+
+
+        row.dataset.trackId =
+          track.id;
+
+
+        if (
+          track.id ===
+          selectedTrackId
+        ) {
+
+          row.classList.add(
+            "selected"
+          );
+
+        }
+
+
+        /* CONTROLLI */
+
+        const controls =
+          document.createElement(
+            "div"
+          );
+
+
+        controls.className =
+          "track-controls";
+
+
+        controls.innerHTML = `
+
+          <div class="track-title-row">
+
+            <div class="track-number">
+              ${index + 1}
+            </div>
+
+            <input
+              class="track-name"
+              value="${escapeHtml(track.name)}"
+              aria-label="Nome traccia"
+            >
+
+          </div>
+
+
+          <div class="track-actions">
+
+            <button
+              class="small-button mute-button ${track.mute ? "active" : ""}"
+              title="Mute"
+            >
+              M
+            </button>
+
+            <button
+              class="small-button solo-button ${track.solo ? "active" : ""}"
+              title="Solo"
+            >
+              S
+            </button>
+
+            <button
+              class="small-button delete-button"
+              title="Elimina traccia"
+            >
+              ×
+            </button>
+
+          </div>
+
+
+          <div class="volume-row">
+
+            <span>
+              Volume
+            </span>
+
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value="${track.volume}"
+            >
+
+            <span
+              class="volume-value"
+              data-volume-label="${track.id}"
+            >
+              ${track.volume}%
+            </span>
+
+          </div>
+
+        `;
+
+
+
+        /* LANE */
+
+        const lane =
+          document.createElement(
+            "div"
+          );
+
+
+        lane.className =
+          "track-lane";
+
+
+        lane.innerHTML = `
+
+          <div class="lane-hint">
+
+            Trascina qui un suono
+
+          </div>
+
+        `;
+
+
+
+        /* SELEZIONE */
+
+        controls.addEventListener(
+          "click",
+          event => {
+
+            if (
+              event.target.tagName !==
+              "BUTTON"
+            ) {
+
+              selectTrack(
+                track.id
+              );
+
+            }
+
+          }
+        );
+
+
+        lane.addEventListener(
+          "click",
+          () => {
+
+            selectTrack(
+              track.id
+            );
+
+          }
+        );
+
+
+
+        /* NOME */
+
+        const nameInput =
+          controls.querySelector(
+            ".track-name"
+          );
+
+
+        nameInput.addEventListener(
+          "focus",
+          () => {
+
+            selectTrack(
+              track.id
+            );
+
+          }
+        );
+
+
+        nameInput.addEventListener(
+          "input",
+          event => {
+
+            renameTrack(
+              track.id,
+              event.target.value
+            );
+
+          }
+        );
+
+
+
+        /* MUTE */
+
+        controls
+          .querySelector(
+            ".mute-button"
+          )
+          .addEventListener(
+            "click",
+            event => {
+
+              event.stopPropagation();
+
+              toggleMute(
+                track.id
+              );
+
+            }
+          );
+
+
+
+        /* SOLO */
+
+        controls
+          .querySelector(
+            ".solo-button"
+          )
+          .addEventListener(
+            "click",
+            event => {
+
+              event.stopPropagation();
+
+              toggleSolo(
+                track.id
+              );
+
+            }
+          );
+
+
+
+        /* ELIMINA */
+
+        controls
+          .querySelector(
+            ".delete-button"
+          )
+          .addEventListener(
+            "click",
+            event => {
+
+              event.stopPropagation();
+
+
+              deleteTrack(
+                track.id
+              );
+
+            }
+          );
+
+
+
+        /* VOLUME */
+
+        controls
+          .querySelector(
+            'input[type="range"]'
+          )
+          .addEventListener(
+            "input",
+            event => {
+
+              changeVolume(
+                track.id,
+                event.target.value
+              );
+
+            }
+          );
+
+
+
+        row.appendChild(
+          controls
+        );
+
+
+        row.appendChild(
+          lane
+        );
+
+
+        trackRows.appendChild(
+          row
+        );
+
+      }
+    );
+
+
+    updateEmptyState();
+
+    updateBottomStatus();
+
+  }
+
+
+
+  /* ==============================
+     STATO VUOTO
+     ============================== */
+
+  function updateEmptyState() {
+
+    if (
+      tracks.length === 0
+    ) {
+
+      emptyProject
+        .classList
+        .remove(
+          "hidden"
+        );
+
+    }
+
+    else {
+
+      emptyProject
+        .classList
+        .add(
+          "hidden"
+        );
+
+    }
+
+  }
+
+
+
+  /* ==============================
+     STATUS BAR
+     ============================== */
+
+  function updateBottomStatus() {
+
+    if (
+      tracks.length === 0
+    ) {
+
+      projectStatus.textContent =
+        "Progetto vuoto";
+
+
+      selectedStatus.textContent =
+        "Nessuna traccia selezionata";
+
+
+      return;
+
+    }
+
+
+    projectStatus.textContent =
+
+      tracks.length === 1
+
+        ? "1 traccia"
+
+        : tracks.length +
+          " tracce";
+
+
+    const selected =
+      tracks.find(
+        track =>
+          track.id ===
+          selectedTrackId
+      );
+
+
+    selectedStatus.textContent =
+
+      selected
+
+        ? "Selezionata: " +
+          selected.name
+
+        : "Nessuna traccia selezionata";
+
+  }
+
+
+
+  /* ==============================
+     NUOVO PROGETTO
+     ============================== */
+
+  function newProject() {
+
+    if (
+      tracks.length > 0
+    ) {
+
+      const confirmed =
+        confirm(
+          "Vuoi cancellare tutte le tracce e creare un nuovo progetto?"
+        );
+
+
+      if (!confirmed)
+        return;
+
+    }
+
+
+    tracks = [];
+
+    trackCounter = 0;
+
+    selectedTrackId = null;
+
+
+    renderTracks();
+
+  }
+
+
+
+  /* ==============================
+     SICUREZZA TESTO
+     ============================== */
+
+  function escapeHtml(text) {
+
+    return String(text)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
+  }
+
+
+
+  /* ==============================
+     EVENTI
+     ============================== */
+
+  addTrackButton.addEventListener(
+    "click",
+    addTrack
+  );
+
+
+  createFirstTrack.addEventListener(
+    "click",
+    addTrack
+  );
+
+
+  newProjectButton.addEventListener(
+    "click",
+    newProject
+  );
+
+
+  document
+    .getElementById(
+      "recordButton"
+    )
+    .addEventListener(
+      "click",
+      () => {
+
+        alert(
+          "La registrazione dal microfono arriverà in una delle prossime fasi."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "saveButton"
+    )
+    .addEventListener(
+      "click",
+      () => {
+
+        alert(
+          "Il salvataggio del progetto verrà aggiunto più avanti."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "exportButton"
+    )
+    .addEventListener(
+      "click",
+      () => {
+
+        alert(
+          "L'esportazione audio verrà aggiunta dopo aver costruito il motore audio."
+        );
+
+      }
+    );
+
+
+  document
+    .getElementById(
+      "playButton"
+    )
+    .addEventListener(
+      "click",
+      () => {
+
+        alert(
+          "Prima inseriremo i suoni nella timeline, poi attiveremo Play."
+        );
+
+      }
+    );
+
+
+
+  /* AVVIO */
+
+  renderTracks();
+
+
+</script>
+
 
 </body>
+
 </html>
