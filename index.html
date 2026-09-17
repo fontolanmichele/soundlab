@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <title>SoundLab</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
+  rel="stylesheet"
+>
 
 <style>
 
@@ -197,6 +213,12 @@ button{
     );
 
   color:#0b5344;
+}
+
+.button.saved{
+  background:#dff9e9;
+
+  color:#26724f;
 }
 
 
@@ -618,10 +640,6 @@ button{
     1px solid var(--line);
 }
 
-.record-button{
-  position:relative;
-}
-
 .record-button.recording{
   background:#ffe6ea;
 
@@ -690,8 +708,6 @@ button{
   font-size:16px;
 
   font-weight:900;
-
-  transition:.15s;
 }
 
 .transport-button.play{
@@ -1061,8 +1077,7 @@ button{
     !important;
 
   outline:
-    2px dashed
-    rgba(49,170,128,.55);
+    2px dashed rgba(49,170,128,.55);
 
   outline-offset:-3px;
 }
@@ -1088,7 +1103,7 @@ button{
 
 
 /* =========================
-   CLIP AUDIO
+   CLIP
 ========================= */
 
 .audio-clip{
@@ -1134,10 +1149,6 @@ button{
     );
 }
 
-.audio-clip:active{
-  cursor:grabbing;
-}
-
 .clip-body{
   position:absolute;
 
@@ -1172,6 +1183,7 @@ button{
 
 .clip-title{
   flex:1;
+
   min-width:0;
 
   white-space:nowrap;
@@ -1183,8 +1195,6 @@ button{
 
 .clip-delete{
   border:0;
-
-  padding:0;
 
   background:transparent;
 
@@ -1246,7 +1256,7 @@ button{
 
 
 /* =========================
-   WAVEFORM REALE
+   WAVEFORM
 ========================= */
 
 .waveform-wrap{
@@ -1372,10 +1382,7 @@ button{
 }
 
 .empty-project h3{
-  margin:
-    0
-    0
-    8px;
+  margin:0 0 8px;
 
   font-family:"Fredoka";
 
@@ -1441,6 +1448,18 @@ button{
   font-weight:800;
 }
 
+.status.unsaved{
+  background:#fff4d8;
+
+  color:#8a6921;
+}
+
+.status.saved{
+  background:#dcf8e8;
+
+  color:#287554;
+}
+
 .time{
   margin-left:auto;
 
@@ -1480,12 +1499,15 @@ button{
 
 <body>
 
+
 <div class="app">
 
 
 <header class="topbar">
 
+
   <div class="brand">
+
 
     <div class="brand-logo">
 
@@ -1513,19 +1535,10 @@ button{
           fill="#70dfa0"
         />
 
-        <circle
-          cx="32"
-          cy="32"
-          r="22"
-          fill="none"
-          stroke="#378ca7"
-          stroke-width="2"
-          opacity=".35"
-        />
-
       </svg>
 
     </div>
+
 
     <div>
 
@@ -1539,10 +1552,12 @@ button{
 
     </div>
 
+
   </div>
 
 
   <div class="top-actions">
+
 
     <button
       class="button"
@@ -1551,12 +1566,14 @@ button{
       Nuovo progetto
     </button>
 
+
     <button
       class="button"
       id="saveButton"
     >
       Salva
     </button>
+
 
     <button
       class="button button-primary"
@@ -1565,13 +1582,20 @@ button{
       Esporta
     </button>
 
+
   </div>
+
 
 </header>
 
 
+
 <main class="workspace">
 
+
+<!-- =========================
+     LIBRERIA
+========================= -->
 
 <aside class="library">
 
@@ -1687,23 +1711,21 @@ button{
 
     <div class="library-note">
 
-      Per ora le registrazioni rimangono disponibili
-      finché questa pagina resta aperta.
-      Il salvataggio permanente arriverà nella fase successiva.
+      Le registrazioni vengono incluse quando premi
+      <strong>Salva</strong>.
 
     </div>
 
 
     <div class="drag-hint">
 
-      <strong>Registra:</strong>
-      premi Registra e consenti l'accesso al microfono.
+      <strong>Salvataggio:</strong>
+      il progetto viene memorizzato su questo dispositivo.
 
       <br>
 
-      <strong>Inserisci:</strong>
-      trascina la registrazione oppure premi ＋
-      sulla traccia selezionata.
+      <strong>Riapertura:</strong>
+      SoundLab recupera automaticamente l'ultimo progetto salvato.
 
     </div>
 
@@ -1714,6 +1736,10 @@ button{
 </aside>
 
 
+
+<!-- =========================
+     EDITOR
+========================= -->
 
 <section class="editor">
 
@@ -1759,8 +1785,7 @@ button{
       </h2>
 
       <p>
-        Puoi usare la libreria oppure registrare direttamente
-        i suoni che ti circondano.
+        Usa la libreria, registra nuovi suoni e salva il tuo progetto.
       </p>
 
     </div>
@@ -1795,7 +1820,6 @@ button{
       <button
         class="transport-button"
         id="stopButton"
-        title="Stop"
       >
         ■
       </button>
@@ -1804,7 +1828,6 @@ button{
       <button
         class="transport-button play"
         id="playButton"
-        title="Play"
       >
         ▶
       </button>
@@ -1889,7 +1912,7 @@ button{
 
       <p>
         Crea una traccia, usa un suono della libreria
-        oppure registrane uno con il microfono.
+        oppure registrane uno.
       </p>
 
       <button
@@ -1927,6 +1950,14 @@ button{
 
     <div
       class="status"
+      id="saveStatus"
+    >
+      Non salvato
+    </div>
+
+
+    <div
+      class="status"
       id="playbackStatus"
     >
       Pronto
@@ -1957,37 +1988,37 @@ button{
 <script>
 
 
-/* =========================
+/* =========================================================
    BANCA SUONI
-========================= */
+========================================================= */
 
 const sounds = {
 
   rain: {
-    id: "rain",
-    name: "Pioggia",
-    file: "pioggia_test.wav",
-    kind: "test",
-    label: "Meteo • ambiente",
-    icon: "≋"
+    id:"rain",
+    name:"Pioggia",
+    file:"pioggia_test.wav",
+    kind:"test",
+    label:"Meteo • ambiente",
+    icon:"≋"
   },
 
   city: {
-    id: "city",
-    name: "Città",
-    file: "citta_test.wav",
-    kind: "test",
-    label: "Ambiente urbano",
-    icon: "▥"
+    id:"city",
+    name:"Città",
+    file:"citta_test.wav",
+    kind:"test",
+    label:"Ambiente urbano",
+    icon:"▥"
   },
 
   birds: {
-    id: "birds",
-    name: "Uccelli",
-    file: "uccelli_test.wav",
-    kind: "test",
-    label: "Natura • campagna",
-    icon: "∿"
+    id:"birds",
+    name:"Uccelli",
+    file:"uccelli_test.wav",
+    kind:"test",
+    label:"Natura • campagna",
+    icon:"∿"
   }
 
 };
@@ -2004,9 +2035,9 @@ const personalSoundIds = [];
 
 
 
-/* =========================
+/* =========================================================
    CONFIGURAZIONE
-========================= */
+========================================================= */
 
 const PX_PER_SECOND = 19;
 
@@ -2016,9 +2047,30 @@ const MIN_CLIP_SECONDS = .5;
 
 
 
-/* =========================
+/* =========================================================
+   DATABASE
+========================================================= */
+
+const DB_NAME =
+  "SoundLabDatabase";
+
+
+const DB_VERSION =
+  1;
+
+
+const DB_STORE =
+  "projects";
+
+
+const SAVE_KEY =
+  "current-project";
+
+
+
+/* =========================================================
    PROGETTO
-========================= */
+========================================================= */
 
 let tracks = [];
 
@@ -2028,11 +2080,15 @@ let clipCounter = 0;
 
 let selectedTrackId = null;
 
+let personalSoundCounter = 0;
+
+let hasUnsavedChanges = false;
 
 
-/* =========================
+
+/* =========================================================
    PREVIEW
-========================= */
+========================================================= */
 
 let currentPreview = null;
 
@@ -2040,9 +2096,9 @@ let currentPreviewButton = null;
 
 
 
-/* =========================
-   MOTORE AUDIO
-========================= */
+/* =========================================================
+   AUDIO
+========================================================= */
 
 let audioContext = null;
 
@@ -2066,9 +2122,9 @@ let animationFrame = null;
 
 
 
-/* =========================
-   REGISTRAZIONE MICROFONO
-========================= */
+/* =========================================================
+   REGISTRAZIONE
+========================================================= */
 
 let mediaRecorder = null;
 
@@ -2080,13 +2136,11 @@ let recordingStartedAt = 0;
 
 let recordingTimer = null;
 
-let personalSoundCounter = 0;
 
 
-
-/* =========================
-   ELEMENTI
-========================= */
+/* =========================================================
+   HTML
+========================================================= */
 
 const trackRows =
   document.getElementById(
@@ -2109,6 +2163,12 @@ const projectStatus =
 const selectedStatus =
   document.getElementById(
     "selectedStatus"
+  );
+
+
+const saveStatus =
+  document.getElementById(
+    "saveStatus"
   );
 
 
@@ -2154,6 +2214,12 @@ const recordButton =
   );
 
 
+const saveButton =
+  document.getElementById(
+    "saveButton"
+  );
+
+
 const testSoundsList =
   document.getElementById(
     "testSoundsList"
@@ -2179,9 +2245,849 @@ const soundSearch =
 
 
 
-/* =========================
+/* =========================================================
+   MODIFICHE NON SALVATE
+========================================================= */
+
+function markDirty(){
+
+  hasUnsavedChanges =
+    true;
+
+
+  saveStatus.textContent =
+    "Modifiche da salvare";
+
+
+  saveStatus.classList.remove(
+    "saved"
+  );
+
+
+  saveStatus.classList.add(
+    "unsaved"
+  );
+
+
+  saveButton.classList.remove(
+    "saved"
+  );
+
+
+  saveButton.textContent =
+    "Salva";
+
+}
+
+
+
+function markSaved(){
+
+  hasUnsavedChanges =
+    false;
+
+
+  saveStatus.textContent =
+    "Salvato";
+
+
+  saveStatus.classList.remove(
+    "unsaved"
+  );
+
+
+  saveStatus.classList.add(
+    "saved"
+  );
+
+
+  saveButton.classList.add(
+    "saved"
+  );
+
+
+  saveButton.textContent =
+    "Salvato ✓";
+
+
+  setTimeout(
+    () => {
+
+      saveButton.textContent =
+        "Salva";
+
+      saveButton.classList.remove(
+        "saved"
+      );
+
+    },
+    1800
+  );
+
+}
+
+
+
+/* =========================================================
+   INDEXED DB
+========================================================= */
+
+function openDatabase(){
+
+  return new Promise(
+    (resolve,reject) => {
+
+
+      if(
+        !window.indexedDB
+      ){
+
+        reject(
+          new Error(
+            "IndexedDB non disponibile"
+          )
+        );
+
+        return;
+
+      }
+
+
+      const request =
+        indexedDB.open(
+          DB_NAME,
+          DB_VERSION
+        );
+
+
+      request.onupgradeneeded =
+        event => {
+
+
+          const db =
+            event.target.result;
+
+
+          if(
+            !db.objectStoreNames.contains(
+              DB_STORE
+            )
+          ){
+
+            db.createObjectStore(
+              DB_STORE
+            );
+
+          }
+
+
+        };
+
+
+      request.onsuccess =
+        () => {
+
+          resolve(
+            request.result
+          );
+
+        };
+
+
+      request.onerror =
+        () => {
+
+          reject(
+            request.error
+          );
+
+        };
+
+
+    }
+  );
+
+}
+
+
+
+/* =========================================================
+   SALVA PROGETTO
+========================================================= */
+
+async function saveProject(){
+
+  if(
+    mediaRecorder &&
+    mediaRecorder.state ===
+    "recording"
+  ){
+
+    alert(
+      "Ferma prima la registrazione."
+    );
+
+    return;
+
+  }
+
+
+  stopPlayback(
+    false
+  );
+
+
+  stopPreview();
+
+
+  playbackStatus.textContent =
+    "Salvataggio…";
+
+
+  try{
+
+
+    const savedPersonalSounds =
+
+      personalSoundIds
+        .map(
+          id => {
+
+
+            const sound =
+              sounds[id];
+
+
+            if(
+              !sound ||
+              !sound.blob
+            ){
+
+              return null;
+
+            }
+
+
+            return {
+
+              id:
+                sound.id,
+
+              name:
+                sound.name,
+
+              label:
+                sound.label,
+
+              icon:
+                sound.icon,
+
+              blob:
+                sound.blob
+
+            };
+
+
+          }
+        )
+        .filter(
+          Boolean
+        );
+
+
+
+    const savedTracks =
+
+      tracks.map(
+        track => ({
+
+          id:
+            track.id,
+
+          name:
+            track.name,
+
+          volume:
+            track.volume,
+
+          mute:
+            track.mute,
+
+          solo:
+            track.solo,
+
+          clips:
+
+            track.clips.map(
+              clip => ({
+
+                id:
+                  clip.id,
+
+                soundId:
+                  clip.soundId,
+
+                name:
+                  clip.name,
+
+                start:
+                  clip.start,
+
+                sourceDuration:
+                  clip.sourceDuration,
+
+                sourceOffset:
+                  clip.sourceOffset,
+
+                duration:
+                  clip.duration
+
+              })
+            )
+
+        })
+      );
+
+
+
+    const project = {
+
+      version:
+        1,
+
+      savedAt:
+        Date.now(),
+
+      tracks:
+        savedTracks,
+
+      trackCounter:
+        trackCounter,
+
+      clipCounter:
+        clipCounter,
+
+      selectedTrackId:
+        selectedTrackId,
+
+      personalSoundCounter:
+        personalSoundCounter,
+
+      personalSoundIds:
+        [...personalSoundIds],
+
+      personalSounds:
+        savedPersonalSounds
+
+    };
+
+
+    const db =
+      await openDatabase();
+
+
+    const transaction =
+      db.transaction(
+        DB_STORE,
+        "readwrite"
+      );
+
+
+    transaction
+      .objectStore(
+        DB_STORE
+      )
+      .put(
+        project,
+        SAVE_KEY
+      );
+
+
+    await new Promise(
+      (resolve,reject) => {
+
+
+        transaction.oncomplete =
+          resolve;
+
+
+        transaction.onerror =
+          () => {
+
+            reject(
+              transaction.error
+            );
+
+          };
+
+
+        transaction.onabort =
+          () => {
+
+            reject(
+              transaction.error
+            );
+
+          };
+
+
+      }
+    );
+
+
+    db.close();
+
+
+    markSaved();
+
+
+    playbackStatus.textContent =
+      "Progetto salvato";
+
+
+    setTimeout(
+      () => {
+
+        if(
+          playbackStatus.textContent ===
+          "Progetto salvato"
+        ){
+
+          playbackStatus.textContent =
+            "Pronto";
+
+        }
+
+      },
+      1800
+    );
+
+
+  }
+
+  catch(error){
+
+
+    console.error(
+      error
+    );
+
+
+    playbackStatus.textContent =
+      "Errore salvataggio";
+
+
+    alert(
+      "Non riesco a salvare il progetto nel browser. Lo spazio disponibile potrebbe essere insufficiente."
+    );
+
+
+  }
+
+}
+
+
+
+/* =========================================================
+   CARICA PROGETTO SALVATO
+========================================================= */
+
+async function loadSavedProject(){
+
+  try{
+
+
+    const db =
+      await openDatabase();
+
+
+    const transaction =
+      db.transaction(
+        DB_STORE,
+        "readonly"
+      );
+
+
+    const request =
+
+      transaction
+        .objectStore(
+          DB_STORE
+        )
+        .get(
+          SAVE_KEY
+        );
+
+
+    const project =
+
+      await new Promise(
+        (resolve,reject) => {
+
+
+          request.onsuccess =
+            () => {
+
+              resolve(
+                request.result || null
+              );
+
+            };
+
+
+          request.onerror =
+            () => {
+
+              reject(
+                request.error
+              );
+
+            };
+
+
+        }
+      );
+
+
+    db.close();
+
+
+    if(
+      !project
+    ){
+
+      return false;
+
+    }
+
+
+
+    clearPersonalSoundsFromMemory();
+
+
+
+    const savedPersonalSounds =
+
+      project.personalSounds ||
+      [];
+
+
+    savedPersonalSounds.forEach(
+      savedSound => {
+
+
+        if(
+          !savedSound.blob
+        ){
+
+          return;
+
+        }
+
+
+        const url =
+
+          URL.createObjectURL(
+            savedSound.blob
+          );
+
+
+        sounds[
+          savedSound.id
+        ] = {
+
+          id:
+            savedSound.id,
+
+          name:
+            savedSound.name,
+
+          label:
+            savedSound.label ||
+            "Registrazione personale",
+
+          icon:
+            savedSound.icon ||
+            "REC",
+
+          kind:
+            "personal",
+
+          file:
+            url,
+
+          blob:
+            savedSound.blob
+
+        };
+
+
+      }
+    );
+
+
+
+    personalSoundIds.splice(
+      0,
+      personalSoundIds.length
+    );
+
+
+    (
+      project.personalSoundIds ||
+      []
+    )
+    .forEach(
+      id => {
+
+
+        if(
+          sounds[id]
+        ){
+
+          personalSoundIds.push(
+            id
+          );
+
+        }
+
+
+      }
+    );
+
+
+
+    tracks =
+
+      (
+        project.tracks ||
+        []
+      )
+      .map(
+        track => ({
+
+
+          id:
+            track.id,
+
+          name:
+            track.name,
+
+          volume:
+            track.volume,
+
+          mute:
+            track.mute,
+
+          solo:
+            track.solo,
+
+          clips:
+
+            (
+              track.clips ||
+              []
+            )
+            .map(
+              clip => {
+
+
+                const sound =
+                  sounds[
+                    clip.soundId
+                  ];
+
+
+                if(
+                  !sound
+                ){
+
+                  return null;
+
+                }
+
+
+                return {
+
+                  ...clip,
+
+                  file:
+                    sound.file
+
+                };
+
+
+              }
+            )
+            .filter(
+              Boolean
+            )
+
+
+        })
+      );
+
+
+
+    trackCounter =
+      project.trackCounter ||
+      tracks.length;
+
+
+    clipCounter =
+      project.clipCounter ||
+      0;
+
+
+    personalSoundCounter =
+      project.personalSoundCounter ||
+      personalSoundIds.length;
+
+
+
+    selectedTrackId =
+      project.selectedTrackId;
+
+
+    if(
+      !tracks.some(
+        track =>
+          track.id ===
+          selectedTrackId
+      )
+    ){
+
+      selectedTrackId =
+
+        tracks.length
+
+        ? tracks[
+            tracks.length - 1
+          ].id
+
+        : null;
+
+    }
+
+
+    playheadSeconds =
+      0;
+
+
+    hasUnsavedChanges =
+      false;
+
+
+    saveStatus.textContent =
+      "Salvataggio caricato";
+
+
+    saveStatus.classList.remove(
+      "unsaved"
+    );
+
+
+    saveStatus.classList.add(
+      "saved"
+    );
+
+
+    return true;
+
+
+  }
+
+  catch(error){
+
+
+    console.error(
+      "Errore caricamento progetto:",
+      error
+    );
+
+
+    return false;
+
+
+  }
+
+}
+
+
+
+/* =========================================================
+   ELIMINA SALVATAGGIO
+========================================================= */
+
+async function deleteSavedProject(){
+
+  try{
+
+
+    const db =
+      await openDatabase();
+
+
+    const transaction =
+      db.transaction(
+        DB_STORE,
+        "readwrite"
+      );
+
+
+    transaction
+      .objectStore(
+        DB_STORE
+      )
+      .delete(
+        SAVE_KEY
+      );
+
+
+    await new Promise(
+      (resolve,reject) => {
+
+
+        transaction.oncomplete =
+          resolve;
+
+
+        transaction.onerror =
+          () => {
+
+            reject(
+              transaction.error
+            );
+
+          };
+
+
+      }
+    );
+
+
+    db.close();
+
+
+  }
+
+  catch(error){
+
+
+    console.error(
+      error
+    );
+
+
+  }
+
+}
+
+
+
+/* =========================================================
    AUDIO CONTEXT
-========================= */
+========================================================= */
 
 function getAudioContext(){
 
@@ -2204,9 +3110,9 @@ function getAudioContext(){
 
 
 
-/* =========================
-   CARICA AUDIO
-========================= */
+/* =========================================================
+   CARICA BUFFER
+========================================================= */
 
 async function loadAudioBuffer(
   file
@@ -2269,9 +3175,9 @@ async function loadAudioBuffer(
 
 
 
-/* =========================
-   FERMA PREVIEW
-========================= */
+/* =========================================================
+   PREVIEW
+========================================================= */
 
 function stopPreview(){
 
@@ -2290,8 +3196,7 @@ function stopPreview(){
       currentPreviewButton
     ){
 
-      currentPreviewButton
-        .textContent =
+      currentPreviewButton.textContent =
         "▶";
 
     }
@@ -2310,9 +3215,112 @@ function stopPreview(){
 
 
 
-/* =========================
-   LIBRERIA SUONI
-========================= */
+function previewSound(
+  soundId,
+  button
+){
+
+  const sound =
+    sounds[
+      soundId
+    ];
+
+
+  if(
+    !sound
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    currentPreview
+  ){
+
+    currentPreview.pause();
+
+    currentPreview.currentTime =
+      0;
+
+
+    if(
+      currentPreviewButton
+    ){
+
+      currentPreviewButton.textContent =
+        "▶";
+
+    }
+
+  }
+
+
+  if(
+    currentPreviewButton ===
+    button
+  ){
+
+    currentPreview =
+      null;
+
+    currentPreviewButton =
+      null;
+
+    return;
+
+  }
+
+
+  const audio =
+    new Audio(
+      sound.file
+    );
+
+
+  currentPreview =
+    audio;
+
+
+  currentPreviewButton =
+    button;
+
+
+  button.textContent =
+    "■";
+
+
+  audio.play();
+
+
+  audio.addEventListener(
+    "ended",
+    () => {
+
+
+      button.textContent =
+        "▶";
+
+
+      currentPreview =
+        null;
+
+
+      currentPreviewButton =
+        null;
+
+
+    }
+  );
+
+}
+
+
+
+/* =========================================================
+   LIBRERIA
+========================================================= */
 
 function renderSoundLibrary(){
 
@@ -2327,6 +3335,7 @@ function renderSoundLibrary(){
   testSoundIds.forEach(
     id => {
 
+
       testSoundsList.appendChild(
 
         createSoundCard(
@@ -2335,6 +3344,7 @@ function renderSoundLibrary(){
 
       );
 
+
     }
   );
 
@@ -2342,13 +3352,21 @@ function renderSoundLibrary(){
   personalSoundIds.forEach(
     id => {
 
-      mySoundsList.appendChild(
 
-        createSoundCard(
-          sounds[id]
-        )
+      if(
+        sounds[id]
+      ){
 
-      );
+        mySoundsList.appendChild(
+
+          createSoundCard(
+            sounds[id]
+          )
+
+        );
+
+      }
+
 
     }
   );
@@ -2368,10 +3386,6 @@ function renderSoundLibrary(){
 }
 
 
-
-/* =========================
-   CREA CARD SUONO
-========================= */
 
 function createSoundCard(
   sound
@@ -2398,18 +3412,27 @@ function createSoundCard(
   card.innerHTML = `
 
     <div class="sound-icon">
+
       ${escapeHtml(sound.icon || "REC")}
+
     </div>
 
 
     <div class="sound-info">
 
       <strong>
+
         ${escapeHtml(sound.name)}
+
       </strong>
 
       <span>
-        ${escapeHtml(sound.label || "Registrazione personale")}
+
+        ${escapeHtml(
+          sound.label ||
+          "Registrazione personale"
+        )}
+
       </span>
 
     </div>
@@ -2419,14 +3442,12 @@ function createSoundCard(
 
       <button
         class="sound-action preview"
-        title="Ascolta"
       >
         ▶
       </button>
 
       <button
         class="sound-action add"
-        title="Aggiungi alla traccia"
       >
         ＋
       </button>
@@ -2567,9 +3588,9 @@ function createSoundCard(
 
 
 
-/* =========================
+/* =========================================================
    RICERCA
-========================= */
+========================================================= */
 
 function filterSoundCards(){
 
@@ -2612,130 +3633,9 @@ soundSearch.addEventListener(
 
 
 
-/* =========================
-   PREVIEW
-========================= */
-
-function previewSound(
-  soundId,
-  button
-){
-
-  const sound =
-    sounds[
-      soundId
-    ];
-
-
-  if(
-    !sound
-  ){
-
-    return;
-
-  }
-
-
-  if(
-    currentPreview
-  ){
-
-    currentPreview.pause();
-
-
-    currentPreview.currentTime =
-      0;
-
-
-    if(
-      currentPreviewButton
-    ){
-
-      currentPreviewButton
-        .textContent =
-        "▶";
-
-    }
-
-  }
-
-
-  if(
-    currentPreviewButton ===
-    button
-  ){
-
-    currentPreview =
-      null;
-
-
-    currentPreviewButton =
-      null;
-
-
-    return;
-
-  }
-
-
-  const audio =
-    new Audio(
-      sound.file
-    );
-
-
-  currentPreview =
-    audio;
-
-
-  currentPreviewButton =
-    button;
-
-
-  button.textContent =
-    "■";
-
-
-  audio
-    .play()
-    .catch(
-      () => {
-
-        alert(
-          "Il browser non riesce a riprodurre questo file."
-        );
-
-      }
-    );
-
-
-  audio.addEventListener(
-    "ended",
-    () => {
-
-
-      button.textContent =
-        "▶";
-
-
-      currentPreview =
-        null;
-
-
-      currentPreviewButton =
-        null;
-
-
-    }
-  );
-
-}
-
-
-
-/* =========================
+/* =========================================================
    MICROFONO
-========================= */
+========================================================= */
 
 async function toggleRecording(){
 
@@ -2758,10 +3658,6 @@ async function toggleRecording(){
 
 
 
-/* =========================
-   AVVIA REGISTRAZIONE
-========================= */
-
 async function startRecording(){
 
   stopPlayback(
@@ -2773,19 +3669,13 @@ async function startRecording(){
 
 
   if(
-    !navigator.mediaDevices
-
-    ||
-
-    !navigator.mediaDevices.getUserMedia
-
-    ||
-
+    !navigator.mediaDevices ||
+    !navigator.mediaDevices.getUserMedia ||
     !window.MediaRecorder
   ){
 
     alert(
-      "Questo browser non supporta la registrazione dal microfono. Prova con una versione aggiornata di Chrome, Edge o Safari."
+      "Questo browser non supporta la registrazione dal microfono."
     );
 
     return;
@@ -2802,11 +3692,11 @@ async function startRecording(){
 
         audio: {
 
-          echoCancellation: false,
+          echoCancellation:false,
 
-          noiseSuppression: false,
+          noiseSuppression:false,
 
-          autoGainControl: false
+          autoGainControl:false
 
         }
 
@@ -2824,8 +3714,7 @@ async function startRecording(){
       ? new MediaRecorder(
           mediaStream,
           {
-            mimeType:
-              mimeType
+            mimeType:mimeType
           }
         )
 
@@ -2886,10 +3775,6 @@ async function startRecording(){
       "■ Ferma registrazione";
 
 
-    playbackStatus.textContent =
-      "Registrazione 00:00";
-
-
     recordingTimer =
 
       setInterval(
@@ -2912,7 +3797,7 @@ async function startRecording(){
 
 
     alert(
-      "Non riesco ad accedere al microfono. Controlla di aver consentito l'uso del microfono nel browser."
+      "Non riesco ad accedere al microfono. Controlla i permessi del browser."
     );
 
 
@@ -2921,10 +3806,6 @@ async function startRecording(){
 }
 
 
-
-/* =========================
-   FORMATO REGISTRAZIONE
-========================= */
 
 function chooseRecordingMimeType(){
 
@@ -2946,10 +3827,7 @@ function chooseRecordingMimeType(){
   ){
 
     if(
-      MediaRecorder.isTypeSupported
-
-      &&
-
+      MediaRecorder.isTypeSupported &&
       MediaRecorder.isTypeSupported(
         type
       )
@@ -2968,17 +3846,10 @@ function chooseRecordingMimeType(){
 
 
 
-/* =========================
-   TIMER REGISTRAZIONE
-========================= */
-
 function updateRecordingTimer(){
 
   if(
-    !mediaRecorder
-
-    ||
-
+    !mediaRecorder ||
     mediaRecorder.state !==
     "recording"
   ){
@@ -3002,10 +3873,7 @@ function updateRecordingTimer(){
 
   playbackStatus.textContent =
 
-    "Registrazione "
-
-    +
-
+    "Registrazione " +
     formatTime(
       elapsed
     );
@@ -3014,17 +3882,10 @@ function updateRecordingTimer(){
 
 
 
-/* =========================
-   STOP REGISTRAZIONE
-========================= */
-
 function stopRecording(){
 
   if(
-    mediaRecorder
-
-    &&
-
+    mediaRecorder &&
     mediaRecorder.state ===
     "recording"
   ){
@@ -3040,10 +3901,6 @@ function stopRecording(){
 }
 
 
-
-/* =========================
-   REGISTRAZIONE COMPLETATA
-========================= */
 
 async function handleRecordingStopped(){
 
@@ -3074,17 +3931,11 @@ async function handleRecordingStopped(){
 
   const type =
 
-    (
-      mediaRecorder &&
-      mediaRecorder.mimeType
-    )
+    mediaRecorder?.mimeType
 
     ||
 
-    (
-      recordedChunks[0] &&
-      recordedChunks[0].type
-    )
+    recordedChunks[0]?.type
 
     ||
 
@@ -3096,8 +3947,7 @@ async function handleRecordingStopped(){
     new Blob(
       recordedChunks,
       {
-        type:
-          type
+        type:type
       }
     );
 
@@ -3111,14 +3961,9 @@ async function handleRecordingStopped(){
     1000
   ){
 
-    playbackStatus.textContent =
-      "Pronto";
-
-
     alert(
-      "La registrazione è troppo breve. Riprova registrando per almeno un secondo."
+      "Registrazione troppo breve."
     );
-
 
     return;
 
@@ -3148,26 +3993,19 @@ async function handleRecordingStopped(){
 
   sounds[id] = {
 
-    id:
-      id,
+    id:id,
 
-    name:
-      name,
+    name:name,
 
-    file:
-      url,
+    file:url,
 
-    kind:
-      "personal",
+    kind:"personal",
 
-    label:
-      "Registrazione personale",
+    label:"Registrazione personale",
 
-    icon:
-      "REC",
+    icon:"REC",
 
-    blob:
-      blob
+    blob:blob
 
   };
 
@@ -3178,6 +4016,9 @@ async function handleRecordingStopped(){
 
 
   renderSoundLibrary();
+
+
+  markDirty();
 
 
   playbackStatus.textContent =
@@ -3197,7 +4038,6 @@ async function handleRecordingStopped(){
   catch(error){
 
     console.warn(
-      "La registrazione è riproducibile, ma il browser potrebbe non riuscire a decodificarla per la timeline:",
       error
     );
 
@@ -3206,10 +4046,6 @@ async function handleRecordingStopped(){
 }
 
 
-
-/* =========================
-   RILASCIA MICROFONO
-========================= */
 
 function releaseMicrophone(){
 
@@ -3243,9 +4079,54 @@ recordButton.addEventListener(
 
 
 
-/* =========================
+/* =========================================================
+   PULIZIA SUONI PERSONALI
+========================================================= */
+
+function clearPersonalSoundsFromMemory(){
+
+  personalSoundIds.forEach(
+    id => {
+
+
+      const sound =
+        sounds[id];
+
+
+      if(
+        sound &&
+        sound.file &&
+        sound.file.startsWith(
+          "blob:"
+        )
+      ){
+
+        URL.revokeObjectURL(
+          sound.file
+        );
+
+      }
+
+
+      delete sounds[id];
+
+
+    }
+  );
+
+
+  personalSoundIds.splice(
+    0,
+    personalSoundIds.length
+  );
+
+}
+
+
+
+/* =========================================================
    CREA TRACCIA
-========================= */
+========================================================= */
 
 function addTrack(){
 
@@ -3267,17 +4148,13 @@ function addTrack(){
       "Traccia " +
       trackCounter,
 
-    volume:
-      100,
+    volume:100,
 
-    mute:
-      false,
+    mute:false,
 
-    solo:
-      false,
+    solo:false,
 
-    clips:
-      []
+    clips:[]
 
   };
 
@@ -3291,15 +4168,18 @@ function addTrack(){
     track.id;
 
 
+  markDirty();
+
+
   renderTracks();
 
 }
 
 
 
-/* =========================
-   SELEZIONA TRACCIA
-========================= */
+/* =========================================================
+   SELEZIONA
+========================================================= */
 
 function selectTrack(
   id
@@ -3315,9 +4195,9 @@ function selectTrack(
 
 
 
-/* =========================
+/* =========================================================
    ELIMINA TRACCIA
-========================= */
+========================================================= */
 
 function deleteTrack(
   id
@@ -3337,14 +4217,8 @@ function deleteTrack(
 
 
   if(
-    track
-
-    &&
-
-    track.clips.length
-
-    &&
-
+    track &&
+    track.clips.length &&
     !confirm(
       "Eliminare questa traccia e tutti i suoni contenuti?"
     )
@@ -3380,15 +4254,18 @@ function deleteTrack(
   }
 
 
+  markDirty();
+
+
   renderTracks();
 
 }
 
 
 
-/* =========================
+/* =========================================================
    AGGIUNGI SUONO
-========================= */
+========================================================= */
 
 async function addSoundToTrack(
   soundId,
@@ -3402,14 +4279,12 @@ async function addSoundToTrack(
 
 
   const sound =
-
     sounds[
       soundId
     ];
 
 
   const track =
-
     tracks.find(
       t =>
         t.id ===
@@ -3432,7 +4307,9 @@ async function addSoundToTrack(
 
   try{
 
+
     const buffer =
+
       await loadAudioBuffer(
         sound.file
       );
@@ -3441,14 +4318,18 @@ async function addSoundToTrack(
     sourceDuration =
       buffer.duration;
 
+
   }
 
   catch(error){
 
+
     sourceDuration =
+
       await getAudioDuration(
         sound.file
       );
+
 
   }
 
@@ -3493,15 +4374,18 @@ async function addSoundToTrack(
     trackId;
 
 
+  markDirty();
+
+
   renderTracks();
 
 }
 
 
 
-/* =========================
+/* =========================================================
    DURATA AUDIO
-========================= */
+========================================================= */
 
 function getAudioDuration(
   file
@@ -3517,35 +4401,6 @@ function getAudioDuration(
         );
 
 
-      let done =
-        false;
-
-
-      const finish =
-        value => {
-
-
-          if(
-            done
-          ){
-
-            return;
-
-          }
-
-
-          done =
-            true;
-
-
-          resolve(
-            value
-          );
-
-
-        };
-
-
       audio.preload =
         "metadata";
 
@@ -3554,11 +4409,9 @@ function getAudioDuration(
         "loadedmetadata",
         () => {
 
-
-          finish(
+          resolve(
             audio.duration
           );
-
 
         }
       );
@@ -3568,25 +4421,11 @@ function getAudioDuration(
         "error",
         () => {
 
-
-          finish(
+          resolve(
             5
           );
-
 
         }
-      );
-
-
-      setTimeout(
-        () => {
-
-          finish(
-            5
-          );
-
-        },
-        5000
       );
 
 
@@ -3597,9 +4436,9 @@ function getAudioDuration(
 
 
 
-/* =========================
+/* =========================================================
    DURATA PROGETTO
-========================= */
+========================================================= */
 
 function getProjectDuration(){
 
@@ -3641,9 +4480,9 @@ function getProjectDuration(){
 
 
 
-/* =========================
-   DATI CLIP
-========================= */
+/* =========================================================
+   CLIP
+========================================================= */
 
 function clipAvailableSource(
   clip
@@ -3661,6 +4500,7 @@ function clipAvailableSource(
 }
 
 
+
 function isLooping(
   clip
 ){
@@ -3676,6 +4516,7 @@ function isLooping(
   );
 
 }
+
 
 
 function loopCount(
@@ -3703,9 +4544,9 @@ function loopCount(
 
 
 
-/* =========================
-   CREA CLIP
-========================= */
+/* =========================================================
+   CREA ELEMENTO CLIP
+========================================================= */
 
 function createClipElement(
   track,
@@ -3750,7 +4591,6 @@ function createClipElement(
 
     <div
       class="resize-handle left"
-      title="Taglia l'inizio"
     >
     </div>
 
@@ -3761,19 +4601,20 @@ function createClipElement(
       <div class="clip-top">
 
         <span class="clip-title">
+
           ${escapeHtml(clip.name)}
+
         </span>
 
 
         <span class="loop-badge">
+
           LOOP ×${loopCount(clip)}
+
         </span>
 
 
-        <button
-          class="clip-delete"
-          title="Elimina clip"
-        >
+        <button class="clip-delete">
           ×
         </button>
 
@@ -3800,11 +4641,11 @@ function createClipElement(
 
     <div
       class="resize-handle right"
-      title="Accorcia o crea un loop"
     >
     </div>
 
   `;
+
 
 
   el
@@ -3831,6 +4672,9 @@ function createClipElement(
               c.id !==
               clip.id
           );
+
+
+        markDirty();
 
 
         renderTracks();
@@ -3881,9 +4725,9 @@ function createClipElement(
 
 
 
-/* =========================
+/* =========================================================
    WAVEFORM
-========================= */
+========================================================= */
 
 async function drawClipWaveform(
   clipElement,
@@ -3954,28 +4798,21 @@ async function drawClipWaveform(
     const dpr =
 
       Math.min(
-
         window.devicePixelRatio || 1,
-
         2
-
       );
 
 
     canvas.width =
 
-      Math.round(
-        width *
-        dpr
-      );
+      width *
+      dpr;
 
 
     canvas.height =
 
-      Math.round(
-        height *
-        dpr
-      );
+      height *
+      dpr;
 
 
     const ctx =
@@ -4014,18 +4851,6 @@ async function drawClipWaveform(
       buffer.sampleRate;
 
 
-    const maxBufferAvailable =
-
-      Math.max(
-
-        .01,
-
-        buffer.duration -
-        clip.sourceOffset
-
-      );
-
-
     const available =
 
       Math.max(
@@ -4038,7 +4863,8 @@ async function drawClipWaveform(
             clip
           ),
 
-          maxBufferAvailable
+          buffer.duration -
+          clip.sourceOffset
 
         )
 
@@ -4059,10 +4885,6 @@ async function drawClipWaveform(
 
     ctx.strokeStyle =
       "rgba(33,109,132,.18)";
-
-
-    ctx.lineWidth =
-      1;
 
 
     ctx.beginPath();
@@ -4104,21 +4926,6 @@ async function drawClipWaveform(
         visibleDuration;
 
 
-      const timelineEnd =
-
-        (
-          x + 1
-        )
-
-        /
-
-        width
-
-        *
-
-        visibleDuration;
-
-
       const cyclePosition =
 
         timelineStart %
@@ -4141,28 +4948,6 @@ async function drawClipWaveform(
         );
 
 
-      const samplesForPixel =
-
-        Math.max(
-
-          1,
-
-          Math.floor(
-
-            (
-              timelineEnd -
-              timelineStart
-            )
-
-            *
-
-            sampleRate
-
-          )
-
-        );
-
-
       startSample =
 
         Math.max(
@@ -4180,7 +4965,24 @@ async function drawClipWaveform(
         );
 
 
-      let endSample =
+      const samplesForPixel =
+
+        Math.max(
+
+          1,
+
+          Math.floor(
+
+            visibleDuration /
+            width *
+            sampleRate
+
+          )
+
+        );
+
+
+      const endSample =
 
         Math.min(
 
@@ -4192,57 +4994,8 @@ async function drawClipWaveform(
         );
 
 
-      const cycleEndSample =
-
-        Math.floor(
-
-          (
-            clip.sourceOffset +
-            available
-          )
-
-          *
-
-          sampleRate
-
-        );
-
-
-      endSample =
-
-        Math.min(
-
-          endSample,
-
-          cycleEndSample,
-
-          data.length
-
-        );
-
-
-      if(
-        endSample <=
-        startSample
-      ){
-
-        endSample =
-
-          Math.min(
-
-            data.length,
-
-            startSample + 1
-
-          );
-
-      }
-
-
-      const range =
-
-        endSample -
-        startSample;
+      let peak =
+        0;
 
 
       const step =
@@ -4252,14 +5005,11 @@ async function drawClipWaveform(
           1,
 
           Math.floor(
-            range / 80
+            samplesForPixel /
+            60
           )
 
         );
-
-
-      let peak =
-        0;
 
 
       for(
@@ -4284,7 +5034,6 @@ async function drawClipWaveform(
 
 
       peak =
-
         Math.max(
           .025,
           peak
@@ -4332,15 +5081,8 @@ async function drawClipWaveform(
     ){
 
 
-      ctx.save();
-
-
       ctx.strokeStyle =
-        "rgba(255,255,255,.80)";
-
-
-      ctx.lineWidth =
-        1;
+        "rgba(255,255,255,.85)";
 
 
       ctx.setLineDash(
@@ -4367,13 +5109,13 @@ async function drawClipWaveform(
 
         ctx.moveTo(
           x,
-          1
+          0
         );
 
 
         ctx.lineTo(
           x,
-          height - 1
+          height
         );
 
 
@@ -4383,7 +5125,9 @@ async function drawClipWaveform(
       }
 
 
-      ctx.restore();
+      ctx.setLineDash(
+        []
+      );
 
 
     }
@@ -4395,7 +5139,6 @@ async function drawClipWaveform(
 
 
     console.error(
-      "Errore waveform:",
       error
     );
 
@@ -4406,9 +5149,9 @@ async function drawClipWaveform(
 
 
 
-/* =========================
+/* =========================================================
    GEOMETRIA CLIP
-========================= */
+========================================================= */
 
 function updateClipGeometry(
   el,
@@ -4446,10 +5189,6 @@ function updateClipGeometry(
 
 
 
-/* =========================
-   REFRESH CLIP
-========================= */
-
 function refreshClipVisual(
   el,
   clip
@@ -4479,35 +5218,19 @@ function refreshClipVisual(
     );
 
 
-  if(
-    badge
-  ){
+  badge.textContent =
 
-    badge.textContent =
-
-      "LOOP ×"
-
-      +
-
-      loopCount(
-        clip
-      );
-
-  }
-
-
-  const duration =
-
-    el.querySelector(
-      ".clip-duration"
+    "LOOP ×" +
+    loopCount(
+      clip
     );
 
 
-  if(
-    duration
-  ){
-
-    duration.textContent =
+  el
+    .querySelector(
+      ".clip-duration"
+    )
+    .textContent =
 
       clip.duration
         .toFixed(1)
@@ -4516,15 +5239,13 @@ function refreshClipVisual(
 
       " s";
 
-  }
-
 }
 
 
 
-/* =========================
-   DRAG CLIP
-========================= */
+/* =========================================================
+   SPOSTA CLIP
+========================================================= */
 
 function setupClipDrag(
   el,
@@ -4564,9 +5285,6 @@ function setupClipDrag(
 
       selectedTrackId =
         track.id;
-
-
-      updateStatus();
 
 
       const startingX =
@@ -4612,10 +5330,8 @@ function setupClipDrag(
 
           el.style.left =
 
-            (
-              clip.start *
-              PX_PER_SECOND
-            )
+            clip.start *
+            PX_PER_SECOND
 
             +
 
@@ -4641,12 +5357,6 @@ function setupClipDrag(
           );
 
 
-          el.removeEventListener(
-            "pointercancel",
-            up
-          );
-
-
           const under =
 
             document.elementFromPoint(
@@ -4658,7 +5368,7 @@ function setupClipDrag(
             );
 
 
-          const targetLane =
+          const lane =
 
             under
 
@@ -4670,44 +5380,28 @@ function setupClipDrag(
 
 
           if(
-            targetLane
+            lane &&
+            lane.dataset.trackId !==
+            track.id
           ){
 
+            moveClipToTrack(
 
-            const targetTrackId =
+              clip.id,
 
-              targetLane.dataset
-                .trackId;
+              track.id,
 
+              lane.dataset.trackId
 
-            if(
-              targetTrackId
-
-              &&
-
-              targetTrackId !==
-              track.id
-            ){
+            );
 
 
-              moveClipToTrack(
-
-                clip.id,
-
-                track.id,
-
-                targetTrackId
-
-              );
-
-
-              return;
-
-
-            }
-
+            return;
 
           }
+
+
+          markDirty();
 
 
           renderTracks();
@@ -4728,12 +5422,6 @@ function setupClipDrag(
       );
 
 
-      el.addEventListener(
-        "pointercancel",
-        up
-      );
-
-
     }
   );
 
@@ -4741,9 +5429,9 @@ function setupClipDrag(
 
 
 
-/* =========================
-   RESIZE DESTRO
-========================= */
+/* =========================================================
+   RESIZE DESTRA
+========================================================= */
 
 function setupRightResize(
   el,
@@ -4768,9 +5456,10 @@ function setupRightResize(
       );
 
 
-      event.preventDefault();
-
       event.stopPropagation();
+
+
+      event.preventDefault();
 
 
       const startX =
@@ -4790,18 +5479,6 @@ function setupRightResize(
         moveEvent => {
 
 
-          const delta =
-
-            (
-              moveEvent.clientX -
-              startX
-            )
-
-            /
-
-            PX_PER_SECOND;
-
-
           clip.duration =
 
             Math.max(
@@ -4809,7 +5486,15 @@ function setupRightResize(
               MIN_CLIP_SECONDS,
 
               originalDuration +
-              delta
+
+              (
+                moveEvent.clientX -
+                startX
+              )
+
+              /
+
+              PX_PER_SECOND
 
             );
 
@@ -4839,10 +5524,7 @@ function setupRightResize(
           );
 
 
-          handle.removeEventListener(
-            "pointercancel",
-            up
-          );
+          markDirty();
 
 
           renderTracks();
@@ -4863,12 +5545,6 @@ function setupRightResize(
       );
 
 
-      handle.addEventListener(
-        "pointercancel",
-        up
-      );
-
-
     }
   );
 
@@ -4876,9 +5552,9 @@ function setupRightResize(
 
 
 
-/* =========================
-   RESIZE SINISTRO
-========================= */
+/* =========================================================
+   RESIZE SINISTRA
+========================================================= */
 
 function setupLeftResize(
   el,
@@ -4903,9 +5579,10 @@ function setupLeftResize(
       );
 
 
-      event.preventDefault();
-
       event.stopPropagation();
+
+
+      event.preventDefault();
 
 
       const startX =
@@ -4970,7 +5647,7 @@ function setupLeftResize(
           ){
 
 
-            const maxOffsetIncrease =
+            const maximum =
 
               Math.max(
 
@@ -4989,7 +5666,7 @@ function setupLeftResize(
 
                 delta,
 
-                maxOffsetIncrease,
+                maximum,
 
                 originalDuration -
                 MIN_CLIP_SECONDS
@@ -5079,10 +5756,7 @@ function setupLeftResize(
           );
 
 
-          handle.removeEventListener(
-            "pointercancel",
-            up
-          );
+          markDirty();
 
 
           renderTracks();
@@ -5103,12 +5777,6 @@ function setupLeftResize(
       );
 
 
-      handle.addEventListener(
-        "pointercancel",
-        up
-      );
-
-
     }
   );
 
@@ -5116,20 +5784,15 @@ function setupLeftResize(
 
 
 
-/* =========================
+/* =========================================================
    CAMBIO TRACCIA
-========================= */
+========================================================= */
 
 function moveClipToTrack(
   clipId,
   oldTrackId,
   newTrackId
 ){
-
-  stopPlayback(
-    false
-  );
-
 
   const oldTrack =
 
@@ -5195,15 +5858,18 @@ function moveClipToTrack(
     newTrackId;
 
 
+  markDirty();
+
+
   renderTracks();
 
 }
 
 
 
-/* =========================
+/* =========================================================
    RENDER TRACCE
-========================= */
+========================================================= */
 
 function renderTracks(){
 
@@ -5254,7 +5920,9 @@ function renderTracks(){
         <div class="track-title-row">
 
           <div class="track-number">
+
             ${index + 1}
+
           </div>
 
           <input
@@ -5324,7 +5992,9 @@ function renderTracks(){
       lane.innerHTML = `
 
         <div class="lane-hint">
+
           Trascina qui un suono
+
         </div>
 
       `;
@@ -5346,6 +6016,7 @@ function renderTracks(){
 
         }
       );
+
 
 
       lane.addEventListener(
@@ -5412,31 +6083,26 @@ function renderTracks(){
             lane.getBoundingClientRect();
 
 
-          const x =
-
-            event.clientX -
-            rect.left;
-
-
-          const time =
-
-            Math.max(
-
-              0,
-
-              x /
-              PX_PER_SECOND
-
-            );
-
-
           await addSoundToTrack(
 
             soundId,
 
             track.id,
 
-            time
+            Math.max(
+
+              0,
+
+              (
+                event.clientX -
+                rect.left
+              )
+
+              /
+
+              PX_PER_SECOND
+
+            )
 
           );
 
@@ -5450,13 +6116,16 @@ function renderTracks(){
         () => {
 
 
-          selectTrack(
-            track.id
-          );
+          selectedTrackId =
+            track.id;
+
+
+          renderTracks();
 
 
         }
       );
+
 
 
       controls
@@ -5472,11 +6141,15 @@ function renderTracks(){
               event.target.value;
 
 
+            markDirty();
+
+
             updateStatus();
 
 
           }
         );
+
 
 
       controls
@@ -5485,48 +6158,22 @@ function renderTracks(){
         )
         .addEventListener(
           "click",
-          async () => {
-
-
-            const restartAt =
-              getLivePlayhead();
-
-
-            const wasPlaying =
-              isPlaying;
-
-
-            if(
-              wasPlaying
-            ){
-
-              stopPlayback(
-                false
-              );
-
-            }
+          () => {
 
 
             track.mute =
               !track.mute;
 
 
+            markDirty();
+
+
             renderTracks();
-
-
-            if(
-              wasPlaying
-            ){
-
-              await playFrom(
-                restartAt
-              );
-
-            }
 
 
           }
         );
+
 
 
       controls
@@ -5535,48 +6182,22 @@ function renderTracks(){
         )
         .addEventListener(
           "click",
-          async () => {
-
-
-            const restartAt =
-              getLivePlayhead();
-
-
-            const wasPlaying =
-              isPlaying;
-
-
-            if(
-              wasPlaying
-            ){
-
-              stopPlayback(
-                false
-              );
-
-            }
+          () => {
 
 
             track.solo =
               !track.solo;
 
 
+            markDirty();
+
+
             renderTracks();
-
-
-            if(
-              wasPlaying
-            ){
-
-              await playFrom(
-                restartAt
-              );
-
-            }
 
 
           }
         );
+
 
 
       controls
@@ -5595,6 +6216,7 @@ function renderTracks(){
 
           }
         );
+
 
 
       controls
@@ -5618,33 +6240,11 @@ function renderTracks(){
             );
 
 
+            markDirty();
+
+
           }
         );
-
-
-      controls.addEventListener(
-        "click",
-        event => {
-
-
-          if(
-            event.target.tagName !==
-            "BUTTON"
-          ){
-
-
-            selectedTrackId =
-              track.id;
-
-
-            updateStatus();
-
-
-          }
-
-
-        }
-      );
 
 
       row.appendChild(
@@ -5684,9 +6284,9 @@ function renderTracks(){
 
 
 
-/* =========================
+/* =========================================================
    STATUS
-========================= */
+========================================================= */
 
 function updateStatus(){
 
@@ -5720,8 +6320,8 @@ function updateStatus(){
   const selected =
 
     tracks.find(
-      t =>
-        t.id ===
+      track =>
+        track.id ===
         selectedTrackId
     );
 
@@ -5739,9 +6339,9 @@ function updateStatus(){
 
 
 
-/* =========================
+/* =========================================================
    TRACCE UDIBILI
-========================= */
+========================================================= */
 
 function audibleTracks(){
 
@@ -5785,9 +6385,9 @@ function audibleTracks(){
 
 
 
-/* =========================
-   SCHEDULA CLIP
-========================= */
+/* =========================================================
+   SCHEDULA AUDIO
+========================================================= */
 
 async function scheduleClip(
   track,
@@ -5820,41 +6420,27 @@ async function scheduleClip(
     );
 
 
-  const maxAvailable =
+  const available =
 
     Math.max(
 
       .01,
 
-      buffer.duration -
-      clip.sourceOffset
+      Math.min(
+
+        clipAvailableSource(
+          clip
+        ),
+
+        buffer.duration -
+        clip.sourceOffset
+
+      )
 
     );
 
 
-  const available =
-
-    Math.min(
-
-      clipAvailableSource(
-        clip
-      ),
-
-      maxAvailable
-
-    );
-
-
-  if(
-    available <= 0
-  ){
-
-    return;
-
-  }
-
-
-  const relativePlayPosition =
+  const relative =
 
     Math.max(
 
@@ -5870,7 +6456,7 @@ async function scheduleClip(
 
     Math.floor(
 
-      relativePlayPosition /
+      relative /
       available
 
     );
@@ -5878,7 +6464,7 @@ async function scheduleClip(
 
   let positionInCycle =
 
-    relativePlayPosition %
+    relative %
     available;
 
 
@@ -5914,92 +6500,67 @@ async function scheduleClip(
     }
 
 
-    const remainingCycle =
-
-      available -
-      positionInCycle;
-
-
-    const remainingClip =
-
-      clip.duration -
-      clipPosition;
-
-
     const segmentDuration =
 
       Math.min(
 
-        remainingCycle,
+        available -
+        positionInCycle,
 
-        remainingClip
-
-      );
-
-
-    if(
-      segmentDuration >
-      .01
-    ){
-
-
-      const timelineStart =
-
-        clip.start +
-        clipPosition;
-
-
-      const when =
-
-        Math.max(
-
-          0,
-
-          timelineStart -
-          fromTime
-
-        );
-
-
-      const sourceOffset =
-
-        clip.sourceOffset +
-        positionInCycle;
-
-
-      const source =
-
-        context
-          .createBufferSource();
-
-
-      source.buffer =
-        buffer;
-
-
-      source.connect(
-        gainNode
-      );
-
-
-      source.start(
-
-        context.currentTime +
-        when,
-
-        sourceOffset,
-
-        segmentDuration
+        clip.duration -
+        clipPosition
 
       );
 
 
-      activeSources.push(
-        source
+    const timelineStart =
+
+      clip.start +
+      clipPosition;
+
+
+    const when =
+
+      Math.max(
+
+        0,
+
+        timelineStart -
+        fromTime
+
       );
 
 
-    }
+    const source =
+
+      context.createBufferSource();
+
+
+    source.buffer =
+      buffer;
+
+
+    source.connect(
+      gainNode
+    );
+
+
+    source.start(
+
+      context.currentTime +
+      when,
+
+      clip.sourceOffset +
+      positionInCycle,
+
+      segmentDuration
+
+    );
+
+
+    activeSources.push(
+      source
+    );
 
 
     cycleIndex++;
@@ -6015,9 +6576,9 @@ async function scheduleClip(
 
 
 
-/* =========================
+/* =========================================================
    PLAY
-========================= */
+========================================================= */
 
 async function playFrom(
   startPosition
@@ -6066,12 +6627,12 @@ async function playFrom(
   await context.resume();
 
 
-  playbackStatus.textContent =
-    "Caricamento audio…";
-
-
   const tracksToPlay =
     audibleTracks();
+
+
+  playbackStatus.textContent =
+    "Caricamento audio…";
 
 
   try{
@@ -6145,12 +6706,8 @@ async function playFrom(
     );
 
 
-    playbackStatus.textContent =
-      "Errore audio";
-
-
     alert(
-      "Non riesco a caricare uno dei file audio."
+      "Errore durante il caricamento audio."
     );
 
 
@@ -6190,10 +6747,6 @@ async function playFrom(
 
 
 
-/* =========================
-   POSIZIONE LIVE
-========================= */
-
 function getLivePlayhead(){
 
   if(
@@ -6223,10 +6776,6 @@ function getLivePlayhead(){
 
 
 
-/* =========================
-   ANIMAZIONE PLAYHEAD
-========================= */
-
 function animatePlayhead(){
 
   if(
@@ -6242,13 +6791,9 @@ function animatePlayhead(){
     getLivePlayhead();
 
 
-  const duration =
-    getProjectDuration();
-
-
   if(
     playheadSeconds >=
-    duration
+    getProjectDuration()
   ){
 
     stopPlayback(
@@ -6273,9 +6818,9 @@ function animatePlayhead(){
 
 
 
-/* =========================
+/* =========================================================
    STOP
-========================= */
+========================================================= */
 
 function stopPlayback(
   resetToZero = true
@@ -6325,11 +6870,11 @@ function stopPlayback(
       animationFrame
     );
 
-
-    animationFrame =
-      null;
-
   }
+
+
+  animationFrame =
+    null;
 
 
   isPlaying =
@@ -6351,19 +6896,8 @@ function stopPlayback(
   }
 
 
-  if(
-    !mediaRecorder
-
-    ||
-
-    mediaRecorder.state !==
-    "recording"
-  ){
-
-    playbackStatus.textContent =
-      "Pronto";
-
-  }
+  playbackStatus.textContent =
+    "Pronto";
 
 
   updatePlayheadUI();
@@ -6371,10 +6905,6 @@ function stopPlayback(
 }
 
 
-
-/* =========================
-   VOLUME LIVE
-========================= */
 
 function updateTrackGain(
   trackId
@@ -6390,8 +6920,8 @@ function updateTrackGain(
   const track =
 
     tracks.find(
-      track =>
-        track.id ===
+      t =>
+        t.id ===
         trackId
     );
 
@@ -6410,9 +6940,9 @@ function updateTrackGain(
 
 
 
-/* =========================
+/* =========================================================
    PLAYHEAD
-========================= */
+========================================================= */
 
 function updatePlayheadUI(){
 
@@ -6442,10 +6972,6 @@ function updatePlayheadUI(){
 }
 
 
-
-/* =========================
-   TEMPO
-========================= */
 
 function formatTime(
   seconds
@@ -6499,20 +7025,20 @@ function formatTime(
 
 
 
-/* =========================
-   CLICK RIGHELLO
-========================= */
+/* =========================================================
+   RIGHELLO
+========================================================= */
 
 ruler.addEventListener(
   "click",
-  async event => {
+  event => {
 
 
     const rect =
       ruler.getBoundingClientRect();
 
 
-    const seconds =
+    playheadSeconds =
 
       Math.max(
 
@@ -6530,50 +7056,7 @@ ruler.addEventListener(
       );
 
 
-    const duration =
-      getProjectDuration();
-
-
-    playheadSeconds =
-
-      duration > 0
-
-      ? Math.min(
-          seconds,
-          duration
-        )
-
-      : seconds;
-
-
-    if(
-      isPlaying
-    ){
-
-
-      const newPosition =
-        playheadSeconds;
-
-
-      stopPlayback(
-        false
-      );
-
-
-      await playFrom(
-        newPosition
-      );
-
-
-    }
-
-    else{
-
-
-      updatePlayheadUI();
-
-
-    }
+    updatePlayheadUI();
 
 
   }
@@ -6581,9 +7064,9 @@ ruler.addEventListener(
 
 
 
-/* =========================
+/* =========================================================
    NUOVO PROGETTO
-========================= */
+========================================================= */
 
 document
   .getElementById(
@@ -6591,16 +7074,34 @@ document
   )
   .addEventListener(
     "click",
-    () => {
+    async () => {
 
 
       if(
-        tracks.length
+        mediaRecorder &&
+        mediaRecorder.state ===
+        "recording"
+      ){
+
+        alert(
+          "Ferma prima la registrazione."
+        );
+
+        return;
+
+      }
+
+
+      if(
+        (
+          tracks.length ||
+          personalSoundIds.length
+        )
 
         &&
 
         !confirm(
-          "Vuoi cancellare il progetto?"
+          "Vuoi creare un nuovo progetto? Il progetto salvato su questo dispositivo verrà cancellato."
         )
       ){
 
@@ -6612,6 +7113,12 @@ document
       stopPlayback(
         true
       );
+
+
+      stopPreview();
+
+
+      clearPersonalSoundsFromMemory();
 
 
       tracks =
@@ -6626,8 +7133,32 @@ document
         0;
 
 
+      personalSoundCounter =
+        0;
+
+
       selectedTrackId =
         null;
+
+
+      await deleteSavedProject();
+
+
+      hasUnsavedChanges =
+        false;
+
+
+      saveStatus.textContent =
+        "Nuovo progetto";
+
+
+      saveStatus.classList.remove(
+        "unsaved",
+        "saved"
+      );
+
+
+      renderSoundLibrary();
 
 
       renderTracks();
@@ -6638,9 +7169,9 @@ document
 
 
 
-/* =========================
+/* =========================================================
    BOTTONI
-========================= */
+========================================================= */
 
 document
   .getElementById(
@@ -6662,23 +7193,26 @@ document
   );
 
 
+saveButton.addEventListener(
+  "click",
+  saveProject
+);
+
+
 playButton.addEventListener(
   "click",
   async () => {
 
 
     if(
-      isPlaying
+      !isPlaying
     ){
 
-      return;
+      await playFrom(
+        playheadSeconds
+      );
 
     }
-
-
-    await playFrom(
-      playheadSeconds
-    );
 
 
   }
@@ -6701,24 +7235,6 @@ stopButton.addEventListener(
 
 document
   .getElementById(
-    "saveButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-
-      alert(
-        "Il salvataggio permanente sarà il prossimo modulo."
-      );
-
-
-    }
-  );
-
-
-document
-  .getElementById(
     "exportButton"
   )
   .addEventListener(
@@ -6727,7 +7243,7 @@ document
 
 
       alert(
-        "L'esportazione arriverà dopo il salvataggio."
+        "L'esportazione audio sarà il prossimo modulo."
       );
 
 
@@ -6736,9 +7252,36 @@ document
 
 
 
-/* =========================
+/* =========================================================
+   PROTEZIONE CHIUSURA
+========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  event => {
+
+
+    if(
+      hasUnsavedChanges
+    ){
+
+      event.preventDefault();
+
+
+      event.returnValue =
+        "";
+
+    }
+
+
+  }
+);
+
+
+
+/* =========================================================
    UTILITY
-========================= */
+========================================================= */
 
 function escapeHtml(
   text
@@ -6772,18 +7315,32 @@ function escapeHtml(
 
 
 
-/* =========================
+/* =========================================================
    AVVIO
-========================= */
+========================================================= */
 
-renderSoundLibrary();
+async function startSoundLab(){
 
-renderTracks();
+  await loadSavedProject();
 
-updatePlayheadUI();
+
+  renderSoundLibrary();
+
+
+  renderTracks();
+
+
+  updatePlayheadUI();
+
+
+}
+
+
+startSoundLab();
 
 
 </script>
 
 </body>
+
 </html>
