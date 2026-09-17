@@ -60,7 +60,7 @@ button,input{font-family:inherit} button{cursor:pointer} button:disabled{cursor:
     <div class="sound-results-header"><strong id="resultsTitle">Tutti i suoni</strong><span id="resultsCount">0 suoni</span></div>
     <div class="sound-list" id="soundResults"></div>
     <div class="no-sounds" id="noSounds" style="display:none">Nessun suono.</div>
-    <div class="library-note"><strong>AMBIENTE</strong> = paesaggio sonoro continuo.<br><strong>EFFETTO</strong> = evento sonoro riconoscibile.<br><strong>PD</strong> = dominio pubblico, fonte Wikimedia Commons / PDSounds.org.<br><br>I suoni della banca vengono caricati da Internet solo quando li ascolti o li inserisci nella timeline.</div>
+    <div class="library-note"><strong>AMBIENTE</strong> = paesaggio sonoro continuo.<br><strong>EFFETTO</strong> = evento sonoro riconoscibile.<br><strong>PD/CC0</strong> = pubblico dominio o Creative Commons Zero, fonte Wikimedia Commons.<br><br>I suoni della banca vengono caricati da Internet solo quando li ascolti o li inserisci nella timeline.</div>
   </div>
 </aside>
 <section class="editor">
@@ -99,7 +99,7 @@ const S = (id, name, commonsFile, category, type, keywords = "") => ({
   id, name, commonsFile, category, type, keywords,
   typeLabel: type === "environment" ? "AMBIENTE" : "EFFETTO",
   kind: "commons",
-  license: "Public domain"
+  license: "PD / CC0"
 });
 
 window.SOUND_BANK = [
@@ -294,11 +294,60 @@ window.SOUND_BANK = [
   S("space_blip", "Blip digitale", "Blip.ogg", "space", "effect", "blip computer spazio"),
   S("space_machinebutton", "Pulsante di macchina", "Cute machine button press gives receipt.ogg", "space", "effect", "macchina spazio tecnologia"),
 
+  // animals — selezione aggiuntiva PD / CC0
+  S("animal_dog_cc0", "Cane che abbaia", "Ladrido perro.ogg", "animals", "effect", "cane abbaio animale domestico pet"),
+  S("animal_dog_pd", "Cane - secondo abbaio", "Dog.ogg", "animals", "effect", "cane abbaio animale"),
+  S("animal_cat_meow", "Gatto che miagola", "Maullido de gata hembra joven.ogg", "animals", "effect", "gatto miagolio animale domestico"),
+  S("animal_cat_purr", "Gatto che fa le fusa", "Whiskers' purr edit.ogg", "animals", "environment", "gatto fusa animale domestico"),
+  S("animal_cat_eating", "Gatto che mangia", "Cat eating noisily.ogg", "animals", "effect", "gatto mangiare animale domestico"),
+  S("animal_horse", "Cavallo che nitrisce", "Wiehern.ogg", "animals", "effect", "cavallo nitrito fattoria animale"),
+  S("animal_wolves", "Lupi che ululano", "Wolf howls.ogg", "animals", "environment", "lupo ululato branco bosco animale"),
+  S("animal_ducks_water", "Anatre che atterrano sull'acqua", "Ducks landing in water.ogg", "animals", "environment", "anatre acqua stagno uccelli animale"),
+  S("animal_geese_loud", "Oche che starnazzano", "Geese Honking (loud).ogg", "animals", "environment", "oche starnazzo uccelli fattoria animale"),
+  S("animal_geese_far", "Oche lontane", "Geese Honking (distant).ogg", "animals", "environment", "oche lontane uccelli natura animale"),
+  S("animal_elephant", "Elefante che barrisce", "Elephant voice - trumpeting.ogg", "animals", "effect", "elefante barrire savana animale"),
+  S("animal_lion", "Leone che ruggisce", "Lion raring-sound1TamilNadu178.ogg", "animals", "effect", "leone ruggito savana animale"),
+  S("animal_guinea_chirp", "Porcellino d'India", "Guinea Pig Chirping.ogg", "animals", "effect", "porcellino india roditore animale"),
+  S("animal_guinea_warning", "Porcellino d'India agitato", "Guinea Pig Keep Away.ogg", "animals", "effect", "porcellino india roditore animale"),
+  S("animal_frog", "Rana delle Everglades", "PigFrog EvergladesNP.ogg", "animals", "effect", "rana gracidare stagno animale"),
+  S("animal_bee", "Bombo in volo", "Bombus buzz.ogg", "animals", "effect", "bombo ape insetto ronzio animale"),
+  S("animal_crow", "Corvo", "American Crow.ogg", "animals", "effect", "corvo gracchiare uccello animale"),
+  S("animal_sheep", "Pecora - belato breve", "Sheep bleat.ogg", "animals", "effect", "pecora belato fattoria animale"),
+
+  // people and voice — suoni umani PD / CC0
+  S("people_laughter", "Risate e risatine", "Laughter(s).ogg", "people", "effect", "risata ridere persone voce giggle laugh"),
+  S("people_laughter_pd", "Risata", "Laughter.ogg", "people", "effect", "risata ridere persone voce"),
+  S("people_laugh_clear", "Risata e schiarimento di voce", "Laughter and clearing voice.ogg", "people", "effect", "risata voce gola persone"),
+  S("people_cough_short", "Colpo di tosse", "Man coughing.ogg", "people", "effect", "tosse persona voce"),
+  S("people_cough_1", "Tosse 1", "Cough 1.ogg", "people", "effect", "tosse persona voce"),
+  S("people_cough_2", "Tosse 2", "Cough 2.ogg", "people", "effect", "tosse persona voce"),
+  S("people_sneeze", "Starnuto", "Sneezing.ogg", "people", "effect", "starnuto persona voce"),
+  S("people_sneeze_2", "Starnuto 2", "Sneezing 0.ogg", "people", "effect", "starnuto persona voce"),
+  S("people_baby_sneeze", "Bambino che starnutisce", "Baby sneeze.ogg", "people", "effect", "bambino neonato starnuto persona"),
+  S("people_yawn", "Sbadiglio", "Yawning 1.ogg", "people", "effect", "sbadiglio persona voce"),
+  S("people_yawn_twice", "Due sbadigli", "Yawning twice.ogg", "people", "effect", "sbadiglio persona voce"),
+  S("people_whistle", "Fischio leggero", "Soft whistle.ogg", "people", "effect", "fischio persona bocca voce"),
+  S("people_breath", "Respiro", "Breathing man.ogg", "people", "environment", "respiro respirazione persona"),
+  S("people_sleep", "Respiro nel sonno", "Heavy breathing 2.ogg", "people", "environment", "respiro sonno russare persona"),
+
+  // funny — effetti volutamente giocosi per gli studenti
+  S("funny_burp", "Rutto", "Burp.ogg", "funny", "effect", "rutto burp buffo divertente persona"),
+  S("funny_fart", "Puzzetta", "Wet fart tummy rumbles.ogg", "funny", "effect", "puzzetta peto fart buffo divertente"),
+  S("funny_evil_laugh", "Risata malefica", "Evil laugh.ogg", "funny", "effect", "risata malefica cattivo buffo"),
+  S("funny_cartoon_laugh", "Risata da cartone animato", "Cartoon Laugh.ogg", "funny", "effect", "risata cartone animato buffo"),
+  S("funny_pig_voice", "Imitazione di un maiale", "Man grunts like pig.ogg", "funny", "effect", "maiale imitazione grugnito buffo"),
+  S("funny_wolf_voice", "Imitazione di un lupo", "Man howls like wolf.ogg", "funny", "effect", "lupo imitazione ululato buffo"),
+  S("funny_dragon", "Respiro di drago", "Dragon wheeze.ogg", "funny", "effect", "drago respiro fantasy buffo"),
+  S("funny_firebreath", "Drago che soffia fuoco", "Pressurized fire.ogg", "funny", "effect", "drago fuoco fantasy buffo"),
+  S("funny_party_blower", "Trombetta di carta", "Luftrüssel.ogg", "funny", "effect", "trombetta festa carta buffo"),
+  S("funny_buzzer", "Buzzer", "Buzzer.ogg", "funny", "effect", "buzzer errore quiz buffo"),
+  S("funny_thud", "Tonfo secco", "Dull thud.ogg", "funny", "effect", "tonfo colpo caduta cartoon buffo"),
+
 ];
 </script>
 <script>
 const categories=[
-{id:"all",name:"Tutti i suoni",symbol:"ALL"},{id:"city",name:"Città",symbol:"CT"},{id:"countryside",name:"Campagna",symbol:"CP"},{id:"sea",name:"Mare e porto",symbol:"MR"},{id:"forest",name:"Bosco e montagna",symbol:"BM"},{id:"school",name:"Scuola",symbol:"SC"},{id:"office",name:"Ufficio",symbol:"UF"},{id:"work",name:"Lavoro",symbol:"LV"},{id:"home",name:"Casa",symbol:"CS"},{id:"transport",name:"Trasporti",symbol:"TR"},{id:"weather",name:"Meteo",symbol:"MT"},{id:"space",name:"Spazio",symbol:"SP"},{id:"personal",name:"I miei suoni",symbol:"REC"}
+{id:"all",name:"Tutti i suoni",symbol:"ALL"},{id:"city",name:"Città",symbol:"CT"},{id:"countryside",name:"Campagna",symbol:"CP"},{id:"animals",name:"Animali",symbol:"AN"},{id:"sea",name:"Mare e porto",symbol:"MR"},{id:"forest",name:"Bosco e montagna",symbol:"BM"},{id:"school",name:"Scuola",symbol:"SC"},{id:"people",name:"Persone e voce",symbol:"VO"},{id:"funny",name:"Suoni divertenti",symbol:"FUN"},{id:"office",name:"Ufficio",symbol:"UF"},{id:"work",name:"Lavoro",symbol:"LV"},{id:"home",name:"Casa",symbol:"CS"},{id:"transport",name:"Trasporti",symbol:"TR"},{id:"weather",name:"Meteo",symbol:"MT"},{id:"space",name:"Spazio",symbol:"SP"},{id:"personal",name:"I miei suoni",symbol:"REC"}
 ];
 const PX_PER_SECOND=19,TRACK_WIDTH=190,MIN_CLIP_SECONDS=.5,EXPORT_SAMPLE_RATE=44100,MP3_BITRATE=192;
 const DB_NAME="SoundLabDatabase",DB_VERSION=1,DB_STORE="projects",SAVE_KEY="current-project";
@@ -324,7 +373,7 @@ function getCategoryCount(id){const ids=allSoundIds();if(id==="all")return ids.l
 function renderCategories(){categoriesList.innerHTML="";categories.forEach(c=>{const b=document.createElement("button");b.className="category"+(activeCategory===c.id?" active":"");b.innerHTML=`<span class="category-symbol">${escapeHtml(c.symbol)}</span><span class="category-name">${escapeHtml(c.name)}</span><span class="category-count">${getCategoryCount(c.id)}</span>`;b.onclick=()=>{activeCategory=c.id;soundSearch.value="";renderCategories();renderSoundResults()};categoriesList.appendChild(b)})}
 function getVisibleSounds(){const q=soundSearch.value.toLowerCase().trim();return allSoundIds().map(id=>sounds[id]).filter(Boolean).filter(s=>{if(q){return [s.name,s.typeLabel,getCategoryName(s.category),s.keywords||""].join(" ").toLowerCase().includes(q)}if(activeCategory==="all")return true;if(activeCategory==="personal")return s.kind==="personal";return s.category===activeCategory})}
 function renderSoundResults(){soundResults.innerHTML="";const visible=getVisibleSounds(),q=soundSearch.value.trim();resultsTitle.textContent=q?"Risultati ricerca":getCategoryName(activeCategory);resultsCount.textContent=visible.length===1?"1 suono":`${visible.length} suoni`;visible.forEach(s=>soundResults.appendChild(createSoundCard(s)));noSounds.style.display=visible.length?"none":"block";noSounds.textContent=q?"Nessun suono corrisponde alla ricerca.":activeCategory==="personal"?"Non hai ancora registrato nessun suono.":"In questa categoria non ci sono suoni."}
-function createSoundCard(sound){const card=document.createElement("div");card.className="sound-card";card.draggable=true;card.dataset.soundId=sound.id;const typeClass=sound.type==="recording"?"recording":sound.type==="effect"?"effect":"environment",icon=sound.type==="recording"?"REC":sound.type==="effect"?"FX":"AMB";card.innerHTML=`<div class="sound-icon">${icon}</div><div class="sound-info"><strong>${escapeHtml(sound.name)}</strong><div class="sound-meta"><span class="sound-type ${typeClass}">${escapeHtml(sound.typeLabel||"SUONO")}</span><span class="sound-category">${escapeHtml(getCategoryName(sound.category))}</span>${sound.kind==="commons"?'<span class="pd-badge" title="Dominio pubblico · Wikimedia Commons">PD</span>':""}</div></div><div class="sound-actions"><button class="sound-action preview" title="Ascolta">▶</button><button class="sound-action add" title="Aggiungi">＋</button></div>`;card.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/sound-id",sound.id);e.dataTransfer.effectAllowed="copy"});card.querySelector(".preview").onclick=async e=>{e.stopPropagation();await previewSound(sound.id,e.currentTarget)};card.querySelector(".add").onclick=async e=>{e.stopPropagation();if(!selectedTrackId){alert("Prima crea o seleziona una traccia.");return}const t=tracks.find(x=>x.id===selectedTrackId);let start=t.clips.length?Math.max(...t.clips.map(c=>c.start+c.duration)):0;await addSoundToTrack(sound.id,selectedTrackId,start)};return card}
+function createSoundCard(sound){const card=document.createElement("div");card.className="sound-card";card.draggable=true;card.dataset.soundId=sound.id;const typeClass=sound.type==="recording"?"recording":sound.type==="effect"?"effect":"environment",icon=sound.type==="recording"?"REC":sound.type==="effect"?"FX":"AMB";card.innerHTML=`<div class="sound-icon">${icon}</div><div class="sound-info"><strong>${escapeHtml(sound.name)}</strong><div class="sound-meta"><span class="sound-type ${typeClass}">${escapeHtml(sound.typeLabel||"SUONO")}</span><span class="sound-category">${escapeHtml(getCategoryName(sound.category))}</span>${sound.kind==="commons"?'<span class="pd-badge" title="Pubblico dominio / CC0 · Wikimedia Commons">PD</span>':""}</div></div><div class="sound-actions"><button class="sound-action preview" title="Ascolta">▶</button><button class="sound-action add" title="Aggiungi">＋</button></div>`;card.addEventListener("dragstart",e=>{e.dataTransfer.setData("text/sound-id",sound.id);e.dataTransfer.effectAllowed="copy"});card.querySelector(".preview").onclick=async e=>{e.stopPropagation();await previewSound(sound.id,e.currentTarget)};card.querySelector(".add").onclick=async e=>{e.stopPropagation();if(!selectedTrackId){alert("Prima crea o seleziona una traccia.");return}const t=tracks.find(x=>x.id===selectedTrackId);let start=t.clips.length?Math.max(...t.clips.map(c=>c.start+c.duration)):0;await addSoundToTrack(sound.id,selectedTrackId,start)};return card}
 soundSearch.addEventListener("input",renderSoundResults);
 function commonsSourcePage(file){return "https://commons.wikimedia.org/wiki/File:"+encodeURIComponent(file).replaceAll("%20","_")}
 async function resolveCommonsSound(sound){if(sound.file)return sound.file;if(sound._resolvePromise)return sound._resolvePromise;sound._resolvePromise=(async()=>{const params=new URLSearchParams({action:"query",format:"json",origin:"*",prop:"videoinfo",viprop:"url|derivatives",titles:"File:"+sound.commonsFile});const r=await fetch("https://commons.wikimedia.org/w/api.php?"+params.toString());if(!r.ok)throw new Error("COMMONS_API");const data=await r.json();const page=Object.values(data.query?.pages||{})[0],vi=page?.videoinfo?.[0];if(!vi)throw new Error("COMMONS_FILE");const mp3=(vi.derivatives||[]).filter(d=>(d.type||"").includes("mpeg")||(d.transcodekey||"").toLowerCase().includes("mp3")||/\.mp3(?:\?|$)/i.test(d.src||"")).sort((a,b)=>(a.bandwidth||999999)-(b.bandwidth||999999));let url=mp3[0]?.src||vi.url;if(url?.startsWith("//"))url="https:"+url;if(!url)throw new Error("COMMONS_URL");sound.file=url;return url})().catch(err=>{sound._resolvePromise=null;throw err});return sound._resolvePromise}
