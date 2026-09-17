@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>SoundLab</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com"
+  crossorigin
+>
 
 <link
   href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
@@ -80,7 +91,6 @@ button:disabled{
 
 .app{
   height:100vh;
-
   display:flex;
   flex-direction:column;
 }
@@ -100,9 +110,11 @@ button:disabled{
 
   padding:0 24px;
 
-  background:rgba(255,255,255,.40);
+  background:
+    rgba(255,255,255,.40);
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:
+    blur(14px);
 
   border-bottom:
     1px solid rgba(255,255,255,.55);
@@ -141,9 +153,9 @@ button:disabled{
   margin:0;
 
   font-family:"Fredoka",sans-serif;
+  font-size:32px;
 
   color:#28778e;
-  font-size:32px;
 }
 
 .brand p{
@@ -157,9 +169,8 @@ button:disabled{
 
 .top-actions{
   display:flex;
-  gap:10px;
-
   align-items:center;
+  gap:10px;
 }
 
 
@@ -212,7 +223,7 @@ button:disabled{
 
 
 /* =========================================
-   MENU ESPORTAZIONE
+   ESPORTAZIONE
 ========================================= */
 
 .export-wrap{
@@ -231,11 +242,11 @@ button:disabled{
   right:0;
   top:calc(100% + 9px);
 
+  z-index:100;
+
   width:230px;
 
   padding:8px;
-
-  z-index:100;
 
   border:
     1px solid rgba(46,115,140,.12);
@@ -243,14 +254,10 @@ button:disabled{
   border-radius:18px;
 
   background:
-    rgba(255,255,255,.97);
+    rgba(255,255,255,.98);
 
   box-shadow:
-    0 15px 40px
-    rgba(50,110,135,.18);
-
-  backdrop-filter:
-    blur(15px);
+    0 15px 40px rgba(50,110,135,.18);
 }
 
 .export-menu.open{
@@ -268,7 +275,6 @@ button:disabled{
   padding:11px;
 
   border:0;
-
   border-radius:13px;
 
   background:transparent;
@@ -310,7 +316,6 @@ button:disabled{
 
 .export-description strong{
   display:block;
-
   font-size:12px;
 }
 
@@ -336,7 +341,7 @@ button:disabled{
   display:grid;
 
   grid-template-columns:
-    320px
+    330px
     minmax(0,1fr);
 }
 
@@ -369,31 +374,37 @@ button:disabled{
   margin:0;
 
   font-family:"Fredoka";
+  font-size:21px;
 
   color:#267a91;
-  font-size:21px;
 }
 
 .library-header p{
   margin:5px 0 0;
 
   color:var(--muted);
+
   font-size:12px;
 }
 
 .search-box{
-  padding:13px 15px 8px;
+  padding:
+    13px
+    15px
+    8px;
 }
 
 .search-box input{
   width:100%;
 
+  padding:
+    11px
+    13px;
+
   border:
     1px solid rgba(54,130,154,.15);
 
   border-radius:14px;
-
-  padding:11px 13px;
 
   background:
     rgba(255,255,255,.72);
@@ -409,60 +420,183 @@ button:disabled{
 
   overflow-y:auto;
 
-  padding:8px 12px 20px;
+  padding:
+    7px
+    12px
+    22px;
 }
 
 .section-label{
-  margin:12px 7px 9px;
+  margin:
+    12px
+    7px
+    9px;
+
+  font-size:10px;
+  font-weight:800;
+
+  letter-spacing:1px;
 
   text-transform:uppercase;
 
-  font-size:10px;
-  letter-spacing:1px;
-
   color:#6d93a0;
+}
 
-  font-weight:800;
+
+/* =========================================
+   CATEGORIE
+========================================= */
+
+.categories{
+  display:flex;
+  flex-direction:column;
+
+  gap:5px;
 }
 
 .category{
   width:100%;
 
-  padding:9px 11px;
-  margin-bottom:6px;
+  min-height:41px;
 
-  border-radius:15px;
+  display:flex;
+  align-items:center;
+
+  gap:9px;
+
+  padding:
+    7px
+    9px;
 
   border:
     1px solid rgba(64,130,155,.10);
 
+  border-radius:14px;
+
   background:
     rgba(255,255,255,.44);
 
-  text-align:left;
-
   color:#285f70;
 
-  font-weight:800;
+  text-align:left;
+
+  transition:.14s;
+}
+
+.category:hover{
+  background:
+    rgba(255,255,255,.72);
 }
 
 .category.active{
   background:
     linear-gradient(
       135deg,
-      rgba(114,207,255,.30),
-      rgba(111,224,160,.26)
+      rgba(114,207,255,.34),
+      rgba(111,224,160,.29)
     );
+
+  border-color:
+    rgba(68,171,163,.20);
+
+  box-shadow:
+    inset 3px 0 0 #50d7c3;
+}
+
+.category-symbol{
+  width:28px;
+  height:28px;
+
+  flex-shrink:0;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:9px;
+
+  background:
+    rgba(255,255,255,.65);
+
+  color:#317c91;
+
+  font-family:"Fredoka";
+
+  font-size:10px;
+  font-weight:700;
+}
+
+.category-name{
+  flex:1;
+
+  font-size:12px;
+  font-weight:800;
+}
+
+.category-count{
+  min-width:24px;
+
+  padding:
+    3px
+    6px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.66);
+
+  color:#638895;
+
+  text-align:center;
+
+  font-size:9px;
+  font-weight:900;
 }
 
 
 /* =========================================
-   SUONI
+   RISULTATI LIBRERIA
 ========================================= */
+
+.sound-results-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  margin:
+    17px
+    5px
+    9px;
+}
+
+.sound-results-header strong{
+  font-family:"Fredoka";
+
+  color:#2b768b;
+
+  font-size:15px;
+}
+
+.sound-results-header span{
+  padding:
+    4px
+    8px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.58);
+
+  color:#6b8995;
+
+  font-size:9px;
+  font-weight:900;
+}
 
 .sound-list{
   display:flex;
   flex-direction:column;
+
   gap:8px;
 }
 
@@ -471,18 +605,19 @@ button:disabled{
 
   grid-template-columns:
     42px
-    1fr
+    minmax(0,1fr)
     auto;
 
   align-items:center;
 
   gap:9px;
-  padding:9px;
 
-  border-radius:16px;
+  padding:9px;
 
   border:
     1px solid rgba(61,126,151,.11);
+
+  border-radius:16px;
 
   background:
     rgba(255,255,255,.72);
@@ -503,11 +638,11 @@ button:disabled{
   width:42px;
   height:42px;
 
-  border-radius:13px;
-
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:13px;
 
   background:
     linear-gradient(
@@ -520,26 +655,84 @@ button:disabled{
 
   font-family:"Fredoka";
 
-  font-size:17px;
+  font-size:13px;
   font-weight:700;
+}
+
+.sound-info{
+  min-width:0;
 }
 
 .sound-info strong{
   display:block;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
 
   font-size:13px;
 
   color:#285f70;
 }
 
-.sound-info span{
-  display:block;
+.sound-meta{
+  display:flex;
+  align-items:center;
 
-  margin-top:2px;
+  gap:5px;
 
-  font-size:10px;
+  margin-top:4px;
+
+  min-width:0;
+}
+
+.sound-type{
+  flex-shrink:0;
+
+  padding:
+    2px
+    5px;
+
+  border-radius:999px;
+
+  font-size:7px;
+  font-weight:900;
+
+  letter-spacing:.4px;
+}
+
+.sound-type.environment{
+  background:#dff5ff;
+
+  color:#32768b;
+}
+
+.sound-type.effect{
+  background:#e0f8e9;
+
+  color:#39775c;
+}
+
+.sound-type.recording{
+  background:#f0e8ff;
+
+  color:#6a5790;
+}
+
+.sound-category{
+  min-width:0;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
 
   color:#7995a0;
+
+  font-size:9px;
 }
 
 .sound-actions{
@@ -554,11 +747,11 @@ button:disabled{
   border:0;
   border-radius:10px;
 
-  font-weight:900;
+  background:#e8fbff;
 
   color:#297188;
 
-  background:#e8fbff;
+  font-weight:900;
 }
 
 .sound-action.add{
@@ -567,32 +760,38 @@ button:disabled{
   color:#27825d;
 }
 
-.my-sounds-empty{
-  padding:12px;
+.no-sounds{
+  padding:18px 13px;
 
-  border-radius:14px;
+  border-radius:16px;
 
   background:
-    rgba(255,255,255,.42);
+    rgba(255,255,255,.45);
 
-  color:#6e8d99;
+  color:#6d8c98;
+
+  text-align:center;
 
   font-size:11px;
-  line-height:1.4;
+  line-height:1.45;
 }
 
-.library-note,
-.drag-hint{
-  margin:9px 4px 5px;
+.library-note{
+  margin:
+    12px
+    4px
+    4px;
 
-  padding:10px 12px;
+  padding:
+    10px
+    12px;
 
   border-radius:14px;
-
-  color:#507d8c;
 
   background:
     rgba(255,255,255,.43);
+
+  color:#507d8c;
 
   font-size:10px;
   line-height:1.45;
@@ -620,7 +819,9 @@ button:disabled{
 
   gap:14px;
 
-  padding:13px 20px;
+  padding:
+    13px
+    20px;
 
   background:
     rgba(255,255,255,.22);
@@ -633,11 +834,11 @@ button:disabled{
   width:57px;
   height:57px;
 
-  border-radius:18px;
-
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:18px;
 
   background:
     rgba(255,255,255,.64);
@@ -680,7 +881,9 @@ button:disabled{
 
   gap:10px;
 
-  padding:0 18px;
+  padding:
+    0
+    18px;
 
   background:
     rgba(255,255,255,.30);
@@ -795,6 +998,7 @@ button:disabled{
 
 .timeline-canvas{
   width:var(--timeline-width);
+
   min-height:100%;
 
   position:relative;
@@ -835,10 +1039,10 @@ button:disabled{
   border-bottom:
     1px solid var(--line);
 
+  color:#668b99;
+
   font-size:10px;
   font-weight:800;
-
-  color:#668b99;
 
   text-transform:uppercase;
   letter-spacing:1px;
@@ -858,22 +1062,30 @@ button:disabled{
 
 .time-mark{
   width:95px;
-  flex:0 0 95px;
+
+  flex:
+    0
+    0
+    95px;
+
+  padding:
+    8px
+    0
+    0
+    7px;
 
   border-left:
     1px solid rgba(66,125,149,.14);
 
-  padding:8px 0 0 7px;
+  color:#7493a0;
 
   font-size:10px;
   font-weight:800;
-
-  color:#7493a0;
 }
 
 
 /* =========================================
-   TESTINA
+   PLAYHEAD
 ========================================= */
 
 .playhead{
@@ -884,15 +1096,14 @@ button:disabled{
 
   width:2px;
 
-  background:#ff6d83;
-
   z-index:7;
+
+  background:#ff6d83;
 
   pointer-events:none;
 
   box-shadow:
-    0 0 5px
-    rgba(255,109,131,.35);
+    0 0 5px rgba(255,109,131,.35);
 }
 
 .playhead::before{
@@ -907,7 +1118,10 @@ button:disabled{
   height:10px;
 
   border-radius:
-    0 0 6px 6px;
+    0
+    0
+    6px
+    6px;
 
   background:#ff6d83;
 }
@@ -961,6 +1175,7 @@ button:disabled{
 .track-title-row{
   display:flex;
   align-items:center;
+
   gap:6px;
 }
 
@@ -968,13 +1183,13 @@ button:disabled{
   width:25px;
   height:25px;
 
-  border-radius:9px;
-
   flex-shrink:0;
 
   display:flex;
   align-items:center;
   justify-content:center;
+
+  border-radius:9px;
 
   background:
     linear-gradient(
@@ -987,13 +1202,17 @@ button:disabled{
 
   font-family:"Fredoka";
 
-  font-weight:700;
   font-size:12px;
+  font-weight:700;
 }
 
 .track-name{
   flex:1;
   min-width:0;
+
+  padding:
+    6px
+    7px;
 
   border:
     1px solid rgba(62,126,151,.12);
@@ -1001,8 +1220,6 @@ button:disabled{
   border-radius:9px;
 
   background:white;
-
-  padding:6px 7px;
 
   color:#285f70;
 
@@ -1021,10 +1238,10 @@ button:disabled{
   width:27px;
   height:27px;
 
-  border-radius:8px;
-
   border:
     1px solid rgba(58,126,151,.12);
+
+  border-radius:8px;
 
   background:white;
 
@@ -1051,9 +1268,9 @@ button:disabled{
 
   margin-top:6px;
 
-  font-size:9px;
-
   color:#72909c;
+
+  font-size:9px;
 }
 
 .volume-row input{
@@ -1112,11 +1329,11 @@ button:disabled{
   transform:
     translateY(-50%);
 
-  font-size:11px;
-  font-weight:700;
-
   color:
     rgba(66,115,132,.32);
+
+  font-size:11px;
+  font-weight:700;
 
   pointer-events:none;
 }
@@ -1134,6 +1351,11 @@ button:disabled{
   height:80px;
   min-width:38px;
 
+  overflow:visible;
+
+  border:
+    2px solid rgba(255,255,255,.72);
+
   border-radius:15px;
 
   background:
@@ -1143,18 +1365,13 @@ button:disabled{
       #67dfb0
     );
 
-  border:
-    2px solid rgba(255,255,255,.72);
-
   box-shadow:
-    0 7px 16px
-    rgba(45,119,143,.18);
-
-  overflow:visible;
+    0 7px 16px rgba(45,119,143,.18);
 
   cursor:grab;
 
   user-select:none;
+
   touch-action:none;
 }
 
@@ -1169,6 +1386,7 @@ button:disabled{
 
 .clip-body{
   position:absolute;
+
   inset:0;
 
   overflow:hidden;
@@ -1179,20 +1397,22 @@ button:disabled{
 .clip-top{
   height:27px;
 
-  padding:4px 7px;
-
   display:flex;
   align-items:center;
 
   gap:5px;
 
+  padding:
+    4px
+    7px;
+
   background:
     rgba(255,255,255,.30);
 
+  color:#1e6276;
+
   font-size:10px;
   font-weight:900;
-
-  color:#1e6276;
 }
 
 .clip-title{
@@ -1219,7 +1439,9 @@ button:disabled{
 .loop-badge{
   display:none;
 
-  padding:2px 5px;
+  padding:
+    2px
+    5px;
 
   border-radius:999px;
 
@@ -1245,18 +1467,20 @@ button:disabled{
 
   z-index:3;
 
-  padding:1px 3px;
+  padding:
+    1px
+    3px;
 
   border-radius:4px;
 
   background:
     rgba(255,255,255,.45);
 
-  font-size:8px;
-  font-weight:900;
-
   color:
     rgba(28,83,100,.78);
+
+  font-size:8px;
+  font-weight:900;
 
   pointer-events:none;
 }
@@ -1277,9 +1501,9 @@ button:disabled{
 
   overflow:hidden;
 
-  pointer-events:none;
-
   border-radius:5px;
+
+  pointer-events:none;
 }
 
 .waveform-canvas{
@@ -1306,16 +1530,15 @@ button:disabled{
 
   z-index:10;
 
+  border-radius:8px;
+
   background:
     rgba(255,255,255,.76);
 
-  border-radius:8px;
+  box-shadow:
+    0 2px 8px rgba(33,105,128,.16);
 
   cursor:ew-resize;
-
-  box-shadow:
-    0 2px 8px
-    rgba(33,105,128,.16);
 }
 
 .resize-handle::after{
@@ -1326,11 +1549,11 @@ button:disabled{
   top:50%;
   left:50%;
 
-  transform:
-    translate(-50%,-50%);
-
   width:2px;
   height:22px;
+
+  transform:
+    translate(-50%,-50%);
 
   border-radius:3px;
 
@@ -1348,7 +1571,7 @@ button:disabled{
 
 
 /* =========================================
-   EMPTY
+   EMPTY PROJECT
 ========================================= */
 
 .empty-project{
@@ -1368,9 +1591,9 @@ button:disabled{
       calc(100% - 40px)
     );
 
-  padding:30px 24px;
-
-  text-align:center;
+  padding:
+    30px
+    24px;
 
   border-radius:28px;
 
@@ -1378,8 +1601,9 @@ button:disabled{
     rgba(255,255,255,.82);
 
   box-shadow:
-    0 14px 40px
-    rgba(56,119,144,.14);
+    0 14px 40px rgba(56,119,144,.14);
+
+  text-align:center;
 }
 
 .empty-project.hidden{
@@ -1387,19 +1611,25 @@ button:disabled{
 }
 
 .empty-project h3{
-  margin:0 0 8px;
+  margin:
+    0
+    0
+    8px;
 
   font-family:"Fredoka";
 
-  color:#26788e;
-
   font-size:28px;
+
+  color:#26788e;
 }
 
 .empty-project p{
-  margin:0 auto 18px;
-
   max-width:470px;
+
+  margin:
+    0
+    auto
+    18px;
 
   color:var(--muted);
 
@@ -1421,7 +1651,9 @@ button:disabled{
 
   gap:10px;
 
-  padding:0 18px;
+  padding:
+    0
+    18px;
 
   background:
     rgba(255,255,255,.40);
@@ -1431,7 +1663,9 @@ button:disabled{
 }
 
 .status{
-  padding:7px 11px;
+  padding:
+    7px
+    11px;
 
   border-radius:999px;
 
@@ -1479,14 +1713,11 @@ button:disabled{
 
   .workspace{
     grid-template-columns:
-      235px
+      245px
       minmax(0,1fr);
   }
 
-  .brand p{
-    display:none;
-  }
-
+  .brand p,
   .hero p{
     display:none;
   }
@@ -1494,10 +1725,12 @@ button:disabled{
 }
 
 </style>
+
 </head>
 
 
 <body>
+
 
 <div class="app">
 
@@ -1584,7 +1817,6 @@ button:disabled{
       <button
         class="button button-primary export-button"
         id="exportButton"
-        aria-expanded="false"
       >
         Esporta ▾
       </button>
@@ -1612,7 +1844,7 @@ button:disabled{
             </strong>
 
             <span>
-              Qualità piena • file più grande
+              Qualità piena · file più grande
             </span>
 
           </div>
@@ -1636,7 +1868,7 @@ button:disabled{
             </strong>
 
             <span>
-              192 kbps • file più leggero
+              192 kbps · file più leggero
             </span>
 
           </div>
@@ -1674,7 +1906,7 @@ button:disabled{
     </h2>
 
     <p>
-      Ascolta, registra e trascina i suoni nella timeline.
+      Esplora gli ambienti e scegli i suoni.
     </p>
 
   </div>
@@ -1685,7 +1917,7 @@ button:disabled{
     <input
       id="soundSearch"
       type="text"
-      placeholder="Cerca un suono..."
+      placeholder="Cerca nella libreria..."
     >
 
   </div>
@@ -1695,104 +1927,62 @@ button:disabled{
 
 
     <div class="section-label">
-      Ambienti
+      Categorie
     </div>
 
 
-    <button class="category active">
-      Città
-    </button>
-
-    <button class="category">
-      Campagna
-    </button>
-
-    <button class="category">
-      Mare
-    </button>
-
-    <button class="category">
-      Bosco e montagna
-    </button>
-
-    <button class="category">
-      Scuola
-    </button>
-
-    <button class="category">
-      Ufficio
-    </button>
-
-    <button class="category">
-      Lavoro
-    </button>
-
-    <button class="category">
-      Casa
-    </button>
-
-    <button class="category">
-      Trasporti
-    </button>
-
-    <button class="category">
-      Meteo
-    </button>
-
-    <button class="category">
-      Spazio
-    </button>
+    <div
+      class="categories"
+      id="categoriesList"
+    >
+    </div>
 
 
-    <div class="section-label">
-      Suoni di prova
+    <div class="sound-results-header">
+
+      <strong id="resultsTitle">
+        Tutti i suoni
+      </strong>
+
+      <span id="resultsCount">
+        0 suoni
+      </span>
+
     </div>
 
 
     <div
       class="sound-list"
-      id="testSoundsList"
+      id="soundResults"
     >
-    </div>
-
-
-    <div class="section-label">
-      I miei suoni
     </div>
 
 
     <div
-      class="my-sounds-empty"
-      id="mySoundsEmpty"
+      class="no-sounds"
+      id="noSounds"
+      style="display:none"
     >
-      Le registrazioni create con il microfono compariranno qui.
-    </div>
 
+      In questa categoria non ci sono ancora suoni.
 
-    <div
-      class="sound-list"
-      id="mySoundsList"
-    >
     </div>
 
 
     <div class="library-note">
 
-      Con <strong>Esporta</strong> puoi scegliere
-      tra WAV e MP3.
-
-    </div>
-
-
-    <div class="drag-hint">
-
-      <strong>WAV:</strong>
-      massima qualità.
+      <strong>AMBIENTE</strong> =
+      suono continuo di uno spazio.
 
       <br>
 
-      <strong>MP3:</strong>
-      più leggero e pratico per la consegna.
+      <strong>EFFETTO</strong> =
+      evento sonoro breve o riconoscibile.
+
+      <br>
+
+      <strong>REGISTRAZIONE</strong> =
+      suono creato con il microfono.
 
     </div>
 
@@ -1852,7 +2042,7 @@ button:disabled{
       </h2>
 
       <p>
-        Crea, registra, modifica e poi esporta il tuo lavoro.
+        Esplora la libreria, registra nuovi suoni e costruisci il tuo ambiente.
       </p>
 
     </div>
@@ -1978,7 +2168,7 @@ button:disabled{
       </h3>
 
       <p>
-        Crea una traccia, scegli un suono o registrane uno.
+        Crea una traccia e trascina un suono dalla libreria.
       </p>
 
       <button
@@ -2050,52 +2240,167 @@ button:disabled{
 </div>
 
 
-<!--
-  Encoder MP3 gratuito.
-  WAV continua invece a essere creato nativamente da SoundLab.
--->
+
 <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
 
 
 <script>
 
 /* =========================================================
-   BANCA SUONI
+   CATEGORIE DELLA LIBRERIA
+========================================================= */
+
+const categories = [
+
+  {
+    id:"all",
+    name:"Tutti i suoni",
+    symbol:"ALL"
+  },
+
+  {
+    id:"city",
+    name:"Città",
+    symbol:"CT"
+  },
+
+  {
+    id:"countryside",
+    name:"Campagna",
+    symbol:"CP"
+  },
+
+  {
+    id:"sea",
+    name:"Mare",
+    symbol:"MR"
+  },
+
+  {
+    id:"forest",
+    name:"Bosco e montagna",
+    symbol:"BM"
+  },
+
+  {
+    id:"school",
+    name:"Scuola",
+    symbol:"SC"
+  },
+
+  {
+    id:"office",
+    name:"Ufficio",
+    symbol:"UF"
+  },
+
+  {
+    id:"work",
+    name:"Lavoro",
+    symbol:"LV"
+  },
+
+  {
+    id:"home",
+    name:"Casa",
+    symbol:"CS"
+  },
+
+  {
+    id:"transport",
+    name:"Trasporti",
+    symbol:"TR"
+  },
+
+  {
+    id:"weather",
+    name:"Meteo",
+    symbol:"MT"
+  },
+
+  {
+    id:"space",
+    name:"Spazio",
+    symbol:"SP"
+  },
+
+  {
+    id:"personal",
+    name:"I miei suoni",
+    symbol:"REC"
+  }
+
+];
+
+
+
+/* =========================================================
+   SUONI ATTUALI
+   Questi tre servono ancora come test.
 ========================================================= */
 
 const sounds = {
 
   rain:{
+
     id:"rain",
+
     name:"Pioggia",
+
     file:"pioggia_test.wav",
-    kind:"test",
-    label:"Meteo • ambiente",
-    icon:"≋"
+
+    kind:"library",
+
+    category:"weather",
+
+    type:"environment",
+
+    typeLabel:"AMBIENTE"
+
   },
+
 
   city:{
+
     id:"city",
+
     name:"Città",
+
     file:"citta_test.wav",
-    kind:"test",
-    label:"Ambiente urbano",
-    icon:"▥"
+
+    kind:"library",
+
+    category:"city",
+
+    type:"environment",
+
+    typeLabel:"AMBIENTE"
+
   },
 
+
   birds:{
+
     id:"birds",
+
     name:"Uccelli",
+
     file:"uccelli_test.wav",
-    kind:"test",
-    label:"Natura • campagna",
-    icon:"∿"
+
+    kind:"library",
+
+    category:"forest",
+
+    type:"effect",
+
+    typeLabel:"EFFETTO"
+
   }
 
 };
 
 
-const testSoundIds = [
+const librarySoundIds = [
   "rain",
   "city",
   "birds"
@@ -2105,20 +2410,33 @@ const testSoundIds = [
 const personalSoundIds = [];
 
 
+let activeCategory =
+  "all";
+
+
 
 /* =========================================================
    CONFIGURAZIONE
 ========================================================= */
 
-const PX_PER_SECOND = 19;
+const PX_PER_SECOND =
+  19;
 
-const TRACK_WIDTH = 190;
 
-const MIN_CLIP_SECONDS = .5;
+const TRACK_WIDTH =
+  190;
 
-const EXPORT_SAMPLE_RATE = 44100;
 
-const MP3_BITRATE = 192;
+const MIN_CLIP_SECONDS =
+  .5;
+
+
+const EXPORT_SAMPLE_RATE =
+  44100;
+
+
+const MP3_BITRATE =
+  192;
 
 
 
@@ -2144,7 +2462,7 @@ const SAVE_KEY =
 
 
 /* =========================================================
-   STATO
+   PROGETTO
 ========================================================= */
 
 let tracks = [];
@@ -2182,20 +2500,32 @@ let audioContext = null;
 const audioBufferCache =
   new Map();
 
+
 let activeSources = [];
+
 
 let trackGainNodes =
   new Map();
 
-let isPlaying = false;
 
-let playheadSeconds = 0;
+let isPlaying =
+  false;
 
-let playStartPosition = 0;
 
-let playStartContextTime = 0;
+let playheadSeconds =
+  0;
 
-let animationFrame = null;
+
+let playStartPosition =
+  0;
+
+
+let playStartContextTime =
+  0;
+
+
+let animationFrame =
+  null;
 
 
 
@@ -2219,65 +2549,820 @@ let recordingTimer = null;
    ELEMENTI HTML
 ========================================================= */
 
-const trackRows =
-  document.getElementById("trackRows");
+const categoriesList =
+  document.getElementById(
+    "categoriesList"
+  );
 
-const emptyProject =
-  document.getElementById("emptyProject");
 
-const projectStatus =
-  document.getElementById("projectStatus");
+const soundResults =
+  document.getElementById(
+    "soundResults"
+  );
 
-const selectedStatus =
-  document.getElementById("selectedStatus");
 
-const saveStatus =
-  document.getElementById("saveStatus");
+const noSounds =
+  document.getElementById(
+    "noSounds"
+  );
 
-const playbackStatus =
-  document.getElementById("playbackStatus");
 
-const timeDisplay =
-  document.getElementById("timeDisplay");
+const resultsTitle =
+  document.getElementById(
+    "resultsTitle"
+  );
 
-const playhead =
-  document.getElementById("playhead");
 
-const playButton =
-  document.getElementById("playButton");
+const resultsCount =
+  document.getElementById(
+    "resultsCount"
+  );
 
-const stopButton =
-  document.getElementById("stopButton");
-
-const ruler =
-  document.getElementById("ruler");
-
-const recordButton =
-  document.getElementById("recordButton");
-
-const saveButton =
-  document.getElementById("saveButton");
-
-const exportButton =
-  document.getElementById("exportButton");
-
-const exportMenu =
-  document.getElementById("exportMenu");
-
-const exportWrap =
-  document.getElementById("exportWrap");
-
-const testSoundsList =
-  document.getElementById("testSoundsList");
-
-const mySoundsList =
-  document.getElementById("mySoundsList");
-
-const mySoundsEmpty =
-  document.getElementById("mySoundsEmpty");
 
 const soundSearch =
-  document.getElementById("soundSearch");
+  document.getElementById(
+    "soundSearch"
+  );
+
+
+const trackRows =
+  document.getElementById(
+    "trackRows"
+  );
+
+
+const emptyProject =
+  document.getElementById(
+    "emptyProject"
+  );
+
+
+const projectStatus =
+  document.getElementById(
+    "projectStatus"
+  );
+
+
+const selectedStatus =
+  document.getElementById(
+    "selectedStatus"
+  );
+
+
+const saveStatus =
+  document.getElementById(
+    "saveStatus"
+  );
+
+
+const playbackStatus =
+  document.getElementById(
+    "playbackStatus"
+  );
+
+
+const timeDisplay =
+  document.getElementById(
+    "timeDisplay"
+  );
+
+
+const playhead =
+  document.getElementById(
+    "playhead"
+  );
+
+
+const playButton =
+  document.getElementById(
+    "playButton"
+  );
+
+
+const stopButton =
+  document.getElementById(
+    "stopButton"
+  );
+
+
+const ruler =
+  document.getElementById(
+    "ruler"
+  );
+
+
+const recordButton =
+  document.getElementById(
+    "recordButton"
+  );
+
+
+const saveButton =
+  document.getElementById(
+    "saveButton"
+  );
+
+
+const exportButton =
+  document.getElementById(
+    "exportButton"
+  );
+
+
+const exportMenu =
+  document.getElementById(
+    "exportMenu"
+  );
+
+
+const exportWrap =
+  document.getElementById(
+    "exportWrap"
+  );
+
+
+
+/* =========================================================
+   LIBRERIA: UTILITÀ
+========================================================= */
+
+function allSoundIds(){
+
+  return [
+
+    ...librarySoundIds,
+
+    ...personalSoundIds
+
+  ];
+
+}
+
+
+
+function getCategoryName(
+  categoryId
+){
+
+  const category =
+
+    categories.find(
+      item =>
+        item.id ===
+        categoryId
+    );
+
+
+  return category
+
+    ? category.name
+
+    : "Altro";
+
+}
+
+
+
+function getCategoryCount(
+  categoryId
+){
+
+  const ids =
+    allSoundIds();
+
+
+  if(
+    categoryId ===
+    "all"
+  ){
+
+    return ids.length;
+
+  }
+
+
+  return ids.filter(
+    id => {
+
+
+      const sound =
+        sounds[id];
+
+
+      if(
+        !sound
+      ){
+
+        return false;
+
+      }
+
+
+      if(
+        categoryId ===
+        "personal"
+      ){
+
+        return (
+          sound.kind ===
+          "personal"
+        );
+
+      }
+
+
+      return (
+        sound.category ===
+        categoryId
+      );
+
+
+    }
+  ).length;
+
+}
+
+
+
+/* =========================================================
+   RENDER CATEGORIE
+========================================================= */
+
+function renderCategories(){
+
+  categoriesList.innerHTML =
+    "";
+
+
+  categories.forEach(
+    category => {
+
+
+      const button =
+
+        document.createElement(
+          "button"
+        );
+
+
+      button.className =
+
+        "category"
+
+        +
+
+        (
+          activeCategory ===
+          category.id
+
+          ? " active"
+
+          : ""
+        );
+
+
+      button.innerHTML = `
+
+        <span class="category-symbol">
+
+          ${escapeHtml(
+            category.symbol
+          )}
+
+        </span>
+
+
+        <span class="category-name">
+
+          ${escapeHtml(
+            category.name
+          )}
+
+        </span>
+
+
+        <span class="category-count">
+
+          ${getCategoryCount(
+            category.id
+          )}
+
+        </span>
+
+      `;
+
+
+      button.addEventListener(
+        "click",
+        () => {
+
+
+          activeCategory =
+            category.id;
+
+
+          soundSearch.value =
+            "";
+
+
+          renderCategories();
+
+
+          renderSoundResults();
+
+
+        }
+      );
+
+
+      categoriesList.appendChild(
+        button
+      );
+
+
+    }
+  );
+
+}
+
+
+
+/* =========================================================
+   QUALI SUONI MOSTRARE
+========================================================= */
+
+function getVisibleSounds(){
+
+  const query =
+
+    soundSearch.value
+      .toLowerCase()
+      .trim();
+
+
+  return allSoundIds()
+    .map(
+      id =>
+        sounds[id]
+    )
+    .filter(Boolean)
+    .filter(
+      sound => {
+
+
+        /*
+          Se c'è una ricerca,
+          cerchiamo in TUTTA la libreria.
+        */
+
+        if(
+          query
+        ){
+
+
+          const text =
+
+            [
+
+              sound.name,
+
+              sound.typeLabel,
+
+              getCategoryName(
+                sound.category
+              )
+
+            ]
+            .join(" ")
+            .toLowerCase();
+
+
+          return text.includes(
+            query
+          );
+
+        }
+
+
+        if(
+          activeCategory ===
+          "all"
+        ){
+
+          return true;
+
+        }
+
+
+        if(
+          activeCategory ===
+          "personal"
+        ){
+
+          return (
+            sound.kind ===
+            "personal"
+          );
+
+        }
+
+
+        return (
+          sound.category ===
+          activeCategory
+        );
+
+
+      }
+    );
+
+}
+
+
+
+/* =========================================================
+   RENDER RISULTATI
+========================================================= */
+
+function renderSoundResults(){
+
+  soundResults.innerHTML =
+    "";
+
+
+  const visible =
+    getVisibleSounds();
+
+
+  const query =
+
+    soundSearch.value
+      .trim();
+
+
+  if(
+    query
+  ){
+
+    resultsTitle.textContent =
+      "Risultati ricerca";
+
+  }
+
+  else{
+
+    resultsTitle.textContent =
+
+      getCategoryName(
+        activeCategory
+      );
+
+  }
+
+
+  resultsCount.textContent =
+
+    visible.length === 1
+
+    ? "1 suono"
+
+    : visible.length +
+      " suoni";
+
+
+  visible.forEach(
+    sound => {
+
+
+      soundResults.appendChild(
+
+        createSoundCard(
+          sound
+        )
+
+      );
+
+
+    }
+  );
+
+
+  noSounds.style.display =
+
+    visible.length
+
+    ? "none"
+
+    : "block";
+
+
+  if(
+    !visible.length &&
+    query
+  ){
+
+    noSounds.textContent =
+      "Nessun suono corrisponde alla ricerca.";
+
+  }
+
+  else if(
+    !visible.length &&
+    activeCategory ===
+    "personal"
+  ){
+
+    noSounds.textContent =
+      "Non hai ancora registrato nessun suono.";
+
+  }
+
+  else{
+
+    noSounds.textContent =
+      "In questa categoria non ci sono ancora suoni.";
+
+  }
+
+}
+
+
+
+/* =========================================================
+   CREA CARD SUONO
+========================================================= */
+
+function createSoundCard(
+  sound
+){
+
+  const card =
+
+    document.createElement(
+      "div"
+    );
+
+
+  card.className =
+    "sound-card";
+
+
+  card.draggable =
+    true;
+
+
+  card.dataset.soundId =
+    sound.id;
+
+
+  const typeClass =
+
+    sound.type ===
+    "recording"
+
+    ? "recording"
+
+    : sound.type ===
+      "effect"
+
+      ? "effect"
+
+      : "environment";
+
+
+  const iconText =
+
+    sound.type ===
+    "recording"
+
+    ? "REC"
+
+    : sound.type ===
+      "effect"
+
+      ? "FX"
+
+      : "AMB";
+
+
+  card.innerHTML = `
+
+    <div class="sound-icon">
+
+      ${iconText}
+
+    </div>
+
+
+    <div class="sound-info">
+
+      <strong>
+
+        ${escapeHtml(
+          sound.name
+        )}
+
+      </strong>
+
+
+      <div class="sound-meta">
+
+
+        <span
+          class="sound-type ${typeClass}"
+        >
+
+          ${escapeHtml(
+            sound.typeLabel ||
+            "SUONO"
+          )}
+
+        </span>
+
+
+        <span class="sound-category">
+
+          ${escapeHtml(
+            getCategoryName(
+              sound.category
+            )
+          )}
+
+        </span>
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="sound-actions">
+
+
+      <button
+        class="sound-action preview"
+        title="Ascolta"
+      >
+        ▶
+      </button>
+
+
+      <button
+        class="sound-action add"
+        title="Aggiungi alla traccia"
+      >
+        ＋
+      </button>
+
+
+    </div>
+
+  `;
+
+
+
+  card.addEventListener(
+    "dragstart",
+    event => {
+
+
+      event.dataTransfer.setData(
+
+        "text/sound-id",
+
+        sound.id
+
+      );
+
+
+      event.dataTransfer.effectAllowed =
+        "copy";
+
+
+    }
+  );
+
+
+
+  card
+    .querySelector(
+      ".preview"
+    )
+    .addEventListener(
+      "click",
+      event => {
+
+
+        event.stopPropagation();
+
+
+        previewSound(
+
+          sound.id,
+
+          event.currentTarget
+
+        );
+
+
+      }
+    );
+
+
+
+  card
+    .querySelector(
+      ".add"
+    )
+    .addEventListener(
+      "click",
+      async event => {
+
+
+        event.stopPropagation();
+
+
+        if(
+          !selectedTrackId
+        ){
+
+          alert(
+            "Prima crea o seleziona una traccia."
+          );
+
+          return;
+
+        }
+
+
+        const track =
+
+          tracks.find(
+            t =>
+              t.id ===
+              selectedTrackId
+          );
+
+
+        let start =
+          0;
+
+
+        if(
+          track.clips.length
+        ){
+
+          start =
+
+            Math.max(
+
+              ...track.clips.map(
+                clip =>
+                  clip.start +
+                  clip.duration
+              )
+
+            );
+
+        }
+
+
+        await addSoundToTrack(
+
+          sound.id,
+
+          selectedTrackId,
+
+          start
+
+        );
+
+
+      }
+    );
+
+
+  return card;
+
+}
+
+
+
+/* =========================================================
+   RICERCA
+========================================================= */
+
+soundSearch.addEventListener(
+  "input",
+  () => {
+
+
+    renderSoundResults();
+
+
+  }
+);
 
 
 
@@ -2340,6 +3425,7 @@ function markSaved(){
   setTimeout(
     () => {
 
+
       saveButton.textContent =
         "Salva";
 
@@ -2347,6 +3433,7 @@ function markSaved(){
       saveButton.classList.remove(
         "saved"
       );
+
 
     },
     1800
@@ -2484,15 +3571,23 @@ async function saveProject(){
 
             return {
 
-              id:sound.id,
+              id:
+                sound.id,
 
-              name:sound.name,
+              name:
+                sound.name,
 
-              label:sound.label,
+              category:
+                sound.category,
 
-              icon:sound.icon,
+              type:
+                sound.type,
 
-              blob:sound.blob
+              typeLabel:
+                sound.typeLabel,
+
+              blob:
+                sound.blob
 
             };
 
@@ -2508,28 +3603,37 @@ async function saveProject(){
       tracks.map(
         track => ({
 
-          id:track.id,
+          id:
+            track.id,
 
-          name:track.name,
+          name:
+            track.name,
 
-          volume:track.volume,
+          volume:
+            track.volume,
 
-          mute:track.mute,
+          mute:
+            track.mute,
 
-          solo:track.solo,
+          solo:
+            track.solo,
 
           clips:
 
             track.clips.map(
               clip => ({
 
-                id:clip.id,
+                id:
+                  clip.id,
 
-                soundId:clip.soundId,
+                soundId:
+                  clip.soundId,
 
-                name:clip.name,
+                name:
+                  clip.name,
 
-                start:clip.start,
+                start:
+                  clip.start,
 
                 sourceDuration:
                   clip.sourceDuration,
@@ -2550,7 +3654,8 @@ async function saveProject(){
 
     const project = {
 
-      version:1,
+      version:
+        2,
 
       savedAt:
         Date.now(),
@@ -2584,6 +3689,7 @@ async function saveProject(){
 
 
     const transaction =
+
       db.transaction(
         DB_STORE,
         "readwrite"
@@ -2609,9 +3715,13 @@ async function saveProject(){
 
 
         transaction.onerror =
-          () => reject(
-            transaction.error
-          );
+          () => {
+
+            reject(
+              transaction.error
+            );
+
+          };
 
 
       }
@@ -2631,6 +3741,7 @@ async function saveProject(){
     setTimeout(
       () => {
 
+
         if(
           playbackStatus.textContent ===
           "Progetto salvato"
@@ -2640,6 +3751,7 @@ async function saveProject(){
             "Pronto";
 
         }
+
 
       },
       1800
@@ -2651,16 +3763,18 @@ async function saveProject(){
   catch(error){
 
 
-    console.error(error);
-
-
-    alert(
-      "Non riesco a salvare il progetto."
+    console.error(
+      error
     );
 
 
     playbackStatus.textContent =
       "Errore salvataggio";
+
+
+    alert(
+      "Non riesco a salvare il progetto."
+    );
 
 
   }
@@ -2683,6 +3797,7 @@ async function loadSavedProject(){
 
 
     const transaction =
+
       db.transaction(
         DB_STORE,
         "readonly"
@@ -2745,6 +3860,7 @@ async function loadSavedProject(){
     clearPersonalSoundsFromMemory();
 
 
+
     (
       project.personalSounds ||
       []
@@ -2779,22 +3895,26 @@ async function loadSavedProject(){
           name:
             savedSound.name,
 
-          label:
-            savedSound.label ||
-            "Registrazione personale",
-
-          icon:
-            savedSound.icon ||
-            "REC",
-
-          kind:
-            "personal",
-
           file:
             url,
 
           blob:
-            savedSound.blob
+            savedSound.blob,
+
+          kind:
+            "personal",
+
+          category:
+            savedSound.category ||
+            "personal",
+
+          type:
+            savedSound.type ||
+            "recording",
+
+          typeLabel:
+            savedSound.typeLabel ||
+            "REGISTRAZIONE"
 
         };
 
@@ -2900,16 +4020,19 @@ async function loadSavedProject(){
 
 
     trackCounter =
+
       project.trackCounter ||
       tracks.length;
 
 
     clipCounter =
+
       project.clipCounter ||
       0;
 
 
     personalSoundCounter =
+
       project.personalSoundCounter ||
       personalSoundIds.length;
 
@@ -2988,6 +4111,7 @@ async function deleteSavedProject(){
 
 
     const transaction =
+
       db.transaction(
         DB_STORE,
         "readwrite"
@@ -3045,6 +4169,7 @@ function getAudioContext(){
   ){
 
     audioContext =
+
       new (
         window.AudioContext ||
         window.webkitAudioContext
@@ -3060,7 +4185,7 @@ function getAudioContext(){
 
 
 /* =========================================================
-   CARICA AUDIO
+   BUFFER AUDIO
 ========================================================= */
 
 async function loadAudioBuffer(
@@ -3085,6 +4210,7 @@ async function loadAudioBuffer(
 
 
   const response =
+
     await fetch(
       file
     );
@@ -3103,10 +4229,12 @@ async function loadAudioBuffer(
 
 
   const arrayBuffer =
+
     await response.arrayBuffer();
 
 
   const buffer =
+
     await context.decodeAudioData(
       arrayBuffer.slice(0)
     );
@@ -3190,6 +4318,7 @@ function previewSound(
 
     currentPreview.pause();
 
+
     currentPreview.currentTime =
       0;
 
@@ -3214,8 +4343,10 @@ function previewSound(
     currentPreview =
       null;
 
+
     currentPreviewButton =
       null;
+
 
     return;
 
@@ -3223,6 +4354,7 @@ function previewSound(
 
 
   const audio =
+
     new Audio(
       sound.file
     );
@@ -3268,324 +4400,7 @@ function previewSound(
 
 
 /* =========================================================
-   LIBRERIA
-========================================================= */
-
-function renderSoundLibrary(){
-
-  testSoundsList.innerHTML =
-    "";
-
-
-  mySoundsList.innerHTML =
-    "";
-
-
-  testSoundIds.forEach(
-    id => {
-
-
-      testSoundsList.appendChild(
-
-        createSoundCard(
-          sounds[id]
-        )
-
-      );
-
-
-    }
-  );
-
-
-  personalSoundIds.forEach(
-    id => {
-
-
-      if(
-        sounds[id]
-      ){
-
-        mySoundsList.appendChild(
-
-          createSoundCard(
-            sounds[id]
-          )
-
-        );
-
-      }
-
-
-    }
-  );
-
-
-  mySoundsEmpty.style.display =
-
-    personalSoundIds.length
-
-    ? "none"
-
-    : "block";
-
-
-  filterSoundCards();
-
-}
-
-
-
-function createSoundCard(
-  sound
-){
-
-  const card =
-    document.createElement(
-      "div"
-    );
-
-
-  card.className =
-    "sound-card";
-
-
-  card.draggable =
-    true;
-
-
-  card.dataset.soundId =
-    sound.id;
-
-
-  card.innerHTML = `
-
-    <div class="sound-icon">
-
-      ${escapeHtml(
-        sound.icon ||
-        "REC"
-      )}
-
-    </div>
-
-
-    <div class="sound-info">
-
-      <strong>
-
-        ${escapeHtml(
-          sound.name
-        )}
-
-      </strong>
-
-      <span>
-
-        ${escapeHtml(
-          sound.label ||
-          "Registrazione personale"
-        )}
-
-      </span>
-
-    </div>
-
-
-    <div class="sound-actions">
-
-      <button
-        class="sound-action preview"
-      >
-        ▶
-      </button>
-
-      <button
-        class="sound-action add"
-      >
-        ＋
-      </button>
-
-    </div>
-
-  `;
-
-
-  card.addEventListener(
-    "dragstart",
-    event => {
-
-
-      event.dataTransfer.setData(
-
-        "text/sound-id",
-
-        sound.id
-
-      );
-
-
-      event.dataTransfer.effectAllowed =
-        "copy";
-
-
-    }
-  );
-
-
-  card
-    .querySelector(
-      ".preview"
-    )
-    .addEventListener(
-      "click",
-      event => {
-
-
-        event.stopPropagation();
-
-
-        previewSound(
-
-          sound.id,
-
-          event.currentTarget
-
-        );
-
-
-      }
-    );
-
-
-  card
-    .querySelector(
-      ".add"
-    )
-    .addEventListener(
-      "click",
-      async event => {
-
-
-        event.stopPropagation();
-
-
-        if(
-          !selectedTrackId
-        ){
-
-          alert(
-            "Prima crea o seleziona una traccia."
-          );
-
-          return;
-
-        }
-
-
-        const track =
-
-          tracks.find(
-            t =>
-              t.id ===
-              selectedTrackId
-          );
-
-
-        let start =
-          0;
-
-
-        if(
-          track.clips.length
-        ){
-
-          start =
-
-            Math.max(
-
-              ...track.clips.map(
-
-                clip =>
-
-                  clip.start +
-                  clip.duration
-
-              )
-
-            );
-
-        }
-
-
-        await addSoundToTrack(
-
-          sound.id,
-
-          selectedTrackId,
-
-          start
-
-        );
-
-
-      }
-    );
-
-
-  return card;
-
-}
-
-
-
-/* =========================================================
-   RICERCA
-========================================================= */
-
-function filterSoundCards(){
-
-  const query =
-
-    soundSearch.value
-      .toLowerCase()
-      .trim();
-
-
-  document
-    .querySelectorAll(
-      ".sound-card"
-    )
-    .forEach(
-      card => {
-
-
-        card.style.display =
-
-          card.innerText
-            .toLowerCase()
-            .includes(query)
-
-          ? ""
-
-          : "none";
-
-
-      }
-    );
-
-}
-
-
-soundSearch.addEventListener(
-  "input",
-  filterSoundCards
-);
-
-
-
-/* =========================================================
-   REGISTRAZIONE MICROFONO
+   REGISTRAZIONE
 ========================================================= */
 
 async function toggleRecording(){
@@ -3739,7 +4554,9 @@ async function startRecording(){
   catch(error){
 
 
-    console.error(error);
+    console.error(
+      error
+    );
 
 
     releaseMicrophone();
@@ -3920,6 +4737,7 @@ async function handleRecordingStopped(){
 
 
   const url =
+
     URL.createObjectURL(
       blob
     );
@@ -3934,27 +4752,25 @@ async function handleRecordingStopped(){
     personalSoundCounter;
 
 
-  const name =
-
-    "Registrazione " +
-    personalSoundCounter;
-
-
   sounds[id] = {
 
     id:id,
 
-    name:name,
+    name:
+      "Registrazione " +
+      personalSoundCounter,
 
     file:url,
 
+    blob:blob,
+
     kind:"personal",
 
-    label:"Registrazione personale",
+    category:"personal",
 
-    icon:"REC",
+    type:"recording",
 
-    blob:blob
+    typeLabel:"REGISTRAZIONE"
 
   };
 
@@ -3964,7 +4780,18 @@ async function handleRecordingStopped(){
   );
 
 
-  renderSoundLibrary();
+  activeCategory =
+    "personal";
+
+
+  soundSearch.value =
+    "";
+
+
+  renderCategories();
+
+
+  renderSoundResults();
 
 
   markDirty();
@@ -3972,7 +4799,7 @@ async function handleRecordingStopped(){
 
   playbackStatus.textContent =
 
-    name +
+    sounds[id].name +
     " pronta";
 
 
@@ -3986,7 +4813,9 @@ async function handleRecordingStopped(){
 
   catch(error){
 
-    console.warn(error);
+    console.warn(
+      error
+    );
 
   }
 
@@ -4027,7 +4856,7 @@ recordButton.addEventListener(
 
 
 /* =========================================================
-   PULIZIA REGISTRAZIONI
+   PULIZIA SUONI PERSONALI
 ========================================================= */
 
 function clearPersonalSoundsFromMemory(){
@@ -4072,7 +4901,7 @@ function clearPersonalSoundsFromMemory(){
 
 
 /* =========================================================
-   TRACCE
+   CREA TRACCIA
 ========================================================= */
 
 function addTrack(){
@@ -4095,13 +4924,17 @@ function addTrack(){
       "Traccia " +
       trackCounter,
 
-    volume:100,
+    volume:
+      100,
 
-    mute:false,
+    mute:
+      false,
 
-    solo:false,
+    solo:
+      false,
 
-    clips:[]
+    clips:
+      []
 
   };
 
@@ -4123,6 +4956,10 @@ function addTrack(){
 }
 
 
+
+/* =========================================================
+   ELIMINA TRACCIA
+========================================================= */
 
 function deleteTrack(
   id
@@ -4163,7 +5000,8 @@ function deleteTrack(
 
 
   if(
-    selectedTrackId === id
+    selectedTrackId ===
+    id
   ){
 
     selectedTrackId =
@@ -4210,6 +5048,7 @@ async function addSoundToTrack(
 
 
   const track =
+
     tracks.find(
       t =>
         t.id ===
@@ -4328,7 +5167,7 @@ function getProjectDuration(){
 
 
 /* =========================================================
-   DATI CLIP
+   CLIP
 ========================================================= */
 
 function clipAvailableSource(
@@ -4393,7 +5232,7 @@ function loopCount(
 
 
 /* =========================================================
-   CREA CLIP
+   CREA ELEMENTO CLIP
 ========================================================= */
 
 function createClipElement(
@@ -4444,6 +5283,7 @@ function createClipElement(
 
       <div class="clip-top">
 
+
         <span class="clip-title">
 
           ${escapeHtml(
@@ -4465,6 +5305,7 @@ function createClipElement(
         <button class="clip-delete">
           ×
         </button>
+
 
       </div>
 
@@ -4555,10 +5396,12 @@ function createClipElement(
   requestAnimationFrame(
     () => {
 
+
       drawClipWaveform(
         el,
         clip
       );
+
 
     }
   );
@@ -5302,6 +6145,7 @@ function setupRightResize(
 
       event.preventDefault();
 
+
       event.stopPropagation();
 
 
@@ -5425,6 +6269,7 @@ function setupLeftResize(
 
 
       event.preventDefault();
+
 
       event.stopPropagation();
 
@@ -5629,7 +6474,7 @@ function setupLeftResize(
 
 
 /* =========================================================
-   SPOSTA FRA TRACCE
+   CAMBIO TRACCIA
 ========================================================= */
 
 function moveClipToTrack(
@@ -5769,6 +6614,7 @@ function renderTracks(){
 
           </div>
 
+
           <input
             class="track-name"
             value="${escapeHtml(
@@ -5788,12 +6634,14 @@ function renderTracks(){
             M
           </button>
 
+
           <button
             class="small-button solo-button
             ${track.solo ? "active" : ""}"
           >
             S
           </button>
+
 
           <button
             class="small-button delete-button"
@@ -6583,16 +7431,18 @@ async function playFrom(
   catch(error){
 
 
-    console.error(error);
-
-
-    alert(
-      "Errore durante il caricamento audio."
+    console.error(
+      error
     );
 
 
     playbackStatus.textContent =
       "Errore audio";
+
+
+    alert(
+      "Errore durante il caricamento audio."
+    );
 
 
     return;
@@ -6806,8 +7656,8 @@ function updateTrackGain(
   const track =
 
     tracks.find(
-      t =>
-        t.id ===
+      item =>
+        item.id ===
         trackId
     );
 
@@ -6827,7 +7677,7 @@ function updateTrackGain(
 
 
 /* =========================================================
-   CREA MIX OFFLINE
+   MIX OFFLINE
 ========================================================= */
 
 async function renderProjectMix(){
@@ -6931,10 +7781,6 @@ async function renderProjectMix(){
     offlineContext.createGain();
 
 
-  masterGain.gain.value =
-    1;
-
-
   masterGain.connect(
     offlineContext.destination
   );
@@ -6946,16 +7792,16 @@ async function renderProjectMix(){
   ){
 
 
-    const trackGain =
+    const gain =
 
       offlineContext.createGain();
 
 
-    trackGain.gain.value =
+    gain.gain.value =
       track.volume / 100;
 
 
-    trackGain.connect(
+    gain.connect(
       masterGain
     );
 
@@ -6970,7 +7816,7 @@ async function renderProjectMix(){
 
         offlineContext,
 
-        trackGain,
+        gain,
 
         clip
 
@@ -6990,7 +7836,7 @@ async function renderProjectMix(){
 
 
 /* =========================================================
-   SCHEDULAZIONE PER EXPORT
+   SCHEDULAZIONE EXPORT
 ========================================================= */
 
 async function scheduleClipForExport(
@@ -7095,7 +7941,7 @@ async function scheduleClipForExport(
 
 
 /* =========================================================
-   ESPORTAZIONE
+   EXPORT WAV / MP3
 ========================================================= */
 
 async function exportProject(
@@ -7154,15 +8000,6 @@ async function exportProject(
   );
 
 
-  playbackStatus.textContent =
-
-    format === "mp3"
-
-    ? "Preparazione MP3…"
-
-    : "Preparazione WAV…";
-
-
   try{
 
 
@@ -7170,10 +8007,12 @@ async function exportProject(
       "Mixaggio audio…";
 
 
-    const renderedBuffer =
+    const buffer =
 
       await renderProjectMix();
 
+
+    let blob;
 
 
     if(
@@ -7186,20 +8025,10 @@ async function exportProject(
         "Creazione WAV…";
 
 
-      const blob =
-
+      blob =
         audioBufferToWav(
-          renderedBuffer
+          buffer
         );
-
-
-      downloadAudio(
-
-        blob,
-
-        "wav"
-
-      );
 
 
     }
@@ -7211,24 +8040,22 @@ async function exportProject(
         "Codifica MP3…";
 
 
-      const blob =
-
+      blob =
         audioBufferToMp3(
-          renderedBuffer
+          buffer
         );
-
-
-      downloadAudio(
-
-        blob,
-
-        "mp3"
-
-      );
 
 
     }
 
+
+    downloadAudio(
+
+      blob,
+
+      format
+
+    );
 
 
     playbackStatus.textContent =
@@ -7238,27 +8065,6 @@ async function exportProject(
       +
 
       " esportato";
-
-
-    setTimeout(
-      () => {
-
-
-        if(
-          playbackStatus.textContent.includes(
-            "esportato"
-          )
-        ){
-
-          playbackStatus.textContent =
-            "Pronto";
-
-        }
-
-
-      },
-      2500
-    );
 
 
   }
@@ -7288,7 +8094,7 @@ async function exportProject(
     ){
 
       alert(
-        "Tutte le tracce sono in Mute. Attivane almeno una."
+        "Tutte le tracce sono in Mute."
       );
 
     }
@@ -7299,7 +8105,7 @@ async function exportProject(
     ){
 
       alert(
-        "L'encoder MP3 non è stato caricato. Il WAV continua a funzionare. Ricarica la pagina e riprova."
+        "L'encoder MP3 non è disponibile. Puoi comunque esportare in WAV."
       );
 
     }
@@ -7346,7 +8152,7 @@ async function exportProject(
 
 
 /* =========================================================
-   AUDIOBUFFER -> WAV
+   WAV
 ========================================================= */
 
 function audioBufferToWav(
@@ -7366,7 +8172,8 @@ function audioBufferToWav(
 
   const right =
 
-    buffer.numberOfChannels > 1
+    buffer.numberOfChannels >
+    1
 
     ? buffer.getChannelData(
         1
@@ -7383,14 +8190,8 @@ function audioBufferToWav(
     buffer.length;
 
 
-  const bytesPerSample =
-    2;
-
-
   const blockAlign =
-
-    channels *
-    bytesPerSample;
+    channels * 2;
 
 
   const dataSize =
@@ -7399,7 +8200,7 @@ function audioBufferToWav(
     blockAlign;
 
 
-  const arrayBuffer =
+  const output =
 
     new ArrayBuffer(
       44 +
@@ -7410,7 +8211,7 @@ function audioBufferToWav(
   const view =
 
     new DataView(
-      arrayBuffer
+      output
     );
 
 
@@ -7524,22 +8325,28 @@ function audioBufferToWav(
     const l =
 
       Math.max(
+
         -1,
+
         Math.min(
           1,
           left[i]
         )
+
       );
 
 
     const r =
 
       Math.max(
+
         -1,
+
         Math.min(
           1,
           right[i]
         )
+
       );
 
 
@@ -7548,7 +8355,9 @@ function audioBufferToWav(
       offset,
 
       l < 0
+
       ? l * 32768
+
       : l * 32767,
 
       true
@@ -7565,7 +8374,9 @@ function audioBufferToWav(
       offset,
 
       r < 0
+
       ? r * 32768
+
       : r * 32767,
 
       true
@@ -7582,7 +8393,7 @@ function audioBufferToWav(
 
   return new Blob(
 
-    [arrayBuffer],
+    [output],
 
     {
       type:"audio/wav"
@@ -7595,7 +8406,7 @@ function audioBufferToWav(
 
 
 /* =========================================================
-   AUDIOBUFFER -> MP3
+   MP3
 ========================================================= */
 
 function audioBufferToMp3(
@@ -7623,7 +8434,8 @@ function audioBufferToMp3(
 
   const right =
 
-    buffer.numberOfChannels > 1
+    buffer.numberOfChannels >
+    1
 
     ? buffer.getChannelData(
         1
@@ -7645,7 +8457,7 @@ function audioBufferToMp3(
     );
 
 
-  const mp3Data =
+  const chunks =
     [];
 
 
@@ -7708,10 +8520,10 @@ function audioBufferToMp3(
 
 
     if(
-      encoded.length > 0
+      encoded.length
     ){
 
-      mp3Data.push(
+      chunks.push(
 
         new Int8Array(
           encoded
@@ -7730,10 +8542,10 @@ function audioBufferToMp3(
 
 
   if(
-    finalData.length > 0
+    finalData.length
   ){
 
-    mp3Data.push(
+    chunks.push(
 
       new Int8Array(
         finalData
@@ -7746,7 +8558,7 @@ function audioBufferToMp3(
 
   return new Blob(
 
-    mp3Data,
+    chunks,
 
     {
       type:"audio/mpeg"
@@ -7757,10 +8569,6 @@ function audioBufferToMp3(
 }
 
 
-
-/* =========================================================
-   FLOAT -> INT16
-========================================================= */
 
 function floatToInt16(
   input
@@ -7780,7 +8588,7 @@ function floatToInt16(
   ){
 
 
-    const sample =
+    const value =
 
       Math.max(
 
@@ -7796,11 +8604,11 @@ function floatToInt16(
 
     output[i] =
 
-      sample < 0
+      value < 0
 
-      ? sample * 32768
+      ? value * 32768
 
-      : sample * 32767;
+      : value * 32767;
 
 
   }
@@ -7811,10 +8619,6 @@ function floatToInt16(
 }
 
 
-
-/* =========================================================
-   HEADER WAV
-========================================================= */
 
 function writeAscii(
   view,
@@ -7845,7 +8649,7 @@ function writeAscii(
 
 
 /* =========================================================
-   DOWNLOAD
+   DOWNLOAD AUDIO
 ========================================================= */
 
 function downloadAudio(
@@ -7857,7 +8661,11 @@ function downloadAudio(
     new Date();
 
 
-  const date =
+  const filename =
+
+    "SoundLab_"
+
+    +
 
     now.getFullYear()
 
@@ -7887,10 +8695,13 @@ function downloadAudio(
     .padStart(
       2,
       "0"
-    );
+    )
 
+    +
 
-  const time =
+    "_"
+
+    +
 
     String(
       now.getHours()
@@ -7912,24 +8723,7 @@ function downloadAudio(
     .padStart(
       2,
       "0"
-    );
-
-
-  const filename =
-
-    "SoundLab_"
-
-    +
-
-    date
-
-    +
-
-    "_"
-
-    +
-
-    time
+    )
 
     +
 
@@ -7989,24 +8783,8 @@ function downloadAudio(
 
 
 /* =========================================================
-   MENU ESPORTA
+   MENU ESPORTAZIONE
 ========================================================= */
-
-function openExportMenu(){
-
-  exportMenu.classList.add(
-    "open"
-  );
-
-
-  exportButton.setAttribute(
-    "aria-expanded",
-    "true"
-  );
-
-}
-
-
 
 function closeExportMenu(){
 
@@ -8014,14 +8792,7 @@ function closeExportMenu(){
     "open"
   );
 
-
-  exportButton.setAttribute(
-    "aria-expanded",
-    "false"
-  );
-
 }
-
 
 
 exportButton.addEventListener(
@@ -8032,26 +8803,13 @@ exportButton.addEventListener(
     event.stopPropagation();
 
 
-    if(
-      exportMenu.classList.contains(
-        "open"
-      )
-    ){
-
-      closeExportMenu();
-
-    }
-
-    else{
-
-      openExportMenu();
-
-    }
+    exportMenu.classList.toggle(
+      "open"
+    );
 
 
   }
 );
-
 
 
 document
@@ -8070,15 +8828,13 @@ document
           event.stopPropagation();
 
 
-          const format =
-            button.dataset.format;
-
-
           closeExportMenu();
 
 
           await exportProject(
-            format
+
+            button.dataset.format
+
           );
 
 
@@ -8090,7 +8846,6 @@ document
   );
 
 
-
 document.addEventListener(
   "click",
   event => {
@@ -8100,26 +8855,6 @@ document.addEventListener(
       !exportWrap.contains(
         event.target
       )
-    ){
-
-      closeExportMenu();
-
-    }
-
-
-  }
-);
-
-
-
-document.addEventListener(
-  "keydown",
-  event => {
-
-
-    if(
-      event.key ===
-      "Escape"
     ){
 
       closeExportMenu();
@@ -8374,6 +9109,14 @@ document
         null;
 
 
+      activeCategory =
+        "all";
+
+
+      soundSearch.value =
+        "";
+
+
       await deleteSavedProject();
 
 
@@ -8391,7 +9134,10 @@ document
       );
 
 
-      renderSoundLibrary();
+      renderCategories();
+
+
+      renderSoundResults();
 
 
       renderTracks();
@@ -8403,7 +9149,7 @@ document
 
 
 /* =========================================================
-   BOTTONI
+   PULSANTI
 ========================================================= */
 
 document
@@ -8539,14 +9285,16 @@ async function startSoundLab(){
   await loadSavedProject();
 
 
-  renderSoundLibrary();
+  renderCategories();
+
+
+  renderSoundResults();
 
 
   renderTracks();
 
 
   updatePlayheadUI();
-
 
 }
 
@@ -8556,4 +9304,5 @@ startSoundLab();
 </script>
 
 </body>
+
 </html>
