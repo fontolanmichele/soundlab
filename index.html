@@ -1,59 +1,43 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SoundLab</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin
->
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
-  rel="stylesheet"
->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
-* {
-  box-sizing: border-box;
+*{
+  box-sizing:border-box;
 }
 
-:root {
-  --text: #1c5364;
-  --muted: #648795;
+:root{
+  --text:#1c5364;
+  --muted:#648795;
 
-  --blue: #72cfff;
-  --green: #6fe0a0;
-  --mint: #50d7c3;
+  --blue:#72cfff;
+  --green:#6fe0a0;
+  --mint:#50d7c3;
 
-  --line: rgba(46,115,140,.13);
+  --line:rgba(46,115,140,.13);
 
-  --track-width: 190px;
-  --timeline-width: 1600px;
-  --px-second: 19px;
+  --track-width:190px;
+  --timeline-width:1600px;
+  --px-second:19px;
 }
 
 html,
-body {
-  margin: 0;
-  height: 100%;
+body{
+  margin:0;
+  height:100%;
 
-  font-family: "Nunito", sans-serif;
+  font-family:"Nunito",sans-serif;
 
-  color: var(--text);
+  color:var(--text);
 
   background:
     radial-gradient(
@@ -73,62 +57,66 @@ body {
       #edfff5
     );
 
-  overflow: hidden;
+  overflow:hidden;
 }
 
 button,
-input {
-  font-family: inherit;
+input{
+  font-family:inherit;
 }
 
-button {
-  cursor: pointer;
+button{
+  cursor:pointer;
 }
 
-.app {
-  height: 100vh;
+.app{
+  height:100vh;
 
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 }
 
 
-/* =========================================
+/* =========================
    HEADER
-========================================= */
+========================= */
 
-.topbar {
-  height: 88px;
-  flex-shrink: 0;
+.topbar{
+  height:88px;
+  flex-shrink:0;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 
-  padding: 0 24px;
+  padding:0 24px;
 
-  background: rgba(255,255,255,.40);
-  backdrop-filter: blur(14px);
+  background:
+    rgba(255,255,255,.40);
+
+  backdrop-filter:
+    blur(14px);
 
   border-bottom:
     1px solid rgba(255,255,255,.55);
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
+.brand{
+  display:flex;
+  align-items:center;
+
+  gap:14px;
 }
 
-.brand-logo {
-  width: 58px;
-  height: 58px;
+.brand-logo{
+  width:58px;
+  height:58px;
 
-  border-radius: 20px;
+  border-radius:20px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   background:
     linear-gradient(
@@ -138,64 +126,68 @@ button {
     );
 }
 
-.brand-logo svg {
-  width: 43px;
-  height: 43px;
+.brand-logo svg{
+  width:43px;
+  height:43px;
 }
 
-.brand h1 {
-  margin: 0;
+.brand h1{
+  margin:0;
 
-  font-family: "Fredoka", sans-serif;
+  font-family:"Fredoka",sans-serif;
 
-  color: #28778e;
-  font-size: 32px;
+  color:#28778e;
+
+  font-size:32px;
 }
 
-.brand p {
-  margin: 5px 0 0;
+.brand p{
+  margin:5px 0 0;
 
-  font-size: 12px;
-  font-weight: 800;
+  font-size:12px;
+  font-weight:800;
 
-  color: #5d8492;
+  color:#5d8492;
 }
 
-.top-actions {
-  display: flex;
-  gap: 10px;
+.top-actions{
+  display:flex;
+
+  gap:10px;
 }
 
 
-/* =========================================
+/* =========================
    PULSANTI
-========================================= */
+========================= */
 
-.button {
+.button{
   border:
     1px solid rgba(58,126,151,.12);
 
-  border-radius: 14px;
+  border-radius:14px;
 
-  padding: 11px 16px;
+  padding:11px 16px;
 
   background:
     rgba(255,255,255,.66);
 
-  color: var(--text);
+  color:var(--text);
 
-  font-weight: 800;
+  font-weight:800;
 
-  transition: .15s;
+  transition:.15s;
 }
 
-.button:hover {
-  background: white;
-  transform: translateY(-1px);
+.button:hover{
+  background:white;
+
+  transform:
+    translateY(-1px);
 }
 
-.button-primary {
-  border: none;
+.button-primary{
+  border:none;
 
   background:
     linear-gradient(
@@ -204,19 +196,19 @@ button {
       var(--green)
     );
 
-  color: #0b5344;
+  color:#0b5344;
 }
 
 
-/* =========================================
+/* =========================
    LAYOUT
-========================================= */
+========================= */
 
-.workspace {
-  flex: 1;
-  min-height: 0;
+.workspace{
+  flex:1;
+  min-height:0;
 
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     320px
@@ -224,15 +216,15 @@ button {
 }
 
 
-/* =========================================
+/* =========================
    LIBRERIA
-========================================= */
+========================= */
 
-.library {
-  min-height: 0;
+.library{
+  min-height:0;
 
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 
   background:
     rgba(255,255,255,.32);
@@ -241,82 +233,97 @@ button {
     1px solid rgba(255,255,255,.50);
 }
 
-.library-header {
-  padding: 18px;
+.library-header{
+  padding:18px;
 
   border-bottom:
     1px solid var(--line);
 }
 
-.library-header h2 {
-  margin: 0;
+.library-header h2{
+  margin:0;
 
-  font-family: "Fredoka";
+  font-family:"Fredoka";
 
-  color: #267a91;
+  color:#267a91;
 
-  font-size: 21px;
+  font-size:21px;
 }
 
-.library-header p {
-  margin: 5px 0 0;
+.library-header p{
+  margin:5px 0 0;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 12px;
+  font-size:12px;
 }
 
-.search-box {
-  padding: 13px 15px 8px;
+.search-box{
+  padding:
+    13px
+    15px
+    8px;
 }
 
-.search-box input {
-  width: 100%;
+.search-box input{
+  width:100%;
 
   border:
     1px solid rgba(54,130,154,.15);
 
-  border-radius: 14px;
+  border-radius:14px;
 
-  padding: 11px 13px;
+  padding:
+    11px
+    13px;
 
   background:
     rgba(255,255,255,.72);
 
-  outline: none;
+  outline:none;
 
-  color: var(--text);
+  color:var(--text);
 }
 
-.library-content {
-  flex: 1;
-  min-height: 0;
+.library-content{
+  flex:1;
+  min-height:0;
 
-  overflow-y: auto;
+  overflow-y:auto;
 
-  padding: 8px 12px 20px;
+  padding:
+    8px
+    12px
+    20px;
 }
 
-.section-label {
-  margin: 12px 7px 9px;
+.section-label{
+  margin:
+    12px
+    7px
+    9px;
 
-  text-transform: uppercase;
+  text-transform:uppercase;
 
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size:10px;
 
-  color: #6d93a0;
+  letter-spacing:1px;
 
-  font-weight: 800;
+  color:#6d93a0;
+
+  font-weight:800;
 }
 
-.category {
-  width: 100%;
+.category{
+  width:100%;
 
-  padding: 9px 11px;
-  margin-bottom: 6px;
+  padding:
+    9px
+    11px;
 
-  border-radius: 15px;
+  margin-bottom:6px;
+
+  border-radius:15px;
 
   border:
     1px solid rgba(64,130,155,.10);
@@ -324,14 +331,14 @@ button {
   background:
     rgba(255,255,255,.44);
 
-  text-align: left;
+  text-align:left;
 
-  color: #285f70;
+  color:#285f70;
 
-  font-weight: 800;
+  font-weight:800;
 }
 
-.category.active {
+.category.active{
   background:
     linear-gradient(
       135deg,
@@ -341,32 +348,32 @@ button {
 }
 
 
-/* =========================================
+/* =========================
    SUONI
-========================================= */
+========================= */
 
-.sound-list {
-  display: flex;
-  flex-direction: column;
+.sound-list{
+  display:flex;
+  flex-direction:column;
 
-  gap: 8px;
+  gap:8px;
 }
 
-.sound-card {
-  display: grid;
+.sound-card{
+  display:grid;
 
   grid-template-columns:
     42px
     1fr
     auto;
 
-  align-items: center;
+  align-items:center;
 
-  gap: 9px;
+  gap:9px;
 
-  padding: 9px;
+  padding:9px;
 
-  border-radius: 16px;
+  border-radius:16px;
 
   border:
     1px solid rgba(61,126,151,.11);
@@ -377,24 +384,24 @@ button {
   box-shadow:
     0 5px 14px rgba(60,120,140,.07);
 
-  cursor: grab;
+  cursor:grab;
 
-  user-select: none;
+  user-select:none;
 }
 
-.sound-card:active {
-  cursor: grabbing;
+.sound-card:active{
+  cursor:grabbing;
 }
 
-.sound-icon {
-  width: 42px;
-  height: 42px;
+.sound-icon{
+  width:42px;
+  height:42px;
 
-  border-radius: 13px;
+  border-radius:13px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   background:
     linear-gradient(
@@ -403,97 +410,144 @@ button {
       rgba(111,224,160,.34)
     );
 
-  color: #2d8198;
+  color:#2d8198;
 
-  font-family: "Fredoka";
+  font-family:"Fredoka";
 
-  font-size: 20px;
-  font-weight: 700;
+  font-size:17px;
+
+  font-weight:700;
 }
 
-.sound-info strong {
-  display: block;
+.sound-info strong{
+  display:block;
 
-  font-size: 13px;
+  font-size:13px;
 
-  color: #285f70;
+  color:#285f70;
 }
 
-.sound-info span {
-  display: block;
+.sound-info span{
+  display:block;
 
-  margin-top: 2px;
+  margin-top:2px;
 
-  font-size: 10px;
+  font-size:10px;
 
-  color: #7995a0;
+  color:#7995a0;
 }
 
-.sound-actions {
-  display: flex;
-  gap: 5px;
+.sound-actions{
+  display:flex;
+
+  gap:5px;
 }
 
-.sound-action {
-  width: 31px;
-  height: 31px;
+.sound-action{
+  width:31px;
+  height:31px;
 
-  border: 0;
+  border:0;
 
-  border-radius: 10px;
+  border-radius:10px;
 
-  font-weight: 900;
+  font-weight:900;
 
-  color: #297188;
+  color:#297188;
 
-  background: #e8fbff;
+  background:#e8fbff;
 }
 
-.sound-action.add {
-  background: #dff8e8;
+.sound-action.add{
+  background:#dff8e8;
 
-  color: #27825d;
+  color:#27825d;
 }
 
-.drag-hint {
-  margin: 10px 4px 5px;
+.my-sounds-empty{
+  padding:12px;
 
-  padding: 10px 12px;
+  border-radius:14px;
 
-  border-radius: 14px;
+  background:
+    rgba(255,255,255,.42);
 
-  color: #507d8c;
+  color:#6e8d99;
+
+  font-size:11px;
+
+  line-height:1.4;
+}
+
+.library-note{
+  margin:
+    8px
+    4px
+    5px;
+
+  padding:
+    9px
+    11px;
+
+  border-radius:13px;
+
+  color:#5a7f8c;
+
+  background:
+    rgba(255,255,255,.38);
+
+  font-size:10px;
+
+  line-height:1.4;
+}
+
+.drag-hint{
+  margin:
+    10px
+    4px
+    5px;
+
+  padding:
+    10px
+    12px;
+
+  border-radius:14px;
+
+  color:#507d8c;
 
   background:
     rgba(255,255,255,.43);
 
-  font-size: 11px;
-  line-height: 1.45;
+  font-size:11px;
+
+  line-height:1.45;
 }
 
 
-/* =========================================
+/* =========================
    EDITOR
-========================================= */
+========================= */
 
-.editor {
-  min-width: 0;
-  min-height: 0;
+.editor{
+  min-width:0;
+  min-height:0;
 
-  display: flex;
-  flex-direction: column;
+  display:flex;
+  flex-direction:column;
 }
 
-.hero {
-  min-height: 82px;
-  flex-shrink: 0;
+.hero{
+  min-height:82px;
+  flex-shrink:0;
 
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
 
-  gap: 14px;
+  gap:14px;
 
-  padding: 13px 20px;
+  padding:
+    13px
+    20px;
 
   background:
     rgba(255,255,255,.22);
@@ -502,58 +556,60 @@ button {
     1px solid var(--line);
 }
 
-.hero-planet {
-  width: 57px;
-  height: 57px;
+.hero-planet{
+  width:57px;
+  height:57px;
 
-  border-radius: 18px;
+  border-radius:18px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   background:
     rgba(255,255,255,.64);
 }
 
-.hero-planet svg {
-  width: 45px;
-  height: 45px;
+.hero-planet svg{
+  width:45px;
+  height:45px;
 }
 
-.hero h2 {
-  margin: 0;
+.hero h2{
+  margin:0;
 
-  font-family: "Fredoka";
+  font-family:"Fredoka";
 
-  font-size: 23px;
+  font-size:23px;
 
-  color: #27788e;
+  color:#27788e;
 }
 
-.hero p {
-  margin: 4px 0 0;
+.hero p{
+  margin:4px 0 0;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 12px;
+  font-size:12px;
 }
 
 
-/* =========================================
+/* =========================
    TOOLBAR
-========================================= */
+========================= */
 
-.toolbar {
-  height: 66px;
-  flex-shrink: 0;
+.toolbar{
+  height:66px;
+  flex-shrink:0;
 
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
 
-  gap: 10px;
+  gap:10px;
 
-  padding: 0 18px;
+  padding:
+    0
+    18px;
 
   background:
     rgba(255,255,255,.30);
@@ -562,33 +618,83 @@ button {
     1px solid var(--line);
 }
 
-.transport {
-  margin-left: auto;
-
-  display: flex;
-  gap: 9px;
+.record-button{
+  position:relative;
 }
 
-.transport-button {
-  width: 45px;
-  height: 45px;
+.record-button.recording{
+  background:#ffe6ea;
 
-  border: 0;
+  color:#a63f52;
 
-  border-radius: 50%;
+  border-color:
+    rgba(215,78,102,.18);
+
+  box-shadow:
+    0 0 0 6px
+    rgba(255,95,120,.10);
+}
+
+.record-button.recording::before{
+  content:"";
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  display:inline-block;
+
+  margin-right:7px;
+
+  background:#ff5f78;
+
+  animation:
+    pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+  0%,
+  100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.35;
+  }
+
+}
+
+.transport{
+  margin-left:auto;
+
+  display:flex;
+
+  gap:9px;
+}
+
+.transport-button{
+  width:45px;
+  height:45px;
+
+  border:0;
+
+  border-radius:50%;
 
   background:
     rgba(255,255,255,.70);
 
-  color: #33778b;
+  color:#33778b;
 
-  font-size: 16px;
-  font-weight: 900;
+  font-size:16px;
 
-  transition: .15s;
+  font-weight:900;
+
+  transition:.15s;
 }
 
-.transport-button.play {
+.transport-button.play{
   background:
     linear-gradient(
       135deg,
@@ -596,67 +702,74 @@ button {
       var(--green)
     );
 
-  color: #0d5546;
+  color:#0d5546;
 }
 
-.transport-button.play.running {
-  transform: scale(1.07);
+.transport-button.play.running{
+  transform:
+    scale(1.07);
 
   box-shadow:
-    0 0 0 7px rgba(80,215,195,.17);
+    0 0 0 7px
+    rgba(80,215,195,.17);
 }
 
 
-/* =========================================
+/* =========================
    TIMELINE
-========================================= */
+========================= */
 
-.timeline-shell {
-  position: relative;
+.timeline-shell{
+  position:relative;
 
-  flex: 1;
-  min-height: 0;
+  flex:1;
+  min-height:0;
 }
 
-.timeline-scroll {
-  position: absolute;
-  inset: 0;
+.timeline-scroll{
+  position:absolute;
 
-  overflow: auto;
+  inset:0;
+
+  overflow:auto;
 }
 
-.timeline-canvas {
-  width: var(--timeline-width);
-  min-height: 100%;
+.timeline-canvas{
+  width:
+    var(--timeline-width);
 
-  position: relative;
+  min-height:100%;
+
+  position:relative;
 }
 
-.timeline-header {
-  height: 48px;
+.timeline-header{
+  height:48px;
 
-  position: sticky;
-  top: 0;
+  position:sticky;
 
-  z-index: 20;
+  top:0;
 
-  display: grid;
+  z-index:20;
+
+  display:grid;
 
   grid-template-columns:
     var(--track-width)
     1fr;
 }
 
-.track-header {
-  position: sticky;
-  left: 0;
+.track-header{
+  position:sticky;
 
-  z-index: 22;
+  left:0;
 
-  display: flex;
-  align-items: center;
+  z-index:22;
 
-  padding-left: 14px;
+  display:flex;
+  align-items:center;
+
+  padding-left:14px;
 
   background:
     rgba(244,253,255,.98);
@@ -667,17 +780,19 @@ button {
   border-bottom:
     1px solid var(--line);
 
-  font-size: 10px;
-  font-weight: 800;
+  font-size:10px;
 
-  color: #668b99;
+  font-weight:800;
 
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color:#668b99;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
 }
 
-.ruler {
-  display: flex;
+.ruler{
+  display:flex;
 
   background:
     rgba(255,255,255,.86);
@@ -685,73 +800,83 @@ button {
   border-bottom:
     1px solid var(--line);
 
-  cursor: pointer;
+  cursor:pointer;
 }
 
-.time-mark {
-  width: 95px;
-  flex: 0 0 95px;
+.time-mark{
+  width:95px;
+
+  flex:
+    0
+    0
+    95px;
 
   border-left:
     1px solid rgba(66,125,149,.14);
 
-  padding: 8px 0 0 7px;
+  padding:
+    8px
+    0
+    0
+    7px;
 
-  font-size: 10px;
-  font-weight: 800;
+  font-size:10px;
 
-  color: #7493a0;
+  font-weight:800;
+
+  color:#7493a0;
 }
 
 
-/* =========================================
+/* =========================
    TESTINA
-========================================= */
+========================= */
 
-.playhead {
-  position: absolute;
+.playhead{
+  position:absolute;
 
-  top: 48px;
-  bottom: 0;
+  top:48px;
+  bottom:0;
 
-  width: 2px;
+  width:2px;
 
-  background: #ff6d83;
+  background:#ff6d83;
 
-  z-index: 7;
+  z-index:7;
 
-  pointer-events: none;
+  pointer-events:none;
 
   box-shadow:
-    0 0 5px rgba(255,109,131,.35);
+    0 0 5px
+    rgba(255,109,131,.35);
 }
 
-.playhead::before {
-  content: "";
+.playhead::before{
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  top: 0;
-  left: -5px;
+  top:0;
+  left:-5px;
 
-  width: 12px;
-  height: 10px;
+  width:12px;
+  height:10px;
 
   border-radius:
     0 0 6px 6px;
 
-  background: #ff6d83;
+  background:#ff6d83;
 }
 
 
-/* =========================================
+/* =========================
    TRACCE
-========================================= */
+========================= */
 
-.track-row {
-  height: 116px;
+.track-row{
+  height:116px;
 
-  display: grid;
+  display:grid;
 
   grid-template-columns:
     var(--track-width)
@@ -761,13 +886,14 @@ button {
     1px solid var(--line);
 }
 
-.track-controls {
-  position: sticky;
-  left: 0;
+.track-controls{
+  position:sticky;
 
-  z-index: 8;
+  left:0;
 
-  padding: 10px;
+  z-index:8;
+
+  padding:10px;
 
   background:
     rgba(244,253,255,.96);
@@ -777,7 +903,7 @@ button {
 }
 
 .track-row.selected
-.track-controls {
+.track-controls{
   background:
     linear-gradient(
       135deg,
@@ -789,24 +915,24 @@ button {
     inset 4px 0 0 var(--mint);
 }
 
-.track-title-row {
-  display: flex;
-  align-items: center;
+.track-title-row{
+  display:flex;
+  align-items:center;
 
-  gap: 6px;
+  gap:6px;
 }
 
-.track-number {
-  width: 25px;
-  height: 25px;
+.track-number{
+  width:25px;
+  height:25px;
 
-  border-radius: 9px;
+  border-radius:9px;
 
-  flex-shrink: 0;
+  flex-shrink:0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
   background:
     linear-gradient(
@@ -815,90 +941,95 @@ button {
       var(--green)
     );
 
-  color: #18536a;
+  color:#18536a;
 
-  font-family: "Fredoka";
+  font-family:"Fredoka";
 
-  font-weight: 700;
-  font-size: 12px;
+  font-weight:700;
+
+  font-size:12px;
 }
 
-.track-name {
-  flex: 1;
-  min-width: 0;
+.track-name{
+  flex:1;
+  min-width:0;
 
   border:
     1px solid rgba(62,126,151,.12);
 
-  border-radius: 9px;
+  border-radius:9px;
 
-  background: white;
+  background:white;
 
-  padding: 6px 7px;
+  padding:
+    6px
+    7px;
 
-  color: #285f70;
+  color:#285f70;
 
-  font-weight: 800;
+  font-weight:800;
 }
 
-.track-actions {
-  display: flex;
+.track-actions{
+  display:flex;
 
-  gap: 5px;
+  gap:5px;
 
-  margin-top: 7px;
+  margin-top:7px;
 }
 
-.small-button {
-  width: 27px;
-  height: 27px;
+.small-button{
+  width:27px;
+  height:27px;
 
-  border-radius: 8px;
+  border-radius:8px;
 
   border:
     1px solid rgba(58,126,151,.12);
 
-  background: white;
+  background:white;
 
-  color: #4d7887;
+  color:#4d7887;
 
-  font-weight: 900;
+  font-weight:900;
 }
 
-.small-button.active {
-  background: var(--mint);
+.small-button.active{
+  background:
+    var(--mint);
 
-  color: #0f5144;
+  color:#0f5144;
 }
 
-.delete-button {
-  color: #af626b;
+.delete-button{
+  color:#af626b;
 }
 
-.volume-row {
-  display: flex;
-  align-items: center;
+.volume-row{
+  display:flex;
+  align-items:center;
 
-  gap: 5px;
+  gap:5px;
 
-  margin-top: 6px;
+  margin-top:6px;
 
-  font-size: 9px;
+  font-size:9px;
 
-  color: #72909c;
+  color:#72909c;
 }
 
-.volume-row input {
-  flex: 1;
-  min-width: 0;
+.volume-row input{
+  flex:1;
+  min-width:0;
 
-  accent-color: var(--mint);
+  accent-color:
+    var(--mint);
 }
 
-.track-lane {
-  position: relative;
+.track-lane{
+  position:relative;
 
-  overflow: hidden;
+  overflow:hidden;
 
   background:
     linear-gradient(
@@ -908,64 +1039,68 @@ button {
     );
 
   background-size:
-    95px 100%;
+    95px
+    100%;
 }
 
 .track-row:nth-child(even)
-.track-lane {
+.track-lane{
   background-color:
     rgba(255,255,255,.11);
 }
 
 .track-row.selected
-.track-lane {
+.track-lane{
   background-color:
     rgba(80,215,195,.08);
 }
 
-.track-lane.drag-over {
+.track-lane.drag-over{
   background-color:
     rgba(89,220,173,.20)
     !important;
 
   outline:
-    2px dashed rgba(49,170,128,.55);
+    2px dashed
+    rgba(49,170,128,.55);
 
-  outline-offset: -3px;
+  outline-offset:-3px;
 }
 
-.lane-hint {
-  position: absolute;
+.lane-hint{
+  position:absolute;
 
-  left: 25px;
-  top: 50%;
+  left:25px;
+  top:50%;
 
   transform:
     translateY(-50%);
 
-  font-size: 11px;
-  font-weight: 700;
+  font-size:11px;
+
+  font-weight:700;
 
   color:
     rgba(66,115,132,.32);
 
-  pointer-events: none;
+  pointer-events:none;
 }
 
 
-/* =========================================
-   CLIP
-========================================= */
+/* =========================
+   CLIP AUDIO
+========================= */
 
-.audio-clip {
-  position: absolute;
+.audio-clip{
+  position:absolute;
 
-  top: 17px;
+  top:17px;
 
-  height: 80px;
-  min-width: 38px;
+  height:80px;
 
-  border-radius: 15px;
+  min-width:38px;
+
+  border-radius:15px;
 
   background:
     linear-gradient(
@@ -978,17 +1113,19 @@ button {
     2px solid rgba(255,255,255,.72);
 
   box-shadow:
-    0 7px 16px rgba(45,119,143,.18);
+    0 7px 16px
+    rgba(45,119,143,.18);
 
-  overflow: visible;
+  overflow:visible;
 
-  cursor: grab;
+  cursor:grab;
 
-  user-select: none;
-  touch-action: none;
+  user-select:none;
+
+  touch-action:none;
 }
 
-.audio-clip.looping {
+.audio-clip.looping{
   background:
     linear-gradient(
       135deg,
@@ -997,202 +1134,213 @@ button {
     );
 }
 
-.audio-clip:active {
-  cursor: grabbing;
+.audio-clip:active{
+  cursor:grabbing;
 }
 
-.clip-body {
-  position: absolute;
-  inset: 0;
+.clip-body{
+  position:absolute;
 
-  overflow: hidden;
+  inset:0;
 
-  border-radius: 13px;
+  overflow:hidden;
+
+  border-radius:13px;
 }
 
-.clip-top {
-  height: 27px;
+.clip-top{
+  height:27px;
 
-  padding: 4px 7px;
+  padding:
+    4px
+    7px;
 
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
 
-  gap: 5px;
+  gap:5px;
 
   background:
     rgba(255,255,255,.30);
 
-  font-size: 10px;
-  font-weight: 900;
+  font-size:10px;
 
-  color: #1e6276;
+  font-weight:900;
+
+  color:#1e6276;
 }
 
-.clip-title {
-  flex: 1;
-  min-width: 0;
+.clip-title{
+  flex:1;
+  min-width:0;
 
-  white-space: nowrap;
+  white-space:nowrap;
 
-  overflow: hidden;
+  overflow:hidden;
 
-  text-overflow: ellipsis;
+  text-overflow:ellipsis;
 }
 
-.clip-delete {
-  border: 0;
+.clip-delete{
+  border:0;
 
-  padding: 0;
+  padding:0;
 
-  background: transparent;
+  background:transparent;
 
-  color: #9b5260;
+  color:#9b5260;
 
-  font-weight: 900;
+  font-weight:900;
 }
 
-.loop-badge {
-  display: none;
+.loop-badge{
+  display:none;
 
-  padding: 2px 5px;
+  padding:
+    2px
+    5px;
 
-  border-radius: 999px;
+  border-radius:999px;
 
   background:
     rgba(255,255,255,.70);
 
-  color: #27785f;
+  color:#27785f;
 
-  font-size: 8px;
-  font-weight: 900;
+  font-size:8px;
+
+  font-weight:900;
 }
 
 .audio-clip.looping
-.loop-badge {
-  display: inline-flex;
+.loop-badge{
+  display:inline-flex;
 }
 
-.clip-duration {
-  position: absolute;
+.clip-duration{
+  position:absolute;
 
-  right: 8px;
-  bottom: 4px;
+  right:8px;
+  bottom:4px;
 
-  z-index: 3;
+  z-index:3;
 
-  padding: 1px 3px;
+  padding:
+    1px
+    3px;
 
-  border-radius: 4px;
+  border-radius:4px;
 
   background:
     rgba(255,255,255,.45);
 
-  font-size: 8px;
-  font-weight: 900;
+  font-size:8px;
+
+  font-weight:900;
 
   color:
     rgba(28,83,100,.78);
 
-  pointer-events: none;
+  pointer-events:none;
 }
 
 
-/* =========================================
+/* =========================
    WAVEFORM REALE
-========================================= */
+========================= */
 
-.waveform-wrap {
-  position: absolute;
+.waveform-wrap{
+  position:absolute;
 
-  left: 7px;
-  right: 7px;
+  left:7px;
+  right:7px;
 
-  top: 32px;
-  bottom: 8px;
+  top:32px;
+  bottom:8px;
 
-  overflow: hidden;
+  overflow:hidden;
 
-  pointer-events: none;
+  pointer-events:none;
 
-  border-radius: 5px;
+  border-radius:5px;
 }
 
-.waveform-canvas {
-  display: block;
+.waveform-canvas{
+  display:block;
 
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
 
-  opacity: .78;
+  opacity:.78;
 }
 
 
-/* =========================================
+/* =========================
    MANIGLIE
-========================================= */
+========================= */
 
-.resize-handle {
-  position: absolute;
+.resize-handle{
+  position:absolute;
 
-  top: 7px;
-  bottom: 7px;
+  top:7px;
+  bottom:7px;
 
-  width: 12px;
+  width:12px;
 
-  z-index: 10;
+  z-index:10;
 
   background:
     rgba(255,255,255,.76);
 
-  border-radius: 8px;
+  border-radius:8px;
 
-  cursor: ew-resize;
+  cursor:ew-resize;
 
   box-shadow:
-    0 2px 8px rgba(33,105,128,.16);
+    0 2px 8px
+    rgba(33,105,128,.16);
 }
 
-.resize-handle::after {
-  content: "";
+.resize-handle::after{
+  content:"";
 
-  position: absolute;
+  position:absolute;
 
-  top: 50%;
-  left: 50%;
+  top:50%;
+  left:50%;
 
   transform:
     translate(-50%,-50%);
 
-  width: 2px;
-  height: 22px;
+  width:2px;
+  height:22px;
 
-  border-radius: 3px;
+  border-radius:3px;
 
   background:
     rgba(42,113,136,.48);
 }
 
-.resize-handle.left {
-  left: -5px;
+.resize-handle.left{
+  left:-5px;
 }
 
-.resize-handle.right {
-  right: -5px;
+.resize-handle.right{
+  right:-5px;
 }
 
 
-/* =========================================
+/* =========================
    EMPTY
-========================================= */
+========================= */
 
-.empty-project {
-  position: absolute;
+.empty-project{
+  position:absolute;
 
-  z-index: 12;
+  z-index:12;
 
-  left: 50%;
-  top: 51%;
+  left:50%;
+  top:51%;
 
   transform:
     translate(-50%,-50%);
@@ -1203,59 +1351,71 @@ button {
       calc(100% - 40px)
     );
 
-  padding: 30px 24px;
+  padding:
+    30px
+    24px;
 
-  text-align: center;
+  text-align:center;
 
-  border-radius: 28px;
+  border-radius:28px;
 
   background:
     rgba(255,255,255,.82);
 
   box-shadow:
-    0 14px 40px rgba(56,119,144,.14);
+    0 14px 40px
+    rgba(56,119,144,.14);
 }
 
-.empty-project.hidden {
-  display: none;
+.empty-project.hidden{
+  display:none;
 }
 
-.empty-project h3 {
-  margin: 0 0 8px;
+.empty-project h3{
+  margin:
+    0
+    0
+    8px;
 
-  font-family: "Fredoka";
+  font-family:"Fredoka";
 
-  color: #26788e;
+  color:#26788e;
 
-  font-size: 28px;
+  font-size:28px;
 }
 
-.empty-project p {
-  margin: 0 auto 18px;
+.empty-project p{
+  margin:
+    0
+    auto
+    18px;
 
-  max-width: 470px;
+  max-width:470px;
 
-  color: var(--muted);
+  color:var(--muted);
 
-  font-size: 13px;
-  line-height: 1.5;
+  font-size:13px;
+
+  line-height:1.5;
 }
 
 
-/* =========================================
+/* =========================
    FOOTER
-========================================= */
+========================= */
 
-.bottom-bar {
-  height: 54px;
-  flex-shrink: 0;
+.bottom-bar{
+  height:54px;
+  flex-shrink:0;
 
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
 
-  gap: 10px;
+  gap:10px;
 
-  padding: 0 18px;
+  padding:
+    0
+    18px;
 
   background:
     rgba(255,255,255,.40);
@@ -1264,47 +1424,51 @@ button {
     1px solid rgba(255,255,255,.55);
 }
 
-.status {
-  padding: 7px 11px;
+.status{
+  padding:
+    7px
+    11px;
 
-  border-radius: 999px;
+  border-radius:999px;
 
   background:
     rgba(255,255,255,.65);
 
-  color: #567f8d;
+  color:#567f8d;
 
-  font-size: 11px;
-  font-weight: 800;
+  font-size:11px;
+
+  font-weight:800;
 }
 
-.time {
-  margin-left: auto;
+.time{
+  margin-left:auto;
 
-  color: #34788d;
+  color:#34788d;
 
-  font-size: 15px;
-  font-weight: 800;
+  font-size:15px;
+
+  font-weight:800;
 
   font-variant-numeric:
     tabular-nums;
 }
 
 
-@media(max-width:850px) {
+@media(max-width:850px){
 
-  .workspace {
+  .workspace{
     grid-template-columns:
       235px
       minmax(0,1fr);
   }
 
-  .brand p {
-    display: none;
+  .brand p{
+    display:none;
   }
 
-  .hero p {
-    display: none;
+  .hero p{
+    display:none;
   }
 
 }
@@ -1316,15 +1480,12 @@ button {
 
 <body>
 
-
 <div class="app">
 
 
 <header class="topbar">
 
-
   <div class="brand">
-
 
     <div class="brand-logo">
 
@@ -1366,7 +1527,6 @@ button {
 
     </div>
 
-
     <div>
 
       <h1>
@@ -1378,7 +1538,6 @@ button {
       </p>
 
     </div>
-
 
   </div>
 
@@ -1408,15 +1567,11 @@ button {
 
   </div>
 
-
 </header>
-
 
 
 <main class="workspace">
 
-
-<!-- LIBRERIA -->
 
 <aside class="library">
 
@@ -1428,7 +1583,7 @@ button {
     </h2>
 
     <p>
-      Ascolta un suono e trascinalo nella timeline.
+      Ascolta, registra e trascina i suoni nella timeline.
     </p>
 
   </div>
@@ -1451,6 +1606,7 @@ button {
     <div class="section-label">
       Ambienti
     </div>
+
 
     <button class="category active">
       Città
@@ -1502,162 +1658,52 @@ button {
     </div>
 
 
-    <div class="sound-list">
+    <div
+      class="sound-list"
+      id="testSoundsList"
+    >
+    </div>
 
 
-      <div
-        class="sound-card"
-        draggable="true"
-        data-sound-id="rain"
-      >
-
-        <div class="sound-icon">
-          ≋
-        </div>
-
-        <div class="sound-info">
-
-          <strong>
-            Pioggia
-          </strong>
-
-          <span>
-            Meteo • ambiente
-          </span>
-
-        </div>
-
-        <div class="sound-actions">
-
-          <button
-            class="sound-action preview"
-            data-sound-id="rain"
-          >
-            ▶
-          </button>
-
-          <button
-            class="sound-action add"
-            data-sound-id="rain"
-          >
-            ＋
-          </button>
-
-        </div>
-
-      </div>
+    <div class="section-label">
+      I miei suoni
+    </div>
 
 
-
-      <div
-        class="sound-card"
-        draggable="true"
-        data-sound-id="city"
-      >
-
-        <div class="sound-icon">
-          ▥
-        </div>
-
-        <div class="sound-info">
-
-          <strong>
-            Città
-          </strong>
-
-          <span>
-            Ambiente urbano
-          </span>
-
-        </div>
-
-        <div class="sound-actions">
-
-          <button
-            class="sound-action preview"
-            data-sound-id="city"
-          >
-            ▶
-          </button>
-
-          <button
-            class="sound-action add"
-            data-sound-id="city"
-          >
-            ＋
-          </button>
-
-        </div>
-
-      </div>
+    <div
+      id="mySoundsEmpty"
+      class="my-sounds-empty"
+    >
+      Le registrazioni create con il microfono compariranno qui.
+    </div>
 
 
+    <div
+      class="sound-list"
+      id="mySoundsList"
+    >
+    </div>
 
-      <div
-        class="sound-card"
-        draggable="true"
-        data-sound-id="birds"
-      >
 
-        <div class="sound-icon">
-          ∿
-        </div>
+    <div class="library-note">
 
-        <div class="sound-info">
-
-          <strong>
-            Uccelli
-          </strong>
-
-          <span>
-            Natura • campagna
-          </span>
-
-        </div>
-
-        <div class="sound-actions">
-
-          <button
-            class="sound-action preview"
-            data-sound-id="birds"
-          >
-            ▶
-          </button>
-
-          <button
-            class="sound-action add"
-            data-sound-id="birds"
-          >
-            ＋
-          </button>
-
-        </div>
-
-      </div>
-
+      Per ora le registrazioni rimangono disponibili
+      finché questa pagina resta aperta.
+      Il salvataggio permanente arriverà nella fase successiva.
 
     </div>
 
 
     <div class="drag-hint">
 
-      <strong>Sposta:</strong>
-      trascina la clip.
+      <strong>Registra:</strong>
+      premi Registra e consenti l'accesso al microfono.
 
       <br>
 
-      <strong>Accorcia:</strong>
-      usa le maniglie laterali.
-
-      <br>
-
-      <strong>Loop:</strong>
-      allunga il bordo destro.
-
-      <br>
-
-      <strong>Waveform:</strong>
-      ora stai vedendo il suono reale.
+      <strong>Inserisci:</strong>
+      trascina la registrazione oppure premi ＋
+      sulla traccia selezionata.
 
     </div>
 
@@ -1668,8 +1714,6 @@ button {
 </aside>
 
 
-
-<!-- EDITOR -->
 
 <section class="editor">
 
@@ -1715,8 +1759,8 @@ button {
       </h2>
 
       <p>
-        Scegli un ambiente, ascolta i suoni e disponili
-        liberamente nella timeline.
+        Puoi usare la libreria oppure registrare direttamente
+        i suoni che ti circondano.
       </p>
 
     </div>
@@ -1738,7 +1782,7 @@ button {
 
 
     <button
-      class="button"
+      class="button record-button"
       id="recordButton"
     >
       Registra
@@ -1844,7 +1888,8 @@ button {
       </h3>
 
       <p>
-        Crea una traccia e trascina un suono dalla libreria.
+        Crea una traccia, usa un suono della libreria
+        oppure registrane uno con il microfono.
       </p>
 
       <button
@@ -1912,49 +1957,68 @@ button {
 <script>
 
 
-/* =========================================
+/* =========================
    BANCA SUONI
-========================================= */
+========================= */
 
 const sounds = {
 
   rain: {
     id: "rain",
     name: "Pioggia",
-    file: "pioggia_test.wav"
+    file: "pioggia_test.wav",
+    kind: "test",
+    label: "Meteo • ambiente",
+    icon: "≋"
   },
 
   city: {
     id: "city",
     name: "Città",
-    file: "citta_test.wav"
+    file: "citta_test.wav",
+    kind: "test",
+    label: "Ambiente urbano",
+    icon: "▥"
   },
 
   birds: {
     id: "birds",
     name: "Uccelli",
-    file: "uccelli_test.wav"
+    file: "uccelli_test.wav",
+    kind: "test",
+    label: "Natura • campagna",
+    icon: "∿"
   }
 
 };
 
 
+const testSoundIds = [
+  "rain",
+  "city",
+  "birds"
+];
 
-/* =========================================
+
+const personalSoundIds = [];
+
+
+
+/* =========================
    CONFIGURAZIONE
-========================================= */
+========================= */
 
 const PX_PER_SECOND = 19;
 
 const TRACK_WIDTH = 190;
 
-const MIN_CLIP_SECONDS = 0.5;
+const MIN_CLIP_SECONDS = .5;
 
 
 
-/* =========================================
+/* =========================
    PROGETTO
-========================================= */
+========================= */
 
 let tracks = [];
 
@@ -1966,9 +2030,9 @@ let selectedTrackId = null;
 
 
 
-/* =========================================
+/* =========================
    PREVIEW
-========================================= */
+========================= */
 
 let currentPreview = null;
 
@@ -1976,9 +2040,9 @@ let currentPreviewButton = null;
 
 
 
-/* =========================================
+/* =========================
    MOTORE AUDIO
-========================================= */
+========================= */
 
 let audioContext = null;
 
@@ -2002,54 +2066,81 @@ let animationFrame = null;
 
 
 
-/* =========================================
+/* =========================
+   REGISTRAZIONE MICROFONO
+========================= */
+
+let mediaRecorder = null;
+
+let mediaStream = null;
+
+let recordedChunks = [];
+
+let recordingStartedAt = 0;
+
+let recordingTimer = null;
+
+let personalSoundCounter = 0;
+
+
+
+/* =========================
    ELEMENTI
-========================================= */
+========================= */
 
 const trackRows =
   document.getElementById(
     "trackRows"
   );
 
+
 const emptyProject =
   document.getElementById(
     "emptyProject"
   );
+
 
 const projectStatus =
   document.getElementById(
     "projectStatus"
   );
 
+
 const selectedStatus =
   document.getElementById(
     "selectedStatus"
   );
+
 
 const playbackStatus =
   document.getElementById(
     "playbackStatus"
   );
 
+
 const timeDisplay =
   document.getElementById(
     "timeDisplay"
   );
+
 
 const playhead =
   document.getElementById(
     "playhead"
   );
 
+
 const playButton =
   document.getElementById(
     "playButton"
   );
 
+
 const stopButton =
   document.getElementById(
     "stopButton"
   );
+
 
 const ruler =
   document.getElementById(
@@ -2057,16 +2148,46 @@ const ruler =
   );
 
 
+const recordButton =
+  document.getElementById(
+    "recordButton"
+  );
 
-/* =========================================
+
+const testSoundsList =
+  document.getElementById(
+    "testSoundsList"
+  );
+
+
+const mySoundsList =
+  document.getElementById(
+    "mySoundsList"
+  );
+
+
+const mySoundsEmpty =
+  document.getElementById(
+    "mySoundsEmpty"
+  );
+
+
+const soundSearch =
+  document.getElementById(
+    "soundSearch"
+  );
+
+
+
+/* =========================
    AUDIO CONTEXT
-========================================= */
+========================= */
 
-function getAudioContext() {
+function getAudioContext(){
 
   if(
     !audioContext
-  ) {
+  ){
 
     audioContext =
       new (
@@ -2076,25 +2197,26 @@ function getAudioContext() {
 
   }
 
+
   return audioContext;
 
 }
 
 
 
-/* =========================================
+/* =========================
    CARICA AUDIO
-========================================= */
+========================= */
 
 async function loadAudioBuffer(
   file
-) {
+){
 
   if(
     audioBufferCache.has(
       file
     )
-  ) {
+  ){
 
     return audioBufferCache.get(
       file
@@ -2115,7 +2237,7 @@ async function loadAudioBuffer(
 
   if(
     !response.ok
-  ) {
+  ){
 
     throw new Error(
       "Impossibile caricare " +
@@ -2147,11 +2269,985 @@ async function loadAudioBuffer(
 
 
 
-/* =========================================
-   CREA TRACCIA
-========================================= */
+/* =========================
+   FERMA PREVIEW
+========================= */
 
-function addTrack() {
+function stopPreview(){
+
+  if(
+    currentPreview
+  ){
+
+    currentPreview.pause();
+
+
+    currentPreview.currentTime =
+      0;
+
+
+    if(
+      currentPreviewButton
+    ){
+
+      currentPreviewButton
+        .textContent =
+        "▶";
+
+    }
+
+  }
+
+
+  currentPreview =
+    null;
+
+
+  currentPreviewButton =
+    null;
+
+}
+
+
+
+/* =========================
+   LIBRERIA SUONI
+========================= */
+
+function renderSoundLibrary(){
+
+  testSoundsList.innerHTML =
+    "";
+
+
+  mySoundsList.innerHTML =
+    "";
+
+
+  testSoundIds.forEach(
+    id => {
+
+      testSoundsList.appendChild(
+
+        createSoundCard(
+          sounds[id]
+        )
+
+      );
+
+    }
+  );
+
+
+  personalSoundIds.forEach(
+    id => {
+
+      mySoundsList.appendChild(
+
+        createSoundCard(
+          sounds[id]
+        )
+
+      );
+
+    }
+  );
+
+
+  mySoundsEmpty.style.display =
+
+    personalSoundIds.length
+
+    ? "none"
+
+    : "block";
+
+
+  filterSoundCards();
+
+}
+
+
+
+/* =========================
+   CREA CARD SUONO
+========================= */
+
+function createSoundCard(
+  sound
+){
+
+  const card =
+    document.createElement(
+      "div"
+    );
+
+
+  card.className =
+    "sound-card";
+
+
+  card.draggable =
+    true;
+
+
+  card.dataset.soundId =
+    sound.id;
+
+
+  card.innerHTML = `
+
+    <div class="sound-icon">
+      ${escapeHtml(sound.icon || "REC")}
+    </div>
+
+
+    <div class="sound-info">
+
+      <strong>
+        ${escapeHtml(sound.name)}
+      </strong>
+
+      <span>
+        ${escapeHtml(sound.label || "Registrazione personale")}
+      </span>
+
+    </div>
+
+
+    <div class="sound-actions">
+
+      <button
+        class="sound-action preview"
+        title="Ascolta"
+      >
+        ▶
+      </button>
+
+      <button
+        class="sound-action add"
+        title="Aggiungi alla traccia"
+      >
+        ＋
+      </button>
+
+    </div>
+
+  `;
+
+
+
+  card.addEventListener(
+    "dragstart",
+    event => {
+
+
+      event.dataTransfer.setData(
+
+        "text/sound-id",
+
+        sound.id
+
+      );
+
+
+      event.dataTransfer.effectAllowed =
+        "copy";
+
+
+    }
+  );
+
+
+
+  card
+    .querySelector(
+      ".preview"
+    )
+    .addEventListener(
+      "click",
+      event => {
+
+
+        event.stopPropagation();
+
+
+        previewSound(
+
+          sound.id,
+
+          event.currentTarget
+
+        );
+
+
+      }
+    );
+
+
+
+  card
+    .querySelector(
+      ".add"
+    )
+    .addEventListener(
+      "click",
+      async event => {
+
+
+        event.stopPropagation();
+
+
+        if(
+          !selectedTrackId
+        ){
+
+          alert(
+            "Prima crea o seleziona una traccia."
+          );
+
+          return;
+
+        }
+
+
+        const track =
+
+          tracks.find(
+            t =>
+              t.id ===
+              selectedTrackId
+          );
+
+
+        let start =
+          0;
+
+
+        if(
+          track.clips.length
+        ){
+
+          start =
+
+            Math.max(
+
+              ...track.clips.map(
+
+                clip =>
+
+                  clip.start +
+                  clip.duration
+
+              )
+
+            );
+
+        }
+
+
+        await addSoundToTrack(
+
+          sound.id,
+
+          selectedTrackId,
+
+          start
+
+        );
+
+
+      }
+    );
+
+
+  return card;
+
+}
+
+
+
+/* =========================
+   RICERCA
+========================= */
+
+function filterSoundCards(){
+
+  const query =
+
+    soundSearch.value
+      .toLowerCase()
+      .trim();
+
+
+  document
+    .querySelectorAll(
+      ".sound-card"
+    )
+    .forEach(
+      card => {
+
+
+        card.style.display =
+
+          card.innerText
+            .toLowerCase()
+            .includes(query)
+
+          ? ""
+
+          : "none";
+
+
+      }
+    );
+
+}
+
+
+soundSearch.addEventListener(
+  "input",
+  filterSoundCards
+);
+
+
+
+/* =========================
+   PREVIEW
+========================= */
+
+function previewSound(
+  soundId,
+  button
+){
+
+  const sound =
+    sounds[
+      soundId
+    ];
+
+
+  if(
+    !sound
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    currentPreview
+  ){
+
+    currentPreview.pause();
+
+
+    currentPreview.currentTime =
+      0;
+
+
+    if(
+      currentPreviewButton
+    ){
+
+      currentPreviewButton
+        .textContent =
+        "▶";
+
+    }
+
+  }
+
+
+  if(
+    currentPreviewButton ===
+    button
+  ){
+
+    currentPreview =
+      null;
+
+
+    currentPreviewButton =
+      null;
+
+
+    return;
+
+  }
+
+
+  const audio =
+    new Audio(
+      sound.file
+    );
+
+
+  currentPreview =
+    audio;
+
+
+  currentPreviewButton =
+    button;
+
+
+  button.textContent =
+    "■";
+
+
+  audio
+    .play()
+    .catch(
+      () => {
+
+        alert(
+          "Il browser non riesce a riprodurre questo file."
+        );
+
+      }
+    );
+
+
+  audio.addEventListener(
+    "ended",
+    () => {
+
+
+      button.textContent =
+        "▶";
+
+
+      currentPreview =
+        null;
+
+
+      currentPreviewButton =
+        null;
+
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   MICROFONO
+========================= */
+
+async function toggleRecording(){
+
+  if(
+    mediaRecorder &&
+    mediaRecorder.state ===
+    "recording"
+  ){
+
+    stopRecording();
+
+    return;
+
+  }
+
+
+  await startRecording();
+
+}
+
+
+
+/* =========================
+   AVVIA REGISTRAZIONE
+========================= */
+
+async function startRecording(){
+
+  stopPlayback(
+    false
+  );
+
+
+  stopPreview();
+
+
+  if(
+    !navigator.mediaDevices
+
+    ||
+
+    !navigator.mediaDevices.getUserMedia
+
+    ||
+
+    !window.MediaRecorder
+  ){
+
+    alert(
+      "Questo browser non supporta la registrazione dal microfono. Prova con una versione aggiornata di Chrome, Edge o Safari."
+    );
+
+    return;
+
+  }
+
+
+  try{
+
+
+    mediaStream =
+
+      await navigator.mediaDevices.getUserMedia({
+
+        audio: {
+
+          echoCancellation: false,
+
+          noiseSuppression: false,
+
+          autoGainControl: false
+
+        }
+
+      });
+
+
+    const mimeType =
+      chooseRecordingMimeType();
+
+
+    mediaRecorder =
+
+      mimeType
+
+      ? new MediaRecorder(
+          mediaStream,
+          {
+            mimeType:
+              mimeType
+          }
+        )
+
+      : new MediaRecorder(
+          mediaStream
+        );
+
+
+    recordedChunks =
+      [];
+
+
+    mediaRecorder.addEventListener(
+      "dataavailable",
+      event => {
+
+
+        if(
+          event.data &&
+          event.data.size > 0
+        ){
+
+          recordedChunks.push(
+            event.data
+          );
+
+        }
+
+
+      }
+    );
+
+
+    mediaRecorder.addEventListener(
+      "stop",
+      handleRecordingStopped,
+      {
+        once:true
+      }
+    );
+
+
+    mediaRecorder.start(
+      250
+    );
+
+
+    recordingStartedAt =
+      performance.now();
+
+
+    recordButton.classList.add(
+      "recording"
+    );
+
+
+    recordButton.textContent =
+      "■ Ferma registrazione";
+
+
+    playbackStatus.textContent =
+      "Registrazione 00:00";
+
+
+    recordingTimer =
+
+      setInterval(
+        updateRecordingTimer,
+        200
+      );
+
+
+  }
+
+  catch(error){
+
+
+    console.error(
+      error
+    );
+
+
+    releaseMicrophone();
+
+
+    alert(
+      "Non riesco ad accedere al microfono. Controlla di aver consentito l'uso del microfono nel browser."
+    );
+
+
+  }
+
+}
+
+
+
+/* =========================
+   FORMATO REGISTRAZIONE
+========================= */
+
+function chooseRecordingMimeType(){
+
+  const candidates = [
+
+    "audio/webm;codecs=opus",
+
+    "audio/mp4",
+
+    "audio/webm",
+
+    "audio/ogg;codecs=opus"
+
+  ];
+
+
+  for(
+    const type of candidates
+  ){
+
+    if(
+      MediaRecorder.isTypeSupported
+
+      &&
+
+      MediaRecorder.isTypeSupported(
+        type
+      )
+    ){
+
+      return type;
+
+    }
+
+  }
+
+
+  return "";
+
+}
+
+
+
+/* =========================
+   TIMER REGISTRAZIONE
+========================= */
+
+function updateRecordingTimer(){
+
+  if(
+    !mediaRecorder
+
+    ||
+
+    mediaRecorder.state !==
+    "recording"
+  ){
+
+    return;
+
+  }
+
+
+  const elapsed =
+
+    (
+      performance.now() -
+      recordingStartedAt
+    )
+
+    /
+
+    1000;
+
+
+  playbackStatus.textContent =
+
+    "Registrazione "
+
+    +
+
+    formatTime(
+      elapsed
+    );
+
+}
+
+
+
+/* =========================
+   STOP REGISTRAZIONE
+========================= */
+
+function stopRecording(){
+
+  if(
+    mediaRecorder
+
+    &&
+
+    mediaRecorder.state ===
+    "recording"
+  ){
+
+    mediaRecorder.stop();
+
+
+    recordButton.disabled =
+      true;
+
+  }
+
+}
+
+
+
+/* =========================
+   REGISTRAZIONE COMPLETATA
+========================= */
+
+async function handleRecordingStopped(){
+
+  clearInterval(
+    recordingTimer
+  );
+
+
+  recordingTimer =
+    null;
+
+
+  recordButton.classList.remove(
+    "recording"
+  );
+
+
+  recordButton.textContent =
+    "Registra";
+
+
+  recordButton.disabled =
+    false;
+
+
+  releaseMicrophone();
+
+
+  const type =
+
+    (
+      mediaRecorder &&
+      mediaRecorder.mimeType
+    )
+
+    ||
+
+    (
+      recordedChunks[0] &&
+      recordedChunks[0].type
+    )
+
+    ||
+
+    "audio/webm";
+
+
+  const blob =
+
+    new Blob(
+      recordedChunks,
+      {
+        type:
+          type
+      }
+    );
+
+
+  recordedChunks =
+    [];
+
+
+  if(
+    blob.size <
+    1000
+  ){
+
+    playbackStatus.textContent =
+      "Pronto";
+
+
+    alert(
+      "La registrazione è troppo breve. Riprova registrando per almeno un secondo."
+    );
+
+
+    return;
+
+  }
+
+
+  const url =
+    URL.createObjectURL(
+      blob
+    );
+
+
+  personalSoundCounter++;
+
+
+  const id =
+
+    "recording-" +
+    personalSoundCounter;
+
+
+  const name =
+
+    "Registrazione " +
+    personalSoundCounter;
+
+
+  sounds[id] = {
+
+    id:
+      id,
+
+    name:
+      name,
+
+    file:
+      url,
+
+    kind:
+      "personal",
+
+    label:
+      "Registrazione personale",
+
+    icon:
+      "REC",
+
+    blob:
+      blob
+
+  };
+
+
+  personalSoundIds.push(
+    id
+  );
+
+
+  renderSoundLibrary();
+
+
+  playbackStatus.textContent =
+
+    name +
+    " pronta";
+
+
+  try{
+
+    await loadAudioBuffer(
+      url
+    );
+
+  }
+
+  catch(error){
+
+    console.warn(
+      "La registrazione è riproducibile, ma il browser potrebbe non riuscire a decodificarla per la timeline:",
+      error
+    );
+
+  }
+
+}
+
+
+
+/* =========================
+   RILASCIA MICROFONO
+========================= */
+
+function releaseMicrophone(){
+
+  if(
+    mediaStream
+  ){
+
+    mediaStream
+      .getTracks()
+      .forEach(
+        track => {
+
+          track.stop();
+
+        }
+      );
+
+
+    mediaStream =
+      null;
+
+  }
+
+}
+
+
+recordButton.addEventListener(
+  "click",
+  toggleRecording
+);
+
+
+
+/* =========================
+   CREA TRACCIA
+========================= */
+
+function addTrack(){
 
   stopPlayback(
     false
@@ -2201,13 +3297,13 @@ function addTrack() {
 
 
 
-/* =========================================
-   SELEZIONE TRACCIA
-========================================= */
+/* =========================
+   SELEZIONA TRACCIA
+========================= */
 
 function selectTrack(
   id
-) {
+){
 
   selectedTrackId =
     id;
@@ -2219,13 +3315,13 @@ function selectTrack(
 
 
 
-/* =========================================
+/* =========================
    ELIMINA TRACCIA
-========================================= */
+========================= */
 
 function deleteTrack(
   id
-) {
+){
 
   stopPlayback(
     false
@@ -2233,6 +3329,7 @@ function deleteTrack(
 
 
   const track =
+
     tracks.find(
       t =>
         t.id === id
@@ -2240,12 +3337,18 @@ function deleteTrack(
 
 
   if(
-    track &&
-    track.clips.length &&
+    track
+
+    &&
+
+    track.clips.length
+
+    &&
+
     !confirm(
       "Eliminare questa traccia e tutti i suoni contenuti?"
     )
-  ) {
+  ){
 
     return;
 
@@ -2253,6 +3356,7 @@ function deleteTrack(
 
 
   tracks =
+
     tracks.filter(
       t =>
         t.id !== id
@@ -2261,7 +3365,7 @@ function deleteTrack(
 
   if(
     selectedTrackId === id
-  ) {
+  ){
 
     selectedTrackId =
 
@@ -2282,15 +3386,15 @@ function deleteTrack(
 
 
 
-/* =========================================
+/* =========================
    AGGIUNGI SUONO
-========================================= */
+========================= */
 
 async function addSoundToTrack(
   soundId,
   trackId,
   startSeconds
-) {
+){
 
   stopPlayback(
     false
@@ -2298,12 +3402,14 @@ async function addSoundToTrack(
 
 
   const sound =
+
     sounds[
       soundId
     ];
 
 
   const track =
+
     tracks.find(
       t =>
         t.id ===
@@ -2314,17 +3420,37 @@ async function addSoundToTrack(
   if(
     !sound ||
     !track
-  ) {
+  ){
 
     return;
 
   }
 
 
-  const sourceDuration =
-    await getAudioDuration(
-      sound.file
-    );
+  let sourceDuration;
+
+
+  try{
+
+    const buffer =
+      await loadAudioBuffer(
+        sound.file
+      );
+
+
+    sourceDuration =
+      buffer.duration;
+
+  }
+
+  catch(error){
+
+    sourceDuration =
+      await getAudioDuration(
+        sound.file
+      );
+
+  }
 
 
   clipCounter++;
@@ -2373,13 +3499,13 @@ async function addSoundToTrack(
 
 
 
-/* =========================================
-   DURATA FILE
-========================================= */
+/* =========================
+   DURATA AUDIO
+========================= */
 
 function getAudioDuration(
   file
-) {
+){
 
   return new Promise(
     resolve => {
@@ -2391,6 +3517,35 @@ function getAudioDuration(
         );
 
 
+      let done =
+        false;
+
+
+      const finish =
+        value => {
+
+
+          if(
+            done
+          ){
+
+            return;
+
+          }
+
+
+          done =
+            true;
+
+
+          resolve(
+            value
+          );
+
+
+        };
+
+
       audio.preload =
         "metadata";
 
@@ -2399,9 +3554,11 @@ function getAudioDuration(
         "loadedmetadata",
         () => {
 
-          resolve(
+
+          finish(
             audio.duration
           );
+
 
         }
       );
@@ -2411,11 +3568,25 @@ function getAudioDuration(
         "error",
         () => {
 
-          resolve(
+
+          finish(
             5
           );
 
+
         }
+      );
+
+
+      setTimeout(
+        () => {
+
+          finish(
+            5
+          );
+
+        },
+        5000
       );
 
 
@@ -2426,13 +3597,14 @@ function getAudioDuration(
 
 
 
-/* =========================================
+/* =========================
    DURATA PROGETTO
-========================================= */
+========================= */
 
-function getProjectDuration() {
+function getProjectDuration(){
 
-  let maximum = 0;
+  let maximum =
+    0;
 
 
   tracks.forEach(
@@ -2444,6 +3616,7 @@ function getProjectDuration() {
 
 
           maximum =
+
             Math.max(
 
               maximum,
@@ -2468,13 +3641,13 @@ function getProjectDuration() {
 
 
 
-/* =========================================
+/* =========================
    DATI CLIP
-========================================= */
+========================= */
 
 function clipAvailableSource(
   clip
-) {
+){
 
   return Math.max(
 
@@ -2488,10 +3661,9 @@ function clipAvailableSource(
 }
 
 
-
 function isLooping(
   clip
-) {
+){
 
   return (
 
@@ -2499,17 +3671,16 @@ function isLooping(
 
     clipAvailableSource(
       clip
-    ) + 0.01
+    ) + .01
 
   );
 
 }
 
 
-
 function loopCount(
   clip
-) {
+){
 
   const available =
     clipAvailableSource(
@@ -2532,16 +3703,17 @@ function loopCount(
 
 
 
-/* =========================================
+/* =========================
    CREA CLIP
-========================================= */
+========================= */
 
 function createClipElement(
   track,
   clip
-) {
+){
 
   const el =
+
     document.createElement(
       "div"
     );
@@ -2610,9 +3782,7 @@ function createClipElement(
 
       <div class="waveform-wrap">
 
-        <canvas
-          class="waveform-canvas"
-        >
+        <canvas class="waveform-canvas">
         </canvas>
 
       </div>
@@ -2637,7 +3807,6 @@ function createClipElement(
   `;
 
 
-
   el
     .querySelector(
       ".clip-delete"
@@ -2656,6 +3825,7 @@ function createClipElement(
 
 
         track.clips =
+
           track.clips.filter(
             c =>
               c.id !==
@@ -2694,10 +3864,12 @@ function createClipElement(
   requestAnimationFrame(
     () => {
 
+
       drawClipWaveform(
         el,
         clip
       );
+
 
     }
   );
@@ -2709,16 +3881,17 @@ function createClipElement(
 
 
 
-/* =========================================
-   DISEGNA WAVEFORM REALE
-========================================= */
+/* =========================
+   WAVEFORM
+========================= */
 
 async function drawClipWaveform(
   clipElement,
   clip
-) {
+){
 
   const canvas =
+
     clipElement.querySelector(
       ".waveform-canvas"
     );
@@ -2726,17 +3899,18 @@ async function drawClipWaveform(
 
   if(
     !canvas
-  ) {
+  ){
 
     return;
 
   }
 
 
-  try {
+  try{
 
 
     const buffer =
+
       await loadAudioBuffer(
         clip.file
       );
@@ -2746,7 +3920,7 @@ async function drawClipWaveform(
       !document.body.contains(
         canvas
       )
-    ) {
+    ){
 
       return;
 
@@ -2758,6 +3932,7 @@ async function drawClipWaveform(
 
 
     const width =
+
       Math.max(
         1,
         Math.round(
@@ -2767,6 +3942,7 @@ async function drawClipWaveform(
 
 
     const height =
+
       Math.max(
         1,
         Math.round(
@@ -2776,13 +3952,18 @@ async function drawClipWaveform(
 
 
     const dpr =
+
       Math.min(
+
         window.devicePixelRatio || 1,
+
         2
+
       );
 
 
     canvas.width =
+
       Math.round(
         width *
         dpr
@@ -2790,6 +3971,7 @@ async function drawClipWaveform(
 
 
     canvas.height =
+
       Math.round(
         height *
         dpr
@@ -2797,6 +3979,7 @@ async function drawClipWaveform(
 
 
     const ctx =
+
       canvas.getContext(
         "2d"
       );
@@ -2821,6 +4004,7 @@ async function drawClipWaveform(
 
 
     const data =
+
       buffer.getChannelData(
         0
       );
@@ -2834,7 +4018,7 @@ async function drawClipWaveform(
 
       Math.max(
 
-        0.01,
+        .01,
 
         buffer.duration -
         clip.sourceOffset
@@ -2846,7 +4030,7 @@ async function drawClipWaveform(
 
       Math.max(
 
-        0.01,
+        .01,
 
         Math.min(
 
@@ -2862,8 +4046,9 @@ async function drawClipWaveform(
 
 
     const visibleDuration =
+
       Math.max(
-        0.01,
+        .01,
         clip.duration
       );
 
@@ -2871,8 +4056,6 @@ async function drawClipWaveform(
     const middle =
       height / 2;
 
-
-    /* LINEA CENTRALE */
 
     ctx.strokeStyle =
       "rgba(33,109,132,.18)";
@@ -2900,46 +4083,36 @@ async function drawClipWaveform(
     ctx.stroke();
 
 
-
-    /* WAVEFORM */
-
     ctx.strokeStyle =
       "#24758b";
 
 
-    ctx.lineWidth =
-      1;
-
-
     ctx.beginPath();
-
 
 
     for(
       let x = 0;
       x < width;
       x++
-    ) {
+    ){
 
 
       const timelineStart =
 
-        (
-          x /
-          width
-        )
-
-        *
-
+        x /
+        width *
         visibleDuration;
 
 
       const timelineEnd =
 
         (
-          (x + 1) /
-          width
+          x + 1
         )
+
+        /
+
+        width
 
         *
 
@@ -2968,13 +4141,7 @@ async function drawClipWaveform(
         );
 
 
-      const pixelDuration =
-
-        timelineEnd -
-        timelineStart;
-
-
-      let samplesForPixel =
+      const samplesForPixel =
 
         Math.max(
 
@@ -2982,7 +4149,13 @@ async function drawClipWaveform(
 
           Math.floor(
 
-            pixelDuration *
+            (
+              timelineEnd -
+              timelineStart
+            )
+
+            *
+
             sampleRate
 
           )
@@ -3019,17 +4192,17 @@ async function drawClipWaveform(
         );
 
 
-      const cycleEndTime =
-
-        clip.sourceOffset +
-        available;
-
-
       const cycleEndSample =
 
         Math.floor(
 
-          cycleEndTime *
+          (
+            clip.sourceOffset +
+            available
+          )
+
+          *
+
           sampleRate
 
         );
@@ -3051,18 +4224,23 @@ async function drawClipWaveform(
       if(
         endSample <=
         startSample
-      ) {
+      ){
 
         endSample =
+
           Math.min(
+
             data.length,
+
             startSample + 1
+
           );
 
       }
 
 
       const range =
+
         endSample -
         startSample;
 
@@ -3088,30 +4266,25 @@ async function drawClipWaveform(
         let i = startSample;
         i < endSample;
         i += step
-      ) {
+      ){
 
+        peak =
 
-        const value =
-          Math.abs(
-            data[i]
+          Math.max(
+
+            peak,
+
+            Math.abs(
+              data[i]
+            )
+
           );
-
-
-        if(
-          value >
-          peak
-        ) {
-
-          peak =
-            value;
-
-        }
-
 
       }
 
 
       peak =
+
         Math.max(
           .025,
           peak
@@ -3122,8 +4295,7 @@ async function drawClipWaveform(
 
         peak *
         (
-          middle -
-          2
+          middle - 2
         );
 
 
@@ -3153,14 +4325,11 @@ async function drawClipWaveform(
     ctx.stroke();
 
 
-
-    /* SEPARATORI DEI LOOP */
-
     if(
       isLooping(
         clip
       )
-    ) {
+    ){
 
 
       ctx.save();
@@ -3183,18 +4352,13 @@ async function drawClipWaveform(
         let t = available;
         t < visibleDuration;
         t += available
-      ) {
+      ){
 
 
         const x =
 
-          (
-            t /
-            visibleDuration
-          )
-
-          *
-
+          t /
+          visibleDuration *
           width;
 
 
@@ -3227,7 +4391,7 @@ async function drawClipWaveform(
 
   }
 
-  catch(error) {
+  catch(error){
 
 
     console.error(
@@ -3242,14 +4406,14 @@ async function drawClipWaveform(
 
 
 
-/* =========================================
+/* =========================
    GEOMETRIA CLIP
-========================================= */
+========================= */
 
 function updateClipGeometry(
   el,
   clip
-) {
+){
 
   el.style.left =
 
@@ -3282,14 +4446,14 @@ function updateClipGeometry(
 
 
 
-/* =========================================
-   AGGIORNA CLIP DURANTE RESIZE
-========================================= */
+/* =========================
+   REFRESH CLIP
+========================= */
 
 function refreshClipVisual(
   el,
   clip
-) {
+){
 
   updateClipGeometry(
     el,
@@ -3309,6 +4473,7 @@ function refreshClipVisual(
 
 
   const badge =
+
     el.querySelector(
       ".loop-badge"
     );
@@ -3316,7 +4481,7 @@ function refreshClipVisual(
 
   if(
     badge
-  ) {
+  ){
 
     badge.textContent =
 
@@ -3332,6 +4497,7 @@ function refreshClipVisual(
 
 
   const duration =
+
     el.querySelector(
       ".clip-duration"
     );
@@ -3339,7 +4505,7 @@ function refreshClipVisual(
 
   if(
     duration
-  ) {
+  ){
 
     duration.textContent =
 
@@ -3356,15 +4522,15 @@ function refreshClipVisual(
 
 
 
-/* =========================================
-   SPOSTA CLIP
-========================================= */
+/* =========================
+   DRAG CLIP
+========================= */
 
 function setupClipDrag(
   el,
   track,
   clip
-) {
+){
 
   el.addEventListener(
     "pointerdown",
@@ -3381,7 +4547,7 @@ function setupClipDrag(
         event.target.closest(
           ".resize-handle"
         )
-      ) {
+      ){
 
         return;
 
@@ -3505,7 +4671,7 @@ function setupClipDrag(
 
           if(
             targetLane
-          ) {
+          ){
 
 
             const targetTrackId =
@@ -3521,7 +4687,7 @@ function setupClipDrag(
 
               targetTrackId !==
               track.id
-            ) {
+            ){
 
 
               moveClipToTrack(
@@ -3575,17 +4741,18 @@ function setupClipDrag(
 
 
 
-/* =========================================
-   RIDIMENSIONA A DESTRA
-========================================= */
+/* =========================
+   RESIZE DESTRO
+========================= */
 
 function setupRightResize(
   el,
   track,
   clip
-) {
+){
 
   const handle =
+
     el.querySelector(
       ".resize-handle.right"
     );
@@ -3709,17 +4876,18 @@ function setupRightResize(
 
 
 
-/* =========================================
-   RIDIMENSIONA A SINISTRA
-========================================= */
+/* =========================
+   RESIZE SINISTRO
+========================= */
 
 function setupLeftResize(
   el,
   track,
   clip
-) {
+){
 
   const handle =
+
     el.querySelector(
       ".resize-handle.left"
     );
@@ -3778,6 +4946,7 @@ function setupLeftResize(
 
 
           delta =
+
             Math.max(
               delta,
               -originalStart
@@ -3785,6 +4954,7 @@ function setupLeftResize(
 
 
           delta =
+
             Math.min(
 
               delta,
@@ -3797,7 +4967,7 @@ function setupLeftResize(
 
           if(
             delta >= 0
-          ) {
+          ){
 
 
             const maxOffsetIncrease =
@@ -3847,7 +5017,7 @@ function setupLeftResize(
 
           }
 
-          else {
+          else{
 
 
             const reveal =
@@ -3946,15 +5116,15 @@ function setupLeftResize(
 
 
 
-/* =========================================
-   SPOSTA TRA TRACCE
-========================================= */
+/* =========================
+   CAMBIO TRACCIA
+========================= */
 
 function moveClipToTrack(
   clipId,
   oldTrackId,
   newTrackId
-) {
+){
 
   stopPlayback(
     false
@@ -3962,6 +5132,7 @@ function moveClipToTrack(
 
 
   const oldTrack =
+
     tracks.find(
       t =>
         t.id ===
@@ -3970,6 +5141,7 @@ function moveClipToTrack(
 
 
   const newTrack =
+
     tracks.find(
       t =>
         t.id ===
@@ -3980,7 +5152,7 @@ function moveClipToTrack(
   if(
     !oldTrack ||
     !newTrack
-  ) {
+  ){
 
     return;
 
@@ -3988,6 +5160,7 @@ function moveClipToTrack(
 
 
   const clip =
+
     oldTrack.clips.find(
       c =>
         c.id ===
@@ -3997,7 +5170,7 @@ function moveClipToTrack(
 
   if(
     !clip
-  ) {
+  ){
 
     return;
 
@@ -4028,11 +5201,11 @@ function moveClipToTrack(
 
 
 
-/* =========================================
+/* =========================
    RENDER TRACCE
-========================================= */
+========================= */
 
-function renderTracks() {
+function renderTracks(){
 
   trackRows.innerHTML =
     "";
@@ -4043,6 +5216,7 @@ function renderTracks() {
 
 
       const row =
+
         document.createElement(
           "div"
         );
@@ -4065,6 +5239,7 @@ function renderTracks() {
 
 
       const controls =
+
         document.createElement(
           "div"
         );
@@ -4132,6 +5307,7 @@ function renderTracks() {
 
 
       const lane =
+
         document.createElement(
           "div"
         );
@@ -4225,7 +5401,7 @@ function renderTracks() {
 
           if(
             !soundId
-          ) {
+          ){
 
             return;
 
@@ -4322,7 +5498,7 @@ function renderTracks() {
 
             if(
               wasPlaying
-            ) {
+            ){
 
               stopPlayback(
                 false
@@ -4340,7 +5516,7 @@ function renderTracks() {
 
             if(
               wasPlaying
-            ) {
+            ){
 
               await playFrom(
                 restartAt
@@ -4372,7 +5548,7 @@ function renderTracks() {
 
             if(
               wasPlaying
-            ) {
+            ){
 
               stopPlayback(
                 false
@@ -4390,7 +5566,7 @@ function renderTracks() {
 
             if(
               wasPlaying
-            ) {
+            ){
 
               await playFrom(
                 restartAt
@@ -4454,7 +5630,7 @@ function renderTracks() {
           if(
             event.target.tagName !==
             "BUTTON"
-          ) {
+          ){
 
 
             selectedTrackId =
@@ -4501,21 +5677,22 @@ function renderTracks() {
 
   updateStatus();
 
+
   updatePlayheadUI();
 
 }
 
 
 
-/* =========================================
+/* =========================
    STATUS
-========================================= */
+========================= */
 
-function updateStatus() {
+function updateStatus(){
 
   if(
     !tracks.length
-  ) {
+  ){
 
     projectStatus.textContent =
       "Progetto vuoto";
@@ -4562,118 +5739,11 @@ function updateStatus() {
 
 
 
-/* =========================================
-   PREVIEW
-========================================= */
-
-function previewSound(
-  soundId,
-  button
-) {
-
-  const sound =
-    sounds[
-      soundId
-    ];
-
-
-  if(
-    !sound
-  ) {
-
-    return;
-
-  }
-
-
-  if(
-    currentPreview
-  ) {
-
-    currentPreview.pause();
-
-    currentPreview.currentTime =
-      0;
-
-
-    if(
-      currentPreviewButton
-    ) {
-
-      currentPreviewButton.textContent =
-        "▶";
-
-    }
-
-  }
-
-
-  if(
-    currentPreviewButton ===
-    button
-  ) {
-
-    currentPreview =
-      null;
-
-    currentPreviewButton =
-      null;
-
-    return;
-
-  }
-
-
-  const audio =
-    new Audio(
-      sound.file
-    );
-
-
-  currentPreview =
-    audio;
-
-
-  currentPreviewButton =
-    button;
-
-
-  button.textContent =
-    "■";
-
-
-  audio.play();
-
-
-  audio.addEventListener(
-    "ended",
-    () => {
-
-
-      button.textContent =
-        "▶";
-
-
-      currentPreview =
-        null;
-
-
-      currentPreviewButton =
-        null;
-
-
-    }
-  );
-
-}
-
-
-
-/* =========================================
+/* =========================
    TRACCE UDIBILI
-========================================= */
+========================= */
 
-function audibleTracks() {
+function audibleTracks(){
 
   const anySolo =
 
@@ -4689,7 +5759,7 @@ function audibleTracks() {
 
       if(
         track.mute
-      ) {
+      ){
 
         return false;
 
@@ -4698,7 +5768,7 @@ function audibleTracks() {
 
       if(
         anySolo
-      ) {
+      ){
 
         return track.solo;
 
@@ -4715,9 +5785,9 @@ function audibleTracks() {
 
 
 
-/* =========================================
+/* =========================
    SCHEDULA CLIP
-========================================= */
+========================= */
 
 async function scheduleClip(
   track,
@@ -4725,7 +5795,7 @@ async function scheduleClip(
   fromTime,
   context,
   gainNode
-) {
+){
 
   const clipEnd =
 
@@ -4736,7 +5806,7 @@ async function scheduleClip(
   if(
     clipEnd <=
     fromTime
-  ) {
+  ){
 
     return;
 
@@ -4754,7 +5824,7 @@ async function scheduleClip(
 
     Math.max(
 
-      0.01,
+      .01,
 
       buffer.duration -
       clip.sourceOffset
@@ -4777,7 +5847,7 @@ async function scheduleClip(
 
   if(
     available <= 0
-  ) {
+  ){
 
     return;
 
@@ -4821,7 +5891,7 @@ async function scheduleClip(
 
     clip.duration
 
-  ) {
+  ){
 
 
     const clipPosition =
@@ -4837,7 +5907,7 @@ async function scheduleClip(
     if(
       clipPosition >=
       clip.duration
-    ) {
+    ){
 
       break;
 
@@ -4869,8 +5939,8 @@ async function scheduleClip(
 
     if(
       segmentDuration >
-      0.01
-    ) {
+      .01
+    ){
 
 
       const timelineStart =
@@ -4934,8 +6004,10 @@ async function scheduleClip(
 
     cycleIndex++;
 
+
     positionInCycle =
       0;
+
 
   }
 
@@ -4943,13 +6015,13 @@ async function scheduleClip(
 
 
 
-/* =========================================
+/* =========================
    PLAY
-========================================= */
+========================= */
 
 async function playFrom(
   startPosition
-) {
+){
 
   const duration =
     getProjectDuration();
@@ -4957,7 +6029,7 @@ async function playFrom(
 
   if(
     duration <= 0
-  ) {
+  ){
 
     alert(
       "Inserisci almeno un suono nella timeline."
@@ -4971,7 +6043,7 @@ async function playFrom(
   if(
     startPosition >=
     duration
-  ) {
+  ){
 
     startPosition =
       0;
@@ -4979,33 +6051,7 @@ async function playFrom(
   }
 
 
-  if(
-    currentPreview
-  ) {
-
-    currentPreview.pause();
-
-    currentPreview.currentTime =
-      0;
-
-
-    if(
-      currentPreviewButton
-    ) {
-
-      currentPreviewButton.textContent =
-        "▶";
-
-    }
-
-
-    currentPreview =
-      null;
-
-    currentPreviewButton =
-      null;
-
-  }
+  stopPreview();
 
 
   stopPlayback(
@@ -5028,7 +6074,7 @@ async function playFrom(
     audibleTracks();
 
 
-  try {
+  try{
 
 
     await Promise.all(
@@ -5091,7 +6137,7 @@ async function playFrom(
 
   }
 
-  catch(error) {
+  catch(error){
 
 
     console.error(
@@ -5144,16 +6190,16 @@ async function playFrom(
 
 
 
-/* =========================================
+/* =========================
    POSIZIONE LIVE
-========================================= */
+========================= */
 
-function getLivePlayhead() {
+function getLivePlayhead(){
 
   if(
     !isPlaying ||
     !audioContext
-  ) {
+  ){
 
     return playheadSeconds;
 
@@ -5177,15 +6223,15 @@ function getLivePlayhead() {
 
 
 
-/* =========================================
-   ANIMAZIONE
-========================================= */
+/* =========================
+   ANIMAZIONE PLAYHEAD
+========================= */
 
-function animatePlayhead() {
+function animatePlayhead(){
 
   if(
     !isPlaying
-  ) {
+  ){
 
     return;
 
@@ -5203,7 +6249,7 @@ function animatePlayhead() {
   if(
     playheadSeconds >=
     duration
-  ) {
+  ){
 
     stopPlayback(
       true
@@ -5227,17 +6273,17 @@ function animatePlayhead() {
 
 
 
-/* =========================================
+/* =========================
    STOP
-========================================= */
+========================= */
 
 function stopPlayback(
   resetToZero = true
-) {
+){
 
   if(
     isPlaying
-  ) {
+  ){
 
     playheadSeconds =
       getLivePlayhead();
@@ -5249,13 +6295,13 @@ function stopPlayback(
     source => {
 
 
-      try {
+      try{
 
         source.stop();
 
       }
 
-      catch(error) {
+      catch(error){
 
       }
 
@@ -5273,7 +6319,7 @@ function stopPlayback(
 
   if(
     animationFrame
-  ) {
+  ){
 
     cancelAnimationFrame(
       animationFrame
@@ -5297,7 +6343,7 @@ function stopPlayback(
 
   if(
     resetToZero
-  ) {
+  ){
 
     playheadSeconds =
       0;
@@ -5305,8 +6351,19 @@ function stopPlayback(
   }
 
 
-  playbackStatus.textContent =
-    "Pronto";
+  if(
+    !mediaRecorder
+
+    ||
+
+    mediaRecorder.state !==
+    "recording"
+  ){
+
+    playbackStatus.textContent =
+      "Pronto";
+
+  }
 
 
   updatePlayheadUI();
@@ -5315,21 +6372,23 @@ function stopPlayback(
 
 
 
-/* =========================================
+/* =========================
    VOLUME LIVE
-========================================= */
+========================= */
 
 function updateTrackGain(
   trackId
-) {
+){
 
   const gain =
+
     trackGainNodes.get(
       trackId
     );
 
 
   const track =
+
     tracks.find(
       track =>
         track.id ===
@@ -5340,7 +6399,7 @@ function updateTrackGain(
   if(
     gain &&
     track
-  ) {
+  ){
 
     gain.gain.value =
       track.volume / 100;
@@ -5351,11 +6410,11 @@ function updateTrackGain(
 
 
 
-/* =========================================
-   TESTINA
-========================================= */
+/* =========================
+   PLAYHEAD
+========================= */
 
-function updatePlayheadUI() {
+function updatePlayheadUI(){
 
   playhead.style.left =
 
@@ -5375,6 +6434,7 @@ function updatePlayheadUI() {
 
 
   timeDisplay.textContent =
+
     formatTime(
       playheadSeconds
     );
@@ -5383,13 +6443,13 @@ function updatePlayheadUI() {
 
 
 
-/* =========================================
+/* =========================
    TEMPO
-========================================= */
+========================= */
 
 function formatTime(
   seconds
-) {
+){
 
   seconds =
 
@@ -5439,222 +6499,9 @@ function formatTime(
 
 
 
-/* =========================================
-   DRAG LIBRERIA
-========================================= */
-
-document
-  .querySelectorAll(
-    ".sound-card"
-  )
-  .forEach(
-    card => {
-
-
-      card.addEventListener(
-        "dragstart",
-        event => {
-
-
-          event.dataTransfer.setData(
-
-            "text/sound-id",
-
-            card.dataset.soundId
-
-          );
-
-
-          event.dataTransfer.effectAllowed =
-            "copy";
-
-
-        }
-      );
-
-
-    }
-  );
-
-
-
-/* =========================================
-   PREVIEW LIBRERIA
-========================================= */
-
-document
-  .querySelectorAll(
-    ".preview"
-  )
-  .forEach(
-    button => {
-
-
-      button.addEventListener(
-        "click",
-        event => {
-
-
-          event.stopPropagation();
-
-
-          previewSound(
-
-            button.dataset.soundId,
-
-            button
-
-          );
-
-
-        }
-      );
-
-
-    }
-  );
-
-
-
-/* =========================================
-   PULSANTE +
-========================================= */
-
-document
-  .querySelectorAll(
-    ".sound-action.add"
-  )
-  .forEach(
-    button => {
-
-
-      button.addEventListener(
-        "click",
-        async event => {
-
-
-          event.stopPropagation();
-
-
-          if(
-            !selectedTrackId
-          ) {
-
-            alert(
-              "Prima crea o seleziona una traccia."
-            );
-
-            return;
-
-          }
-
-
-          const track =
-
-            tracks.find(
-              t =>
-                t.id ===
-                selectedTrackId
-            );
-
-
-          let start =
-            0;
-
-
-          if(
-            track.clips.length
-          ) {
-
-            start =
-
-              Math.max(
-
-                ...track.clips.map(
-
-                  clip =>
-
-                    clip.start +
-                    clip.duration
-
-                )
-
-              );
-
-          }
-
-
-          await addSoundToTrack(
-
-            button.dataset.soundId,
-
-            selectedTrackId,
-
-            start
-
-          );
-
-
-        }
-      );
-
-
-    }
-  );
-
-
-
-/* =========================================
-   RICERCA
-========================================= */
-
-document
-  .getElementById(
-    "soundSearch"
-  )
-  .addEventListener(
-    "input",
-    event => {
-
-
-      const query =
-
-        event.target.value
-          .toLowerCase()
-          .trim();
-
-
-      document
-        .querySelectorAll(
-          ".sound-card"
-        )
-        .forEach(
-          card => {
-
-
-            card.style.display =
-
-              card.innerText
-                .toLowerCase()
-                .includes(query)
-
-              ? ""
-
-              : "none";
-
-
-          }
-        );
-
-
-    }
-  );
-
-
-
-/* =========================================
-   CLIC SUL RIGHELLO
-========================================= */
+/* =========================
+   CLICK RIGHELLO
+========================= */
 
 ruler.addEventListener(
   "click",
@@ -5701,7 +6548,7 @@ ruler.addEventListener(
 
     if(
       isPlaying
-    ) {
+    ){
 
 
       const newPosition =
@@ -5720,7 +6567,7 @@ ruler.addEventListener(
 
     }
 
-    else {
+    else{
 
 
       updatePlayheadUI();
@@ -5734,9 +6581,9 @@ ruler.addEventListener(
 
 
 
-/* =========================================
+/* =========================
    NUOVO PROGETTO
-========================================= */
+========================= */
 
 document
   .getElementById(
@@ -5755,7 +6602,7 @@ document
         !confirm(
           "Vuoi cancellare il progetto?"
         )
-      ) {
+      ){
 
         return;
 
@@ -5791,9 +6638,9 @@ document
 
 
 
-/* =========================================
-   PULSANTI
-========================================= */
+/* =========================
+   BOTTONI
+========================= */
 
 document
   .getElementById(
@@ -5822,7 +6669,7 @@ playButton.addEventListener(
 
     if(
       isPlaying
-    ) {
+    ){
 
       return;
 
@@ -5854,24 +6701,6 @@ stopButton.addEventListener(
 
 document
   .getElementById(
-    "recordButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-
-      alert(
-        "La registrazione dal microfono sarà il prossimo modulo."
-      );
-
-
-    }
-  );
-
-
-document
-  .getElementById(
     "saveButton"
   )
   .addEventListener(
@@ -5880,7 +6709,7 @@ document
 
 
       alert(
-        "Il salvataggio verrà aggiunto più avanti."
+        "Il salvataggio permanente sarà il prossimo modulo."
       );
 
 
@@ -5898,7 +6727,7 @@ document
 
 
       alert(
-        "L'esportazione arriverà più avanti."
+        "L'esportazione arriverà dopo il salvataggio."
       );
 
 
@@ -5907,13 +6736,13 @@ document
 
 
 
-/* =========================================
+/* =========================
    UTILITY
-========================================= */
+========================= */
 
 function escapeHtml(
   text
-) {
+){
 
   return String(
     text
@@ -5943,9 +6772,11 @@ function escapeHtml(
 
 
 
-/* =========================================
+/* =========================
    AVVIO
-========================================= */
+========================= */
+
+renderSoundLibrary();
 
 renderTracks();
 
@@ -5954,7 +6785,5 @@ updatePlayheadUI();
 
 </script>
 
-
 </body>
-
 </html>
