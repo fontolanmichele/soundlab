@@ -10,12 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+*{box-sizing:border-box}
 
-* {
-  box-sizing: border-box;
-}
-
-:root {
+:root{
   --text:#1c5364;
   --muted:#648795;
   --blue:#72cfff;
@@ -27,777 +24,1336 @@
   --px-second:19px;
 }
 
-html, body {
+html,body{
   margin:0;
   height:100%;
   font-family:"Nunito",sans-serif;
   color:var(--text);
+
   background:
-    radial-gradient(circle at 12% 12%,rgba(111,224,160,.30),transparent 23%),
-    radial-gradient(circle at 87% 15%,rgba(114,207,255,.30),transparent 25%),
-    linear-gradient(150deg,#dff8f7,#d4efff 48%,#edfff5);
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(111,224,160,.30),
+      transparent 23%
+    ),
+    radial-gradient(
+      circle at 87% 15%,
+      rgba(114,207,255,.30),
+      transparent 25%
+    ),
+    linear-gradient(
+      150deg,
+      #dff8f7,
+      #d4efff 48%,
+      #edfff5
+    );
+
   overflow:hidden;
 }
 
-button,input {
+button,
+input{
   font-family:inherit;
 }
 
-button {
+button{
   cursor:pointer;
 }
 
-/* =========================
-   HEADER
-========================= */
-
-.app {
+.app{
   height:100vh;
   display:flex;
   flex-direction:column;
 }
 
-.topbar {
+
+/* =========================
+   HEADER
+========================= */
+
+.topbar{
   height:88px;
   flex-shrink:0;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   padding:0 24px;
+
   background:rgba(255,255,255,.40);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.55);
+
+  border-bottom:
+    1px solid rgba(255,255,255,.55);
 }
 
-.brand {
+.brand{
   display:flex;
   align-items:center;
   gap:14px;
 }
 
-.brand-logo {
+.brand-logo{
   width:58px;
   height:58px;
+
   border-radius:20px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,var(--blue),var(--green));
-  font-size:28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--green)
+    );
+
+  font-family:"Fredoka";
+  font-size:22px;
+
+  color:#26788e;
+
+  font-weight:700;
 }
 
-.brand h1 {
+.brand h1{
   margin:0;
+
   font-family:"Fredoka";
   color:#28778e;
+
   font-size:32px;
 }
 
-.brand p {
+.brand p{
   margin:5px 0 0;
+
   font-size:12px;
   font-weight:800;
+
   color:#5d8492;
 }
 
-.button {
-  border:1px solid rgba(58,126,151,.12);
-  border-radius:14px;
-  padding:11px 16px;
-  background:rgba(255,255,255,.66);
-  color:var(--text);
-  font-weight:800;
-}
-
-.button:hover {
-  background:white;
-}
-
-.button-primary {
-  border:none;
-  background:linear-gradient(135deg,var(--mint),var(--green));
-  color:#0b5344;
-}
-
-.top-actions {
+.top-actions{
   display:flex;
   gap:10px;
 }
+
+.button{
+  border:
+    1px solid rgba(58,126,151,.12);
+
+  border-radius:14px;
+
+  padding:11px 16px;
+
+  background:
+    rgba(255,255,255,.66);
+
+  color:var(--text);
+
+  font-weight:800;
+}
+
+.button:hover{
+  background:white;
+}
+
+.button-primary{
+  border:none;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--mint),
+      var(--green)
+    );
+
+  color:#0b5344;
+}
+
 
 /* =========================
    LAYOUT
 ========================= */
 
-.workspace {
+.workspace{
   flex:1;
   min-height:0;
+
   display:grid;
-  grid-template-columns:320px minmax(0,1fr);
+
+  grid-template-columns:
+    320px
+    minmax(0,1fr);
 }
+
 
 /* =========================
    LIBRERIA
 ========================= */
 
-.library {
+.library{
   min-height:0;
+
   display:flex;
   flex-direction:column;
-  background:rgba(255,255,255,.32);
-  border-right:1px solid rgba(255,255,255,.50);
+
+  background:
+    rgba(255,255,255,.32);
+
+  border-right:
+    1px solid rgba(255,255,255,.50);
 }
 
-.library-header {
+.library-header{
   padding:18px;
-  border-bottom:1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
 }
 
-.library-header h2 {
+.library-header h2{
   margin:0;
+
   font-family:"Fredoka";
+
   color:#267a91;
+
   font-size:21px;
 }
 
-.library-header p {
+.library-header p{
   margin:5px 0 0;
+
   color:var(--muted);
+
   font-size:12px;
 }
 
-.search-box {
+.search-box{
   padding:13px 15px 8px;
 }
 
-.search-box input {
+.search-box input{
   width:100%;
-  border:1px solid rgba(54,130,154,.15);
+
+  border:
+    1px solid rgba(54,130,154,.15);
+
   border-radius:14px;
+
   padding:11px 13px;
-  background:rgba(255,255,255,.72);
+
+  background:
+    rgba(255,255,255,.72);
+
   outline:none;
+
   color:var(--text);
 }
 
-.library-content {
+.library-content{
   flex:1;
+
   min-height:0;
+
   overflow-y:auto;
-  padding:8px 12px 20px;
+
+  padding:
+    8px
+    12px
+    20px;
 }
 
-.section-label {
-  margin:12px 7px 9px;
+.section-label{
+  margin:
+    12px
+    7px
+    9px;
+
   text-transform:uppercase;
+
   font-size:10px;
+
   letter-spacing:1px;
+
   color:#6d93a0;
+
   font-weight:800;
 }
 
-/* Categorie */
-
-.category {
+.category{
   width:100%;
-  padding:9px 11px;
+
+  padding:
+    9px
+    11px;
+
   margin-bottom:6px;
+
   border-radius:15px;
-  border:1px solid rgba(64,130,155,.10);
-  background:rgba(255,255,255,.44);
+
+  border:
+    1px solid rgba(64,130,155,.10);
+
+  background:
+    rgba(255,255,255,.44);
+
   text-align:left;
+
   color:#285f70;
+
   font-weight:800;
 }
 
-.category.active {
-  background:linear-gradient(
-    135deg,
-    rgba(114,207,255,.30),
-    rgba(111,224,160,.26)
-  );
+.category.active{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(114,207,255,.30),
+      rgba(111,224,160,.26)
+    );
 }
 
-/* Suoni */
 
-.sound-list {
+/* =========================
+   SUONI
+========================= */
+
+.sound-list{
   display:flex;
   flex-direction:column;
+
   gap:8px;
 }
 
-.sound-card {
+.sound-card{
   display:grid;
-  grid-template-columns:42px 1fr auto;
+
+  grid-template-columns:
+    42px
+    1fr
+    auto;
+
   align-items:center;
+
   gap:9px;
 
   padding:9px;
 
   border-radius:16px;
-  border:1px solid rgba(61,126,151,.11);
-  background:rgba(255,255,255,.72);
 
-  box-shadow:0 5px 14px rgba(60,120,140,.07);
+  border:
+    1px solid rgba(61,126,151,.11);
+
+  background:
+    rgba(255,255,255,.72);
+
+  box-shadow:
+    0 5px 14px rgba(60,120,140,.07);
 
   cursor:grab;
+
   user-select:none;
 }
 
-.sound-card:active {
+.sound-card:active{
   cursor:grabbing;
 }
 
-.sound-icon {
+.sound-icon{
   width:42px;
   height:42px;
+
   border-radius:13px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(
-    135deg,
-    rgba(114,207,255,.38),
-    rgba(111,224,160,.34)
-  );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(114,207,255,.38),
+      rgba(111,224,160,.34)
+    );
+
+  color:#2d8198;
+
+  font-family:"Fredoka";
+
+  font-size:20px;
+
+  font-weight:700;
 }
 
-.sound-icon svg {
-  width:25px;
-  height:25px;
-}
-
-.sound-info strong {
+.sound-info strong{
   display:block;
+
   font-size:13px;
+
   color:#285f70;
 }
 
-.sound-info span {
+.sound-info span{
   display:block;
+
   margin-top:2px;
+
   font-size:10px;
+
   color:#7995a0;
 }
 
-.sound-actions {
+.sound-actions{
   display:flex;
+
   gap:5px;
 }
 
-.sound-action {
+.sound-action{
   width:31px;
   height:31px;
+
   border:0;
+
   border-radius:10px;
+
   font-weight:900;
+
   color:#297188;
+
   background:#e8fbff;
 }
 
-.sound-action.add {
+.sound-action.add{
   background:#dff8e8;
+
   color:#27825d;
 }
 
-.drag-hint {
-  margin:10px 4px 5px;
-  padding:10px 12px;
+.drag-hint{
+  margin:
+    10px
+    4px
+    5px;
+
+  padding:
+    10px
+    12px;
+
   border-radius:14px;
+
   color:#507d8c;
-  background:rgba(255,255,255,.43);
+
+  background:
+    rgba(255,255,255,.43);
+
   font-size:11px;
+
   line-height:1.4;
 }
+
 
 /* =========================
    EDITOR
 ========================= */
 
-.editor {
+.editor{
   min-width:0;
   min-height:0;
+
   display:flex;
   flex-direction:column;
 }
 
-.hero {
+.hero{
   min-height:82px;
+
   flex-shrink:0;
+
   display:flex;
   align-items:center;
+
   gap:14px;
-  padding:13px 20px;
-  background:rgba(255,255,255,.22);
-  border-bottom:1px solid var(--line);
+
+  padding:
+    13px
+    20px;
+
+  background:
+    rgba(255,255,255,.22);
+
+  border-bottom:
+    1px solid var(--line);
 }
 
-.hero-planet {
+.hero-planet{
   width:57px;
   height:57px;
+
   border-radius:18px;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:rgba(255,255,255,.64);
-  font-size:28px;
+
+  background:
+    rgba(255,255,255,.64);
+
+  color:#2f8399;
+
+  font-family:"Fredoka";
+
+  font-weight:700;
 }
 
-.hero h2 {
+.hero h2{
   margin:0;
+
   font-family:"Fredoka";
+
   font-size:23px;
+
   color:#27788e;
 }
 
-.hero p {
+.hero p{
   margin:4px 0 0;
+
   color:var(--muted);
+
   font-size:12px;
 }
 
-/* Toolbar */
 
-.toolbar {
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar{
   height:66px;
+
   flex-shrink:0;
+
   display:flex;
   align-items:center;
+
   gap:10px;
-  padding:0 18px;
-  background:rgba(255,255,255,.30);
-  border-bottom:1px solid var(--line);
+
+  padding:
+    0
+    18px;
+
+  background:
+    rgba(255,255,255,.30);
+
+  border-bottom:
+    1px solid var(--line);
 }
 
-.transport {
+.transport{
   margin-left:auto;
+
   display:flex;
+
   gap:9px;
 }
 
-.transport-button {
+.transport-button{
   width:45px;
   height:45px;
+
   border:0;
+
   border-radius:50%;
-  background:rgba(255,255,255,.70);
+
+  background:
+    rgba(255,255,255,.70);
+
   color:#33778b;
+
   font-size:16px;
+
   font-weight:900;
 }
 
-.transport-button.play {
-  background:linear-gradient(135deg,var(--mint),var(--green));
+.transport-button.play{
+  background:
+    linear-gradient(
+      135deg,
+      var(--mint),
+      var(--green)
+    );
+
   color:#0d5546;
 }
+
 
 /* =========================
    TIMELINE
 ========================= */
 
-.timeline-shell {
+.timeline-shell{
   position:relative;
+
   flex:1;
+
   min-height:0;
 }
 
-.timeline-scroll {
+.timeline-scroll{
   position:absolute;
+
   inset:0;
+
   overflow:auto;
 }
 
-.timeline-canvas {
-  width:var(--timeline-width);
+.timeline-canvas{
+  width:
+    var(--timeline-width);
+
   min-height:100%;
 }
 
-.timeline-header {
+.timeline-header{
   height:48px;
+
   position:sticky;
+
   top:0;
+
   z-index:20;
+
   display:grid;
-  grid-template-columns:var(--track-width) 1fr;
+
+  grid-template-columns:
+    var(--track-width)
+    1fr;
 }
 
-.track-header {
+.track-header{
   position:sticky;
+
   left:0;
+
   z-index:22;
+
   display:flex;
   align-items:center;
+
   padding-left:14px;
-  background:rgba(244,253,255,.98);
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
+
+  background:
+    rgba(244,253,255,.98);
+
+  border-right:
+    1px solid var(--line);
+
+  border-bottom:
+    1px solid var(--line);
+
   font-size:10px;
+
   font-weight:800;
+
   color:#668b99;
+
   text-transform:uppercase;
+
   letter-spacing:1px;
 }
 
-.ruler {
+.ruler{
   display:flex;
-  background:rgba(255,255,255,.86);
-  border-bottom:1px solid var(--line);
+
+  background:
+    rgba(255,255,255,.86);
+
+  border-bottom:
+    1px solid var(--line);
 }
 
-.time-mark {
+.time-mark{
   width:95px;
-  flex:0 0 95px;
-  border-left:1px solid rgba(66,125,149,.14);
-  padding:8px 0 0 7px;
+
+  flex:
+    0
+    0
+    95px;
+
+  border-left:
+    1px solid rgba(66,125,149,.14);
+
+  padding:
+    8px
+    0
+    0
+    7px;
+
   font-size:10px;
+
   font-weight:800;
+
   color:#7493a0;
 }
 
-/* Tracce */
 
-.track-row {
+/* =========================
+   TRACCE
+========================= */
+
+.track-row{
   height:116px;
+
   display:grid;
-  grid-template-columns:var(--track-width) 1fr;
-  border-bottom:1px solid var(--line);
+
+  grid-template-columns:
+    var(--track-width)
+    1fr;
+
+  border-bottom:
+    1px solid var(--line);
 }
 
-.track-controls {
+.track-controls{
   position:sticky;
+
   left:0;
+
   z-index:8;
+
   padding:10px;
-  background:rgba(244,253,255,.96);
-  border-right:1px solid var(--line);
+
+  background:
+    rgba(244,253,255,.96);
+
+  border-right:
+    1px solid var(--line);
 }
 
-.track-row.selected .track-controls {
-  background:linear-gradient(
-    135deg,
-    rgba(203,246,255,.98),
-    rgba(220,255,233,.98)
-  );
-  box-shadow:inset 4px 0 0 var(--mint);
+.track-row.selected
+.track-controls{
+  background:
+    linear-gradient(
+      135deg,
+      rgba(203,246,255,.98),
+      rgba(220,255,233,.98)
+    );
+
+  box-shadow:
+    inset 4px 0 0 var(--mint);
 }
 
-.track-title-row {
+.track-title-row{
   display:flex;
   align-items:center;
+
   gap:6px;
 }
 
-.track-number {
+.track-number{
   width:25px;
   height:25px;
+
   border-radius:9px;
+
   flex-shrink:0;
+
   display:flex;
   align-items:center;
   justify-content:center;
-  background:linear-gradient(135deg,var(--blue),var(--green));
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--green)
+    );
+
   color:#18536a;
+
   font-family:"Fredoka";
+
   font-weight:700;
+
   font-size:12px;
 }
 
-.track-name {
+.track-name{
   flex:1;
+
   min-width:0;
-  border:1px solid rgba(62,126,151,.12);
+
+  border:
+    1px solid rgba(62,126,151,.12);
+
   border-radius:9px;
+
   background:white;
-  padding:6px 7px;
+
+  padding:
+    6px
+    7px;
+
   color:#285f70;
+
   font-weight:800;
 }
 
-.track-actions {
+.track-actions{
   display:flex;
+
   gap:5px;
+
   margin-top:7px;
 }
 
-.small-button {
+.small-button{
   width:27px;
   height:27px;
+
   border-radius:8px;
-  border:1px solid rgba(58,126,151,.12);
+
+  border:
+    1px solid rgba(58,126,151,.12);
+
   background:white;
+
   color:#4d7887;
+
   font-weight:900;
 }
 
-.small-button.active {
-  background:var(--mint);
+.small-button.active{
+  background:
+    var(--mint);
+
   color:#0f5144;
 }
 
-.delete-button {
+.delete-button{
   color:#af626b;
 }
 
-.volume-row {
+.volume-row{
   display:flex;
   align-items:center;
+
   gap:5px;
+
   margin-top:6px;
+
   font-size:9px;
+
   color:#72909c;
 }
 
-.volume-row input {
+.volume-row input{
   flex:1;
+
   min-width:0;
-  accent-color:var(--mint);
+
+  accent-color:
+    var(--mint);
 }
 
-/* Corsia */
-
-.track-lane {
+.track-lane{
   position:relative;
+
   overflow:hidden;
+
   background:
     linear-gradient(
       to right,
       rgba(54,130,154,.08) 1px,
       transparent 1px
     );
-  background-size:95px 100%;
+
+  background-size:
+    95px
+    100%;
 }
 
-.track-row:nth-child(even) .track-lane {
-  background-color:rgba(255,255,255,.11);
+.track-row:nth-child(even)
+.track-lane{
+  background-color:
+    rgba(255,255,255,.11);
 }
 
-.track-row.selected .track-lane {
-  background-color:rgba(80,215,195,.08);
+.track-row.selected
+.track-lane{
+  background-color:
+    rgba(80,215,195,.08);
 }
 
-.track-lane.drag-over {
-  background-color:rgba(89,220,173,.20) !important;
-  outline:2px dashed rgba(49,170,128,.55);
+.track-lane.drag-over{
+  background-color:
+    rgba(89,220,173,.20)
+    !important;
+
+  outline:
+    2px dashed
+    rgba(49,170,128,.55);
+
   outline-offset:-3px;
 }
 
-.lane-hint {
+.lane-hint{
   position:absolute;
+
   left:25px;
   top:50%;
-  transform:translateY(-50%);
+
+  transform:
+    translateY(-50%);
+
   font-size:11px;
+
   font-weight:700;
-  color:rgba(66,115,132,.32);
+
+  color:
+    rgba(66,115,132,.32);
+
   pointer-events:none;
 }
+
 
 /* =========================
    CLIP AUDIO
 ========================= */
 
-.audio-clip {
+.audio-clip{
   position:absolute;
+
   top:17px;
+
   height:80px;
 
-  min-width:58px;
+  min-width:38px;
 
   border-radius:15px;
 
-  background:linear-gradient(
-    135deg,
-    #74d7ff,
-    #67dfb0
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #74d7ff,
+      #67dfb0
+    );
 
-  border:2px solid rgba(255,255,255,.65);
+  border:
+    2px solid rgba(255,255,255,.72);
 
-  box-shadow:0 7px 16px rgba(45,119,143,.18);
+  box-shadow:
+    0 7px 16px rgba(45,119,143,.18);
 
-  overflow:hidden;
+  overflow:visible;
 
   cursor:grab;
+
   user-select:none;
+
   touch-action:none;
 }
 
-.audio-clip:active {
+.audio-clip.looping{
+  background:
+    repeating-linear-gradient(
+      135deg,
+      #74d7ff 0px,
+      #74d7ff 16px,
+      #67dfb0 16px,
+      #67dfb0 32px
+    );
+}
+
+.audio-clip:active{
   cursor:grabbing;
 }
 
-.clip-top {
+.clip-body{
+  position:absolute;
+
+  inset:0;
+
+  overflow:hidden;
+
+  border-radius:13px;
+}
+
+.clip-top{
   height:27px;
-  padding:4px 7px;
+
+  padding:
+    4px
+    7px;
+
   display:flex;
   align-items:center;
+
   gap:5px;
 
-  background:rgba(255,255,255,.28);
+  background:
+    rgba(255,255,255,.30);
 
   font-size:10px;
+
   font-weight:900;
+
   color:#1e6276;
 }
 
-.clip-title {
+.clip-title{
   flex:1;
+
   min-width:0;
+
   white-space:nowrap;
+
   overflow:hidden;
+
   text-overflow:ellipsis;
 }
 
-.clip-delete {
+.clip-delete{
   border:0;
+
   padding:0;
+
   background:transparent;
+
   color:#9b5260;
+
   font-weight:900;
 }
 
-.wave-fake {
+.loop-badge{
+  display:none;
+
+  padding:
+    2px
+    5px;
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.60);
+
+  color:#27785f;
+
+  font-size:8px;
+
+  font-weight:900;
+}
+
+.audio-clip.looping
+.loop-badge{
+  display:inline-flex;
+}
+
+.wave-fake{
   position:absolute;
+
   left:7px;
   right:7px;
+
   top:35px;
   bottom:9px;
 
   display:flex;
+
   align-items:center;
+
   gap:2px;
 
   opacity:.65;
 
   pointer-events:none;
+
+  overflow:hidden;
 }
 
-.wave-fake span {
+.wave-fake span{
   width:2px;
+
+  flex:
+    0
+    0
+    2px;
+
   border-radius:5px;
+
   background:#24758b;
 }
 
+
 /* =========================
-   EMPTY STATE
+   MANIGLIE RIDIMENSIONAMENTO
 ========================= */
 
-.empty-project {
+.resize-handle{
   position:absolute;
+
+  top:7px;
+  bottom:7px;
+
+  width:12px;
+
+  z-index:10;
+
+  background:
+    rgba(255,255,255,.72);
+
+  border-radius:8px;
+
+  cursor:ew-resize;
+
+  box-shadow:
+    0 2px 8px
+    rgba(33,105,128,.16);
+}
+
+.resize-handle::after{
+  content:"";
+
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:
+    translate(-50%,-50%);
+
+  width:2px;
+  height:22px;
+
+  border-radius:3px;
+
+  background:
+    rgba(42,113,136,.48);
+}
+
+.resize-handle.left{
+  left:-5px;
+}
+
+.resize-handle.right{
+  right:-5px;
+}
+
+.clip-duration{
+  position:absolute;
+
+  right:8px;
+  bottom:5px;
+
+  font-size:8px;
+
+  font-weight:900;
+
+  color:
+    rgba(28,83,100,.70);
+
+  pointer-events:none;
+}
+
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty-project{
+  position:absolute;
+
   z-index:12;
+
   left:50%;
   top:51%;
-  transform:translate(-50%,-50%);
 
-  width:min(650px,calc(100% - 40px));
+  transform:
+    translate(-50%,-50%);
 
-  padding:30px 24px;
+  width:
+    min(
+      650px,
+      calc(100% - 40px)
+    );
+
+  padding:
+    30px
+    24px;
 
   text-align:center;
 
   border-radius:28px;
 
-  background:rgba(255,255,255,.82);
+  background:
+    rgba(255,255,255,.82);
 
-  box-shadow:0 14px 40px rgba(56,119,144,.14);
+  box-shadow:
+    0 14px 40px rgba(56,119,144,.14);
 }
 
-.empty-project.hidden {
+.empty-project.hidden{
   display:none;
 }
 
-.empty-project h3 {
-  margin:0 0 8px;
+.empty-project h3{
+  margin:
+    0
+    0
+    8px;
+
   font-family:"Fredoka";
+
   color:#26788e;
+
   font-size:28px;
 }
 
-.empty-project p {
-  margin:0 auto 18px;
+.empty-project p{
+  margin:
+    0
+    auto
+    18px;
+
   max-width:470px;
+
   color:var(--muted);
+
   font-size:13px;
+
   line-height:1.5;
 }
+
 
 /* =========================
    FOOTER
 ========================= */
 
-.bottom-bar {
+.bottom-bar{
   height:54px;
+
   flex-shrink:0;
+
   display:flex;
   align-items:center;
+
   gap:10px;
-  padding:0 18px;
-  background:rgba(255,255,255,.40);
-  border-top:1px solid rgba(255,255,255,.55);
+
+  padding:
+    0
+    18px;
+
+  background:
+    rgba(255,255,255,.40);
+
+  border-top:
+    1px solid rgba(255,255,255,.55);
 }
 
-.status {
-  padding:7px 11px;
+.status{
+  padding:
+    7px
+    11px;
+
   border-radius:999px;
-  background:rgba(255,255,255,.65);
+
+  background:
+    rgba(255,255,255,.65);
+
   color:#567f8d;
+
   font-size:11px;
+
   font-weight:800;
 }
 
-.time {
+.time{
   margin-left:auto;
+
   color:#34788d;
+
   font-size:15px;
+
   font-weight:800;
 }
 
-@media(max-width:850px) {
-  .workspace {
-    grid-template-columns:235px minmax(0,1fr);
+
+@media(max-width:850px){
+
+  .workspace{
+    grid-template-columns:
+      235px
+      minmax(0,1fr);
   }
 
-  .brand p {
+  .brand p{
     display:none;
   }
 
-  .hero p {
+  .hero p{
     display:none;
   }
+
 }
-
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
+
 
 <header class="topbar">
 
   <div class="brand">
 
     <div class="brand-logo">
-      ◎
+      SL
     </div>
 
     <div>
-      <h1>SoundLab</h1>
-      <p>Una risorsa didattica del Prof. Fontolan Michele</p>
+
+      <h1>
+        SoundLab
+      </h1>
+
+      <p>
+        Una risorsa didattica del Prof. Fontolan Michele
+      </p>
+
     </div>
 
   </div>
 
+
   <div class="top-actions">
 
-    <button class="button" id="newProjectButton">
+    <button
+      class="button"
+      id="newProjectButton"
+    >
       Nuovo progetto
     </button>
 
-    <button class="button">
+    <button
+      class="button"
+      id="saveButton"
+    >
       Salva
     </button>
 
-    <button class="button button-primary">
+    <button
+      class="button button-primary"
+      id="exportButton"
+    >
       Esporta
     </button>
 
@@ -807,6 +1363,7 @@ button {
 
 
 <main class="workspace">
+
 
 <!-- =========================
      LIBRERIA
@@ -825,6 +1382,7 @@ button {
     </p>
 
   </div>
+
 
   <div class="search-box">
 
@@ -895,10 +1453,8 @@ button {
     </div>
 
 
-    <div
-      class="sound-list"
-      id="soundList"
-    >
+    <div class="sound-list">
+
 
       <!-- PIOGGIA -->
 
@@ -913,16 +1469,23 @@ button {
         </div>
 
         <div class="sound-info">
-          <strong>Pioggia</strong>
-          <span>Meteo • ambiente</span>
+
+          <strong>
+            Pioggia
+          </strong>
+
+          <span>
+            Meteo • ambiente
+          </span>
+
         </div>
+
 
         <div class="sound-actions">
 
           <button
             class="sound-action preview"
             data-sound-id="rain"
-            title="Ascolta"
           >
             ▶
           </button>
@@ -930,7 +1493,6 @@ button {
           <button
             class="sound-action add"
             data-sound-id="rain"
-            title="Aggiungi alla traccia"
           >
             ＋
           </button>
@@ -940,7 +1502,7 @@ button {
       </div>
 
 
-      <!-- CITTA -->
+      <!-- CITTÀ -->
 
       <div
         class="sound-card"
@@ -953,9 +1515,17 @@ button {
         </div>
 
         <div class="sound-info">
-          <strong>Città</strong>
-          <span>Ambiente urbano</span>
+
+          <strong>
+            Città
+          </strong>
+
+          <span>
+            Ambiente urbano
+          </span>
+
         </div>
+
 
         <div class="sound-actions">
 
@@ -991,9 +1561,17 @@ button {
         </div>
 
         <div class="sound-info">
-          <strong>Uccelli</strong>
-          <span>Natura • campagna</span>
+
+          <strong>
+            Uccelli
+          </strong>
+
+          <span>
+            Natura • campagna
+          </span>
+
         </div>
+
 
         <div class="sound-actions">
 
@@ -1020,18 +1598,25 @@ button {
 
     <div class="drag-hint">
 
-      <strong>Computer:</strong>
-      trascina un suono direttamente nella traccia.<br><br>
+      <strong>Sposta:</strong>
+      trascina la clip.
 
-      <strong>Tablet:</strong>
-      seleziona una traccia e premi ＋.
+      <br>
+
+      <strong>Accorcia:</strong>
+      trascina una maniglia verso l'interno.
+
+      <br>
+
+      <strong>Loop:</strong>
+      allunga il bordo destro oltre la durata originale.
 
     </div>
-
 
   </div>
 
 </aside>
+
 
 
 <!-- =========================
@@ -1041,147 +1626,163 @@ button {
 <section class="editor">
 
 
-<div class="hero">
+  <div class="hero">
 
-  <div class="hero-planet">
-    ◎
-  </div>
+    <div class="hero-planet">
+      EARTH
+    </div>
 
-  <div>
+    <div>
 
-    <h2>
-      Costruisci il tuo paesaggio sonoro
-    </h2>
+      <h2>
+        Costruisci il tuo paesaggio sonoro
+      </h2>
 
-    <p>
-      Scegli un ambiente, ascolta i suoni e disponili
-      liberamente nella timeline.
-    </p>
-
-  </div>
-
-</div>
-
-
-<div class="toolbar">
-
-  <button
-    class="button button-primary"
-    id="addTrackButton"
-  >
-    ＋ Traccia
-  </button>
-
-  <button class="button">
-    Registra
-  </button>
-
-
-  <div class="transport">
-
-    <button
-      class="transport-button"
-      id="stopButton"
-    >
-      ■
-    </button>
-
-    <button
-      class="transport-button play"
-      id="playButton"
-    >
-      ▶
-    </button>
-
-  </div>
-
-</div>
-
-
-<div class="timeline-shell">
-
-  <div class="timeline-scroll">
-
-    <div class="timeline-canvas">
-
-
-      <div class="timeline-header">
-
-        <div class="track-header">
-          Tracce
-        </div>
-
-
-        <div class="ruler">
-
-          <div class="time-mark">0 s</div>
-          <div class="time-mark">5 s</div>
-          <div class="time-mark">10 s</div>
-          <div class="time-mark">15 s</div>
-          <div class="time-mark">20 s</div>
-          <div class="time-mark">25 s</div>
-          <div class="time-mark">30 s</div>
-          <div class="time-mark">35 s</div>
-          <div class="time-mark">40 s</div>
-          <div class="time-mark">45 s</div>
-          <div class="time-mark">50 s</div>
-          <div class="time-mark">55 s</div>
-          <div class="time-mark">60 s</div>
-
-        </div>
-
-      </div>
-
-
-      <div id="trackRows"></div>
-
+      <p>
+        Scegli un ambiente, ascolta i suoni e disponili
+        liberamente nella timeline.
+      </p>
 
     </div>
 
   </div>
 
 
-  <div
-    class="empty-project"
-    id="emptyProject"
-  >
 
-    <h3>
-      Il tuo progetto è vuoto
-    </h3>
-
-    <p>
-      Crea una traccia e poi trascina uno dei tre
-      suoni di prova dalla libreria alla timeline.
-    </p>
+  <div class="toolbar">
 
     <button
       class="button button-primary"
-      id="createFirstTrack"
+      id="addTrackButton"
     >
-      ＋ Crea la prima traccia
+      ＋ Traccia
     </button>
 
+    <button
+      class="button"
+      id="recordButton"
+    >
+      Registra
+    </button>
+
+
+    <div class="transport">
+
+      <button
+        class="transport-button"
+        id="stopButton"
+      >
+        ■
+      </button>
+
+      <button
+        class="transport-button play"
+        id="playButton"
+      >
+        ▶
+      </button>
+
+    </div>
+
   </div>
 
-</div>
 
 
-<div class="bottom-bar">
+  <div class="timeline-shell">
 
-  <div class="status" id="projectStatus">
-    Progetto vuoto
+
+    <div class="timeline-scroll">
+
+
+      <div class="timeline-canvas">
+
+
+        <div class="timeline-header">
+
+          <div class="track-header">
+            Tracce
+          </div>
+
+
+          <div class="ruler">
+
+            <div class="time-mark">0 s</div>
+            <div class="time-mark">5 s</div>
+            <div class="time-mark">10 s</div>
+            <div class="time-mark">15 s</div>
+            <div class="time-mark">20 s</div>
+            <div class="time-mark">25 s</div>
+            <div class="time-mark">30 s</div>
+            <div class="time-mark">35 s</div>
+            <div class="time-mark">40 s</div>
+            <div class="time-mark">45 s</div>
+            <div class="time-mark">50 s</div>
+            <div class="time-mark">55 s</div>
+            <div class="time-mark">60 s</div>
+
+          </div>
+
+        </div>
+
+
+        <div id="trackRows"></div>
+
+
+      </div>
+
+    </div>
+
+
+
+    <div
+      class="empty-project"
+      id="emptyProject"
+    >
+
+      <h3>
+        Il tuo progetto è vuoto
+      </h3>
+
+      <p>
+        Crea una traccia, trascina un suono nella timeline
+        e prova a modificarne la durata.
+      </p>
+
+      <button
+        class="button button-primary"
+        id="createFirstTrack"
+      >
+        ＋ Crea la prima traccia
+      </button>
+
+    </div>
+
+
   </div>
 
-  <div class="status" id="selectedStatus">
-    Nessuna traccia selezionata
-  </div>
 
-  <div class="time">
-    00:00.0
-  </div>
 
-</div>
+  <div class="bottom-bar">
+
+    <div
+      class="status"
+      id="projectStatus"
+    >
+      Progetto vuoto
+    </div>
+
+    <div
+      class="status"
+      id="selectedStatus"
+    >
+      Nessuna traccia selezionata
+    </div>
+
+    <div class="time">
+      00:00.0
+    </div>
+
+  </div>
 
 
 </section>
@@ -1194,24 +1795,24 @@ button {
 <script>
 
 /* =========================
-   DATI SUONI
+   BANCA SUONI
 ========================= */
 
 const sounds = {
 
-  rain: {
+  rain:{
     id:"rain",
     name:"Pioggia",
     file:"pioggia_test.wav"
   },
 
-  city: {
+  city:{
     id:"city",
     name:"Città",
     file:"citta_test.wav"
   },
 
-  birds: {
+  birds:{
     id:"birds",
     name:"Uccelli",
     file:"uccelli_test.wav"
@@ -1220,155 +1821,204 @@ const sounds = {
 };
 
 
-/* 95 pixel = 5 secondi */
 const PX_PER_SECOND = 19;
 
+const MIN_CLIP_SECONDS = .5;
 
-/* =========================
-   DATI PROGETTO
-========================= */
 
 let tracks = [];
+
 let trackCounter = 0;
+
 let clipCounter = 0;
 
 let selectedTrackId = null;
 
 let currentPreview = null;
+
 let currentPreviewButton = null;
 
 
-/* =========================
-   ELEMENTI
-========================= */
-
 const trackRows =
-  document.getElementById("trackRows");
+  document.getElementById(
+    "trackRows"
+  );
+
 
 const emptyProject =
-  document.getElementById("emptyProject");
+  document.getElementById(
+    "emptyProject"
+  );
+
 
 const projectStatus =
-  document.getElementById("projectStatus");
+  document.getElementById(
+    "projectStatus"
+  );
+
 
 const selectedStatus =
-  document.getElementById("selectedStatus");
+  document.getElementById(
+    "selectedStatus"
+  );
+
 
 
 /* =========================
-   TRACCE
+   CREA TRACCIA
 ========================= */
 
-function addTrack() {
+function addTrack(){
 
   trackCounter++;
 
+
   const track = {
 
-    id:"track-" + trackCounter,
+    id:
+      "track-" +
+      trackCounter,
 
-    name:"Traccia " + trackCounter,
+    name:
+      "Traccia " +
+      trackCounter,
 
-    volume:100,
+    volume:
+      100,
 
-    mute:false,
+    mute:
+      false,
 
-    solo:false,
+    solo:
+      false,
 
-    clips:[]
+    clips:
+      []
 
   };
 
-  tracks.push(track);
+
+  tracks.push(
+    track
+  );
+
 
   selectedTrackId =
     track.id;
 
+
   renderTracks();
 
 }
 
 
-function selectTrack(id) {
+
+/* =========================
+   SELEZIONA TRACCIA
+========================= */
+
+function selectTrack(id){
 
   selectedTrackId =
     id;
 
+
   renderTracks();
 
 }
 
 
-function deleteTrack(id) {
+
+/* =========================
+   ELIMINA TRACCIA
+========================= */
+
+function deleteTrack(id){
 
   const track =
     tracks.find(
-      t => t.id === id
+      t =>
+        t.id === id
     );
 
-  if (
-    track &&
-    track.clips.length > 0
-  ) {
 
-    if (
-      !confirm(
-        "Eliminare questa traccia e tutti i suoni contenuti?"
-      )
-    ) {
-      return;
-    }
+  if(
+    track &&
+    track.clips.length &&
+    !confirm(
+      "Eliminare questa traccia e tutti i suoni contenuti?"
+    )
+  ){
+
+    return;
 
   }
 
+
   tracks =
     tracks.filter(
-      t => t.id !== id
+      t =>
+        t.id !== id
     );
 
-  if (
+
+  if(
     selectedTrackId === id
-  ) {
+  ){
 
     selectedTrackId =
       tracks.length
-      ? tracks[tracks.length - 1].id
+
+      ? tracks[
+          tracks.length - 1
+        ].id
+
       : null;
 
   }
 
+
   renderTracks();
 
 }
 
 
+
 /* =========================
-   CLIP
+   AGGIUNGI SUONO
 ========================= */
 
 async function addSoundToTrack(
   soundId,
   trackId,
   startSeconds
-) {
+){
 
   const sound =
-    sounds[soundId];
+    sounds[
+      soundId
+    ];
+
 
   const track =
     tracks.find(
-      t => t.id === trackId
+      t =>
+        t.id ===
+        trackId
     );
 
-  if (
+
+  if(
     !sound ||
     !track
-  ) {
+  ){
+
     return;
+
   }
 
 
-  const duration =
+  const sourceDuration =
     await getAudioDuration(
       sound.file
     );
@@ -1379,13 +2029,18 @@ async function addSoundToTrack(
 
   track.clips.push({
 
-    id:"clip-" + clipCounter,
+    id:
+      "clip-" +
+      clipCounter,
 
-    soundId:soundId,
+    soundId:
+      soundId,
 
-    name:sound.name,
+    name:
+      sound.name,
 
-    file:sound.file,
+    file:
+      sound.file,
 
     start:
       Math.max(
@@ -1393,8 +2048,14 @@ async function addSoundToTrack(
         startSeconds || 0
       ),
 
+    sourceDuration:
+      sourceDuration || 5,
+
+    sourceOffset:
+      0,
+
     duration:
-      duration || 5
+      sourceDuration || 5
 
   });
 
@@ -1408,107 +2069,222 @@ async function addSoundToTrack(
 }
 
 
+
 /* =========================
-   DURATA AUDIO
+   DURATA FILE
 ========================= */
 
-function getAudioDuration(file) {
+function getAudioDuration(file){
 
-  return new Promise(resolve => {
+  return new Promise(
+    resolve => {
 
-    const audio =
-      new Audio(file);
-
-
-    audio.preload =
-      "metadata";
-
-
-    audio.addEventListener(
-      "loadedmetadata",
-      () => {
-
-        resolve(
-          audio.duration
+      const audio =
+        new Audio(
+          file
         );
 
-      }
-    );
+
+      audio.preload =
+        "metadata";
 
 
-    audio.addEventListener(
-      "error",
-      () => {
+      audio.addEventListener(
+        "loadedmetadata",
+        () => {
 
-        resolve(5);
+          resolve(
+            audio.duration
+          );
 
-      }
-    );
+        }
+      );
 
-  });
+
+      audio.addEventListener(
+        "error",
+        () => {
+
+          resolve(
+            5
+          );
+
+        }
+      );
+
+    }
+  );
 
 }
 
 
+
 /* =========================
-   ELEMENTO CLIP
+   INFORMAZIONI CLIP
+========================= */
+
+function clipAvailableSource(
+  clip
+){
+
+  return Math.max(
+
+    MIN_CLIP_SECONDS,
+
+    clip.sourceDuration -
+    clip.sourceOffset
+
+  );
+
+}
+
+
+
+function isLooping(
+  clip
+){
+
+  return (
+
+    clip.duration >
+
+    clipAvailableSource(
+      clip
+    ) + .01
+
+  );
+
+}
+
+
+
+function loopCount(
+  clip
+){
+
+  const available =
+    clipAvailableSource(
+      clip
+    );
+
+
+  return Math.max(
+
+    1,
+
+    Math.ceil(
+      clip.duration /
+      available
+    )
+
+  );
+
+}
+
+
+
+/* =========================
+   CREA CLIP
 ========================= */
 
 function createClipElement(
   track,
   clip
-) {
+){
 
   const el =
-    document.createElement("div");
+    document.createElement(
+      "div"
+    );
 
 
   el.className =
-    "audio-clip";
+
+    "audio-clip" +
+
+    (
+      isLooping(
+        clip
+      )
+
+      ? " looping"
+
+      : ""
+    );
 
 
   el.dataset.clipId =
     clip.id;
 
 
-  el.style.left =
-    (
-      clip.start *
-      PX_PER_SECOND
-    ) + "px";
-
-
-  el.style.width =
-    Math.max(
-      58,
-      clip.duration *
-      PX_PER_SECOND
-    ) + "px";
+  updateClipGeometry(
+    el,
+    clip
+  );
 
 
   el.innerHTML = `
 
-    <div class="clip-top">
+    <div
+      class="resize-handle left"
+      title="Taglia l'inizio"
+    >
+    </div>
 
-      <span class="clip-title">
-        ${escapeHtml(clip.name)}
-      </span>
 
-      <button
-        class="clip-delete"
-        title="Elimina clip"
-      >
-        ×
-      </button>
+    <div class="clip-body">
+
+
+      <div class="clip-top">
+
+        <span class="clip-title">
+          ${escapeHtml(clip.name)}
+        </span>
+
+
+        <span class="loop-badge">
+          LOOP ×${loopCount(clip)}
+        </span>
+
+
+        <button
+          class="clip-delete"
+          title="Elimina clip"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="wave-fake">
+
+        ${createFakeWave(70)}
+
+      </div>
+
+
+      <div class="clip-duration">
+
+        ${clip.duration.toFixed(1)} s
+
+      </div>
+
 
     </div>
 
-    <div class="wave-fake">
-      ${createFakeWave()}
+
+    <div
+      class="resize-handle right"
+      title="Accorcia o crea un loop"
+    >
     </div>
 
   `;
 
+
+
+  /* ELIMINA CLIP */
 
   el
     .querySelector(
@@ -1520,10 +2296,14 @@ function createClipElement(
 
         event.stopPropagation();
 
+
         track.clips =
           track.clips.filter(
-            c => c.id !== clip.id
+            c =>
+              c.id !==
+              clip.id
           );
+
 
         renderTracks();
 
@@ -1531,24 +2311,173 @@ function createClipElement(
     );
 
 
-  /* -------------------------
-     SPOSTA CLIP
-     ------------------------- */
+  setupClipDrag(
+    el,
+    track,
+    clip
+  );
+
+
+  setupLeftResize(
+    el,
+    track,
+    clip
+  );
+
+
+  setupRightResize(
+    el,
+    track,
+    clip
+  );
+
+
+  return el;
+
+}
+
+
+
+/* =========================
+   GEOMETRIA CLIP
+========================= */
+
+function updateClipGeometry(
+  el,
+  clip
+){
+
+  el.style.left =
+
+    (
+      clip.start *
+      PX_PER_SECOND
+    ) + "px";
+
+
+  el.style.width =
+
+    Math.max(
+
+      38,
+
+      clip.duration *
+      PX_PER_SECOND
+
+    ) + "px";
+
+}
+
+
+
+/* =========================
+   AGGIORNA CLIP
+========================= */
+
+function refreshClipVisual(
+  el,
+  clip
+){
+
+  updateClipGeometry(
+    el,
+    clip
+  );
+
+
+  el.classList.toggle(
+
+    "looping",
+
+    isLooping(
+      clip
+    )
+
+  );
+
+
+  const badge =
+    el.querySelector(
+      ".loop-badge"
+    );
+
+
+  if(
+    badge
+  ){
+
+    badge.textContent =
+
+      "LOOP ×" +
+
+      loopCount(
+        clip
+      );
+
+  }
+
+
+  const duration =
+    el.querySelector(
+      ".clip-duration"
+    );
+
+
+  if(
+    duration
+  ){
+
+    duration.textContent =
+
+      clip.duration
+        .toFixed(1)
+
+      +
+
+      " s";
+
+  }
+
+}
+
+
+
+/* =========================
+   SPOSTAMENTO CLIP
+========================= */
+
+function setupClipDrag(
+  el,
+  track,
+  clip
+){
 
   el.addEventListener(
     "pointerdown",
     event => {
 
-      if (
+
+      if(
         event.target.closest(
           ".clip-delete"
         )
-      ) {
+        ||
+        event.target.closest(
+          ".resize-handle"
+        )
+      ){
+
         return;
+
       }
 
 
       event.preventDefault();
+
+
+      selectTrackWithoutRender(
+        track.id
+      );
 
 
       const startingX =
@@ -1564,46 +2493,65 @@ function createClipElement(
       );
 
 
+
       const move =
         moveEvent => {
 
+
           const delta =
+
             (
               moveEvent.clientX -
               startingX
-            ) /
+            )
+
+            /
+
             PX_PER_SECOND;
 
 
           clip.start =
+
             Math.max(
+
               0,
+
               originalStart +
               delta
+
             );
 
 
           el.style.left =
+
             (
               clip.start *
               PX_PER_SECOND
-            ) + "px";
+            )
 
-      };
+            +
+
+            "px";
+
+        };
+
 
 
       const up =
         upEvent => {
+
 
           el.removeEventListener(
             "pointermove",
             move
           );
 
+
           el.removeEventListener(
             "pointerup",
             up
           );
+
 
           el.removeEventListener(
             "pointercancel",
@@ -1611,43 +2559,66 @@ function createClipElement(
           );
 
 
-          const elementUnderPointer =
+          const under =
+
             document.elementFromPoint(
+
               upEvent.clientX,
+
               upEvent.clientY
+
             );
 
 
           const targetLane =
-            elementUnderPointer
-              ? elementUnderPointer.closest(
-                  ".track-lane"
-                )
-              : null;
+
+            under
+
+            ? under.closest(
+                ".track-lane"
+              )
+
+            : null;
 
 
-          if (targetLane) {
+          if(
+            targetLane
+          ){
 
             const targetTrackId =
-              targetLane.dataset.trackId;
+
+              targetLane.dataset
+                .trackId;
 
 
-            if (
-              targetTrackId &&
-              targetTrackId !== track.id
-            ) {
+            if(
+              targetTrackId
+              &&
+              targetTrackId !==
+              track.id
+            ){
 
               moveClipToTrack(
+
                 clip.id,
+
                 track.id,
+
                 targetTrackId
+
               );
+
+
+              return;
 
             }
 
           }
 
-      };
+
+          renderTracks();
+
+        };
 
 
       el.addEventListener(
@@ -1655,10 +2626,12 @@ function createClipElement(
         move
       );
 
+
       el.addEventListener(
         "pointerup",
         up
       );
+
 
       el.addEventListener(
         "pointercancel",
@@ -1668,55 +2641,433 @@ function createClipElement(
     }
   );
 
+}
 
-  return el;
+
+
+/* =========================
+   RIDIMENSIONA A DESTRA
+========================= */
+
+function setupRightResize(
+  el,
+  track,
+  clip
+){
+
+  const handle =
+    el.querySelector(
+      ".resize-handle.right"
+    );
+
+
+  handle.addEventListener(
+    "pointerdown",
+    event => {
+
+
+      event.preventDefault();
+
+      event.stopPropagation();
+
+
+      const startX =
+        event.clientX;
+
+
+      const originalDuration =
+        clip.duration;
+
+
+      handle.setPointerCapture(
+        event.pointerId
+      );
+
+
+
+      const move =
+        moveEvent => {
+
+
+          const delta =
+
+            (
+              moveEvent.clientX -
+              startX
+            )
+
+            /
+
+            PX_PER_SECOND;
+
+
+          clip.duration =
+
+            Math.max(
+
+              MIN_CLIP_SECONDS,
+
+              originalDuration +
+              delta
+
+            );
+
+
+          refreshClipVisual(
+            el,
+            clip
+          );
+
+        };
+
+
+
+      const up =
+        () => {
+
+
+          handle.removeEventListener(
+            "pointermove",
+            move
+          );
+
+
+          handle.removeEventListener(
+            "pointerup",
+            up
+          );
+
+
+          handle.removeEventListener(
+            "pointercancel",
+            up
+          );
+
+
+          renderTracks();
+
+        };
+
+
+      handle.addEventListener(
+        "pointermove",
+        move
+      );
+
+
+      handle.addEventListener(
+        "pointerup",
+        up
+      );
+
+
+      handle.addEventListener(
+        "pointercancel",
+        up
+      );
+
+    }
+  );
 
 }
 
 
+
 /* =========================
-   SPOSTA CLIP TRA TRACCE
+   RIDIMENSIONA A SINISTRA
+========================= */
+
+function setupLeftResize(
+  el,
+  track,
+  clip
+){
+
+  const handle =
+    el.querySelector(
+      ".resize-handle.left"
+    );
+
+
+  handle.addEventListener(
+    "pointerdown",
+    event => {
+
+
+      event.preventDefault();
+
+      event.stopPropagation();
+
+
+      const startX =
+        event.clientX;
+
+
+      const originalStart =
+        clip.start;
+
+
+      const originalDuration =
+        clip.duration;
+
+
+      const originalOffset =
+        clip.sourceOffset;
+
+
+      handle.setPointerCapture(
+        event.pointerId
+      );
+
+
+
+      const move =
+        moveEvent => {
+
+
+          let delta =
+
+            (
+              moveEvent.clientX -
+              startX
+            )
+
+            /
+
+            PX_PER_SECOND;
+
+
+
+          /* Non andare prima dello zero */
+
+          delta =
+            Math.max(
+              delta,
+              -originalStart
+            );
+
+
+
+          /* Non eliminare tutta la clip */
+
+          delta =
+            Math.min(
+
+              delta,
+
+              originalDuration -
+              MIN_CLIP_SECONDS
+
+            );
+
+
+
+          if(
+            delta >= 0
+          ){
+
+
+            const maxOffsetIncrease =
+
+              Math.max(
+
+                0,
+
+                clip.sourceDuration -
+                originalOffset -
+                MIN_CLIP_SECONDS
+
+              );
+
+
+            const effective =
+
+              Math.min(
+
+                delta,
+
+                maxOffsetIncrease,
+
+                originalDuration -
+                MIN_CLIP_SECONDS
+
+              );
+
+
+            clip.start =
+
+              originalStart +
+              effective;
+
+
+            clip.duration =
+
+              originalDuration -
+              effective;
+
+
+            clip.sourceOffset =
+
+              originalOffset +
+              effective;
+
+          }
+
+          else{
+
+
+            const reveal =
+
+              Math.min(
+
+                -delta,
+
+                originalOffset,
+
+                originalStart
+
+              );
+
+
+            clip.start =
+
+              originalStart -
+              reveal;
+
+
+            clip.duration =
+
+              originalDuration +
+              reveal;
+
+
+            clip.sourceOffset =
+
+              originalOffset -
+              reveal;
+
+          }
+
+
+          refreshClipVisual(
+            el,
+            clip
+          );
+
+        };
+
+
+
+      const up =
+        () => {
+
+
+          handle.removeEventListener(
+            "pointermove",
+            move
+          );
+
+
+          handle.removeEventListener(
+            "pointerup",
+            up
+          );
+
+
+          handle.removeEventListener(
+            "pointercancel",
+            up
+          );
+
+
+          renderTracks();
+
+        };
+
+
+      handle.addEventListener(
+        "pointermove",
+        move
+      );
+
+
+      handle.addEventListener(
+        "pointerup",
+        up
+      );
+
+
+      handle.addEventListener(
+        "pointercancel",
+        up
+      );
+
+    }
+  );
+
+}
+
+
+
+/* =========================
+   CAMBIA TRACCIA
 ========================= */
 
 function moveClipToTrack(
   clipId,
   oldTrackId,
   newTrackId
-) {
+){
 
   const oldTrack =
     tracks.find(
-      t => t.id === oldTrackId
+      t =>
+        t.id ===
+        oldTrackId
     );
 
 
   const newTrack =
     tracks.find(
-      t => t.id === newTrackId
+      t =>
+        t.id ===
+        newTrackId
     );
 
 
-  if (
+  if(
     !oldTrack ||
     !newTrack
-  ) {
+  ){
+
     return;
+
   }
 
 
   const clip =
     oldTrack.clips.find(
-      c => c.id === clipId
+      c =>
+        c.id ===
+        clipId
     );
 
 
-  if (!clip)
+  if(
+    !clip
+  ){
+
     return;
+
+  }
 
 
   oldTrack.clips =
+
     oldTrack.clips.filter(
-      c => c.id !== clipId
+      c =>
+        c.id !==
+        clipId
     );
 
 
@@ -1734,36 +3085,78 @@ function moveClipToTrack(
 }
 
 
+
 /* =========================
-   FORMA D'ONDA FINTA
+   WAVEFORM GRAFICA
 ========================= */
 
-function createFakeWave() {
+function createFakeWave(
+  amount
+){
 
-  const heights =
-    [
-      16,24,10,32,20,38,
-      15,28,36,18,25,12,
-      34,20,29,14,37,22,
-      31,13,26,35,18,28
-    ];
+  const heights = [
+
+    16,24,10,32,20,38,
+    15,28,36,18,25,12,
+    34,20,29,14,37,22,
+    31,13,26,35,18,28
+
+  ];
 
 
-  return heights
-    .map(
-      h =>
-        `<span style="height:${h}px"></span>`
-    )
-    .join("");
+  let html = "";
+
+
+  for(
+    let i = 0;
+    i < amount;
+    i++
+  ){
+
+    const h =
+
+      heights[
+        i %
+        heights.length
+      ];
+
+
+    html +=
+
+      `<span style="height:${h}px"></span>`;
+
+  }
+
+
+  return html;
 
 }
 
 
+
 /* =========================
-   RENDER
+   SELEZIONE SENZA RENDER
 ========================= */
 
-function renderTracks() {
+function selectTrackWithoutRender(
+  id
+){
+
+  selectedTrackId =
+    id;
+
+
+  updateStatus();
+
+}
+
+
+
+/* =========================
+   RENDER TRACCE
+========================= */
+
+function renderTracks(){
 
   trackRows.innerHTML =
     "";
@@ -1780,24 +3173,23 @@ function renderTracks() {
 
 
       row.className =
-        "track-row";
 
+        "track-row"
 
-      if (
-        track.id ===
-        selectedTrackId
-      ) {
+        +
 
-        row.classList.add(
-          "selected"
+        (
+          track.id ===
+          selectedTrackId
+
+          ? " selected"
+
+          : ""
         );
 
-      }
 
 
-      /* -------------------------
-         CONTROLLI
-      ------------------------- */
+      /* CONTROLLI */
 
       const controls =
         document.createElement(
@@ -1866,9 +3258,8 @@ function renderTracks() {
       `;
 
 
-      /* -------------------------
-         LANE
-      ------------------------- */
+
+      /* LANE */
 
       const lane =
         document.createElement(
@@ -1887,29 +3278,33 @@ function renderTracks() {
       lane.innerHTML = `
 
         <div class="lane-hint">
+
           Trascina qui un suono
+
         </div>
 
       `;
+
 
 
       track.clips.forEach(
         clip => {
 
           lane.appendChild(
+
             createClipElement(
               track,
               clip
             )
+
           );
 
         }
       );
 
 
-      /* -------------------------
-         DROP DALLA LIBRERIA
-      ------------------------- */
+
+      /* DRAGOVER */
 
       lane.addEventListener(
         "dragover",
@@ -1917,12 +3312,14 @@ function renderTracks() {
 
           event.preventDefault();
 
+
           lane.classList.add(
             "drag-over"
           );
 
         }
       );
+
 
 
       lane.addEventListener(
@@ -1937,9 +3334,13 @@ function renderTracks() {
       );
 
 
+
+      /* DROP */
+
       lane.addEventListener(
         "drop",
         async event => {
+
 
           event.preventDefault();
 
@@ -1950,13 +3351,19 @@ function renderTracks() {
 
 
           const soundId =
+
             event.dataTransfer.getData(
               "text/sound-id"
             );
 
 
-          if (!soundId)
+          if(
+            !soundId
+          ){
+
             return;
+
+          }
 
 
           const rect =
@@ -1964,26 +3371,36 @@ function renderTracks() {
 
 
           const x =
+
             event.clientX -
             rect.left;
 
 
           const time =
+
             Math.max(
+
               0,
+
               x /
               PX_PER_SECOND
+
             );
 
 
           await addSoundToTrack(
+
             soundId,
+
             track.id,
+
             time
+
           );
 
         }
       );
+
 
 
       lane.addEventListener(
@@ -1998,9 +3415,8 @@ function renderTracks() {
       );
 
 
-      /* -------------------------
-         NOME
-      ------------------------- */
+
+      /* NOME */
 
       controls
         .querySelector(
@@ -2013,10 +3429,12 @@ function renderTracks() {
             track.name =
               event.target.value;
 
+
             updateStatus();
 
           }
         );
+
 
 
       /* MUTE */
@@ -2032,10 +3450,12 @@ function renderTracks() {
             track.mute =
               !track.mute;
 
+
             renderTracks();
 
           }
         );
+
 
 
       /* SOLO */
@@ -2051,13 +3471,15 @@ function renderTracks() {
             track.solo =
               !track.solo;
 
+
             renderTracks();
 
           }
         );
 
 
-      /* DELETE */
+
+      /* ELIMINA TRACCIA */
 
       controls
         .querySelector(
@@ -2075,6 +3497,7 @@ function renderTracks() {
         );
 
 
+
       /* VOLUME */
 
       controls
@@ -2086,6 +3509,7 @@ function renderTracks() {
           event => {
 
             track.volume =
+
               Number(
                 event.target.value
               );
@@ -2094,14 +3518,15 @@ function renderTracks() {
         );
 
 
+
       controls.addEventListener(
         "click",
         event => {
 
-          if (
+          if(
             event.target.tagName !==
             "BUTTON"
-          ) {
+          ){
 
             selectTrack(
               track.id
@@ -2111,6 +3536,7 @@ function renderTracks() {
 
         }
       );
+
 
 
       row.appendChild(
@@ -2132,8 +3558,11 @@ function renderTracks() {
 
 
   emptyProject.classList.toggle(
+
     "hidden",
+
     tracks.length > 0
+
   );
 
 
@@ -2142,21 +3571,24 @@ function renderTracks() {
 }
 
 
+
 /* =========================
    STATUS
 ========================= */
 
-function updateStatus() {
+function updateStatus(){
 
-  if (
-    tracks.length === 0
-  ) {
+  if(
+    !tracks.length
+  ){
 
     projectStatus.textContent =
       "Progetto vuoto";
 
+
     selectedStatus.textContent =
       "Nessuna traccia selezionata";
+
 
     return;
 
@@ -2164,25 +3596,35 @@ function updateStatus() {
 
 
   projectStatus.textContent =
+
     tracks.length === 1
-      ? "1 traccia"
-      : tracks.length + " tracce";
+
+    ? "1 traccia"
+
+    : tracks.length +
+      " tracce";
 
 
   const selected =
+
     tracks.find(
-      t => t.id ===
-      selectedTrackId
+      t =>
+        t.id ===
+        selectedTrackId
     );
 
 
   selectedStatus.textContent =
+
     selected
-      ? "Selezionata: " +
-        selected.name
-      : "Nessuna traccia selezionata";
+
+    ? "Selezionata: " +
+      selected.name
+
+    : "Nessuna traccia selezionata";
 
 }
+
 
 
 /* =========================
@@ -2192,29 +3634,40 @@ function updateStatus() {
 function previewSound(
   soundId,
   button
-) {
+){
 
   const sound =
-    sounds[soundId];
+    sounds[
+      soundId
+    ];
 
 
-  if (!sound)
+  if(
+    !sound
+  ){
+
     return;
 
+  }
 
-  if (currentPreview) {
+
+  if(
+    currentPreview
+  ){
 
     currentPreview.pause();
+
 
     currentPreview.currentTime =
       0;
 
 
-    if (
+    if(
       currentPreviewButton
-    ) {
+    ){
 
-      currentPreviewButton.textContent =
+      currentPreviewButton
+        .textContent =
         "▶";
 
     }
@@ -2222,16 +3675,18 @@ function previewSound(
   }
 
 
-  if (
+  if(
     currentPreviewButton ===
     button
-  ) {
+  ){
 
     currentPreview =
       null;
 
+
     currentPreviewButton =
       null;
+
 
     return;
 
@@ -2246,6 +3701,7 @@ function previewSound(
 
   currentPreview =
     audio;
+
 
   currentPreviewButton =
     button;
@@ -2265,8 +3721,10 @@ function previewSound(
       button.textContent =
         "▶";
 
+
       currentPreview =
         null;
+
 
       currentPreviewButton =
         null;
@@ -2275,6 +3733,7 @@ function previewSound(
   );
 
 }
+
 
 
 /* =========================
@@ -2293,8 +3752,11 @@ document
         event => {
 
           event.dataTransfer.setData(
+
             "text/sound-id",
+
             card.dataset.soundId
+
           );
 
 
@@ -2308,7 +3770,10 @@ document
   );
 
 
-/* PREVIEW */
+
+/* =========================
+   PREVIEW
+========================= */
 
 document
   .querySelectorAll(
@@ -2323,9 +3788,13 @@ document
 
           event.stopPropagation();
 
+
           previewSound(
+
             button.dataset.soundId,
+
             button
+
           );
 
         }
@@ -2335,7 +3804,10 @@ document
   );
 
 
-/* + PER TABLET */
+
+/* =========================
+   PULSANTE +
+========================= */
 
 document
   .querySelectorAll(
@@ -2348,16 +3820,18 @@ document
         "click",
         async event => {
 
+
           event.stopPropagation();
 
 
-          if (
+          if(
             !selectedTrackId
-          ) {
+          ){
 
             alert(
               "Prima crea o seleziona una traccia."
             );
+
 
             return;
 
@@ -2365,6 +3839,7 @@ document
 
 
           const track =
+
             tracks.find(
               t =>
                 t.id ===
@@ -2376,26 +3851,33 @@ document
             0;
 
 
-          if (
+          if(
             track.clips.length
-          ) {
+          ){
 
             start =
+
               Math.max(
+
                 ...track.clips.map(
                   clip =>
                     clip.start +
                     clip.duration
                 )
+
               );
 
           }
 
 
           await addSoundToTrack(
+
             button.dataset.soundId,
+
             selectedTrackId,
+
             start
+
           );
 
         }
@@ -2405,8 +3887,9 @@ document
   );
 
 
+
 /* =========================
-   RICERCA SEMPLICE
+   RICERCA
 ========================= */
 
 document
@@ -2417,7 +3900,9 @@ document
     "input",
     event => {
 
+
       const query =
+
         event.target.value
           .toLowerCase()
           .trim();
@@ -2430,21 +3915,23 @@ document
         .forEach(
           card => {
 
-            const text =
-              card.innerText
-                .toLowerCase();
-
 
             card.style.display =
-              text.includes(query)
-                ? ""
-                : "none";
+
+              card.innerText
+                .toLowerCase()
+                .includes(query)
+
+              ? ""
+
+              : "none";
 
           }
         );
 
     }
   );
+
 
 
 /* =========================
@@ -2459,21 +3946,31 @@ document
     "click",
     () => {
 
-      if (
-        tracks.length &&
+
+      if(
+        tracks.length
+        &&
         !confirm(
           "Vuoi cancellare il progetto?"
         )
-      ) {
+      ){
+
         return;
+
       }
 
 
-      tracks = [];
+      tracks =
+        [];
 
-      trackCounter = 0;
 
-      clipCounter = 0;
+      trackCounter =
+        0;
+
+
+      clipCounter =
+        0;
+
 
       selectedTrackId =
         null;
@@ -2485,8 +3982,9 @@ document
   );
 
 
+
 /* =========================
-   BOTTONI
+   PULSANTI
 ========================= */
 
 document
@@ -2511,6 +4009,54 @@ document
 
 document
   .getElementById(
+    "recordButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      alert(
+        "Registrazione: la attiveremo dopo aver completato l'editing delle clip."
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "saveButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      alert(
+        "Salvataggio: lo aggiungeremo in una fase successiva."
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
+    "exportButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      alert(
+        "Esportazione: arriverà dopo il motore audio."
+      );
+
+    }
+  );
+
+
+document
+  .getElementById(
     "playButton"
   )
   .addEventListener(
@@ -2518,29 +4064,49 @@ document
     () => {
 
       alert(
-        "Nel prossimo passaggio attiveremo il Play dell'intera composizione."
+        "Il prossimo grande passo sarà il Play reale dell'intera composizione."
       );
 
     }
   );
 
 
+
 /* =========================
    UTILITY
 ========================= */
 
-function escapeHtml(text) {
+function escapeHtml(
+  text
+){
 
-  return String(text)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;");
+  return String(
+    text
+  )
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+    .replaceAll(
+      '"',
+      "&quot;"
+    );
 
 }
 
 
-/* AVVIO */
+
+/* =========================
+   AVVIO
+========================= */
 
 renderTracks();
 
