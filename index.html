@@ -12,10 +12,7 @@
 
 <title>SoundLab</title>
 
-<link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
->
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link
   rel="preconnect"
@@ -28,16 +25,13 @@
   rel="stylesheet"
 >
 
-
 <style>
 
 * {
   box-sizing: border-box;
 }
 
-
 :root {
-
   --text: #1c5364;
   --muted: #648795;
 
@@ -48,41 +42,30 @@
   --line: rgba(46,115,140,.13);
 
   --track-width: 190px;
-
   --timeline-width: 1600px;
-
   --px-second: 19px;
-
 }
-
 
 html,
 body {
-
   margin: 0;
-
   height: 100%;
 
-  font-family:
-    "Nunito",
-    sans-serif;
+  font-family: "Nunito", sans-serif;
 
   color: var(--text);
 
   background:
-
     radial-gradient(
       circle at 12% 12%,
       rgba(111,224,160,.30),
       transparent 23%
     ),
-
     radial-gradient(
       circle at 87% 15%,
       rgba(114,207,255,.30),
       transparent 25%
     ),
-
     linear-gradient(
       150deg,
       #dff8f7,
@@ -91,35 +74,23 @@ body {
     );
 
   overflow: hidden;
-
 }
-
 
 button,
 input {
-
   font-family: inherit;
-
 }
-
 
 button {
-
   cursor: pointer;
-
 }
 
-
 .app {
-
   height: 100vh;
 
   display: flex;
-
   flex-direction: column;
-
 }
-
 
 
 /* =========================================
@@ -127,118 +98,73 @@ button {
 ========================================= */
 
 .topbar {
-
   height: 88px;
-
   flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
 
-  padding:
-    0
-    24px;
+  padding: 0 24px;
 
-  background:
-    rgba(255,255,255,.40);
-
-  backdrop-filter:
-    blur(14px);
+  background: rgba(255,255,255,.40);
+  backdrop-filter: blur(14px);
 
   border-bottom:
-    1px solid
-    rgba(255,255,255,.55);
-
+    1px solid rgba(255,255,255,.55);
 }
-
 
 .brand {
-
   display: flex;
-
   align-items: center;
-
   gap: 14px;
-
 }
 
-
 .brand-logo {
-
   width: 58px;
-
   height: 58px;
 
   border-radius: 20px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   background:
-
     linear-gradient(
       135deg,
       var(--blue),
       var(--green)
     );
-
 }
-
 
 .brand-logo svg {
-
   width: 43px;
-
   height: 43px;
-
 }
-
 
 .brand h1 {
-
   margin: 0;
 
-  font-family:
-    "Fredoka",
-    sans-serif;
+  font-family: "Fredoka", sans-serif;
 
   color: #28778e;
-
   font-size: 32px;
-
 }
 
-
 .brand p {
-
-  margin:
-    5px
-    0
-    0;
+  margin: 5px 0 0;
 
   font-size: 12px;
-
   font-weight: 800;
 
   color: #5d8492;
-
 }
-
 
 .top-actions {
-
   display: flex;
-
   gap: 10px;
-
 }
-
 
 
 /* =========================================
@@ -246,58 +172,40 @@ button {
 ========================================= */
 
 .button {
-
   border:
-    1px solid
-    rgba(58,126,151,.12);
+    1px solid rgba(58,126,151,.12);
 
   border-radius: 14px;
 
-  padding:
-    11px
-    16px;
+  padding: 11px 16px;
 
   background:
     rgba(255,255,255,.66);
 
-  color:
-    var(--text);
+  color: var(--text);
 
   font-weight: 800;
 
   transition: .15s;
-
 }
-
 
 .button:hover {
-
-  background:
-    white;
-
-  transform:
-    translateY(-1px);
-
+  background: white;
+  transform: translateY(-1px);
 }
 
-
 .button-primary {
-
   border: none;
 
   background:
-
     linear-gradient(
       135deg,
       var(--mint),
       var(--green)
     );
 
-  color:
-    #0b5344;
-
+  color: #0b5344;
 }
-
 
 
 /* =========================================
@@ -305,9 +213,7 @@ button {
 ========================================= */
 
 .workspace {
-
   flex: 1;
-
   min-height: 0;
 
   display: grid;
@@ -315,9 +221,7 @@ button {
   grid-template-columns:
     320px
     minmax(0,1fr);
-
 }
-
 
 
 /* =========================================
@@ -325,178 +229,116 @@ button {
 ========================================= */
 
 .library {
-
   min-height: 0;
 
   display: flex;
-
   flex-direction: column;
 
   background:
     rgba(255,255,255,.32);
 
   border-right:
-    1px solid
-    rgba(255,255,255,.50);
-
+    1px solid rgba(255,255,255,.50);
 }
 
-
 .library-header {
-
   padding: 18px;
 
   border-bottom:
-    1px solid
-    var(--line);
-
+    1px solid var(--line);
 }
-
 
 .library-header h2 {
-
   margin: 0;
 
-  font-family:
-    "Fredoka";
+  font-family: "Fredoka";
 
-  color:
-    #267a91;
+  color: #267a91;
 
   font-size: 21px;
-
 }
-
 
 .library-header p {
+  margin: 5px 0 0;
 
-  margin:
-    5px
-    0
-    0;
-
-  color:
-    var(--muted);
+  color: var(--muted);
 
   font-size: 12px;
-
 }
-
 
 .search-box {
-
-  padding:
-    13px
-    15px
-    8px;
-
+  padding: 13px 15px 8px;
 }
 
-
 .search-box input {
-
   width: 100%;
 
   border:
-    1px solid
-    rgba(54,130,154,.15);
+    1px solid rgba(54,130,154,.15);
 
   border-radius: 14px;
 
-  padding:
-    11px
-    13px;
+  padding: 11px 13px;
 
   background:
     rgba(255,255,255,.72);
 
   outline: none;
 
-  color:
-    var(--text);
-
+  color: var(--text);
 }
 
-
 .library-content {
-
   flex: 1;
-
   min-height: 0;
 
   overflow-y: auto;
 
-  padding:
-    8px
-    12px
-    20px;
-
+  padding: 8px 12px 20px;
 }
-
 
 .section-label {
+  margin: 12px 7px 9px;
 
-  margin:
-    12px
-    7px
-    9px;
-
-  text-transform:
-    uppercase;
+  text-transform: uppercase;
 
   font-size: 10px;
-
   letter-spacing: 1px;
 
-  color:
-    #6d93a0;
+  color: #6d93a0;
 
   font-weight: 800;
-
 }
 
-
 .category {
-
   width: 100%;
 
-  padding:
-    9px
-    11px;
-
+  padding: 9px 11px;
   margin-bottom: 6px;
 
   border-radius: 15px;
 
   border:
-    1px solid
-    rgba(64,130,155,.10);
+    1px solid rgba(64,130,155,.10);
 
   background:
     rgba(255,255,255,.44);
 
   text-align: left;
 
-  color:
-    #285f70;
+  color: #285f70;
 
   font-weight: 800;
-
 }
 
-
 .category.active {
-
   background:
-
     linear-gradient(
       135deg,
       rgba(114,207,255,.30),
       rgba(111,224,160,.26)
     );
-
 }
-
 
 
 /* =========================================
@@ -504,18 +346,13 @@ button {
 ========================================= */
 
 .sound-list {
-
   display: flex;
-
   flex-direction: column;
 
   gap: 8px;
-
 }
 
-
 .sound-card {
-
   display: grid;
 
   grid-template-columns:
@@ -532,104 +369,73 @@ button {
   border-radius: 16px;
 
   border:
-    1px solid
-    rgba(61,126,151,.11);
+    1px solid rgba(61,126,151,.11);
 
   background:
     rgba(255,255,255,.72);
 
   box-shadow:
-    0 5px 14px
-    rgba(60,120,140,.07);
+    0 5px 14px rgba(60,120,140,.07);
 
   cursor: grab;
 
   user-select: none;
-
 }
-
 
 .sound-card:active {
-
   cursor: grabbing;
-
 }
 
-
 .sound-icon {
-
   width: 42px;
-
   height: 42px;
 
   border-radius: 13px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   background:
-
     linear-gradient(
       135deg,
       rgba(114,207,255,.38),
       rgba(111,224,160,.34)
     );
 
-  color:
-    #2d8198;
+  color: #2d8198;
 
-  font-family:
-    "Fredoka";
+  font-family: "Fredoka";
 
   font-size: 20px;
-
   font-weight: 700;
-
 }
 
-
 .sound-info strong {
-
   display: block;
 
   font-size: 13px;
 
-  color:
-    #285f70;
-
+  color: #285f70;
 }
 
-
 .sound-info span {
-
   display: block;
 
   margin-top: 2px;
 
   font-size: 10px;
 
-  color:
-    #7995a0;
-
+  color: #7995a0;
 }
-
 
 .sound-actions {
-
   display: flex;
-
   gap: 5px;
-
 }
 
-
 .sound-action {
-
   width: 31px;
-
   height: 31px;
 
   border: 0;
@@ -638,51 +444,32 @@ button {
 
   font-weight: 900;
 
-  color:
-    #297188;
+  color: #297188;
 
-  background:
-    #e8fbff;
-
+  background: #e8fbff;
 }
-
 
 .sound-action.add {
+  background: #dff8e8;
 
-  background:
-    #dff8e8;
-
-  color:
-    #27825d;
-
+  color: #27825d;
 }
 
-
 .drag-hint {
+  margin: 10px 4px 5px;
 
-  margin:
-    10px
-    4px
-    5px;
-
-  padding:
-    10px
-    12px;
+  padding: 10px 12px;
 
   border-radius: 14px;
 
-  color:
-    #507d8c;
+  color: #507d8c;
 
   background:
     rgba(255,255,255,.43);
 
   font-size: 11px;
-
   line-height: 1.45;
-
 }
-
 
 
 /* =========================================
@@ -690,102 +477,67 @@ button {
 ========================================= */
 
 .editor {
-
   min-width: 0;
-
   min-height: 0;
 
   display: flex;
-
   flex-direction: column;
-
 }
 
-
 .hero {
-
   min-height: 82px;
-
   flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
 
   gap: 14px;
 
-  padding:
-    13px
-    20px;
+  padding: 13px 20px;
 
   background:
     rgba(255,255,255,.22);
 
   border-bottom:
-    1px solid
-    var(--line);
-
+    1px solid var(--line);
 }
 
-
 .hero-planet {
-
   width: 57px;
-
   height: 57px;
 
   border-radius: 18px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   background:
     rgba(255,255,255,.64);
-
 }
-
 
 .hero-planet svg {
-
   width: 45px;
-
   height: 45px;
-
 }
 
-
 .hero h2 {
-
   margin: 0;
 
-  font-family:
-    "Fredoka";
+  font-family: "Fredoka";
 
   font-size: 23px;
 
-  color:
-    #27788e;
-
+  color: #27788e;
 }
-
 
 .hero p {
+  margin: 4px 0 0;
 
-  margin:
-    4px
-    0
-    0;
-
-  color:
-    var(--muted);
+  color: var(--muted);
 
   font-size: 12px;
-
 }
-
 
 
 /* =========================================
@@ -793,46 +545,32 @@ button {
 ========================================= */
 
 .toolbar {
-
   height: 66px;
-
   flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
 
   gap: 10px;
 
-  padding:
-    0
-    18px;
+  padding: 0 18px;
 
   background:
     rgba(255,255,255,.30);
 
   border-bottom:
-    1px solid
-    var(--line);
-
+    1px solid var(--line);
 }
 
-
 .transport {
-
   margin-left: auto;
 
   display: flex;
-
   gap: 9px;
-
 }
 
-
 .transport-button {
-
   width: 45px;
-
   height: 45px;
 
   border: 0;
@@ -842,45 +580,31 @@ button {
   background:
     rgba(255,255,255,.70);
 
-  color:
-    #33778b;
+  color: #33778b;
 
   font-size: 16px;
-
   font-weight: 900;
 
   transition: .15s;
-
 }
 
-
 .transport-button.play {
-
   background:
-
     linear-gradient(
       135deg,
       var(--mint),
       var(--green)
     );
 
-  color:
-    #0d5546;
-
+  color: #0d5546;
 }
-
 
 .transport-button.play.running {
-
-  transform:
-    scale(1.07);
+  transform: scale(1.07);
 
   box-shadow:
-    0 0 0 7px
-    rgba(80,215,195,.17);
-
+    0 0 0 7px rgba(80,215,195,.17);
 }
-
 
 
 /* =========================================
@@ -888,45 +612,30 @@ button {
 ========================================= */
 
 .timeline-shell {
-
   position: relative;
 
   flex: 1;
-
   min-height: 0;
-
 }
 
-
 .timeline-scroll {
-
   position: absolute;
-
   inset: 0;
 
   overflow: auto;
-
 }
 
-
 .timeline-canvas {
-
-  width:
-    var(--timeline-width);
-
+  width: var(--timeline-width);
   min-height: 100%;
 
   position: relative;
-
 }
 
-
 .timeline-header {
-
   height: 48px;
 
   position: sticky;
-
   top: 0;
 
   z-index: 20;
@@ -936,20 +645,15 @@ button {
   grid-template-columns:
     var(--track-width)
     1fr;
-
 }
 
-
 .track-header {
-
   position: sticky;
-
   left: 0;
 
   z-index: 22;
 
   display: flex;
-
   align-items: center;
 
   padding-left: 14px;
@@ -958,127 +662,86 @@ button {
     rgba(244,253,255,.98);
 
   border-right:
-    1px solid
-    var(--line);
+    1px solid var(--line);
 
   border-bottom:
-    1px solid
-    var(--line);
+    1px solid var(--line);
 
   font-size: 10px;
-
   font-weight: 800;
 
-  color:
-    #668b99;
+  color: #668b99;
 
-  text-transform:
-    uppercase;
-
+  text-transform: uppercase;
   letter-spacing: 1px;
-
 }
 
-
 .ruler {
-
   display: flex;
 
   background:
     rgba(255,255,255,.86);
 
   border-bottom:
-    1px solid
-    var(--line);
+    1px solid var(--line);
 
   cursor: pointer;
-
 }
-
 
 .time-mark {
-
   width: 95px;
-
-  flex:
-    0
-    0
-    95px;
+  flex: 0 0 95px;
 
   border-left:
-    1px solid
-    rgba(66,125,149,.14);
+    1px solid rgba(66,125,149,.14);
 
-  padding:
-    8px
-    0
-    0
-    7px;
+  padding: 8px 0 0 7px;
 
   font-size: 10px;
-
   font-weight: 800;
 
-  color:
-    #7493a0;
-
+  color: #7493a0;
 }
-
 
 
 /* =========================================
-   TESTINA PLAY
+   TESTINA
 ========================================= */
 
 .playhead {
-
   position: absolute;
 
   top: 48px;
-
   bottom: 0;
 
   width: 2px;
 
-  background:
-    #ff6d83;
+  background: #ff6d83;
 
   z-index: 7;
 
   pointer-events: none;
 
   box-shadow:
-    0 0 5px
-    rgba(255,109,131,.35);
-
+    0 0 5px rgba(255,109,131,.35);
 }
 
-
 .playhead::before {
-
   content: "";
 
   position: absolute;
 
   top: 0;
-
   left: -5px;
 
   width: 12px;
-
   height: 10px;
 
   border-radius:
-    0
-    0
-    6px
-    6px;
+    0 0 6px 6px;
 
-  background:
-    #ff6d83;
-
+  background: #ff6d83;
 }
-
 
 
 /* =========================================
@@ -1086,7 +749,6 @@ button {
 ========================================= */
 
 .track-row {
-
   height: 116px;
 
   display: grid;
@@ -1096,16 +758,11 @@ button {
     1fr;
 
   border-bottom:
-    1px solid
-    var(--line);
-
+    1px solid var(--line);
 }
 
-
 .track-controls {
-
   position: sticky;
-
   left: 0;
 
   z-index: 8;
@@ -1116,17 +773,12 @@ button {
     rgba(244,253,255,.96);
 
   border-right:
-    1px solid
-    var(--line);
-
+    1px solid var(--line);
 }
-
 
 .track-row.selected
 .track-controls {
-
   background:
-
     linear-gradient(
       135deg,
       rgba(203,246,255,.98),
@@ -1134,27 +786,18 @@ button {
     );
 
   box-shadow:
-    inset 4px 0 0
-    var(--mint);
-
+    inset 4px 0 0 var(--mint);
 }
 
-
 .track-title-row {
-
   display: flex;
-
   align-items: center;
 
   gap: 6px;
-
 }
 
-
 .track-number {
-
   width: 25px;
-
   height: 25px;
 
   border-radius: 9px;
@@ -1162,116 +805,78 @@ button {
   flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   background:
-
     linear-gradient(
       135deg,
       var(--blue),
       var(--green)
     );
 
-  color:
-    #18536a;
+  color: #18536a;
 
-  font-family:
-    "Fredoka";
+  font-family: "Fredoka";
 
   font-weight: 700;
-
   font-size: 12px;
-
 }
 
-
 .track-name {
-
   flex: 1;
-
   min-width: 0;
 
   border:
-    1px solid
-    rgba(62,126,151,.12);
+    1px solid rgba(62,126,151,.12);
 
   border-radius: 9px;
 
-  background:
-    white;
+  background: white;
 
-  padding:
-    6px
-    7px;
+  padding: 6px 7px;
 
-  color:
-    #285f70;
+  color: #285f70;
 
   font-weight: 800;
-
 }
 
-
 .track-actions {
-
   display: flex;
 
   gap: 5px;
 
   margin-top: 7px;
-
 }
 
-
 .small-button {
-
   width: 27px;
-
   height: 27px;
 
   border-radius: 8px;
 
   border:
-    1px solid
-    rgba(58,126,151,.12);
+    1px solid rgba(58,126,151,.12);
 
-  background:
-    white;
+  background: white;
 
-  color:
-    #4d7887;
+  color: #4d7887;
 
   font-weight: 900;
-
 }
-
 
 .small-button.active {
+  background: var(--mint);
 
-  background:
-    var(--mint);
-
-  color:
-    #0f5144;
-
+  color: #0f5144;
 }
-
 
 .delete-button {
-
-  color:
-    #af626b;
-
+  color: #af626b;
 }
 
-
 .volume-row {
-
   display: flex;
-
   align-items: center;
 
   gap: 5px;
@@ -1280,32 +885,22 @@ button {
 
   font-size: 9px;
 
-  color:
-    #72909c;
-
+  color: #72909c;
 }
-
 
 .volume-row input {
-
   flex: 1;
-
   min-width: 0;
 
-  accent-color:
-    var(--mint);
-
+  accent-color: var(--mint);
 }
 
-
 .track-lane {
-
   position: relative;
 
   overflow: hidden;
 
   background:
-
     linear-gradient(
       to right,
       rgba(54,130,154,.08) 1px,
@@ -1313,88 +908,66 @@ button {
     );
 
   background-size:
-    95px
-    100%;
-
+    95px 100%;
 }
-
 
 .track-row:nth-child(even)
 .track-lane {
-
   background-color:
     rgba(255,255,255,.11);
-
 }
-
 
 .track-row.selected
 .track-lane {
-
   background-color:
     rgba(80,215,195,.08);
-
 }
 
-
 .track-lane.drag-over {
-
   background-color:
     rgba(89,220,173,.20)
     !important;
 
   outline:
-    2px dashed
-    rgba(49,170,128,.55);
+    2px dashed rgba(49,170,128,.55);
 
-  outline-offset:
-    -3px;
-
+  outline-offset: -3px;
 }
 
-
 .lane-hint {
-
   position: absolute;
 
   left: 25px;
-
   top: 50%;
 
   transform:
     translateY(-50%);
 
   font-size: 11px;
-
   font-weight: 700;
 
   color:
     rgba(66,115,132,.32);
 
   pointer-events: none;
-
 }
 
 
-
 /* =========================================
-   CLIP AUDIO
+   CLIP
 ========================================= */
 
 .audio-clip {
-
   position: absolute;
 
   top: 17px;
 
   height: 80px;
-
   min-width: 38px;
 
   border-radius: 15px;
 
   background:
-
     linear-gradient(
       135deg,
       #74d7ff,
@@ -1402,78 +975,47 @@ button {
     );
 
   border:
-    2px solid
-    rgba(255,255,255,.72);
+    2px solid rgba(255,255,255,.72);
 
   box-shadow:
-    0 7px 16px
-    rgba(45,119,143,.18);
+    0 7px 16px rgba(45,119,143,.18);
 
-  overflow:
-    visible;
+  overflow: visible;
 
-  cursor:
-    grab;
+  cursor: grab;
 
-  user-select:
-    none;
-
-  touch-action:
-    none;
-
+  user-select: none;
+  touch-action: none;
 }
-
 
 .audio-clip.looping {
-
   background:
-
-    repeating-linear-gradient(
+    linear-gradient(
       135deg,
-
-      #74d7ff 0px,
-
-      #74d7ff 16px,
-
-      #67dfb0 16px,
-
-      #67dfb0 32px
+      #77dbff,
+      #66dfaf
     );
-
 }
-
 
 .audio-clip:active {
-
-  cursor:
-    grabbing;
-
+  cursor: grabbing;
 }
 
-
 .clip-body {
-
   position: absolute;
-
   inset: 0;
 
   overflow: hidden;
 
   border-radius: 13px;
-
 }
 
-
 .clip-top {
-
   height: 27px;
 
-  padding:
-    4px
-    7px;
+  padding: 4px 7px;
 
   display: flex;
-
   align-items: center;
 
   gap: 5px;
@@ -1482,125 +1024,108 @@ button {
     rgba(255,255,255,.30);
 
   font-size: 10px;
-
   font-weight: 900;
 
-  color:
-    #1e6276;
-
+  color: #1e6276;
 }
-
 
 .clip-title {
-
   flex: 1;
-
   min-width: 0;
 
-  white-space:
-    nowrap;
+  white-space: nowrap;
 
-  overflow:
-    hidden;
+  overflow: hidden;
 
-  text-overflow:
-    ellipsis;
-
+  text-overflow: ellipsis;
 }
 
-
 .clip-delete {
-
   border: 0;
 
   padding: 0;
 
-  background:
-    transparent;
+  background: transparent;
 
-  color:
-    #9b5260;
+  color: #9b5260;
 
   font-weight: 900;
-
 }
 
-
 .loop-badge {
-
   display: none;
 
-  padding:
-    2px
-    5px;
+  padding: 2px 5px;
 
   border-radius: 999px;
 
   background:
-    rgba(255,255,255,.60);
+    rgba(255,255,255,.70);
 
-  color:
-    #27785f;
+  color: #27785f;
 
   font-size: 8px;
-
   font-weight: 900;
-
 }
-
 
 .audio-clip.looping
 .loop-badge {
+  display: inline-flex;
+}
 
-  display:
-    inline-flex;
+.clip-duration {
+  position: absolute;
 
+  right: 8px;
+  bottom: 4px;
+
+  z-index: 3;
+
+  padding: 1px 3px;
+
+  border-radius: 4px;
+
+  background:
+    rgba(255,255,255,.45);
+
+  font-size: 8px;
+  font-weight: 900;
+
+  color:
+    rgba(28,83,100,.78);
+
+  pointer-events: none;
 }
 
 
-.wave-fake {
+/* =========================================
+   WAVEFORM REALE
+========================================= */
 
+.waveform-wrap {
   position: absolute;
 
   left: 7px;
-
   right: 7px;
 
-  top: 35px;
-
-  bottom: 9px;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 2px;
-
-  opacity: .65;
-
-  pointer-events: none;
+  top: 32px;
+  bottom: 8px;
 
   overflow: hidden;
 
-}
-
-
-.wave-fake span {
-
-  width: 2px;
-
-  flex:
-    0
-    0
-    2px;
+  pointer-events: none;
 
   border-radius: 5px;
-
-  background:
-    #24758b;
-
 }
 
+.waveform-canvas {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: .78;
+}
 
 
 /* =========================================
@@ -1608,11 +1133,9 @@ button {
 ========================================= */
 
 .resize-handle {
-
   position: absolute;
 
   top: 7px;
-
   bottom: 7px;
 
   width: 12px;
@@ -1620,78 +1143,43 @@ button {
   z-index: 10;
 
   background:
-    rgba(255,255,255,.72);
+    rgba(255,255,255,.76);
 
   border-radius: 8px;
 
-  cursor:
-    ew-resize;
+  cursor: ew-resize;
 
   box-shadow:
-    0 2px 8px
-    rgba(33,105,128,.16);
-
+    0 2px 8px rgba(33,105,128,.16);
 }
 
-
 .resize-handle::after {
-
   content: "";
 
   position: absolute;
 
   top: 50%;
-
   left: 50%;
 
   transform:
     translate(-50%,-50%);
 
   width: 2px;
-
   height: 22px;
 
   border-radius: 3px;
 
   background:
     rgba(42,113,136,.48);
-
 }
-
 
 .resize-handle.left {
-
   left: -5px;
-
 }
-
 
 .resize-handle.right {
-
   right: -5px;
-
 }
-
-
-.clip-duration {
-
-  position: absolute;
-
-  right: 8px;
-
-  bottom: 5px;
-
-  font-size: 8px;
-
-  font-weight: 900;
-
-  color:
-    rgba(28,83,100,.70);
-
-  pointer-events: none;
-
-}
-
 
 
 /* =========================================
@@ -1699,93 +1187,59 @@ button {
 ========================================= */
 
 .empty-project {
-
   position: absolute;
 
   z-index: 12;
 
   left: 50%;
-
   top: 51%;
 
   transform:
     translate(-50%,-50%);
 
   width:
-
     min(
       650px,
       calc(100% - 40px)
     );
 
-  padding:
-    30px
-    24px;
+  padding: 30px 24px;
 
-  text-align:
-    center;
+  text-align: center;
 
-  border-radius:
-    28px;
+  border-radius: 28px;
 
   background:
     rgba(255,255,255,.82);
 
   box-shadow:
-    0 14px 40px
-    rgba(56,119,144,.14);
-
+    0 14px 40px rgba(56,119,144,.14);
 }
-
 
 .empty-project.hidden {
-
-  display:
-    none;
-
+  display: none;
 }
-
 
 .empty-project h3 {
+  margin: 0 0 8px;
 
-  margin:
-    0
-    0
-    8px;
+  font-family: "Fredoka";
 
-  font-family:
-    "Fredoka";
+  color: #26788e;
 
-  color:
-    #26788e;
-
-  font-size:
-    28px;
-
+  font-size: 28px;
 }
-
 
 .empty-project p {
+  margin: 0 auto 18px;
 
-  margin:
-    0
-    auto
-    18px;
+  max-width: 470px;
 
-  max-width:
-    470px;
+  color: var(--muted);
 
-  color:
-    var(--muted);
-
-  font-size:
-    13px;
-
-  line-height:
-    1.5;
-
+  font-size: 13px;
+  line-height: 1.5;
 }
-
 
 
 /* =========================================
@@ -1793,98 +1247,64 @@ button {
 ========================================= */
 
 .bottom-bar {
-
   height: 54px;
-
   flex-shrink: 0;
 
   display: flex;
-
   align-items: center;
 
   gap: 10px;
 
-  padding:
-    0
-    18px;
+  padding: 0 18px;
 
   background:
     rgba(255,255,255,.40);
 
   border-top:
-    1px solid
-    rgba(255,255,255,.55);
-
+    1px solid rgba(255,255,255,.55);
 }
 
-
 .status {
+  padding: 7px 11px;
 
-  padding:
-    7px
-    11px;
-
-  border-radius:
-    999px;
+  border-radius: 999px;
 
   background:
     rgba(255,255,255,.65);
 
-  color:
-    #567f8d;
+  color: #567f8d;
 
-  font-size:
-    11px;
-
-  font-weight:
-    800;
-
+  font-size: 11px;
+  font-weight: 800;
 }
 
-
 .time {
+  margin-left: auto;
 
-  margin-left:
-    auto;
+  color: #34788d;
 
-  color:
-    #34788d;
-
-  font-size:
-    15px;
-
-  font-weight:
-    800;
+  font-size: 15px;
+  font-weight: 800;
 
   font-variant-numeric:
     tabular-nums;
-
 }
-
 
 
 @media(max-width:850px) {
 
   .workspace {
-
     grid-template-columns:
       235px
       minmax(0,1fr);
-
   }
 
   .brand p {
-
-    display:
-      none;
-
+    display: none;
   }
 
   .hero p {
-
-    display:
-      none;
-
+    display: none;
   }
 
 }
@@ -1892,7 +1312,6 @@ button {
 </style>
 
 </head>
-
 
 
 <body>
@@ -1964,9 +1383,7 @@ button {
   </div>
 
 
-
   <div class="top-actions">
-
 
     <button
       class="button"
@@ -1975,7 +1392,6 @@ button {
       Nuovo progetto
     </button>
 
-
     <button
       class="button"
       id="saveButton"
@@ -1983,14 +1399,12 @@ button {
       Salva
     </button>
 
-
     <button
       class="button button-primary"
       id="exportButton"
     >
       Esporta
     </button>
-
 
   </div>
 
@@ -2002,9 +1416,7 @@ button {
 <main class="workspace">
 
 
-<!-- =========================================
-     LIBRERIA
-========================================= -->
+<!-- LIBRERIA -->
 
 <aside class="library">
 
@@ -2022,7 +1434,6 @@ button {
   </div>
 
 
-
   <div class="search-box">
 
     <input
@@ -2034,14 +1445,12 @@ button {
   </div>
 
 
-
   <div class="library-content">
 
 
     <div class="section-label">
       Ambienti
     </div>
-
 
     <button class="category active">
       Città
@@ -2088,11 +1497,9 @@ button {
     </button>
 
 
-
     <div class="section-label">
       Suoni di prova
     </div>
-
 
 
     <div class="sound-list">
@@ -2108,7 +1515,6 @@ button {
           ≋
         </div>
 
-
         <div class="sound-info">
 
           <strong>
@@ -2120,7 +1526,6 @@ button {
           </span>
 
         </div>
-
 
         <div class="sound-actions">
 
@@ -2154,7 +1559,6 @@ button {
           ▥
         </div>
 
-
         <div class="sound-info">
 
           <strong>
@@ -2166,7 +1570,6 @@ button {
           </span>
 
         </div>
-
 
         <div class="sound-actions">
 
@@ -2200,7 +1603,6 @@ button {
           ∿
         </div>
 
-
         <div class="sound-info">
 
           <strong>
@@ -2212,7 +1614,6 @@ button {
           </span>
 
         </div>
-
 
         <div class="sound-actions">
 
@@ -2238,7 +1639,6 @@ button {
     </div>
 
 
-
     <div class="drag-hint">
 
       <strong>Sposta:</strong>
@@ -2256,8 +1656,8 @@ button {
 
       <br>
 
-      <strong>Ascolta:</strong>
-      premi Play.
+      <strong>Waveform:</strong>
+      ora stai vedendo il suono reale.
 
     </div>
 
@@ -2269,9 +1669,7 @@ button {
 
 
 
-<!-- =========================================
-     EDITOR
-========================================= -->
+<!-- EDITOR -->
 
 <section class="editor">
 
@@ -2347,7 +1745,6 @@ button {
     </button>
 
 
-
     <div class="transport">
 
 
@@ -2420,9 +1817,7 @@ button {
         </div>
 
 
-
         <div id="trackRows"></div>
-
 
 
         <div
@@ -2524,35 +1919,21 @@ button {
 const sounds = {
 
   rain: {
-
     id: "rain",
-
     name: "Pioggia",
-
     file: "pioggia_test.wav"
-
   },
-
 
   city: {
-
     id: "city",
-
     name: "Città",
-
     file: "citta_test.wav"
-
   },
 
-
   birds: {
-
     id: "birds",
-
     name: "Uccelli",
-
     file: "uccelli_test.wav"
-
   }
 
 };
@@ -2572,7 +1953,7 @@ const MIN_CLIP_SECONDS = 0.5;
 
 
 /* =========================================
-   STATO PROGETTO
+   PROGETTO
 ========================================= */
 
 let tracks = [];
@@ -2586,7 +1967,7 @@ let selectedTrackId = null;
 
 
 /* =========================================
-   PREVIEW LIBRERIA
+   PREVIEW
 ========================================= */
 
 let currentPreview = null;
@@ -2604,36 +1985,25 @@ let audioContext = null;
 const audioBufferCache =
   new Map();
 
-
 let activeSources = [];
 
 let trackGainNodes =
   new Map();
 
+let isPlaying = false;
 
-let isPlaying =
-  false;
+let playheadSeconds = 0;
 
+let playStartPosition = 0;
 
-let playheadSeconds =
-  0;
+let playStartContextTime = 0;
 
-
-let playStartPosition =
-  0;
-
-
-let playStartContextTime =
-  0;
-
-
-let animationFrame =
-  null;
+let animationFrame = null;
 
 
 
 /* =========================================
-   ELEMENTI HTML
+   ELEMENTI
 ========================================= */
 
 const trackRows =
@@ -2641,54 +2011,45 @@ const trackRows =
     "trackRows"
   );
 
-
 const emptyProject =
   document.getElementById(
     "emptyProject"
   );
-
 
 const projectStatus =
   document.getElementById(
     "projectStatus"
   );
 
-
 const selectedStatus =
   document.getElementById(
     "selectedStatus"
   );
-
 
 const playbackStatus =
   document.getElementById(
     "playbackStatus"
   );
 
-
 const timeDisplay =
   document.getElementById(
     "timeDisplay"
   );
-
 
 const playhead =
   document.getElementById(
     "playhead"
   );
 
-
 const playButton =
   document.getElementById(
     "playButton"
   );
 
-
 const stopButton =
   document.getElementById(
     "stopButton"
   );
-
 
 const ruler =
   document.getElementById(
@@ -2715,7 +2076,6 @@ function getAudioContext() {
 
   }
 
-
   return audioContext;
 
 }
@@ -2723,7 +2083,7 @@ function getAudioContext() {
 
 
 /* =========================================
-   CARICA FILE AUDIO
+   CARICA AUDIO
 ========================================= */
 
 async function loadAudioBuffer(
@@ -2842,7 +2202,7 @@ function addTrack() {
 
 
 /* =========================================
-   SELEZIONA TRACCIA
+   SELEZIONE TRACCIA
 ========================================= */
 
 function selectTrack(
@@ -3072,8 +2432,7 @@ function getAudioDuration(
 
 function getProjectDuration() {
 
-  let maximum =
-    0;
+  let maximum = 0;
 
 
   tracks.forEach(
@@ -3110,7 +2469,7 @@ function getProjectDuration() {
 
 
 /* =========================================
-   INFORMAZIONI CLIP
+   DATI CLIP
 ========================================= */
 
 function clipAvailableSource(
@@ -3249,9 +2608,12 @@ function createClipElement(
       </div>
 
 
-      <div class="wave-fake">
+      <div class="waveform-wrap">
 
-        ${createFakeWave(70)}
+        <canvas
+          class="waveform-canvas"
+        >
+        </canvas>
 
       </div>
 
@@ -3329,6 +2691,18 @@ function createClipElement(
   );
 
 
+  requestAnimationFrame(
+    () => {
+
+      drawClipWaveform(
+        el,
+        clip
+      );
+
+    }
+  );
+
+
   return el;
 
 }
@@ -3336,7 +2710,540 @@ function createClipElement(
 
 
 /* =========================================
-   POSIZIONE E LARGHEZZA CLIP
+   DISEGNA WAVEFORM REALE
+========================================= */
+
+async function drawClipWaveform(
+  clipElement,
+  clip
+) {
+
+  const canvas =
+    clipElement.querySelector(
+      ".waveform-canvas"
+    );
+
+
+  if(
+    !canvas
+  ) {
+
+    return;
+
+  }
+
+
+  try {
+
+
+    const buffer =
+      await loadAudioBuffer(
+        clip.file
+      );
+
+
+    if(
+      !document.body.contains(
+        canvas
+      )
+    ) {
+
+      return;
+
+    }
+
+
+    const rect =
+      canvas.getBoundingClientRect();
+
+
+    const width =
+      Math.max(
+        1,
+        Math.round(
+          rect.width
+        )
+      );
+
+
+    const height =
+      Math.max(
+        1,
+        Math.round(
+          rect.height
+        )
+      );
+
+
+    const dpr =
+      Math.min(
+        window.devicePixelRatio || 1,
+        2
+      );
+
+
+    canvas.width =
+      Math.round(
+        width *
+        dpr
+      );
+
+
+    canvas.height =
+      Math.round(
+        height *
+        dpr
+      );
+
+
+    const ctx =
+      canvas.getContext(
+        "2d"
+      );
+
+
+    ctx.setTransform(
+      dpr,
+      0,
+      0,
+      dpr,
+      0,
+      0
+    );
+
+
+    ctx.clearRect(
+      0,
+      0,
+      width,
+      height
+    );
+
+
+    const data =
+      buffer.getChannelData(
+        0
+      );
+
+
+    const sampleRate =
+      buffer.sampleRate;
+
+
+    const maxBufferAvailable =
+
+      Math.max(
+
+        0.01,
+
+        buffer.duration -
+        clip.sourceOffset
+
+      );
+
+
+    const available =
+
+      Math.max(
+
+        0.01,
+
+        Math.min(
+
+          clipAvailableSource(
+            clip
+          ),
+
+          maxBufferAvailable
+
+        )
+
+      );
+
+
+    const visibleDuration =
+      Math.max(
+        0.01,
+        clip.duration
+      );
+
+
+    const middle =
+      height / 2;
+
+
+    /* LINEA CENTRALE */
+
+    ctx.strokeStyle =
+      "rgba(33,109,132,.18)";
+
+
+    ctx.lineWidth =
+      1;
+
+
+    ctx.beginPath();
+
+
+    ctx.moveTo(
+      0,
+      middle
+    );
+
+
+    ctx.lineTo(
+      width,
+      middle
+    );
+
+
+    ctx.stroke();
+
+
+
+    /* WAVEFORM */
+
+    ctx.strokeStyle =
+      "#24758b";
+
+
+    ctx.lineWidth =
+      1;
+
+
+    ctx.beginPath();
+
+
+
+    for(
+      let x = 0;
+      x < width;
+      x++
+    ) {
+
+
+      const timelineStart =
+
+        (
+          x /
+          width
+        )
+
+        *
+
+        visibleDuration;
+
+
+      const timelineEnd =
+
+        (
+          (x + 1) /
+          width
+        )
+
+        *
+
+        visibleDuration;
+
+
+      const cyclePosition =
+
+        timelineStart %
+        available;
+
+
+      const sourceTime =
+
+        clip.sourceOffset +
+        cyclePosition;
+
+
+      let startSample =
+
+        Math.floor(
+
+          sourceTime *
+          sampleRate
+
+        );
+
+
+      const pixelDuration =
+
+        timelineEnd -
+        timelineStart;
+
+
+      let samplesForPixel =
+
+        Math.max(
+
+          1,
+
+          Math.floor(
+
+            pixelDuration *
+            sampleRate
+
+          )
+
+        );
+
+
+      startSample =
+
+        Math.max(
+
+          0,
+
+          Math.min(
+
+            data.length - 1,
+
+            startSample
+
+          )
+
+        );
+
+
+      let endSample =
+
+        Math.min(
+
+          data.length,
+
+          startSample +
+          samplesForPixel
+
+        );
+
+
+      const cycleEndTime =
+
+        clip.sourceOffset +
+        available;
+
+
+      const cycleEndSample =
+
+        Math.floor(
+
+          cycleEndTime *
+          sampleRate
+
+        );
+
+
+      endSample =
+
+        Math.min(
+
+          endSample,
+
+          cycleEndSample,
+
+          data.length
+
+        );
+
+
+      if(
+        endSample <=
+        startSample
+      ) {
+
+        endSample =
+          Math.min(
+            data.length,
+            startSample + 1
+          );
+
+      }
+
+
+      const range =
+        endSample -
+        startSample;
+
+
+      const step =
+
+        Math.max(
+
+          1,
+
+          Math.floor(
+            range / 80
+          )
+
+        );
+
+
+      let peak =
+        0;
+
+
+      for(
+        let i = startSample;
+        i < endSample;
+        i += step
+      ) {
+
+
+        const value =
+          Math.abs(
+            data[i]
+          );
+
+
+        if(
+          value >
+          peak
+        ) {
+
+          peak =
+            value;
+
+        }
+
+
+      }
+
+
+      peak =
+        Math.max(
+          .025,
+          peak
+        );
+
+
+      const amplitude =
+
+        peak *
+        (
+          middle -
+          2
+        );
+
+
+      ctx.moveTo(
+
+        x + .5,
+
+        middle -
+        amplitude
+
+      );
+
+
+      ctx.lineTo(
+
+        x + .5,
+
+        middle +
+        amplitude
+
+      );
+
+
+    }
+
+
+    ctx.stroke();
+
+
+
+    /* SEPARATORI DEI LOOP */
+
+    if(
+      isLooping(
+        clip
+      )
+    ) {
+
+
+      ctx.save();
+
+
+      ctx.strokeStyle =
+        "rgba(255,255,255,.80)";
+
+
+      ctx.lineWidth =
+        1;
+
+
+      ctx.setLineDash(
+        [3,3]
+      );
+
+
+      for(
+        let t = available;
+        t < visibleDuration;
+        t += available
+      ) {
+
+
+        const x =
+
+          (
+            t /
+            visibleDuration
+          )
+
+          *
+
+          width;
+
+
+        ctx.beginPath();
+
+
+        ctx.moveTo(
+          x,
+          1
+        );
+
+
+        ctx.lineTo(
+          x,
+          height - 1
+        );
+
+
+        ctx.stroke();
+
+
+      }
+
+
+      ctx.restore();
+
+
+    }
+
+
+  }
+
+  catch(error) {
+
+
+    console.error(
+      "Errore waveform:",
+      error
+    );
+
+
+  }
+
+}
+
+
+
+/* =========================================
+   GEOMETRIA CLIP
 ========================================= */
 
 function updateClipGeometry(
@@ -3376,7 +3283,7 @@ function updateClipGeometry(
 
 
 /* =========================================
-   AGGIORNA ASPETTO CLIP
+   AGGIORNA CLIP DURANTE RESIZE
 ========================================= */
 
 function refreshClipVisual(
@@ -3450,7 +3357,7 @@ function refreshClipVisual(
 
 
 /* =========================================
-   SPOSTAMENTO CLIP
+   SPOSTA CLIP
 ========================================= */
 
 function setupClipDrag(
@@ -3509,7 +3416,6 @@ function setupClipDrag(
       );
 
 
-
       const move =
         moveEvent => {
 
@@ -3551,7 +3457,6 @@ function setupClipDrag(
 
 
         };
-
 
 
       const up =
@@ -3602,6 +3507,7 @@ function setupClipDrag(
             targetLane
           ) {
 
+
             const targetTrackId =
 
               targetLane.dataset
@@ -3617,6 +3523,7 @@ function setupClipDrag(
               track.id
             ) {
 
+
               moveClipToTrack(
 
                 clip.id,
@@ -3630,7 +3537,9 @@ function setupClipDrag(
 
               return;
 
+
             }
+
 
           }
 
@@ -3694,7 +3603,6 @@ function setupRightResize(
 
       event.preventDefault();
 
-
       event.stopPropagation();
 
 
@@ -3709,7 +3617,6 @@ function setupRightResize(
       handle.setPointerCapture(
         event.pointerId
       );
-
 
 
       const move =
@@ -3747,7 +3654,6 @@ function setupRightResize(
 
 
         };
-
 
 
       const up =
@@ -3831,7 +3737,6 @@ function setupLeftResize(
 
       event.preventDefault();
 
-
       event.stopPropagation();
 
 
@@ -3856,7 +3761,6 @@ function setupLeftResize(
       );
 
 
-
       const move =
         moveEvent => {
 
@@ -3873,13 +3777,11 @@ function setupLeftResize(
             PX_PER_SECOND;
 
 
-
           delta =
             Math.max(
               delta,
               -originalStart
             );
-
 
 
           delta =
@@ -3891,7 +3793,6 @@ function setupLeftResize(
               MIN_CLIP_SECONDS
 
             );
-
 
 
           if(
@@ -3992,7 +3893,6 @@ function setupLeftResize(
         };
 
 
-
       const up =
         () => {
 
@@ -4047,7 +3947,7 @@ function setupLeftResize(
 
 
 /* =========================================
-   CAMBIA TRACCIA
+   SPOSTA TRA TRACCE
 ========================================= */
 
 function moveClipToTrack(
@@ -4129,59 +4029,6 @@ function moveClipToTrack(
 
 
 /* =========================================
-   FORMA D'ONDA DECORATIVA
-========================================= */
-
-function createFakeWave(
-  amount
-) {
-
-  const heights = [
-
-    16,24,10,32,20,38,
-
-    15,28,36,18,25,12,
-
-    34,20,29,14,37,22,
-
-    31,13,26,35,18,28
-
-  ];
-
-
-  let html =
-    "";
-
-
-  for(
-    let i = 0;
-    i < amount;
-    i++
-  ) {
-
-
-    const h =
-
-      heights[
-        i %
-        heights.length
-      ];
-
-
-    html +=
-
-      `<span style="height:${h}px"></span>`;
-
-  }
-
-
-  return html;
-
-}
-
-
-
-/* =========================================
    RENDER TRACCE
 ========================================= */
 
@@ -4215,7 +4062,6 @@ function renderTracks() {
 
           : ""
         );
-
 
 
       const controls =
@@ -4285,7 +4131,6 @@ function renderTracks() {
       `;
 
 
-
       const lane =
         document.createElement(
           "div"
@@ -4309,7 +4154,6 @@ function renderTracks() {
       `;
 
 
-
       track.clips.forEach(
         clip => {
 
@@ -4326,7 +4170,6 @@ function renderTracks() {
 
         }
       );
-
 
 
       lane.addEventListener(
@@ -4346,7 +4189,6 @@ function renderTracks() {
       );
 
 
-
       lane.addEventListener(
         "dragleave",
         () => {
@@ -4359,7 +4201,6 @@ function renderTracks() {
 
         }
       );
-
 
 
       lane.addEventListener(
@@ -4428,7 +4269,6 @@ function renderTracks() {
       );
 
 
-
       lane.addEventListener(
         "click",
         () => {
@@ -4441,7 +4281,6 @@ function renderTracks() {
 
         }
       );
-
 
 
       controls
@@ -4462,7 +4301,6 @@ function renderTracks() {
 
           }
         );
-
 
 
       controls
@@ -4515,7 +4353,6 @@ function renderTracks() {
         );
 
 
-
       controls
         .querySelector(
           ".solo-button"
@@ -4566,7 +4403,6 @@ function renderTracks() {
         );
 
 
-
       controls
         .querySelector(
           ".delete-button"
@@ -4583,7 +4419,6 @@ function renderTracks() {
 
           }
         );
-
 
 
       controls
@@ -4611,7 +4446,6 @@ function renderTracks() {
         );
 
 
-
       controls.addEventListener(
         "click",
         event => {
@@ -4635,7 +4469,6 @@ function renderTracks() {
 
         }
       );
-
 
 
       row.appendChild(
@@ -4667,7 +4500,6 @@ function renderTracks() {
 
 
   updateStatus();
-
 
   updatePlayheadUI();
 
@@ -4731,7 +4563,7 @@ function updateStatus() {
 
 
 /* =========================================
-   PREVIEW LIBRERIA
+   PREVIEW
 ========================================= */
 
 function previewSound(
@@ -4760,7 +4592,6 @@ function previewSound(
 
     currentPreview.pause();
 
-
     currentPreview.currentTime =
       0;
 
@@ -4785,10 +4616,8 @@ function previewSound(
     currentPreview =
       null;
 
-
     currentPreviewButton =
       null;
-
 
     return;
 
@@ -4841,7 +4670,7 @@ function previewSound(
 
 
 /* =========================================
-   QUALI TRACCE DEVONO SUONARE?
+   TRACCE UDIBILI
 ========================================= */
 
 function audibleTracks() {
@@ -4887,7 +4716,7 @@ function audibleTracks() {
 
 
 /* =========================================
-   SCHEDULA UNA CLIP
+   SCHEDULA CLIP
 ========================================= */
 
 async function scheduleClip(
@@ -4905,7 +4734,8 @@ async function scheduleClip(
 
 
   if(
-    clipEnd <= fromTime
+    clipEnd <=
+    fromTime
   ) {
 
     return;
@@ -4954,7 +4784,6 @@ async function scheduleClip(
   }
 
 
-
   const relativePlayPosition =
 
     Math.max(
@@ -4980,9 +4809,7 @@ async function scheduleClip(
   let positionInCycle =
 
     relativePlayPosition %
-
     available;
-
 
 
   while(
@@ -5017,19 +4844,16 @@ async function scheduleClip(
     }
 
 
-
     const remainingCycle =
 
       available -
       positionInCycle;
 
 
-
     const remainingClip =
 
       clip.duration -
       clipPosition;
-
 
 
     const segmentDuration =
@@ -5041,7 +4865,6 @@ async function scheduleClip(
         remainingClip
 
       );
-
 
 
     if(
@@ -5056,7 +4879,6 @@ async function scheduleClip(
         clipPosition;
 
 
-
       const when =
 
         Math.max(
@@ -5069,12 +4891,10 @@ async function scheduleClip(
         );
 
 
-
       const sourceOffset =
 
         clip.sourceOffset +
         positionInCycle;
-
 
 
       const source =
@@ -5087,10 +4907,9 @@ async function scheduleClip(
         buffer;
 
 
-      source
-        .connect(
-          gainNode
-        );
+      source.connect(
+        gainNode
+      );
 
 
       source.start(
@@ -5113,13 +4932,10 @@ async function scheduleClip(
     }
 
 
-
     cycleIndex++;
-
 
     positionInCycle =
       0;
-
 
   }
 
@@ -5147,7 +4963,6 @@ async function playFrom(
       "Inserisci almeno un suono nella timeline."
     );
 
-
     return;
 
   }
@@ -5170,7 +4985,6 @@ async function playFrom(
 
     currentPreview.pause();
 
-
     currentPreview.currentTime =
       0;
 
@@ -5188,12 +5002,10 @@ async function playFrom(
     currentPreview =
       null;
 
-
     currentPreviewButton =
       null;
 
   }
-
 
 
   stopPlayback(
@@ -5214,7 +5026,6 @@ async function playFrom(
 
   const tracksToPlay =
     audibleTracks();
-
 
 
   try {
@@ -5302,7 +5113,6 @@ async function playFrom(
   }
 
 
-
   playheadSeconds =
     startPosition;
 
@@ -5368,7 +5178,7 @@ function getLivePlayhead() {
 
 
 /* =========================================
-   ANIMAZIONE TESTINA
+   ANIMAZIONE
 ========================================= */
 
 function animatePlayhead() {
@@ -5398,7 +5208,6 @@ function animatePlayhead() {
     stopPlayback(
       true
     );
-
 
     return;
 
@@ -5451,7 +5260,8 @@ function stopPlayback(
       }
 
 
-  });
+    }
+  );
 
 
   activeSources =
@@ -5574,7 +5384,7 @@ function updatePlayheadUI() {
 
 
 /* =========================================
-   FORMATO TEMPO
+   TEMPO
 ========================================= */
 
 function formatTime(
@@ -5630,7 +5440,7 @@ function formatTime(
 
 
 /* =========================================
-   DRAG SUONI
+   DRAG LIBRERIA
 ========================================= */
 
 document
@@ -5669,7 +5479,7 @@ document
 
 
 /* =========================================
-   PREVIEW
+   PREVIEW LIBRERIA
 ========================================= */
 
 document
@@ -5707,7 +5517,7 @@ document
 
 
 /* =========================================
-   AGGIUNGI CON +
+   PULSANTE +
 ========================================= */
 
 document
@@ -5733,7 +5543,6 @@ document
             alert(
               "Prima crea o seleziona una traccia."
             );
-
 
             return;
 
@@ -5894,6 +5703,7 @@ ruler.addEventListener(
       isPlaying
     ) {
 
+
       const newPosition =
         playheadSeconds;
 
@@ -5907,11 +5717,14 @@ ruler.addEventListener(
         newPosition
       );
 
+
     }
 
     else {
 
+
       updatePlayheadUI();
+
 
     }
 
@@ -6002,7 +5815,6 @@ document
   );
 
 
-
 playButton.addEventListener(
   "click",
   async () => {
@@ -6026,7 +5838,6 @@ playButton.addEventListener(
 );
 
 
-
 stopButton.addEventListener(
   "click",
   () => {
@@ -6041,7 +5852,6 @@ stopButton.addEventListener(
 );
 
 
-
 document
   .getElementById(
     "recordButton"
@@ -6052,13 +5862,12 @@ document
 
 
       alert(
-        "La registrazione dal microfono sarà il prossimo grande modulo dopo la waveform reale."
+        "La registrazione dal microfono sarà il prossimo modulo."
       );
 
 
     }
   );
-
 
 
 document
@@ -6079,7 +5888,6 @@ document
   );
 
 
-
 document
   .getElementById(
     "exportButton"
@@ -6090,7 +5898,7 @@ document
 
 
       alert(
-        "L'esportazione arriverà dopo aver completato il motore audio."
+        "L'esportazione arriverà più avanti."
       );
 
 
