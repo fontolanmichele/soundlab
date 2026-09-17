@@ -1,24 +1,13 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SoundLab</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin
->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
   href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
@@ -43,7 +32,6 @@
 
   --track-width:190px;
   --timeline-width:1600px;
-  --px-second:19px;
 }
 
 html,
@@ -85,6 +73,11 @@ button{
   cursor:pointer;
 }
 
+button:disabled{
+  cursor:not-allowed;
+  opacity:.6;
+}
+
 .app{
   height:100vh;
 
@@ -93,9 +86,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    HEADER
-========================= */
+========================================= */
 
 .topbar{
   height:88px;
@@ -107,11 +100,9 @@ button{
 
   padding:0 24px;
 
-  background:
-    rgba(255,255,255,.40);
+  background:rgba(255,255,255,.40);
 
-  backdrop-filter:
-    blur(14px);
+  backdrop-filter:blur(14px);
 
   border-bottom:
     1px solid rgba(255,255,255,.55);
@@ -120,7 +111,6 @@ button{
 .brand{
   display:flex;
   align-items:center;
-
   gap:14px;
 }
 
@@ -153,7 +143,6 @@ button{
   font-family:"Fredoka",sans-serif;
 
   color:#28778e;
-
   font-size:32px;
 }
 
@@ -168,14 +157,15 @@ button{
 
 .top-actions{
   display:flex;
-
   gap:10px;
+
+  align-items:center;
 }
 
 
-/* =========================
+/* =========================================
    PULSANTI
-========================= */
+========================================= */
 
 .button{
   border:
@@ -195,7 +185,7 @@ button{
   transition:.15s;
 }
 
-.button:hover{
+.button:hover:not(:disabled){
   background:white;
 
   transform:
@@ -217,14 +207,127 @@ button{
 
 .button.saved{
   background:#dff9e9;
-
   color:#26724f;
 }
 
 
-/* =========================
+/* =========================================
+   MENU ESPORTAZIONE
+========================================= */
+
+.export-wrap{
+  position:relative;
+}
+
+.export-button{
+  min-width:105px;
+}
+
+.export-menu{
+  display:none;
+
+  position:absolute;
+
+  right:0;
+  top:calc(100% + 9px);
+
+  width:230px;
+
+  padding:8px;
+
+  z-index:100;
+
+  border:
+    1px solid rgba(46,115,140,.12);
+
+  border-radius:18px;
+
+  background:
+    rgba(255,255,255,.97);
+
+  box-shadow:
+    0 15px 40px
+    rgba(50,110,135,.18);
+
+  backdrop-filter:
+    blur(15px);
+}
+
+.export-menu.open{
+  display:block;
+}
+
+.export-option{
+  width:100%;
+
+  display:flex;
+  align-items:center;
+
+  gap:11px;
+
+  padding:11px;
+
+  border:0;
+
+  border-radius:13px;
+
+  background:transparent;
+
+  text-align:left;
+
+  color:var(--text);
+}
+
+.export-option:hover{
+  background:#ecfbfa;
+}
+
+.export-format{
+  width:44px;
+  height:35px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  flex-shrink:0;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(114,207,255,.40),
+      rgba(111,224,160,.38)
+    );
+
+  font-family:"Fredoka";
+  font-size:12px;
+  font-weight:700;
+
+  color:#26788e;
+}
+
+.export-description strong{
+  display:block;
+
+  font-size:12px;
+}
+
+.export-description span{
+  display:block;
+
+  margin-top:2px;
+
+  font-size:9px;
+
+  color:#7895a0;
+}
+
+
+/* =========================================
    LAYOUT
-========================= */
+========================================= */
 
 .workspace{
   flex:1;
@@ -238,9 +341,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    LIBRERIA
-========================= */
+========================================= */
 
 .library{
   min-height:0;
@@ -268,7 +371,6 @@ button{
   font-family:"Fredoka";
 
   color:#267a91;
-
   font-size:21px;
 }
 
@@ -276,15 +378,11 @@ button{
   margin:5px 0 0;
 
   color:var(--muted);
-
   font-size:12px;
 }
 
 .search-box{
-  padding:
-    13px
-    15px
-    8px;
+  padding:13px 15px 8px;
 }
 
 .search-box input{
@@ -295,9 +393,7 @@ button{
 
   border-radius:14px;
 
-  padding:
-    11px
-    13px;
+  padding:11px 13px;
 
   background:
     rgba(255,255,255,.72);
@@ -313,22 +409,15 @@ button{
 
   overflow-y:auto;
 
-  padding:
-    8px
-    12px
-    20px;
+  padding:8px 12px 20px;
 }
 
 .section-label{
-  margin:
-    12px
-    7px
-    9px;
+  margin:12px 7px 9px;
 
   text-transform:uppercase;
 
   font-size:10px;
-
   letter-spacing:1px;
 
   color:#6d93a0;
@@ -339,10 +428,7 @@ button{
 .category{
   width:100%;
 
-  padding:
-    9px
-    11px;
-
+  padding:9px 11px;
   margin-bottom:6px;
 
   border-radius:15px;
@@ -370,14 +456,13 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    SUONI
-========================= */
+========================================= */
 
 .sound-list{
   display:flex;
   flex-direction:column;
-
   gap:8px;
 }
 
@@ -392,7 +477,6 @@ button{
   align-items:center;
 
   gap:9px;
-
   padding:9px;
 
   border-radius:16px;
@@ -437,7 +521,6 @@ button{
   font-family:"Fredoka";
 
   font-size:17px;
-
   font-weight:700;
 }
 
@@ -461,7 +544,6 @@ button{
 
 .sound-actions{
   display:flex;
-
   gap:5px;
 }
 
@@ -470,7 +552,6 @@ button{
   height:31px;
 
   border:0;
-
   border-radius:10px;
 
   font-weight:900;
@@ -497,41 +578,14 @@ button{
   color:#6e8d99;
 
   font-size:11px;
-
   line-height:1.4;
 }
 
-.library-note{
-  margin:
-    8px
-    4px
-    5px;
-
-  padding:
-    9px
-    11px;
-
-  border-radius:13px;
-
-  color:#5a7f8c;
-
-  background:
-    rgba(255,255,255,.38);
-
-  font-size:10px;
-
-  line-height:1.4;
-}
-
+.library-note,
 .drag-hint{
-  margin:
-    10px
-    4px
-    5px;
+  margin:9px 4px 5px;
 
-  padding:
-    10px
-    12px;
+  padding:10px 12px;
 
   border-radius:14px;
 
@@ -540,15 +594,14 @@ button{
   background:
     rgba(255,255,255,.43);
 
-  font-size:11px;
-
+  font-size:10px;
   line-height:1.45;
 }
 
 
-/* =========================
+/* =========================================
    EDITOR
-========================= */
+========================================= */
 
 .editor{
   min-width:0;
@@ -567,9 +620,7 @@ button{
 
   gap:14px;
 
-  padding:
-    13px
-    20px;
+  padding:13px 20px;
 
   background:
     rgba(255,255,255,.22);
@@ -616,9 +667,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    TOOLBAR
-========================= */
+========================================= */
 
 .toolbar{
   height:66px;
@@ -629,9 +680,7 @@ button{
 
   gap:10px;
 
-  padding:
-    0
-    18px;
+  padding:0 18px;
 
   background:
     rgba(255,255,255,.30);
@@ -645,9 +694,6 @@ button{
 
   color:#a63f52;
 
-  border-color:
-    rgba(215,78,102,.18);
-
   box-shadow:
     0 0 0 6px
     rgba(255,95,120,.10);
@@ -659,11 +705,11 @@ button{
   width:8px;
   height:8px;
 
-  border-radius:50%;
-
   display:inline-block;
 
   margin-right:7px;
+
+  border-radius:50%;
 
   background:#ff5f78;
 
@@ -688,7 +734,6 @@ button{
   margin-left:auto;
 
   display:flex;
-
   gap:9px;
 }
 
@@ -706,7 +751,6 @@ button{
   color:#33778b;
 
   font-size:16px;
-
   font-weight:900;
 }
 
@@ -731,9 +775,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    TIMELINE
-========================= */
+========================================= */
 
 .timeline-shell{
   position:relative;
@@ -744,16 +788,13 @@ button{
 
 .timeline-scroll{
   position:absolute;
-
   inset:0;
 
   overflow:auto;
 }
 
 .timeline-canvas{
-  width:
-    var(--timeline-width);
-
+  width:var(--timeline-width);
   min-height:100%;
 
   position:relative;
@@ -763,7 +804,6 @@ button{
   height:48px;
 
   position:sticky;
-
   top:0;
 
   z-index:20;
@@ -777,7 +817,6 @@ button{
 
 .track-header{
   position:sticky;
-
   left:0;
 
   z-index:22;
@@ -797,13 +836,11 @@ button{
     1px solid var(--line);
 
   font-size:10px;
-
   font-weight:800;
 
   color:#668b99;
 
   text-transform:uppercase;
-
   letter-spacing:1px;
 }
 
@@ -821,32 +858,23 @@ button{
 
 .time-mark{
   width:95px;
-
-  flex:
-    0
-    0
-    95px;
+  flex:0 0 95px;
 
   border-left:
     1px solid rgba(66,125,149,.14);
 
-  padding:
-    8px
-    0
-    0
-    7px;
+  padding:8px 0 0 7px;
 
   font-size:10px;
-
   font-weight:800;
 
   color:#7493a0;
 }
 
 
-/* =========================
+/* =========================================
    TESTINA
-========================= */
+========================================= */
 
 .playhead{
   position:absolute;
@@ -885,9 +913,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    TRACCE
-========================= */
+========================================= */
 
 .track-row{
   height:116px;
@@ -904,7 +932,6 @@ button{
 
 .track-controls{
   position:sticky;
-
   left:0;
 
   z-index:8;
@@ -934,7 +961,6 @@ button{
 .track-title-row{
   display:flex;
   align-items:center;
-
   gap:6px;
 }
 
@@ -962,7 +988,6 @@ button{
   font-family:"Fredoka";
 
   font-weight:700;
-
   font-size:12px;
 }
 
@@ -977,9 +1002,7 @@ button{
 
   background:white;
 
-  padding:
-    6px
-    7px;
+  padding:6px 7px;
 
   color:#285f70;
 
@@ -1011,8 +1034,7 @@ button{
 }
 
 .small-button.active{
-  background:
-    var(--mint);
+  background:var(--mint);
 
   color:#0f5144;
 }
@@ -1038,8 +1060,7 @@ button{
   flex:1;
   min-width:0;
 
-  accent-color:
-    var(--mint);
+  accent-color:var(--mint);
 }
 
 .track-lane{
@@ -1055,8 +1076,7 @@ button{
     );
 
   background-size:
-    95px
-    100%;
+    95px 100%;
 }
 
 .track-row:nth-child(even)
@@ -1077,7 +1097,8 @@ button{
     !important;
 
   outline:
-    2px dashed rgba(49,170,128,.55);
+    2px dashed
+    rgba(49,170,128,.55);
 
   outline-offset:-3px;
 }
@@ -1092,7 +1113,6 @@ button{
     translateY(-50%);
 
   font-size:11px;
-
   font-weight:700;
 
   color:
@@ -1102,9 +1122,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    CLIP
-========================= */
+========================================= */
 
 .audio-clip{
   position:absolute;
@@ -1112,7 +1132,6 @@ button{
   top:17px;
 
   height:80px;
-
   min-width:38px;
 
   border-radius:15px;
@@ -1136,7 +1155,6 @@ button{
   cursor:grab;
 
   user-select:none;
-
   touch-action:none;
 }
 
@@ -1151,7 +1169,6 @@ button{
 
 .clip-body{
   position:absolute;
-
   inset:0;
 
   overflow:hidden;
@@ -1162,9 +1179,7 @@ button{
 .clip-top{
   height:27px;
 
-  padding:
-    4px
-    7px;
+  padding:4px 7px;
 
   display:flex;
   align-items:center;
@@ -1175,7 +1190,6 @@ button{
     rgba(255,255,255,.30);
 
   font-size:10px;
-
   font-weight:900;
 
   color:#1e6276;
@@ -1183,7 +1197,6 @@ button{
 
 .clip-title{
   flex:1;
-
   min-width:0;
 
   white-space:nowrap;
@@ -1206,9 +1219,7 @@ button{
 .loop-badge{
   display:none;
 
-  padding:
-    2px
-    5px;
+  padding:2px 5px;
 
   border-radius:999px;
 
@@ -1218,7 +1229,6 @@ button{
   color:#27785f;
 
   font-size:8px;
-
   font-weight:900;
 }
 
@@ -1235,9 +1245,7 @@ button{
 
   z-index:3;
 
-  padding:
-    1px
-    3px;
+  padding:1px 3px;
 
   border-radius:4px;
 
@@ -1245,7 +1253,6 @@ button{
     rgba(255,255,255,.45);
 
   font-size:8px;
-
   font-weight:900;
 
   color:
@@ -1255,9 +1262,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    WAVEFORM
-========================= */
+========================================= */
 
 .waveform-wrap{
   position:absolute;
@@ -1285,9 +1292,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    MANIGLIE
-========================= */
+========================================= */
 
 .resize-handle{
   position:absolute;
@@ -1340,9 +1347,9 @@ button{
 }
 
 
-/* =========================
+/* =========================================
    EMPTY
-========================= */
+========================================= */
 
 .empty-project{
   position:absolute;
@@ -1361,9 +1368,7 @@ button{
       calc(100% - 40px)
     );
 
-  padding:
-    30px
-    24px;
+  padding:30px 24px;
 
   text-align:center;
 
@@ -1392,24 +1397,20 @@ button{
 }
 
 .empty-project p{
-  margin:
-    0
-    auto
-    18px;
+  margin:0 auto 18px;
 
   max-width:470px;
 
   color:var(--muted);
 
   font-size:13px;
-
   line-height:1.5;
 }
 
 
-/* =========================
+/* =========================================
    FOOTER
-========================= */
+========================================= */
 
 .bottom-bar{
   height:54px;
@@ -1420,9 +1421,7 @@ button{
 
   gap:10px;
 
-  padding:
-    0
-    18px;
+  padding:0 18px;
 
   background:
     rgba(255,255,255,.40);
@@ -1432,9 +1431,7 @@ button{
 }
 
 .status{
-  padding:
-    7px
-    11px;
+  padding:7px 11px;
 
   border-radius:999px;
 
@@ -1444,7 +1441,6 @@ button{
   color:#567f8d;
 
   font-size:11px;
-
   font-weight:800;
 }
 
@@ -1460,13 +1456,18 @@ button{
   color:#287554;
 }
 
+.status.exporting{
+  background:#dcefff;
+
+  color:#276b86;
+}
+
 .time{
   margin-left:auto;
 
   color:#34788d;
 
   font-size:15px;
-
   font-weight:800;
 
   font-variant-numeric:
@@ -1493,12 +1494,10 @@ button{
 }
 
 </style>
-
 </head>
 
 
 <body>
-
 
 <div class="app">
 
@@ -1556,6 +1555,7 @@ button{
   </div>
 
 
+
   <div class="top-actions">
 
 
@@ -1575,12 +1575,79 @@ button{
     </button>
 
 
-    <button
-      class="button button-primary"
-      id="exportButton"
+    <div
+      class="export-wrap"
+      id="exportWrap"
     >
-      Esporta
-    </button>
+
+
+      <button
+        class="button button-primary export-button"
+        id="exportButton"
+        aria-expanded="false"
+      >
+        Esporta ▾
+      </button>
+
+
+      <div
+        class="export-menu"
+        id="exportMenu"
+      >
+
+
+        <button
+          class="export-option"
+          data-format="wav"
+        >
+
+          <div class="export-format">
+            WAV
+          </div>
+
+          <div class="export-description">
+
+            <strong>
+              Esporta WAV
+            </strong>
+
+            <span>
+              Qualità piena • file più grande
+            </span>
+
+          </div>
+
+        </button>
+
+
+        <button
+          class="export-option"
+          data-format="mp3"
+        >
+
+          <div class="export-format">
+            MP3
+          </div>
+
+          <div class="export-description">
+
+            <strong>
+              Esporta MP3
+            </strong>
+
+            <span>
+              192 kbps • file più leggero
+            </span>
+
+          </div>
+
+        </button>
+
+
+      </div>
+
+
+    </div>
 
 
   </div>
@@ -1593,9 +1660,9 @@ button{
 <main class="workspace">
 
 
-<!-- =========================
+<!-- =========================================
      LIBRERIA
-========================= -->
+========================================= -->
 
 <aside class="library">
 
@@ -1695,8 +1762,8 @@ button{
 
 
     <div
-      id="mySoundsEmpty"
       class="my-sounds-empty"
+      id="mySoundsEmpty"
     >
       Le registrazioni create con il microfono compariranno qui.
     </div>
@@ -1711,21 +1778,21 @@ button{
 
     <div class="library-note">
 
-      Le registrazioni vengono incluse quando premi
-      <strong>Salva</strong>.
+      Con <strong>Esporta</strong> puoi scegliere
+      tra WAV e MP3.
 
     </div>
 
 
     <div class="drag-hint">
 
-      <strong>Salvataggio:</strong>
-      il progetto viene memorizzato su questo dispositivo.
+      <strong>WAV:</strong>
+      massima qualità.
 
       <br>
 
-      <strong>Riapertura:</strong>
-      SoundLab recupera automaticamente l'ultimo progetto salvato.
+      <strong>MP3:</strong>
+      più leggero e pratico per la consegna.
 
     </div>
 
@@ -1737,9 +1804,9 @@ button{
 
 
 
-<!-- =========================
+<!-- =========================================
      EDITOR
-========================= -->
+========================================= -->
 
 <section class="editor">
 
@@ -1785,7 +1852,7 @@ button{
       </h2>
 
       <p>
-        Usa la libreria, registra nuovi suoni e salva il tuo progetto.
+        Crea, registra, modifica e poi esporta il tuo lavoro.
       </p>
 
     </div>
@@ -1911,8 +1978,7 @@ button{
       </h3>
 
       <p>
-        Crea una traccia, usa un suono della libreria
-        oppure registrane uno.
+        Crea una traccia, scegli un suono o registrane uno.
       </p>
 
       <button
@@ -1984,9 +2050,14 @@ button{
 </div>
 
 
+<!--
+  Encoder MP3 gratuito.
+  WAV continua invece a essere creato nativamente da SoundLab.
+-->
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.1/lame.min.js"></script>
+
 
 <script>
-
 
 /* =========================================================
    BANCA SUONI
@@ -1994,7 +2065,7 @@ button{
 
 const sounds = {
 
-  rain: {
+  rain:{
     id:"rain",
     name:"Pioggia",
     file:"pioggia_test.wav",
@@ -2003,7 +2074,7 @@ const sounds = {
     icon:"≋"
   },
 
-  city: {
+  city:{
     id:"city",
     name:"Città",
     file:"citta_test.wav",
@@ -2012,7 +2083,7 @@ const sounds = {
     icon:"▥"
   },
 
-  birds: {
+  birds:{
     id:"birds",
     name:"Uccelli",
     file:"uccelli_test.wav",
@@ -2045,6 +2116,10 @@ const TRACK_WIDTH = 190;
 
 const MIN_CLIP_SECONDS = .5;
 
+const EXPORT_SAMPLE_RATE = 44100;
+
+const MP3_BITRATE = 192;
+
 
 
 /* =========================================================
@@ -2069,7 +2144,7 @@ const SAVE_KEY =
 
 
 /* =========================================================
-   PROGETTO
+   STATO
 ========================================================= */
 
 let tracks = [];
@@ -2083,6 +2158,8 @@ let selectedTrackId = null;
 let personalSoundCounter = 0;
 
 let hasUnsavedChanges = false;
+
+let isExporting = false;
 
 
 
@@ -2139,114 +2216,73 @@ let recordingTimer = null;
 
 
 /* =========================================================
-   HTML
+   ELEMENTI HTML
 ========================================================= */
 
 const trackRows =
-  document.getElementById(
-    "trackRows"
-  );
-
+  document.getElementById("trackRows");
 
 const emptyProject =
-  document.getElementById(
-    "emptyProject"
-  );
-
+  document.getElementById("emptyProject");
 
 const projectStatus =
-  document.getElementById(
-    "projectStatus"
-  );
-
+  document.getElementById("projectStatus");
 
 const selectedStatus =
-  document.getElementById(
-    "selectedStatus"
-  );
-
+  document.getElementById("selectedStatus");
 
 const saveStatus =
-  document.getElementById(
-    "saveStatus"
-  );
-
+  document.getElementById("saveStatus");
 
 const playbackStatus =
-  document.getElementById(
-    "playbackStatus"
-  );
-
+  document.getElementById("playbackStatus");
 
 const timeDisplay =
-  document.getElementById(
-    "timeDisplay"
-  );
-
+  document.getElementById("timeDisplay");
 
 const playhead =
-  document.getElementById(
-    "playhead"
-  );
-
+  document.getElementById("playhead");
 
 const playButton =
-  document.getElementById(
-    "playButton"
-  );
-
+  document.getElementById("playButton");
 
 const stopButton =
-  document.getElementById(
-    "stopButton"
-  );
-
+  document.getElementById("stopButton");
 
 const ruler =
-  document.getElementById(
-    "ruler"
-  );
-
+  document.getElementById("ruler");
 
 const recordButton =
-  document.getElementById(
-    "recordButton"
-  );
-
+  document.getElementById("recordButton");
 
 const saveButton =
-  document.getElementById(
-    "saveButton"
-  );
+  document.getElementById("saveButton");
 
+const exportButton =
+  document.getElementById("exportButton");
+
+const exportMenu =
+  document.getElementById("exportMenu");
+
+const exportWrap =
+  document.getElementById("exportWrap");
 
 const testSoundsList =
-  document.getElementById(
-    "testSoundsList"
-  );
-
+  document.getElementById("testSoundsList");
 
 const mySoundsList =
-  document.getElementById(
-    "mySoundsList"
-  );
-
+  document.getElementById("mySoundsList");
 
 const mySoundsEmpty =
-  document.getElementById(
-    "mySoundsEmpty"
-  );
-
+  document.getElementById("mySoundsEmpty");
 
 const soundSearch =
-  document.getElementById(
-    "soundSearch"
-  );
+  document.getElementById("soundSearch");
 
 
 
 /* =========================================================
-   MODIFICHE NON SALVATE
+   STATO SALVATAGGIO
 ========================================================= */
 
 function markDirty(){
@@ -2267,15 +2303,6 @@ function markDirty(){
   saveStatus.classList.add(
     "unsaved"
   );
-
-
-  saveButton.classList.remove(
-    "saved"
-  );
-
-
-  saveButton.textContent =
-    "Salva";
 
 }
 
@@ -2316,6 +2343,7 @@ function markSaved(){
       saveButton.textContent =
         "Salva";
 
+
       saveButton.classList.remove(
         "saved"
       );
@@ -2329,7 +2357,7 @@ function markSaved(){
 
 
 /* =========================================================
-   INDEXED DB
+   DATABASE
 ========================================================= */
 
 function openDatabase(){
@@ -2338,22 +2366,8 @@ function openDatabase(){
     (resolve,reject) => {
 
 
-      if(
-        !window.indexedDB
-      ){
-
-        reject(
-          new Error(
-            "IndexedDB non disponibile"
-          )
-        );
-
-        return;
-
-      }
-
-
       const request =
+
         indexedDB.open(
           DB_NAME,
           DB_VERSION
@@ -2470,29 +2484,22 @@ async function saveProject(){
 
             return {
 
-              id:
-                sound.id,
+              id:sound.id,
 
-              name:
-                sound.name,
+              name:sound.name,
 
-              label:
-                sound.label,
+              label:sound.label,
 
-              icon:
-                sound.icon,
+              icon:sound.icon,
 
-              blob:
-                sound.blob
+              blob:sound.blob
 
             };
 
 
           }
         )
-        .filter(
-          Boolean
-        );
+        .filter(Boolean);
 
 
 
@@ -2501,37 +2508,28 @@ async function saveProject(){
       tracks.map(
         track => ({
 
-          id:
-            track.id,
+          id:track.id,
 
-          name:
-            track.name,
+          name:track.name,
 
-          volume:
-            track.volume,
+          volume:track.volume,
 
-          mute:
-            track.mute,
+          mute:track.mute,
 
-          solo:
-            track.solo,
+          solo:track.solo,
 
           clips:
 
             track.clips.map(
               clip => ({
 
-                id:
-                  clip.id,
+                id:clip.id,
 
-                soundId:
-                  clip.soundId,
+                soundId:clip.soundId,
 
-                name:
-                  clip.name,
+                name:clip.name,
 
-                start:
-                  clip.start,
+                start:clip.start,
 
                 sourceDuration:
                   clip.sourceDuration,
@@ -2552,8 +2550,7 @@ async function saveProject(){
 
     const project = {
 
-      version:
-        1,
+      version:1,
 
       savedAt:
         Date.now(),
@@ -2612,23 +2609,9 @@ async function saveProject(){
 
 
         transaction.onerror =
-          () => {
-
-            reject(
-              transaction.error
-            );
-
-          };
-
-
-        transaction.onabort =
-          () => {
-
-            reject(
-              transaction.error
-            );
-
-          };
+          () => reject(
+            transaction.error
+          );
 
 
       }
@@ -2668,18 +2651,16 @@ async function saveProject(){
   catch(error){
 
 
-    console.error(
-      error
+    console.error(error);
+
+
+    alert(
+      "Non riesco a salvare il progetto."
     );
 
 
     playbackStatus.textContent =
       "Errore salvataggio";
-
-
-    alert(
-      "Non riesco a salvare il progetto nel browser. Lo spazio disponibile potrebbe essere insufficiente."
-    );
 
 
   }
@@ -2689,7 +2670,7 @@ async function saveProject(){
 
 
 /* =========================================================
-   CARICA PROGETTO SALVATO
+   CARICA PROGETTO
 ========================================================= */
 
 async function loadSavedProject(){
@@ -2761,18 +2742,14 @@ async function loadSavedProject(){
     }
 
 
-
     clearPersonalSoundsFromMemory();
 
 
-
-    const savedPersonalSounds =
-
+    (
       project.personalSounds ||
-      [];
-
-
-    savedPersonalSounds.forEach(
+      []
+    )
+    .forEach(
       savedSound => {
 
 
@@ -2826,7 +2803,6 @@ async function loadSavedProject(){
     );
 
 
-
     personalSoundIds.splice(
       0,
       personalSoundIds.length
@@ -2856,7 +2832,6 @@ async function loadSavedProject(){
     );
 
 
-
     tracks =
 
       (
@@ -2865,7 +2840,6 @@ async function loadSavedProject(){
       )
       .map(
         track => ({
-
 
           id:
             track.id,
@@ -2919,14 +2893,10 @@ async function loadSavedProject(){
 
               }
             )
-            .filter(
-              Boolean
-            )
-
+            .filter(Boolean)
 
         })
       );
-
 
 
     trackCounter =
@@ -2942,7 +2912,6 @@ async function loadSavedProject(){
     personalSoundCounter =
       project.personalSoundCounter ||
       personalSoundIds.length;
-
 
 
     selectedTrackId =
@@ -2970,21 +2939,12 @@ async function loadSavedProject(){
     }
 
 
-    playheadSeconds =
-      0;
-
-
     hasUnsavedChanges =
       false;
 
 
     saveStatus.textContent =
       "Salvataggio caricato";
-
-
-    saveStatus.classList.remove(
-      "unsaved"
-    );
 
 
     saveStatus.classList.add(
@@ -3001,7 +2961,6 @@ async function loadSavedProject(){
 
 
     console.error(
-      "Errore caricamento progetto:",
       error
     );
 
@@ -3045,21 +3004,11 @@ async function deleteSavedProject(){
 
 
     await new Promise(
-      (resolve,reject) => {
+      resolve => {
 
 
         transaction.oncomplete =
           resolve;
-
-
-        transaction.onerror =
-          () => {
-
-            reject(
-              transaction.error
-            );
-
-          };
 
 
       }
@@ -3111,7 +3060,7 @@ function getAudioContext(){
 
 
 /* =========================================================
-   CARICA BUFFER
+   CARICA AUDIO
 ========================================================= */
 
 async function loadAudioBuffer(
@@ -3413,7 +3362,10 @@ function createSoundCard(
 
     <div class="sound-icon">
 
-      ${escapeHtml(sound.icon || "REC")}
+      ${escapeHtml(
+        sound.icon ||
+        "REC"
+      )}
 
     </div>
 
@@ -3422,7 +3374,9 @@ function createSoundCard(
 
       <strong>
 
-        ${escapeHtml(sound.name)}
+        ${escapeHtml(
+          sound.name
+        )}
 
       </strong>
 
@@ -3457,7 +3411,6 @@ function createSoundCard(
   `;
 
 
-
   card.addEventListener(
     "dragstart",
     event => {
@@ -3478,7 +3431,6 @@ function createSoundCard(
 
     }
   );
-
 
 
   card
@@ -3504,7 +3456,6 @@ function createSoundCard(
 
       }
     );
-
 
 
   card
@@ -3634,7 +3585,7 @@ soundSearch.addEventListener(
 
 
 /* =========================================================
-   MICROFONO
+   REGISTRAZIONE MICROFONO
 ========================================================= */
 
 async function toggleRecording(){
@@ -3690,7 +3641,7 @@ async function startRecording(){
 
       await navigator.mediaDevices.getUserMedia({
 
-        audio: {
+        audio:{
 
           echoCancellation:false,
 
@@ -3788,16 +3739,14 @@ async function startRecording(){
   catch(error){
 
 
-    console.error(
-      error
-    );
+    console.error(error);
 
 
     releaseMicrophone();
 
 
     alert(
-      "Non riesco ad accedere al microfono. Controlla i permessi del browser."
+      "Non riesco ad accedere al microfono."
     );
 
 
@@ -4037,9 +3986,7 @@ async function handleRecordingStopped(){
 
   catch(error){
 
-    console.warn(
-      error
-    );
+    console.warn(error);
 
   }
 
@@ -4080,7 +4027,7 @@ recordButton.addEventListener(
 
 
 /* =========================================================
-   PULIZIA SUONI PERSONALI
+   PULIZIA REGISTRAZIONI
 ========================================================= */
 
 function clearPersonalSoundsFromMemory(){
@@ -4125,7 +4072,7 @@ function clearPersonalSoundsFromMemory(){
 
 
 /* =========================================================
-   CREA TRACCIA
+   TRACCE
 ========================================================= */
 
 function addTrack(){
@@ -4176,28 +4123,6 @@ function addTrack(){
 }
 
 
-
-/* =========================================================
-   SELEZIONA
-========================================================= */
-
-function selectTrack(
-  id
-){
-
-  selectedTrackId =
-    id;
-
-
-  renderTracks();
-
-}
-
-
-
-/* =========================================================
-   ELIMINA TRACCIA
-========================================================= */
 
 function deleteTrack(
   id
@@ -4302,36 +4227,11 @@ async function addSoundToTrack(
   }
 
 
-  let sourceDuration;
+  const buffer =
 
-
-  try{
-
-
-    const buffer =
-
-      await loadAudioBuffer(
-        sound.file
-      );
-
-
-    sourceDuration =
-      buffer.duration;
-
-
-  }
-
-  catch(error){
-
-
-    sourceDuration =
-
-      await getAudioDuration(
-        sound.file
-      );
-
-
-  }
+    await loadAudioBuffer(
+      sound.file
+    );
 
 
   clipCounter++;
@@ -4359,13 +4259,13 @@ async function addSoundToTrack(
       ),
 
     sourceDuration:
-      sourceDuration || 5,
+      buffer.duration,
 
     sourceOffset:
       0,
 
     duration:
-      sourceDuration || 5
+      buffer.duration
 
   });
 
@@ -4378,59 +4278,6 @@ async function addSoundToTrack(
 
 
   renderTracks();
-
-}
-
-
-
-/* =========================================================
-   DURATA AUDIO
-========================================================= */
-
-function getAudioDuration(
-  file
-){
-
-  return new Promise(
-    resolve => {
-
-
-      const audio =
-        new Audio(
-          file
-        );
-
-
-      audio.preload =
-        "metadata";
-
-
-      audio.addEventListener(
-        "loadedmetadata",
-        () => {
-
-          resolve(
-            audio.duration
-          );
-
-        }
-      );
-
-
-      audio.addEventListener(
-        "error",
-        () => {
-
-          resolve(
-            5
-          );
-
-        }
-      );
-
-
-    }
-  );
 
 }
 
@@ -4481,7 +4328,7 @@ function getProjectDuration(){
 
 
 /* =========================================================
-   CLIP
+   DATI CLIP
 ========================================================= */
 
 function clipAvailableSource(
@@ -4523,19 +4370,20 @@ function loopCount(
   clip
 ){
 
-  const available =
-    clipAvailableSource(
-      clip
-    );
-
-
   return Math.max(
 
     1,
 
     Math.ceil(
-      clip.duration /
-      available
+
+      clip.duration
+
+      /
+
+      clipAvailableSource(
+        clip
+      )
+
     )
 
   );
@@ -4545,7 +4393,7 @@ function loopCount(
 
 
 /* =========================================================
-   CREA ELEMENTO CLIP
+   CREA CLIP
 ========================================================= */
 
 function createClipElement(
@@ -4577,10 +4425,6 @@ function createClipElement(
     );
 
 
-  el.dataset.clipId =
-    clip.id;
-
-
   updateClipGeometry(
     el,
     clip
@@ -4602,14 +4446,18 @@ function createClipElement(
 
         <span class="clip-title">
 
-          ${escapeHtml(clip.name)}
+          ${escapeHtml(
+            clip.name
+          )}
 
         </span>
 
 
         <span class="loop-badge">
 
-          LOOP ×${loopCount(clip)}
+          LOOP ×${loopCount(
+            clip
+          )}
 
         </span>
 
@@ -4645,7 +4493,6 @@ function createClipElement(
     </div>
 
   `;
-
 
 
   el
@@ -4708,12 +4555,10 @@ function createClipElement(
   requestAnimationFrame(
     () => {
 
-
       drawClipWaveform(
         el,
         clip
       );
-
 
     }
   );
@@ -4804,13 +4649,11 @@ async function drawClipWaveform(
 
 
     canvas.width =
-
       width *
       dpr;
 
 
     canvas.height =
-
       height *
       dpr;
 
@@ -4926,16 +4769,16 @@ async function drawClipWaveform(
         visibleDuration;
 
 
-      const cyclePosition =
-
-        timelineStart %
-        available;
-
-
       const sourceTime =
 
-        clip.sourceOffset +
-        cyclePosition;
+        clip.sourceOffset
+
+        +
+
+        (
+          timelineStart %
+          available
+        );
 
 
       let startSample =
@@ -5091,9 +4934,14 @@ async function drawClipWaveform(
 
 
       for(
-        let t = available;
-        t < visibleDuration;
-        t += available
+        let t =
+          available;
+
+        t <
+        visibleDuration;
+
+        t +=
+          available
       ){
 
 
@@ -5160,10 +5008,8 @@ function updateClipGeometry(
 
   el.style.left =
 
-    (
-      clip.start *
-      PX_PER_SECOND
-    )
+    clip.start *
+    PX_PER_SECOND
 
     +
 
@@ -5211,19 +5057,19 @@ function refreshClipVisual(
   );
 
 
-  const badge =
-
-    el.querySelector(
+  el
+    .querySelector(
       ".loop-badge"
-    );
+    )
+    .textContent =
 
+      "LOOP ×"
 
-  badge.textContent =
+      +
 
-    "LOOP ×" +
-    loopCount(
-      clip
-    );
+      loopCount(
+        clip
+      );
 
 
   el
@@ -5244,7 +5090,7 @@ function refreshClipVisual(
 
 
 /* =========================================================
-   SPOSTA CLIP
+   SPOSTAMENTO CLIP
 ========================================================= */
 
 function setupClipDrag(
@@ -5287,11 +5133,11 @@ function setupClipDrag(
         track.id;
 
 
-      const startingX =
+      const startX =
         event.clientX;
 
 
-      const originalStart =
+      const oldStart =
         clip.start;
 
 
@@ -5304,26 +5150,24 @@ function setupClipDrag(
         moveEvent => {
 
 
-          const delta =
-
-            (
-              moveEvent.clientX -
-              startingX
-            )
-
-            /
-
-            PX_PER_SECOND;
-
-
           clip.start =
 
             Math.max(
 
               0,
 
-              originalStart +
-              delta
+              oldStart
+
+              +
+
+              (
+                moveEvent.clientX -
+                startX
+              )
+
+              /
+
+              PX_PER_SECOND
 
             );
 
@@ -5456,17 +5300,16 @@ function setupRightResize(
       );
 
 
-      event.stopPropagation();
-
-
       event.preventDefault();
+
+      event.stopPropagation();
 
 
       const startX =
         event.clientX;
 
 
-      const originalDuration =
+      const oldDuration =
         clip.duration;
 
 
@@ -5485,7 +5328,9 @@ function setupRightResize(
 
               MIN_CLIP_SECONDS,
 
-              originalDuration +
+              oldDuration
+
+              +
 
               (
                 moveEvent.clientX -
@@ -5579,25 +5424,24 @@ function setupLeftResize(
       );
 
 
-      event.stopPropagation();
-
-
       event.preventDefault();
+
+      event.stopPropagation();
 
 
       const startX =
         event.clientX;
 
 
-      const originalStart =
+      const oldStart =
         clip.start;
 
 
-      const originalDuration =
+      const oldDuration =
         clip.duration;
 
 
-      const originalOffset =
+      const oldOffset =
         clip.sourceOffset;
 
 
@@ -5626,7 +5470,7 @@ function setupLeftResize(
 
             Math.max(
               delta,
-              -originalStart
+              -oldStart
             );
 
 
@@ -5636,7 +5480,7 @@ function setupLeftResize(
 
               delta,
 
-              originalDuration -
+              oldDuration -
               MIN_CLIP_SECONDS
 
             );
@@ -5647,14 +5491,14 @@ function setupLeftResize(
           ){
 
 
-            const maximum =
+            const maxIncrease =
 
               Math.max(
 
                 0,
 
                 clip.sourceDuration -
-                originalOffset -
+                oldOffset -
                 MIN_CLIP_SECONDS
 
               );
@@ -5666,9 +5510,9 @@ function setupLeftResize(
 
                 delta,
 
-                maximum,
+                maxIncrease,
 
-                originalDuration -
+                oldDuration -
                 MIN_CLIP_SECONDS
 
               );
@@ -5676,19 +5520,19 @@ function setupLeftResize(
 
             clip.start =
 
-              originalStart +
+              oldStart +
               effective;
 
 
             clip.duration =
 
-              originalDuration -
+              oldDuration -
               effective;
 
 
             clip.sourceOffset =
 
-              originalOffset +
+              oldOffset +
               effective;
 
 
@@ -5703,28 +5547,28 @@ function setupLeftResize(
 
                 -delta,
 
-                originalOffset,
+                oldOffset,
 
-                originalStart
+                oldStart
 
               );
 
 
             clip.start =
 
-              originalStart -
+              oldStart -
               reveal;
 
 
             clip.duration =
 
-              originalDuration +
+              oldDuration +
               reveal;
 
 
             clip.sourceOffset =
 
-              originalOffset -
+              oldOffset -
               reveal;
 
 
@@ -5785,7 +5629,7 @@ function setupLeftResize(
 
 
 /* =========================================================
-   CAMBIO TRACCIA
+   SPOSTA FRA TRACCE
 ========================================================= */
 
 function moveClipToTrack(
@@ -5927,7 +5771,9 @@ function renderTracks(){
 
           <input
             class="track-name"
-            value="${escapeHtml(track.name)}"
+            value="${escapeHtml(
+              track.name
+            )}"
           >
 
         </div>
@@ -6016,7 +5862,6 @@ function renderTracks(){
 
         }
       );
-
 
 
       lane.addEventListener(
@@ -6127,7 +5972,6 @@ function renderTracks(){
       );
 
 
-
       controls
         .querySelector(
           ".track-name"
@@ -6151,14 +5995,32 @@ function renderTracks(){
         );
 
 
-
       controls
         .querySelector(
           ".mute-button"
         )
         .addEventListener(
           "click",
-          () => {
+          async () => {
+
+
+            const restartAt =
+              getLivePlayhead();
+
+
+            const wasPlaying =
+              isPlaying;
+
+
+            if(
+              wasPlaying
+            ){
+
+              stopPlayback(
+                false
+              );
+
+            }
 
 
             track.mute =
@@ -6171,9 +6033,19 @@ function renderTracks(){
             renderTracks();
 
 
+            if(
+              wasPlaying
+            ){
+
+              await playFrom(
+                restartAt
+              );
+
+            }
+
+
           }
         );
-
 
 
       controls
@@ -6182,7 +6054,26 @@ function renderTracks(){
         )
         .addEventListener(
           "click",
-          () => {
+          async () => {
+
+
+            const restartAt =
+              getLivePlayhead();
+
+
+            const wasPlaying =
+              isPlaying;
+
+
+            if(
+              wasPlaying
+            ){
+
+              stopPlayback(
+                false
+              );
+
+            }
 
 
             track.solo =
@@ -6195,9 +6086,19 @@ function renderTracks(){
             renderTracks();
 
 
+            if(
+              wasPlaying
+            ){
+
+              await playFrom(
+                restartAt
+              );
+
+            }
+
+
           }
         );
-
 
 
       controls
@@ -6216,7 +6117,6 @@ function renderTracks(){
 
           }
         );
-
 
 
       controls
@@ -6386,11 +6286,10 @@ function audibleTracks(){
 
 
 /* =========================================================
-   SCHEDULA AUDIO
+   PLAYBACK
 ========================================================= */
 
 async function scheduleClip(
-  track,
   clip,
   fromTime,
   context,
@@ -6513,24 +6412,6 @@ async function scheduleClip(
       );
 
 
-    const timelineStart =
-
-      clip.start +
-      clipPosition;
-
-
-    const when =
-
-      Math.max(
-
-        0,
-
-        timelineStart -
-        fromTime
-
-      );
-
-
     const source =
 
       context.createBufferSource();
@@ -6547,8 +6428,19 @@ async function scheduleClip(
 
     source.start(
 
-      context.currentTime +
-      when,
+      context.currentTime
+
+      +
+
+      Math.max(
+
+        0,
+
+        clip.start +
+        clipPosition -
+        fromTime
+
+      ),
 
       clip.sourceOffset +
       positionInCycle,
@@ -6575,10 +6467,6 @@ async function scheduleClip(
 }
 
 
-
-/* =========================================================
-   PLAY
-========================================================= */
 
 async function playFrom(
   startPosition
@@ -6627,10 +6515,6 @@ async function playFrom(
   await context.resume();
 
 
-  const tracksToPlay =
-    audibleTracks();
-
-
   playbackStatus.textContent =
     "Caricamento audio…";
 
@@ -6640,7 +6524,7 @@ async function playFrom(
 
     await Promise.all(
 
-      tracksToPlay.map(
+      audibleTracks().map(
 
         async track => {
 
@@ -6672,8 +6556,6 @@ async function playFrom(
 
                 scheduleClip(
 
-                  track,
-
                   clip,
 
                   startPosition,
@@ -6701,14 +6583,16 @@ async function playFrom(
   catch(error){
 
 
-    console.error(
-      error
-    );
+    console.error(error);
 
 
     alert(
       "Errore durante il caricamento audio."
     );
+
+
+    playbackStatus.textContent =
+      "Errore audio";
 
 
     return;
@@ -6818,10 +6702,6 @@ function animatePlayhead(){
 
 
 
-/* =========================================================
-   STOP
-========================================================= */
-
 function stopPlayback(
   resetToZero = true
 ){
@@ -6896,8 +6776,14 @@ function stopPlayback(
   }
 
 
-  playbackStatus.textContent =
-    "Pronto";
+  if(
+    !isExporting
+  ){
+
+    playbackStatus.textContent =
+      "Pronto";
+
+  }
 
 
   updatePlayheadUI();
@@ -6937,6 +6823,1312 @@ function updateTrackGain(
   }
 
 }
+
+
+
+/* =========================================================
+   CREA MIX OFFLINE
+========================================================= */
+
+async function renderProjectMix(){
+
+  const duration =
+    getProjectDuration();
+
+
+  const tracksToExport =
+    audibleTracks();
+
+
+  if(
+    duration <= 0
+  ){
+
+    throw new Error(
+      "EMPTY_PROJECT"
+    );
+
+  }
+
+
+  if(
+    !tracksToExport.length
+  ){
+
+    throw new Error(
+      "NO_AUDIBLE_TRACKS"
+    );
+
+  }
+
+
+  const files =
+    new Set();
+
+
+  tracksToExport.forEach(
+    track => {
+
+
+      track.clips.forEach(
+        clip => {
+
+
+          files.add(
+            clip.file
+          );
+
+
+        }
+      );
+
+
+    }
+  );
+
+
+  await Promise.all(
+
+    [...files].map(
+      file =>
+        loadAudioBuffer(
+          file
+        )
+    )
+
+  );
+
+
+  const frames =
+
+    Math.ceil(
+
+      duration *
+      EXPORT_SAMPLE_RATE
+
+    )
+
+    +
+
+    1;
+
+
+  const offlineContext =
+
+    new OfflineAudioContext(
+
+      2,
+
+      frames,
+
+      EXPORT_SAMPLE_RATE
+
+    );
+
+
+  const masterGain =
+
+    offlineContext.createGain();
+
+
+  masterGain.gain.value =
+    1;
+
+
+  masterGain.connect(
+    offlineContext.destination
+  );
+
+
+  for(
+    const track of
+    tracksToExport
+  ){
+
+
+    const trackGain =
+
+      offlineContext.createGain();
+
+
+    trackGain.gain.value =
+      track.volume / 100;
+
+
+    trackGain.connect(
+      masterGain
+    );
+
+
+    for(
+      const clip of
+      track.clips
+    ){
+
+
+      await scheduleClipForExport(
+
+        offlineContext,
+
+        trackGain,
+
+        clip
+
+      );
+
+
+    }
+
+
+  }
+
+
+  return await offlineContext.startRendering();
+
+}
+
+
+
+/* =========================================================
+   SCHEDULAZIONE PER EXPORT
+========================================================= */
+
+async function scheduleClipForExport(
+  context,
+  destination,
+  clip
+){
+
+  const buffer =
+
+    await loadAudioBuffer(
+      clip.file
+    );
+
+
+  const available =
+
+    Math.max(
+
+      .01,
+
+      Math.min(
+
+        clipAvailableSource(
+          clip
+        ),
+
+        buffer.duration -
+        clip.sourceOffset
+
+      )
+
+    );
+
+
+  let position =
+    0;
+
+
+  while(
+    position <
+    clip.duration
+  ){
+
+
+    const segmentDuration =
+
+      Math.min(
+
+        available,
+
+        clip.duration -
+        position
+
+      );
+
+
+    if(
+      segmentDuration <=
+      .001
+    ){
+
+      break;
+
+    }
+
+
+    const source =
+
+      context.createBufferSource();
+
+
+    source.buffer =
+      buffer;
+
+
+    source.connect(
+      destination
+    );
+
+
+    source.start(
+
+      clip.start +
+      position,
+
+      clip.sourceOffset,
+
+      segmentDuration
+
+    );
+
+
+    position +=
+      available;
+
+
+  }
+
+}
+
+
+
+/* =========================================================
+   ESPORTAZIONE
+========================================================= */
+
+async function exportProject(
+  format
+){
+
+  if(
+    isExporting
+  ){
+
+    return;
+
+  }
+
+
+  if(
+    mediaRecorder &&
+    mediaRecorder.state ===
+    "recording"
+  ){
+
+    alert(
+      "Ferma prima la registrazione."
+    );
+
+    return;
+
+  }
+
+
+  isExporting =
+    true;
+
+
+  closeExportMenu();
+
+
+  stopPlayback(
+    true
+  );
+
+
+  stopPreview();
+
+
+  exportButton.disabled =
+    true;
+
+
+  exportButton.textContent =
+    "Esportazione…";
+
+
+  playbackStatus.classList.add(
+    "exporting"
+  );
+
+
+  playbackStatus.textContent =
+
+    format === "mp3"
+
+    ? "Preparazione MP3…"
+
+    : "Preparazione WAV…";
+
+
+  try{
+
+
+    playbackStatus.textContent =
+      "Mixaggio audio…";
+
+
+    const renderedBuffer =
+
+      await renderProjectMix();
+
+
+
+    if(
+      format ===
+      "wav"
+    ){
+
+
+      playbackStatus.textContent =
+        "Creazione WAV…";
+
+
+      const blob =
+
+        audioBufferToWav(
+          renderedBuffer
+        );
+
+
+      downloadAudio(
+
+        blob,
+
+        "wav"
+
+      );
+
+
+    }
+
+    else{
+
+
+      playbackStatus.textContent =
+        "Codifica MP3…";
+
+
+      const blob =
+
+        audioBufferToMp3(
+          renderedBuffer
+        );
+
+
+      downloadAudio(
+
+        blob,
+
+        "mp3"
+
+      );
+
+
+    }
+
+
+
+    playbackStatus.textContent =
+
+      format.toUpperCase()
+
+      +
+
+      " esportato";
+
+
+    setTimeout(
+      () => {
+
+
+        if(
+          playbackStatus.textContent.includes(
+            "esportato"
+          )
+        ){
+
+          playbackStatus.textContent =
+            "Pronto";
+
+        }
+
+
+      },
+      2500
+    );
+
+
+  }
+
+  catch(error){
+
+
+    console.error(
+      error
+    );
+
+
+    if(
+      error.message ===
+      "EMPTY_PROJECT"
+    ){
+
+      alert(
+        "Non c'è ancora nulla da esportare."
+      );
+
+    }
+
+    else if(
+      error.message ===
+      "NO_AUDIBLE_TRACKS"
+    ){
+
+      alert(
+        "Tutte le tracce sono in Mute. Attivane almeno una."
+      );
+
+    }
+
+    else if(
+      error.message ===
+      "MP3_ENCODER_MISSING"
+    ){
+
+      alert(
+        "L'encoder MP3 non è stato caricato. Il WAV continua a funzionare. Ricarica la pagina e riprova."
+      );
+
+    }
+
+    else{
+
+      alert(
+        "Non sono riuscito a creare il file audio."
+      );
+
+    }
+
+
+    playbackStatus.textContent =
+      "Errore esportazione";
+
+
+  }
+
+  finally{
+
+
+    isExporting =
+      false;
+
+
+    exportButton.disabled =
+      false;
+
+
+    exportButton.textContent =
+      "Esporta ▾";
+
+
+    playbackStatus.classList.remove(
+      "exporting"
+    );
+
+
+  }
+
+}
+
+
+
+/* =========================================================
+   AUDIOBUFFER -> WAV
+========================================================= */
+
+function audioBufferToWav(
+  buffer
+){
+
+  const channels =
+    2;
+
+
+  const left =
+
+    buffer.getChannelData(
+      0
+    );
+
+
+  const right =
+
+    buffer.numberOfChannels > 1
+
+    ? buffer.getChannelData(
+        1
+      )
+
+    : left;
+
+
+  const sampleRate =
+    buffer.sampleRate;
+
+
+  const length =
+    buffer.length;
+
+
+  const bytesPerSample =
+    2;
+
+
+  const blockAlign =
+
+    channels *
+    bytesPerSample;
+
+
+  const dataSize =
+
+    length *
+    blockAlign;
+
+
+  const arrayBuffer =
+
+    new ArrayBuffer(
+      44 +
+      dataSize
+    );
+
+
+  const view =
+
+    new DataView(
+      arrayBuffer
+    );
+
+
+  writeAscii(
+    view,
+    0,
+    "RIFF"
+  );
+
+
+  view.setUint32(
+    4,
+    36 + dataSize,
+    true
+  );
+
+
+  writeAscii(
+    view,
+    8,
+    "WAVE"
+  );
+
+
+  writeAscii(
+    view,
+    12,
+    "fmt "
+  );
+
+
+  view.setUint32(
+    16,
+    16,
+    true
+  );
+
+
+  view.setUint16(
+    20,
+    1,
+    true
+  );
+
+
+  view.setUint16(
+    22,
+    channels,
+    true
+  );
+
+
+  view.setUint32(
+    24,
+    sampleRate,
+    true
+  );
+
+
+  view.setUint32(
+
+    28,
+
+    sampleRate *
+    blockAlign,
+
+    true
+
+  );
+
+
+  view.setUint16(
+    32,
+    blockAlign,
+    true
+  );
+
+
+  view.setUint16(
+    34,
+    16,
+    true
+  );
+
+
+  writeAscii(
+    view,
+    36,
+    "data"
+  );
+
+
+  view.setUint32(
+    40,
+    dataSize,
+    true
+  );
+
+
+  let offset =
+    44;
+
+
+  for(
+    let i = 0;
+    i < length;
+    i++
+  ){
+
+
+    const l =
+
+      Math.max(
+        -1,
+        Math.min(
+          1,
+          left[i]
+        )
+      );
+
+
+    const r =
+
+      Math.max(
+        -1,
+        Math.min(
+          1,
+          right[i]
+        )
+      );
+
+
+    view.setInt16(
+
+      offset,
+
+      l < 0
+      ? l * 32768
+      : l * 32767,
+
+      true
+
+    );
+
+
+    offset +=
+      2;
+
+
+    view.setInt16(
+
+      offset,
+
+      r < 0
+      ? r * 32768
+      : r * 32767,
+
+      true
+
+    );
+
+
+    offset +=
+      2;
+
+
+  }
+
+
+  return new Blob(
+
+    [arrayBuffer],
+
+    {
+      type:"audio/wav"
+    }
+
+  );
+
+}
+
+
+
+/* =========================================================
+   AUDIOBUFFER -> MP3
+========================================================= */
+
+function audioBufferToMp3(
+  buffer
+){
+
+  if(
+    typeof lamejs ===
+    "undefined"
+  ){
+
+    throw new Error(
+      "MP3_ENCODER_MISSING"
+    );
+
+  }
+
+
+  const left =
+
+    buffer.getChannelData(
+      0
+    );
+
+
+  const right =
+
+    buffer.numberOfChannels > 1
+
+    ? buffer.getChannelData(
+        1
+      )
+
+    : left;
+
+
+  const encoder =
+
+    new lamejs.Mp3Encoder(
+
+      2,
+
+      buffer.sampleRate,
+
+      MP3_BITRATE
+
+    );
+
+
+  const mp3Data =
+    [];
+
+
+  const blockSize =
+    1152;
+
+
+  for(
+    let i = 0;
+    i < left.length;
+    i += blockSize
+  ){
+
+
+    const end =
+
+      Math.min(
+
+        i +
+        blockSize,
+
+        left.length
+
+      );
+
+
+    const leftBlock =
+
+      floatToInt16(
+
+        left.subarray(
+          i,
+          end
+        )
+
+      );
+
+
+    const rightBlock =
+
+      floatToInt16(
+
+        right.subarray(
+          i,
+          end
+        )
+
+      );
+
+
+    const encoded =
+
+      encoder.encodeBuffer(
+
+        leftBlock,
+
+        rightBlock
+
+      );
+
+
+    if(
+      encoded.length > 0
+    ){
+
+      mp3Data.push(
+
+        new Int8Array(
+          encoded
+        )
+
+      );
+
+    }
+
+
+  }
+
+
+  const finalData =
+    encoder.flush();
+
+
+  if(
+    finalData.length > 0
+  ){
+
+    mp3Data.push(
+
+      new Int8Array(
+        finalData
+      )
+
+    );
+
+  }
+
+
+  return new Blob(
+
+    mp3Data,
+
+    {
+      type:"audio/mpeg"
+    }
+
+  );
+
+}
+
+
+
+/* =========================================================
+   FLOAT -> INT16
+========================================================= */
+
+function floatToInt16(
+  input
+){
+
+  const output =
+
+    new Int16Array(
+      input.length
+    );
+
+
+  for(
+    let i = 0;
+    i < input.length;
+    i++
+  ){
+
+
+    const sample =
+
+      Math.max(
+
+        -1,
+
+        Math.min(
+          1,
+          input[i]
+        )
+
+      );
+
+
+    output[i] =
+
+      sample < 0
+
+      ? sample * 32768
+
+      : sample * 32767;
+
+
+  }
+
+
+  return output;
+
+}
+
+
+
+/* =========================================================
+   HEADER WAV
+========================================================= */
+
+function writeAscii(
+  view,
+  offset,
+  text
+){
+
+  for(
+    let i = 0;
+    i < text.length;
+    i++
+  ){
+
+    view.setUint8(
+
+      offset + i,
+
+      text.charCodeAt(
+        i
+      )
+
+    );
+
+  }
+
+}
+
+
+
+/* =========================================================
+   DOWNLOAD
+========================================================= */
+
+function downloadAudio(
+  blob,
+  extension
+){
+
+  const now =
+    new Date();
+
+
+  const date =
+
+    now.getFullYear()
+
+    +
+
+    "-"
+
+    +
+
+    String(
+      now.getMonth() + 1
+    )
+    .padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    "-"
+
+    +
+
+    String(
+      now.getDate()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const time =
+
+    String(
+      now.getHours()
+    )
+    .padStart(
+      2,
+      "0"
+    )
+
+    +
+
+    "-"
+
+    +
+
+    String(
+      now.getMinutes()
+    )
+    .padStart(
+      2,
+      "0"
+    );
+
+
+  const filename =
+
+    "SoundLab_"
+
+    +
+
+    date
+
+    +
+
+    "_"
+
+    +
+
+    time
+
+    +
+
+    "."
+
+    +
+
+    extension;
+
+
+  const url =
+
+    URL.createObjectURL(
+      blob
+    );
+
+
+  const link =
+
+    document.createElement(
+      "a"
+    );
+
+
+  link.href =
+    url;
+
+
+  link.download =
+    filename;
+
+
+  document.body.appendChild(
+    link
+  );
+
+
+  link.click();
+
+
+  link.remove();
+
+
+  setTimeout(
+    () => {
+
+      URL.revokeObjectURL(
+        url
+      );
+
+    },
+    3000
+  );
+
+}
+
+
+
+/* =========================================================
+   MENU ESPORTA
+========================================================= */
+
+function openExportMenu(){
+
+  exportMenu.classList.add(
+    "open"
+  );
+
+
+  exportButton.setAttribute(
+    "aria-expanded",
+    "true"
+  );
+
+}
+
+
+
+function closeExportMenu(){
+
+  exportMenu.classList.remove(
+    "open"
+  );
+
+
+  exportButton.setAttribute(
+    "aria-expanded",
+    "false"
+  );
+
+}
+
+
+
+exportButton.addEventListener(
+  "click",
+  event => {
+
+
+    event.stopPropagation();
+
+
+    if(
+      exportMenu.classList.contains(
+        "open"
+      )
+    ){
+
+      closeExportMenu();
+
+    }
+
+    else{
+
+      openExportMenu();
+
+    }
+
+
+  }
+);
+
+
+
+document
+  .querySelectorAll(
+    ".export-option"
+  )
+  .forEach(
+    button => {
+
+
+      button.addEventListener(
+        "click",
+        async event => {
+
+
+          event.stopPropagation();
+
+
+          const format =
+            button.dataset.format;
+
+
+          closeExportMenu();
+
+
+          await exportProject(
+            format
+          );
+
+
+        }
+      );
+
+
+    }
+  );
+
+
+
+document.addEventListener(
+  "click",
+  event => {
+
+
+    if(
+      !exportWrap.contains(
+        event.target
+      )
+    ){
+
+      closeExportMenu();
+
+    }
+
+
+  }
+);
+
+
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closeExportMenu();
+
+    }
+
+
+  }
+);
 
 
 
@@ -7031,14 +8223,14 @@ function formatTime(
 
 ruler.addEventListener(
   "click",
-  event => {
+  async event => {
 
 
     const rect =
       ruler.getBoundingClientRect();
 
 
-    playheadSeconds =
+    const seconds =
 
       Math.max(
 
@@ -7056,7 +8248,48 @@ ruler.addEventListener(
       );
 
 
-    updatePlayheadUI();
+    const duration =
+      getProjectDuration();
+
+
+    playheadSeconds =
+
+      duration > 0
+
+      ? Math.min(
+          seconds,
+          duration
+        )
+
+      : seconds;
+
+
+    if(
+      isPlaying
+    ){
+
+
+      const newPosition =
+        playheadSeconds;
+
+
+      stopPlayback(
+        false
+      );
+
+
+      await playFrom(
+        newPosition
+      );
+
+
+    }
+
+    else{
+
+      updatePlayheadUI();
+
+    }
 
 
   }
@@ -7101,7 +8334,7 @@ document
         &&
 
         !confirm(
-          "Vuoi creare un nuovo progetto? Il progetto salvato su questo dispositivo verrà cancellato."
+          "Vuoi creare un nuovo progetto? Il salvataggio attuale verrà cancellato."
         )
       ){
 
@@ -7233,24 +8466,6 @@ stopButton.addEventListener(
 );
 
 
-document
-  .getElementById(
-    "exportButton"
-  )
-  .addEventListener(
-    "click",
-    () => {
-
-
-      alert(
-        "L'esportazione audio sarà il prossimo modulo."
-      );
-
-
-    }
-  );
-
-
 
 /* =========================================================
    PROTEZIONE CHIUSURA
@@ -7338,9 +8553,7 @@ async function startSoundLab(){
 
 startSoundLab();
 
-
 </script>
 
 </body>
-
 </html>
