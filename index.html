@@ -1,3055 +1,2550 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>SoundLab</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    * {
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg1: #dff8f7;
-      --bg2: #d4efff;
-      --bg3: #edfff5;
-
-      --text: #1c5364;
-      --muted: #648795;
-
-      --blue: #72cfff;
-      --blue-dark: #2e8fac;
-
-      --green: #6fe0a0;
-      --mint: #50d7c3;
-
-      --white: rgba(255,255,255,.75);
-      --line: rgba(46,115,140,.13);
-
-      --shadow:
-        0 14px 40px rgba(56,119,144,.13);
-    }
-
-
-    html,
-    body {
-      margin: 0;
-      height: 100%;
-
-      font-family: "Nunito", sans-serif;
-
-      color: var(--text);
-
-      background:
-        radial-gradient(
-          circle at 12% 12%,
-          rgba(111,224,160,.30),
-          transparent 23%
-        ),
-        radial-gradient(
-          circle at 87% 15%,
-          rgba(114,207,255,.30),
-          transparent 25%
-        ),
-        linear-gradient(
-          150deg,
-          var(--bg1),
-          var(--bg2) 48%,
-          var(--bg3)
-        );
-
-      overflow: hidden;
-    }
-
-
-    button,
-    input {
-      font-family: inherit;
-    }
-
-
-    button {
-      cursor: pointer;
-    }
-
-
-    /* ==============================
-       ICONE
-       ============================== */
-
-    .icon {
-      width: 26px;
-      height: 26px;
-      display: block;
-    }
-
-
-    /* ==============================
-       SFONDO
-       ============================== */
-
-    .background-art {
-      position: fixed;
-      inset: 0;
-
-      overflow: hidden;
-      pointer-events: none;
-
-      z-index: 0;
-    }
-
-
-    .background-art::before {
-      content: "";
-
-      position: absolute;
-
-      width: 450px;
-      height: 450px;
-
-      border-radius: 50%;
-
-      left: -160px;
-      bottom: -140px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(93,218,184,.35),
-          transparent 68%
-        );
-    }
-
-
-    .background-art::after {
-      content: "";
-
-      position: absolute;
-
-      width: 440px;
-      height: 440px;
-
-      border-radius: 50%;
-
-      right: -170px;
-      top: 80px;
-
-      background:
-        radial-gradient(
-          circle,
-          rgba(91,191,238,.28),
-          transparent 70%
-        );
-    }
-
-
-    .earth-decoration {
-      position: absolute;
-
-      right: 6%;
-      bottom: 10%;
-
-      opacity: .14;
-
-      width: 170px;
-      height: 170px;
-    }
-
-
-    .leaf-decoration {
-      position: absolute;
-
-      left: 18%;
-      bottom: 5%;
-
-      width: 190px;
-      height: 190px;
-
-      opacity: .12;
-    }
-
-
-    /* ==============================
-       APP
-       ============================== */
-
-    .app {
-      position: relative;
-      z-index: 1;
-
-      height: 100vh;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-
-    /* ==============================
-       HEADER
-       ============================== */
-
-    .topbar {
-      height: 88px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 0 24px;
-
-      background:
-        rgba(255,255,255,.38);
-
-      backdrop-filter: blur(14px);
-
-      border-bottom:
-        1px solid rgba(255,255,255,.5);
-    }
-
-
-    .brand {
-      display: flex;
-      align-items: center;
-
-      gap: 14px;
-    }
-
-
-    .brand-logo {
-      width: 58px;
-      height: 58px;
-
-      border-radius: 20px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--blue),
-          var(--green)
-        );
-
-      box-shadow:
-        0 10px 25px rgba(66,170,182,.18);
-    }
-
-
-    .brand-logo svg {
-      width: 39px;
-      height: 39px;
-    }
-
-
-    .brand h1 {
-      margin: 0;
-
-      font-family: "Fredoka", sans-serif;
-
-      font-size: 32px;
-      line-height: 1;
-
-      color: #28778e;
-    }
-
-
-    .brand p {
-      margin: 5px 0 0;
-
-      color: #5d8492;
-
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-
-    .top-actions {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-    }
-
-
-    /* ==============================
-       PULSANTI
-       ============================== */
-
-    .button {
-      padding: 11px 16px;
-
-      border-radius: 14px;
-
-      border:
-        1px solid rgba(58,126,151,.12);
-
-      background:
-        rgba(255,255,255,.62);
-
-      color: var(--text);
-
-      font-weight: 800;
-
-      box-shadow:
-        0 5px 15px rgba(0,0,0,.05);
-
-      transition: .18s;
-    }
-
-
-    .button:hover {
-      transform: translateY(-1px);
-
-      background:
-        rgba(255,255,255,.88);
-    }
-
-
-    .button-primary {
-      border: none;
-
-      color: #0b5344;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--mint),
-          var(--green)
-        );
-    }
-
-
-    /* ==============================
-       WORKSPACE
-       ============================== */
-
-    .workspace {
-      flex: 1;
-
-      min-height: 0;
-
-      display: grid;
-
-      grid-template-columns:
-        300px
-        minmax(0, 1fr);
-    }
-
-
-    /* ==============================
-       LIBRERIA
-       ============================== */
-
-    .library {
-      min-height: 0;
-
-      display: flex;
-      flex-direction: column;
-
-      background:
-        rgba(255,255,255,.30);
-
-      backdrop-filter: blur(12px);
-
-      border-right:
-        1px solid rgba(255,255,255,.45);
-    }
-
-
-    .library-header {
-      padding:
-        20px
-        18px
-        15px;
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .library-header h2 {
-      margin: 0;
-
-      font-family:
-        "Fredoka",
-        sans-serif;
-
-      font-size: 20px;
-
-      color: #267a91;
-    }
-
-
-    .library-header p {
-      margin:
-        6px
-        0
-        0;
-
-      font-size: 13px;
-
-      line-height: 1.4;
-
-      color: var(--muted);
-    }
-
-
-    .search-box {
-      padding:
-        14px
-        15px
-        8px;
-    }
-
-
-    .search-box input {
-      width: 100%;
-
-      border-radius: 14px;
-
-      border:
-        1px solid rgba(54,130,154,.13);
-
-      background:
-        rgba(255,255,255,.70);
-
-      padding:
-        12px
-        14px;
-
-      outline: none;
-
-      color: var(--text);
-    }
-
-
-    .search-box input:focus {
-      border-color:
-        rgba(80,215,195,.50);
-
-      box-shadow:
-        0 0 0 4px
-        rgba(80,215,195,.10);
-    }
-
-
-    .categories {
-      flex: 1;
-
-      min-height: 0;
-
-      overflow-y: auto;
-
-      padding:
-        8px
-        12px
-        20px;
-    }
-
-
-    .section-label {
-      margin:
-        12px
-        8px
-        9px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1px;
-
-      font-size: 10px;
-      font-weight: 800;
-
-      color: #6d93a0;
-    }
-
-
-    .category {
-      width: 100%;
-
-      display: flex;
-      align-items: center;
-
-      gap: 11px;
-
-      padding: 11px;
-
-      margin-bottom: 8px;
-
-      border-radius: 17px;
-
-      border:
-        1px solid rgba(64,130,155,.10);
-
-      background:
-        rgba(255,255,255,.45);
-
-      color: var(--text);
-
-      text-align: left;
-
-      transition: .17s;
-    }
-
-
-    .category:hover {
-      transform:
-        translateY(-1px);
-
-      background:
-        rgba(255,255,255,.72);
-    }
-
-
-    .category.active {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(114,207,255,.30),
-          rgba(111,224,160,.28)
-        );
-    }
-
-
-    .category-icon {
-      width: 42px;
-      height: 42px;
-
-      flex-shrink: 0;
-
-      border-radius: 14px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        rgba(255,255,255,.74);
-    }
-
-
-    .category-icon svg {
-      width: 25px;
-      height: 25px;
-    }
-
-
-    .category strong {
-      display: block;
-
-      font-size: 14px;
-
-      color: #285f70;
-    }
-
-
-    .category span {
-      display: block;
-
-      margin-top: 2px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-    }
-
-
-    /* ==============================
-       EDITOR
-       ============================== */
-
-    .editor {
-      min-width: 0;
-      min-height: 0;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-
-    .hero {
-      min-height: 94px;
-
-      display: flex;
-      align-items: center;
-
-      gap: 16px;
-
-      padding:
-        14px
-        20px;
-
-      background:
-        rgba(255,255,255,.22);
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .hero-earth {
-      width: 64px;
-      height: 64px;
-
-      flex-shrink: 0;
-
-      border-radius: 20px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        rgba(255,255,255,.60);
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .hero-earth svg {
-      width: 48px;
-      height: 48px;
-    }
-
-
-    .hero h2 {
-      margin: 0;
-
-      font-family:
-        "Fredoka",
-        sans-serif;
-
-      font-size: 24px;
-
-      color: #27788e;
-    }
-
-
-    .hero p {
-      margin:
-        4px
-        0
-        0;
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      max-width: 680px;
-    }
-
-
-    /* ==============================
-       TOOLBAR
-       ============================== */
-
-    .toolbar {
-      height: 68px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      padding:
-        0
-        18px;
-
-      background:
-        rgba(255,255,255,.30);
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .transport {
-      margin-left: auto;
-
-      display: flex;
-
-      gap: 9px;
-    }
-
-
-    .transport-button {
-      width: 45px;
-      height: 45px;
-
-      border-radius: 50%;
-
-      border: none;
-
-      background:
-        rgba(255,255,255,.65);
-
-      color: #33778b;
-
-      font-weight: 900;
-
-      font-size: 16px;
-
-      box-shadow:
-        0 5px 15px rgba(0,0,0,.05);
-    }
-
-
-    .transport-button.play {
-      background:
-        linear-gradient(
-          135deg,
-          var(--mint),
-          var(--green)
-        );
-
-      color: #0d5546;
-    }
-
-
-    /* ==============================
-       TIMELINE
-       ============================== */
-
-    .timeline-shell {
-      position: relative;
-
-      flex: 1;
-
-      min-height: 0;
-    }
-
-
-    .timeline-scroll {
-      position: absolute;
-
-      inset: 0;
-
-      overflow: auto;
-    }
-
-
-    .timeline-canvas {
-      min-width: 1600px;
-
-      min-height: 100%;
-    }
-
-
-    .timeline-header {
-      height: 50px;
-
-      position: sticky;
-      top: 0;
-
-      z-index: 20;
-
-      display: grid;
-
-      grid-template-columns:
-        190px
-        1fr;
-    }
-
-
-    .track-header {
-      position: sticky;
-      left: 0;
-
-      z-index: 22;
-
-      display: flex;
-      align-items: center;
-
-      padding:
-        0
-        14px;
-
-      background:
-        rgba(240,253,255,.97);
-
-      border-right:
-        1px solid var(--line);
-
-      border-bottom:
-        1px solid var(--line);
-
-      font-size: 11px;
-
-      text-transform: uppercase;
-
-      letter-spacing: 1px;
-
-      font-weight: 800;
-
-      color: #668b99;
-    }
-
-
-    .ruler {
-      display: flex;
-
-      min-width: 1410px;
-
-      background:
-        rgba(255,255,255,.84);
-
-      backdrop-filter: blur(8px);
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .time-mark {
-      width: 95px;
-
-      flex:
-        0
-        0
-        95px;
-
-      padding:
-        8px
-        0
-        0
-        8px;
-
-      border-left:
-        1px solid rgba(66,125,149,.14);
-
-      color: #7493a0;
-
-      font-size: 10px;
-
-      font-weight: 800;
-    }
-
-
-    /* ==============================
-       TRACCE
-       ============================== */
-
-    .track-row {
-      height: 116px;
-
-      display: grid;
-
-      grid-template-columns:
-        190px
-        1fr;
-
-      border-bottom:
-        1px solid var(--line);
-    }
-
-
-    .track-controls {
-      position: sticky;
-      left: 0;
-
-      z-index: 8;
-
-      padding: 10px;
-
-      background:
-        rgba(244,253,255,.94);
-
-      backdrop-filter: blur(10px);
-
-      border-right:
-        1px solid var(--line);
-
-      transition: .15s;
-    }
-
-
-    .track-lane {
-      position: relative;
-
-      min-width: 1410px;
-
-      background:
-        linear-gradient(
-          to right,
-          rgba(54,130,154,.08) 1px,
-          transparent 1px
-        );
-
-      background-size:
-        95px 100%;
-
-      transition: .15s;
-    }
-
-
-    .track-row:nth-child(even)
-    .track-lane {
-      background-color:
-        rgba(255,255,255,.11);
-    }
-
-
-    .track-row.selected
-    .track-controls {
-      background:
-        linear-gradient(
-          135deg,
-          rgba(203,246,255,.98),
-          rgba(220,255,233,.98)
-        );
-
-      box-shadow:
-        inset 4px 0 0 var(--mint);
-    }
-
-
-    .track-row.selected
-    .track-lane {
-      background-color:
-        rgba(104,218,195,.08);
-    }
-
-
-    .track-title-row {
-      display: flex;
-
-      align-items: center;
-
-      gap: 6px;
-
-      margin-bottom: 8px;
-    }
-
-
-    .track-number {
-      width: 25px;
-      height: 25px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 9px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--blue),
-          var(--green)
-        );
-
-      color: #18536a;
-
-      font-family:
-        "Fredoka",
-        sans-serif;
-
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-
-    .track-name {
-      min-width: 0;
-
-      flex: 1;
-
-      border:
-        1px solid rgba(62,126,151,.12);
-
-      border-radius: 9px;
-
-      background:
-        rgba(255,255,255,.70);
-
-      padding:
-        6px
-        7px;
-
-      color: #285f70;
-
-      font-weight: 800;
-
-      outline: none;
-    }
-
-
-    .track-name:focus {
-      border-color:
-        rgba(80,215,195,.60);
-    }
-
-
-    .track-actions {
-      display: flex;
-
-      gap: 5px;
-    }
-
-
-    .small-button {
-      width: 27px;
-      height: 27px;
-
-      padding: 0;
-
-      border-radius: 8px;
-
-      border:
-        1px solid rgba(58,126,151,.12);
-
-      background:
-        rgba(255,255,255,.70);
-
-      color: #4d7887;
-
-      font-weight: 900;
-    }
-
-
-    .small-button:hover {
-      background: white;
-    }
-
-
-    .small-button.active {
-      background:
-        var(--mint);
-
-      color: #0f5144;
-
-      border-color:
-        transparent;
-    }
-
-
-    .delete-button {
-      color: #b15f69;
-    }
-
-
-    .volume-row {
-      display: flex;
-      align-items: center;
-
-      gap: 6px;
-
-      margin-top: 8px;
-
-      font-size: 10px;
-
-      color: #72909c;
-    }
-
-
-    .volume-row input {
-      min-width: 0;
-
-      flex: 1;
-
-      accent-color:
-        var(--mint);
-    }
-
-
-    .volume-value {
-      width: 34px;
-
-      text-align: right;
-
-      font-size: 9px;
-
-      font-weight: 800;
-
-      color: #56808e;
-    }
-
-
-    .lane-hint {
-      position: absolute;
-
-      left: 24px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      color:
-        rgba(69,117,134,.34);
-
-      font-size: 12px;
-
-      font-weight: 700;
-
-      pointer-events: none;
-    }
-
-
-    /* ==============================
-       EMPTY STATE
-       ============================== */
-
-    .empty-project {
-      position: absolute;
-
-      z-index: 12;
-
-      left: 50%;
-      top: 51%;
-
-      transform:
-        translate(-50%, -50%);
-
-      width:
-        min(
-          680px,
-          calc(100% - 40px)
-        );
-
-      text-align: center;
-
-      padding:
-        31px
-        25px;
-
-      border-radius: 29px;
-
-      background:
-        rgba(255,255,255,.78);
-
-      backdrop-filter: blur(14px);
-
-      border:
-        1px solid rgba(255,255,255,.65);
-
-      box-shadow: var(--shadow);
-    }
-
-
-    .empty-project.hidden {
-      display: none;
-    }
-
-
-    .empty-planet {
-      width: 100px;
-      height: 100px;
-
-      margin:
-        0
-        auto
-        16px;
-
-      border-radius: 28px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(114,207,255,.35),
-          rgba(111,224,160,.32)
-        );
-    }
-
-
-    .empty-planet svg {
-      width: 66px;
-      height: 66px;
-    }
-
-
-    .empty-project h3 {
-      margin:
-        0
-        0
-        8px;
-
-      font-family:
-        "Fredoka",
-        sans-serif;
-
-      font-size: 29px;
-
-      color: #26788e;
-    }
-
-
-    .empty-project p {
-      max-width: 500px;
-
-      margin:
-        0
-        auto
-        20px;
-
-      color: var(--muted);
-
-      font-size: 14px;
-
-      line-height: 1.55;
-    }
-
-
-    /* ==============================
-       BOTTOM BAR
-       ============================== */
-
-    .bottom-bar {
-      height: 55px;
-
-      flex-shrink: 0;
-
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      padding:
-        0
-        18px;
-
-      background:
-        rgba(255,255,255,.38);
-
-      border-top:
-        1px solid rgba(255,255,255,.50);
-    }
-
-
-    .status {
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      padding:
-        7px
-        11px;
-
-      border-radius: 999px;
-
-      background:
-        rgba(255,255,255,.62);
-
-      color: #567f8d;
-
-      font-size: 11px;
-
-      font-weight: 800;
-    }
-
-
-    .status-dot {
-      width: 8px;
-      height: 8px;
-
-      border-radius: 50%;
-
-      background:
-        var(--mint);
-
-      box-shadow:
-        0 0 0 5px
-        rgba(80,215,195,.10);
-    }
-
-
-    .time {
-      margin-left: auto;
-
-      font-weight: 800;
-
-      font-size: 15px;
-
-      color: #34788d;
-    }
-
-
-    /* ==============================
-       TABLET
-       ============================== */
-
-    @media (max-width: 850px) {
-
-      .workspace {
-        grid-template-columns:
-          230px
-          minmax(0, 1fr);
-      }
-
-      .brand p {
-        display: none;
-      }
-
-      .hero p {
-        display: none;
-      }
-
-      .hero {
-        min-height: 80px;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoundLab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --text:#1c5364;
+  --muted:#648795;
+  --blue:#72cfff;
+  --green:#6fe0a0;
+  --mint:#50d7c3;
+  --line:rgba(46,115,140,.13);
+  --track-width:190px;
+  --timeline-width:1600px;
+  --px-second:19px;
+}
+
+html, body {
+  margin:0;
+  height:100%;
+  font-family:"Nunito",sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 12% 12%,rgba(111,224,160,.30),transparent 23%),
+    radial-gradient(circle at 87% 15%,rgba(114,207,255,.30),transparent 25%),
+    linear-gradient(150deg,#dff8f7,#d4efff 48%,#edfff5);
+  overflow:hidden;
+}
+
+button,input {
+  font-family:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.app {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar {
+  height:88px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 24px;
+  background:rgba(255,255,255,.40);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.55);
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.brand-logo {
+  width:58px;
+  height:58px;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  font-size:28px;
+}
+
+.brand h1 {
+  margin:0;
+  font-family:"Fredoka";
+  color:#28778e;
+  font-size:32px;
+}
+
+.brand p {
+  margin:5px 0 0;
+  font-size:12px;
+  font-weight:800;
+  color:#5d8492;
+}
+
+.button {
+  border:1px solid rgba(58,126,151,.12);
+  border-radius:14px;
+  padding:11px 16px;
+  background:rgba(255,255,255,.66);
+  color:var(--text);
+  font-weight:800;
+}
+
+.button:hover {
+  background:white;
+}
+
+.button-primary {
+  border:none;
+  background:linear-gradient(135deg,var(--mint),var(--green));
+  color:#0b5344;
+}
+
+.top-actions {
+  display:flex;
+  gap:10px;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.workspace {
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:320px minmax(0,1fr);
+}
+
+/* =========================
+   LIBRERIA
+========================= */
+
+.library {
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+  background:rgba(255,255,255,.32);
+  border-right:1px solid rgba(255,255,255,.50);
+}
+
+.library-header {
+  padding:18px;
+  border-bottom:1px solid var(--line);
+}
+
+.library-header h2 {
+  margin:0;
+  font-family:"Fredoka";
+  color:#267a91;
+  font-size:21px;
+}
+
+.library-header p {
+  margin:5px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.search-box {
+  padding:13px 15px 8px;
+}
+
+.search-box input {
+  width:100%;
+  border:1px solid rgba(54,130,154,.15);
+  border-radius:14px;
+  padding:11px 13px;
+  background:rgba(255,255,255,.72);
+  outline:none;
+  color:var(--text);
+}
+
+.library-content {
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  padding:8px 12px 20px;
+}
+
+.section-label {
+  margin:12px 7px 9px;
+  text-transform:uppercase;
+  font-size:10px;
+  letter-spacing:1px;
+  color:#6d93a0;
+  font-weight:800;
+}
+
+/* Categorie */
+
+.category {
+  width:100%;
+  padding:9px 11px;
+  margin-bottom:6px;
+  border-radius:15px;
+  border:1px solid rgba(64,130,155,.10);
+  background:rgba(255,255,255,.44);
+  text-align:left;
+  color:#285f70;
+  font-weight:800;
+}
+
+.category.active {
+  background:linear-gradient(
+    135deg,
+    rgba(114,207,255,.30),
+    rgba(111,224,160,.26)
+  );
+}
+
+/* Suoni */
+
+.sound-list {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.sound-card {
+  display:grid;
+  grid-template-columns:42px 1fr auto;
+  align-items:center;
+  gap:9px;
+
+  padding:9px;
+
+  border-radius:16px;
+  border:1px solid rgba(61,126,151,.11);
+  background:rgba(255,255,255,.72);
+
+  box-shadow:0 5px 14px rgba(60,120,140,.07);
+
+  cursor:grab;
+  user-select:none;
+}
+
+.sound-card:active {
+  cursor:grabbing;
+}
+
+.sound-icon {
+  width:42px;
+  height:42px;
+  border-radius:13px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(
+    135deg,
+    rgba(114,207,255,.38),
+    rgba(111,224,160,.34)
+  );
+}
+
+.sound-icon svg {
+  width:25px;
+  height:25px;
+}
+
+.sound-info strong {
+  display:block;
+  font-size:13px;
+  color:#285f70;
+}
+
+.sound-info span {
+  display:block;
+  margin-top:2px;
+  font-size:10px;
+  color:#7995a0;
+}
+
+.sound-actions {
+  display:flex;
+  gap:5px;
+}
+
+.sound-action {
+  width:31px;
+  height:31px;
+  border:0;
+  border-radius:10px;
+  font-weight:900;
+  color:#297188;
+  background:#e8fbff;
+}
+
+.sound-action.add {
+  background:#dff8e8;
+  color:#27825d;
+}
+
+.drag-hint {
+  margin:10px 4px 5px;
+  padding:10px 12px;
+  border-radius:14px;
+  color:#507d8c;
+  background:rgba(255,255,255,.43);
+  font-size:11px;
+  line-height:1.4;
+}
+
+/* =========================
+   EDITOR
+========================= */
+
+.editor {
+  min-width:0;
+  min-height:0;
+  display:flex;
+  flex-direction:column;
+}
+
+.hero {
+  min-height:82px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:13px 20px;
+  background:rgba(255,255,255,.22);
+  border-bottom:1px solid var(--line);
+}
+
+.hero-planet {
+  width:57px;
+  height:57px;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(255,255,255,.64);
+  font-size:28px;
+}
+
+.hero h2 {
+  margin:0;
+  font-family:"Fredoka";
+  font-size:23px;
+  color:#27788e;
+}
+
+.hero p {
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* Toolbar */
+
+.toolbar {
+  height:66px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 18px;
+  background:rgba(255,255,255,.30);
+  border-bottom:1px solid var(--line);
+}
+
+.transport {
+  margin-left:auto;
+  display:flex;
+  gap:9px;
+}
+
+.transport-button {
+  width:45px;
+  height:45px;
+  border:0;
+  border-radius:50%;
+  background:rgba(255,255,255,.70);
+  color:#33778b;
+  font-size:16px;
+  font-weight:900;
+}
+
+.transport-button.play {
+  background:linear-gradient(135deg,var(--mint),var(--green));
+  color:#0d5546;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline-shell {
+  position:relative;
+  flex:1;
+  min-height:0;
+}
+
+.timeline-scroll {
+  position:absolute;
+  inset:0;
+  overflow:auto;
+}
+
+.timeline-canvas {
+  width:var(--timeline-width);
+  min-height:100%;
+}
+
+.timeline-header {
+  height:48px;
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:grid;
+  grid-template-columns:var(--track-width) 1fr;
+}
+
+.track-header {
+  position:sticky;
+  left:0;
+  z-index:22;
+  display:flex;
+  align-items:center;
+  padding-left:14px;
+  background:rgba(244,253,255,.98);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  font-size:10px;
+  font-weight:800;
+  color:#668b99;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.ruler {
+  display:flex;
+  background:rgba(255,255,255,.86);
+  border-bottom:1px solid var(--line);
+}
+
+.time-mark {
+  width:95px;
+  flex:0 0 95px;
+  border-left:1px solid rgba(66,125,149,.14);
+  padding:8px 0 0 7px;
+  font-size:10px;
+  font-weight:800;
+  color:#7493a0;
+}
+
+/* Tracce */
+
+.track-row {
+  height:116px;
+  display:grid;
+  grid-template-columns:var(--track-width) 1fr;
+  border-bottom:1px solid var(--line);
+}
+
+.track-controls {
+  position:sticky;
+  left:0;
+  z-index:8;
+  padding:10px;
+  background:rgba(244,253,255,.96);
+  border-right:1px solid var(--line);
+}
+
+.track-row.selected .track-controls {
+  background:linear-gradient(
+    135deg,
+    rgba(203,246,255,.98),
+    rgba(220,255,233,.98)
+  );
+  box-shadow:inset 4px 0 0 var(--mint);
+}
+
+.track-title-row {
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.track-number {
+  width:25px;
+  height:25px;
+  border-radius:9px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--blue),var(--green));
+  color:#18536a;
+  font-family:"Fredoka";
+  font-weight:700;
+  font-size:12px;
+}
+
+.track-name {
+  flex:1;
+  min-width:0;
+  border:1px solid rgba(62,126,151,.12);
+  border-radius:9px;
+  background:white;
+  padding:6px 7px;
+  color:#285f70;
+  font-weight:800;
+}
+
+.track-actions {
+  display:flex;
+  gap:5px;
+  margin-top:7px;
+}
+
+.small-button {
+  width:27px;
+  height:27px;
+  border-radius:8px;
+  border:1px solid rgba(58,126,151,.12);
+  background:white;
+  color:#4d7887;
+  font-weight:900;
+}
+
+.small-button.active {
+  background:var(--mint);
+  color:#0f5144;
+}
+
+.delete-button {
+  color:#af626b;
+}
+
+.volume-row {
+  display:flex;
+  align-items:center;
+  gap:5px;
+  margin-top:6px;
+  font-size:9px;
+  color:#72909c;
+}
+
+.volume-row input {
+  flex:1;
+  min-width:0;
+  accent-color:var(--mint);
+}
+
+/* Corsia */
+
+.track-lane {
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      to right,
+      rgba(54,130,154,.08) 1px,
+      transparent 1px
+    );
+  background-size:95px 100%;
+}
+
+.track-row:nth-child(even) .track-lane {
+  background-color:rgba(255,255,255,.11);
+}
+
+.track-row.selected .track-lane {
+  background-color:rgba(80,215,195,.08);
+}
+
+.track-lane.drag-over {
+  background-color:rgba(89,220,173,.20) !important;
+  outline:2px dashed rgba(49,170,128,.55);
+  outline-offset:-3px;
+}
+
+.lane-hint {
+  position:absolute;
+  left:25px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:11px;
+  font-weight:700;
+  color:rgba(66,115,132,.32);
+  pointer-events:none;
+}
+
+/* =========================
+   CLIP AUDIO
+========================= */
+
+.audio-clip {
+  position:absolute;
+  top:17px;
+  height:80px;
+
+  min-width:58px;
+
+  border-radius:15px;
+
+  background:linear-gradient(
+    135deg,
+    #74d7ff,
+    #67dfb0
+  );
+
+  border:2px solid rgba(255,255,255,.65);
+
+  box-shadow:0 7px 16px rgba(45,119,143,.18);
+
+  overflow:hidden;
+
+  cursor:grab;
+  user-select:none;
+  touch-action:none;
+}
+
+.audio-clip:active {
+  cursor:grabbing;
+}
+
+.clip-top {
+  height:27px;
+  padding:4px 7px;
+  display:flex;
+  align-items:center;
+  gap:5px;
+
+  background:rgba(255,255,255,.28);
+
+  font-size:10px;
+  font-weight:900;
+  color:#1e6276;
+}
+
+.clip-title {
+  flex:1;
+  min-width:0;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.clip-delete {
+  border:0;
+  padding:0;
+  background:transparent;
+  color:#9b5260;
+  font-weight:900;
+}
+
+.wave-fake {
+  position:absolute;
+  left:7px;
+  right:7px;
+  top:35px;
+  bottom:9px;
+
+  display:flex;
+  align-items:center;
+  gap:2px;
+
+  opacity:.65;
+
+  pointer-events:none;
+}
+
+.wave-fake span {
+  width:2px;
+  border-radius:5px;
+  background:#24758b;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-project {
+  position:absolute;
+  z-index:12;
+  left:50%;
+  top:51%;
+  transform:translate(-50%,-50%);
+
+  width:min(650px,calc(100% - 40px));
+
+  padding:30px 24px;
+
+  text-align:center;
+
+  border-radius:28px;
+
+  background:rgba(255,255,255,.82);
+
+  box-shadow:0 14px 40px rgba(56,119,144,.14);
+}
+
+.empty-project.hidden {
+  display:none;
+}
+
+.empty-project h3 {
+  margin:0 0 8px;
+  font-family:"Fredoka";
+  color:#26788e;
+  font-size:28px;
+}
+
+.empty-project p {
+  margin:0 auto 18px;
+  max-width:470px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.bottom-bar {
+  height:54px;
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 18px;
+  background:rgba(255,255,255,.40);
+  border-top:1px solid rgba(255,255,255,.55);
+}
+
+.status {
+  padding:7px 11px;
+  border-radius:999px;
+  background:rgba(255,255,255,.65);
+  color:#567f8d;
+  font-size:11px;
+  font-weight:800;
+}
+
+.time {
+  margin-left:auto;
+  color:#34788d;
+  font-size:15px;
+  font-weight:800;
+}
+
+@media(max-width:850px) {
+  .workspace {
+    grid-template-columns:235px minmax(0,1fr);
+  }
+
+  .brand p {
+    display:none;
+  }
+
+  .hero p {
+    display:none;
+  }
+}
+
+</style>
 </head>
-
 
 <body>
 
-
-<!-- ==============================
-     ICONE SVG
-     ============================== -->
-
-<svg
-  width="0"
-  height="0"
-  style="position:absolute"
->
-
-  <defs>
-
-    <symbol id="earth" viewBox="0 0 64 64">
-
-      <circle
-        cx="32"
-        cy="32"
-        r="23"
-        fill="#7bd6ff"
-      />
-
-      <path
-        d="M18 25 C18 18 25 16 31 19 C35 21 34 27 30 30 C26 33 19 31 18 25Z"
-        fill="#71dfa0"
-      />
-
-      <path
-        d="M38 20 C45 18 50 23 49 29 C48 35 41 36 37 33 C33 29 34 23 38 20Z"
-        fill="#71dfa0"
-      />
-
-      <path
-        d="M26 39 C32 35 42 38 43 45 C44 51 35 54 29 50 C24 47 22 42 26 39Z"
-        fill="#71dfa0"
-      />
-
-      <circle
-        cx="32"
-        cy="32"
-        r="23"
-        fill="none"
-        stroke="#3d96b2"
-        stroke-width="2"
-        opacity=".45"
-      />
-
-    </symbol>
-
-
-    <symbol id="city" viewBox="0 0 24 24">
-
-      <rect
-        x="3"
-        y="10"
-        width="5"
-        height="10"
-        rx="1"
-        fill="#63c5ef"
-      />
-
-      <rect
-        x="10"
-        y="6"
-        width="5"
-        height="14"
-        rx="1"
-        fill="#53d4c0"
-      />
-
-      <rect
-        x="17"
-        y="3"
-        width="4"
-        height="17"
-        rx="1"
-        fill="#75df9e"
-      />
-
-    </symbol>
-
-
-    <symbol id="field" viewBox="0 0 24 24">
-
-      <path
-        d="M3 18 C6 12 10 12 13 18 Z"
-        fill="#68d899"
-      />
-
-      <path
-        d="M10 18 C14 9 18 9 22 18 Z"
-        fill="#70cbee"
-      />
-
-      <path
-        d="M3 18 H22"
-        stroke="#469f7f"
-        stroke-width="2"
-      />
-
-    </symbol>
-
-
-    <symbol id="sea" viewBox="0 0 24 24">
-
-      <path
-        d="M2 10 C6 7 8 13 12 10 C16 7 18 13 22 10"
-        stroke="#5cbdea"
-        stroke-width="2.5"
-        fill="none"
-        stroke-linecap="round"
-      />
-
-      <path
-        d="M2 16 C6 13 8 19 12 16 C16 13 18 19 22 16"
-        stroke="#51d5c1"
-        stroke-width="2.5"
-        fill="none"
-        stroke-linecap="round"
-      />
-
-    </symbol>
-
-
-    <symbol id="mountain" viewBox="0 0 24 24">
-
-      <path
-        d="M2 19 L8 8 L14 19Z"
-        fill="#64c4ed"
-      />
-
-      <path
-        d="M9 19 L16 5 L23 19Z"
-        fill="#71df9f"
-      />
-
-    </symbol>
-
-
-    <symbol id="school" viewBox="0 0 24 24">
-
-      <rect
-        x="4"
-        y="6"
-        width="16"
-        height="14"
-        rx="2"
-        fill="#6dc9ef"
-      />
-
-      <rect
-        x="9"
-        y="13"
-        width="6"
-        height="7"
-        fill="white"
-        opacity=".9"
-      />
-
-      <rect
-        x="7"
-        y="9"
-        width="3"
-        height="2"
-        rx="1"
-        fill="white"
-      />
-
-      <rect
-        x="14"
-        y="9"
-        width="3"
-        height="2"
-        rx="1"
-        fill="white"
-      />
-
-    </symbol>
-
-
-    <symbol id="office" viewBox="0 0 24 24">
-
-      <rect
-        x="4"
-        y="5"
-        width="16"
-        height="11"
-        rx="2"
-        fill="#64c5eb"
-      />
-
-      <rect
-        x="9"
-        y="18"
-        width="6"
-        height="2"
-        rx="1"
-        fill="#68d89a"
-      />
-
-    </symbol>
-
-
-    <symbol id="work" viewBox="0 0 24 24">
-
-      <circle
-        cx="8"
-        cy="15"
-        r="3"
-        fill="#6cda9d"
-      />
-
-      <circle
-        cx="16"
-        cy="15"
-        r="3"
-        fill="#65c6ed"
-      />
-
-      <rect
-        x="6"
-        y="6"
-        width="12"
-        height="5"
-        rx="1.5"
-        fill="#4fd4c0"
-      />
-
-    </symbol>
-
-
-    <symbol id="home" viewBox="0 0 24 24">
-
-      <path
-        d="M3 11 L12 4 L21 11 V20 H3Z"
-        fill="#6dda9e"
-      />
-
-      <rect
-        x="10"
-        y="14"
-        width="4"
-        height="6"
-        fill="white"
-      />
-
-    </symbol>
-
-
-    <symbol id="transport" viewBox="0 0 24 24">
-
-      <rect
-        x="4"
-        y="7"
-        width="16"
-        height="8"
-        rx="2"
-        fill="#67c7ef"
-      />
-
-      <circle
-        cx="8"
-        cy="17"
-        r="2"
-        fill="#3d91ac"
-      />
-
-      <circle
-        cx="16"
-        cy="17"
-        r="2"
-        fill="#3d91ac"
-      />
-
-    </symbol>
-
-
-    <symbol id="weather" viewBox="0 0 24 24">
-
-      <circle
-        cx="16"
-        cy="7"
-        r="3"
-        fill="#6ac9ed"
-      />
-
-      <path
-        d="M5 15 C5 11 9 10 11 12 C13 9 18 11 18 15 C18 18 15 19 11 19 H8 C6 19 5 17 5 15Z"
-        fill="#65d7c1"
-      />
-
-    </symbol>
-
-
-    <symbol id="space" viewBox="0 0 24 24">
-
-      <circle
-        cx="12"
-        cy="12"
-        r="5"
-        fill="#68c9ef"
-      />
-
-      <path
-        d="M12 2V5M12 19V22M2 12H5M19 12H22"
-        stroke="#6ddd9e"
-        stroke-width="2"
-        stroke-linecap="round"
-      />
-
-    </symbol>
-
-
-    <symbol id="mic" viewBox="0 0 24 24">
-
-      <rect
-        x="9"
-        y="3"
-        width="6"
-        height="11"
-        rx="3"
-        fill="#61c5eb"
-      />
-
-      <path
-        d="M6 11 C6 15 8.5 17.5 12 17.5 C15.5 17.5 18 15 18 11"
-        stroke="#6ddd9f"
-        stroke-width="2"
-        fill="none"
-        stroke-linecap="round"
-      />
-
-      <path
-        d="M12 18V21"
-        stroke="#4594ac"
-        stroke-width="2"
-      />
-
-    </symbol>
-
-  </defs>
-
-</svg>
-
-
-<div class="background-art">
-
-  <svg class="earth-decoration">
-    <use href="#earth"></use>
-  </svg>
-
-  <svg
-    class="leaf-decoration"
-    viewBox="0 0 200 200"
-  >
-
-    <path
-      d="M82 166 C34 137 24 83 58 39 C96 51 128 101 82 166Z"
-      fill="#59ce93"
-    />
-
-    <path
-      d="M120 165 C165 133 178 82 144 41 C106 54 82 105 120 165Z"
-      fill="#5ebee7"
-    />
-
-  </svg>
-
-</div>
-
-
 <div class="app">
 
+<header class="topbar">
 
-  <!-- HEADER -->
+  <div class="brand">
 
-  <header class="topbar">
+    <div class="brand-logo">
+      ◎
+    </div>
 
-    <div class="brand">
+    <div>
+      <h1>SoundLab</h1>
+      <p>Una risorsa didattica del Prof. Fontolan Michele</p>
+    </div>
 
-      <div class="brand-logo">
+  </div>
 
-        <svg>
-          <use href="#earth"></use>
-        </svg>
+  <div class="top-actions">
 
-      </div>
+    <button class="button" id="newProjectButton">
+      Nuovo progetto
+    </button>
+
+    <button class="button">
+      Salva
+    </button>
+
+    <button class="button button-primary">
+      Esporta
+    </button>
+
+  </div>
+
+</header>
 
 
-      <div>
+<main class="workspace">
 
-        <h1>
-          SoundLab
-        </h1>
+<!-- =========================
+     LIBRERIA
+========================= -->
 
-        <p>
-          Una risorsa didattica del Prof. Fontolan Michele
-        </p>
+<aside class="library">
 
-      </div>
+  <div class="library-header">
 
+    <h2>
+      Libreria sonora
+    </h2>
+
+    <p>
+      Ascolta un suono e trascinalo nella timeline.
+    </p>
+
+  </div>
+
+  <div class="search-box">
+
+    <input
+      id="soundSearch"
+      type="text"
+      placeholder="Cerca un suono..."
+    >
+
+  </div>
+
+
+  <div class="library-content">
+
+
+    <div class="section-label">
+      Ambienti
     </div>
 
 
-    <div class="top-actions">
+    <button class="category active">
+      Città
+    </button>
 
-      <button
-        class="button"
-        id="newProjectButton"
-      >
-        Nuovo progetto
-      </button>
+    <button class="category">
+      Campagna
+    </button>
+
+    <button class="category">
+      Mare
+    </button>
+
+    <button class="category">
+      Bosco e montagna
+    </button>
+
+    <button class="category">
+      Scuola
+    </button>
+
+    <button class="category">
+      Ufficio
+    </button>
+
+    <button class="category">
+      Lavoro
+    </button>
+
+    <button class="category">
+      Casa
+    </button>
+
+    <button class="category">
+      Trasporti
+    </button>
+
+    <button class="category">
+      Meteo
+    </button>
+
+    <button class="category">
+      Spazio
+    </button>
 
 
-      <button
-        class="button"
-        id="saveButton"
-      >
-        Salva
-      </button>
-
-
-      <button
-        class="button button-primary"
-        id="exportButton"
-      >
-        Esporta
-      </button>
-
+    <div class="section-label">
+      Suoni di prova
     </div>
 
-  </header>
 
+    <div
+      class="sound-list"
+      id="soundList"
+    >
 
+      <!-- PIOGGIA -->
 
-  <main class="workspace">
+      <div
+        class="sound-card"
+        draggable="true"
+        data-sound-id="rain"
+      >
 
-
-    <!-- LIBRERIA -->
-
-    <aside class="library">
-
-      <div class="library-header">
-
-        <h2>
-          Libreria sonora
-        </h2>
-
-        <p>
-          Esplora ambienti e suoni per costruire
-          il tuo paesaggio sonoro.
-        </p>
-
-      </div>
-
-
-      <div class="search-box">
-
-        <input
-          id="soundSearch"
-          type="text"
-          placeholder="Cerca un suono..."
-        >
-
-      </div>
-
-
-      <div class="categories">
-
-        <div class="section-label">
-          Ambienti
+        <div class="sound-icon">
+          ≋
         </div>
 
-
-        <button class="category active">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#city"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Città</strong>
-            <span>Traffico, folla, segnali</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#field"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Campagna</strong>
-            <span>Campi, animali, quiete</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#sea"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Mare</strong>
-            <span>Onde, porto, acqua</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#mountain"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Bosco e montagna</strong>
-            <span>Foglie, vento, ruscelli</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#school"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Scuola</strong>
-            <span>Aule, corridoi, voci</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#office"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Ufficio</strong>
-            <span>Tastiere, stampanti, lavoro</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#work"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Lavoro</strong>
-            <span>Officina, cantiere, macchine</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#home"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Casa</strong>
-            <span>Oggetti e vita quotidiana</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#transport"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Trasporti</strong>
-            <span>Treni, autobus, stazioni</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#weather"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Meteo</strong>
-            <span>Pioggia, vento, temporali</span>
-          </div>
-
-        </button>
-
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#space"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>Spazio</strong>
-            <span>Paesaggi immaginari</span>
-          </div>
-
-        </button>
-
-
-        <div class="section-label">
-          Creazione personale
+        <div class="sound-info">
+          <strong>Pioggia</strong>
+          <span>Meteo • ambiente</span>
         </div>
 
-
-        <button class="category">
-
-          <div class="category-icon">
-            <svg>
-              <use href="#mic"></use>
-            </svg>
-          </div>
-
-          <div>
-            <strong>I miei suoni</strong>
-            <span>Registrazioni personali</span>
-          </div>
-
-        </button>
-
-      </div>
-
-    </aside>
-
-
-
-    <!-- EDITOR -->
-
-    <section class="editor">
-
-
-      <div class="hero">
-
-        <div class="hero-earth">
-
-          <svg>
-            <use href="#earth"></use>
-          </svg>
-
-        </div>
-
-
-        <div>
-
-          <h2>
-            Costruisci il tuo paesaggio sonoro
-          </h2>
-
-          <p>
-            Ascolta il mondo, scegli i suoni,
-            registrane di nuovi e trasformali
-            in una composizione.
-          </p>
-
-        </div>
-
-      </div>
-
-
-
-      <!-- TOOLBAR -->
-
-      <div class="toolbar">
-
-        <button
-          class="button button-primary"
-          id="addTrackButton"
-        >
-          ＋ Traccia
-        </button>
-
-
-        <button
-          class="button"
-          id="recordButton"
-        >
-          Registra
-        </button>
-
-
-        <div class="transport">
+        <div class="sound-actions">
 
           <button
-            class="transport-button"
-            id="stopButton"
-          >
-            ■
-          </button>
-
-          <button
-            class="transport-button play"
-            id="playButton"
+            class="sound-action preview"
+            data-sound-id="rain"
+            title="Ascolta"
           >
             ▶
           </button>
 
+          <button
+            class="sound-action add"
+            data-sound-id="rain"
+            title="Aggiungi alla traccia"
+          >
+            ＋
+          </button>
+
         </div>
 
       </div>
 
 
+      <!-- CITTA -->
 
-      <!-- TIMELINE -->
+      <div
+        class="sound-card"
+        draggable="true"
+        data-sound-id="city"
+      >
 
-      <div class="timeline-shell">
+        <div class="sound-icon">
+          ▥
+        </div>
 
+        <div class="sound-info">
+          <strong>Città</strong>
+          <span>Ambiente urbano</span>
+        </div>
 
-        <div class="timeline-scroll">
+        <div class="sound-actions">
 
+          <button
+            class="sound-action preview"
+            data-sound-id="city"
+          >
+            ▶
+          </button>
 
-          <div class="timeline-canvas">
+          <button
+            class="sound-action add"
+            data-sound-id="city"
+          >
+            ＋
+          </button>
 
+        </div>
 
-            <div class="timeline-header">
-
-              <div class="track-header">
-                Tracce
-              </div>
-
-
-              <div class="ruler">
-
-                <div class="time-mark">0 s</div>
-                <div class="time-mark">5 s</div>
-                <div class="time-mark">10 s</div>
-                <div class="time-mark">15 s</div>
-                <div class="time-mark">20 s</div>
-                <div class="time-mark">25 s</div>
-                <div class="time-mark">30 s</div>
-                <div class="time-mark">35 s</div>
-                <div class="time-mark">40 s</div>
-                <div class="time-mark">45 s</div>
-                <div class="time-mark">50 s</div>
-                <div class="time-mark">55 s</div>
-                <div class="time-mark">60 s</div>
-                <div class="time-mark">65 s</div>
-                <div class="time-mark">70 s</div>
-
-              </div>
-
-            </div>
+      </div>
 
 
-            <div id="trackRows"></div>
+      <!-- UCCELLI -->
+
+      <div
+        class="sound-card"
+        draggable="true"
+        data-sound-id="birds"
+      >
+
+        <div class="sound-icon">
+          ∿
+        </div>
+
+        <div class="sound-info">
+          <strong>Uccelli</strong>
+          <span>Natura • campagna</span>
+        </div>
+
+        <div class="sound-actions">
+
+          <button
+            class="sound-action preview"
+            data-sound-id="birds"
+          >
+            ▶
+          </button>
+
+          <button
+            class="sound-action add"
+            data-sound-id="birds"
+          >
+            ＋
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
 
 
+    <div class="drag-hint">
+
+      <strong>Computer:</strong>
+      trascina un suono direttamente nella traccia.<br><br>
+
+      <strong>Tablet:</strong>
+      seleziona una traccia e premi ＋.
+
+    </div>
+
+
+  </div>
+
+</aside>
+
+
+<!-- =========================
+     EDITOR
+========================= -->
+
+<section class="editor">
+
+
+<div class="hero">
+
+  <div class="hero-planet">
+    ◎
+  </div>
+
+  <div>
+
+    <h2>
+      Costruisci il tuo paesaggio sonoro
+    </h2>
+
+    <p>
+      Scegli un ambiente, ascolta i suoni e disponili
+      liberamente nella timeline.
+    </p>
+
+  </div>
+
+</div>
+
+
+<div class="toolbar">
+
+  <button
+    class="button button-primary"
+    id="addTrackButton"
+  >
+    ＋ Traccia
+  </button>
+
+  <button class="button">
+    Registra
+  </button>
+
+
+  <div class="transport">
+
+    <button
+      class="transport-button"
+      id="stopButton"
+    >
+      ■
+    </button>
+
+    <button
+      class="transport-button play"
+      id="playButton"
+    >
+      ▶
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="timeline-shell">
+
+  <div class="timeline-scroll">
+
+    <div class="timeline-canvas">
+
+
+      <div class="timeline-header">
+
+        <div class="track-header">
+          Tracce
+        </div>
+
+
+        <div class="ruler">
+
+          <div class="time-mark">0 s</div>
+          <div class="time-mark">5 s</div>
+          <div class="time-mark">10 s</div>
+          <div class="time-mark">15 s</div>
+          <div class="time-mark">20 s</div>
+          <div class="time-mark">25 s</div>
+          <div class="time-mark">30 s</div>
+          <div class="time-mark">35 s</div>
+          <div class="time-mark">40 s</div>
+          <div class="time-mark">45 s</div>
+          <div class="time-mark">50 s</div>
+          <div class="time-mark">55 s</div>
+          <div class="time-mark">60 s</div>
+
+        </div>
+
+      </div>
+
+
+      <div id="trackRows"></div>
+
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="empty-project"
+    id="emptyProject"
+  >
+
+    <h3>
+      Il tuo progetto è vuoto
+    </h3>
+
+    <p>
+      Crea una traccia e poi trascina uno dei tre
+      suoni di prova dalla libreria alla timeline.
+    </p>
+
+    <button
+      class="button button-primary"
+      id="createFirstTrack"
+    >
+      ＋ Crea la prima traccia
+    </button>
+
+  </div>
+
+</div>
+
+
+<div class="bottom-bar">
+
+  <div class="status" id="projectStatus">
+    Progetto vuoto
+  </div>
+
+  <div class="status" id="selectedStatus">
+    Nessuna traccia selezionata
+  </div>
+
+  <div class="time">
+    00:00.0
+  </div>
+
+</div>
+
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================
+   DATI SUONI
+========================= */
+
+const sounds = {
+
+  rain: {
+    id:"rain",
+    name:"Pioggia",
+    file:"pioggia_test.wav"
+  },
+
+  city: {
+    id:"city",
+    name:"Città",
+    file:"citta_test.wav"
+  },
+
+  birds: {
+    id:"birds",
+    name:"Uccelli",
+    file:"uccelli_test.wav"
+  }
+
+};
+
+
+/* 95 pixel = 5 secondi */
+const PX_PER_SECOND = 19;
+
+
+/* =========================
+   DATI PROGETTO
+========================= */
+
+let tracks = [];
+let trackCounter = 0;
+let clipCounter = 0;
+
+let selectedTrackId = null;
+
+let currentPreview = null;
+let currentPreviewButton = null;
+
+
+/* =========================
+   ELEMENTI
+========================= */
+
+const trackRows =
+  document.getElementById("trackRows");
+
+const emptyProject =
+  document.getElementById("emptyProject");
+
+const projectStatus =
+  document.getElementById("projectStatus");
+
+const selectedStatus =
+  document.getElementById("selectedStatus");
+
+
+/* =========================
+   TRACCE
+========================= */
+
+function addTrack() {
+
+  trackCounter++;
+
+  const track = {
+
+    id:"track-" + trackCounter,
+
+    name:"Traccia " + trackCounter,
+
+    volume:100,
+
+    mute:false,
+
+    solo:false,
+
+    clips:[]
+
+  };
+
+  tracks.push(track);
+
+  selectedTrackId =
+    track.id;
+
+  renderTracks();
+
+}
+
+
+function selectTrack(id) {
+
+  selectedTrackId =
+    id;
+
+  renderTracks();
+
+}
+
+
+function deleteTrack(id) {
+
+  const track =
+    tracks.find(
+      t => t.id === id
+    );
+
+  if (
+    track &&
+    track.clips.length > 0
+  ) {
+
+    if (
+      !confirm(
+        "Eliminare questa traccia e tutti i suoni contenuti?"
+      )
+    ) {
+      return;
+    }
+
+  }
+
+  tracks =
+    tracks.filter(
+      t => t.id !== id
+    );
+
+  if (
+    selectedTrackId === id
+  ) {
+
+    selectedTrackId =
+      tracks.length
+      ? tracks[tracks.length - 1].id
+      : null;
+
+  }
+
+  renderTracks();
+
+}
+
+
+/* =========================
+   CLIP
+========================= */
+
+async function addSoundToTrack(
+  soundId,
+  trackId,
+  startSeconds
+) {
+
+  const sound =
+    sounds[soundId];
+
+  const track =
+    tracks.find(
+      t => t.id === trackId
+    );
+
+  if (
+    !sound ||
+    !track
+  ) {
+    return;
+  }
+
+
+  const duration =
+    await getAudioDuration(
+      sound.file
+    );
+
+
+  clipCounter++;
+
+
+  track.clips.push({
+
+    id:"clip-" + clipCounter,
+
+    soundId:soundId,
+
+    name:sound.name,
+
+    file:sound.file,
+
+    start:
+      Math.max(
+        0,
+        startSeconds || 0
+      ),
+
+    duration:
+      duration || 5
+
+  });
+
+
+  selectedTrackId =
+    trackId;
+
+
+  renderTracks();
+
+}
+
+
+/* =========================
+   DURATA AUDIO
+========================= */
+
+function getAudioDuration(file) {
+
+  return new Promise(resolve => {
+
+    const audio =
+      new Audio(file);
+
+
+    audio.preload =
+      "metadata";
+
+
+    audio.addEventListener(
+      "loadedmetadata",
+      () => {
+
+        resolve(
+          audio.duration
+        );
+
+      }
+    );
+
+
+    audio.addEventListener(
+      "error",
+      () => {
+
+        resolve(5);
+
+      }
+    );
+
+  });
+
+}
+
+
+/* =========================
+   ELEMENTO CLIP
+========================= */
+
+function createClipElement(
+  track,
+  clip
+) {
+
+  const el =
+    document.createElement("div");
+
+
+  el.className =
+    "audio-clip";
+
+
+  el.dataset.clipId =
+    clip.id;
+
+
+  el.style.left =
+    (
+      clip.start *
+      PX_PER_SECOND
+    ) + "px";
+
+
+  el.style.width =
+    Math.max(
+      58,
+      clip.duration *
+      PX_PER_SECOND
+    ) + "px";
+
+
+  el.innerHTML = `
+
+    <div class="clip-top">
+
+      <span class="clip-title">
+        ${escapeHtml(clip.name)}
+      </span>
+
+      <button
+        class="clip-delete"
+        title="Elimina clip"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="wave-fake">
+      ${createFakeWave()}
+    </div>
+
+  `;
+
+
+  el
+    .querySelector(
+      ".clip-delete"
+    )
+    .addEventListener(
+      "click",
+      event => {
+
+        event.stopPropagation();
+
+        track.clips =
+          track.clips.filter(
+            c => c.id !== clip.id
+          );
+
+        renderTracks();
+
+      }
+    );
+
+
+  /* -------------------------
+     SPOSTA CLIP
+     ------------------------- */
+
+  el.addEventListener(
+    "pointerdown",
+    event => {
+
+      if (
+        event.target.closest(
+          ".clip-delete"
+        )
+      ) {
+        return;
+      }
+
+
+      event.preventDefault();
+
+
+      const startingX =
+        event.clientX;
+
+
+      const originalStart =
+        clip.start;
+
+
+      el.setPointerCapture(
+        event.pointerId
+      );
+
+
+      const move =
+        moveEvent => {
+
+          const delta =
+            (
+              moveEvent.clientX -
+              startingX
+            ) /
+            PX_PER_SECOND;
+
+
+          clip.start =
+            Math.max(
+              0,
+              originalStart +
+              delta
+            );
+
+
+          el.style.left =
+            (
+              clip.start *
+              PX_PER_SECOND
+            ) + "px";
+
+      };
+
+
+      const up =
+        upEvent => {
+
+          el.removeEventListener(
+            "pointermove",
+            move
+          );
+
+          el.removeEventListener(
+            "pointerup",
+            up
+          );
+
+          el.removeEventListener(
+            "pointercancel",
+            up
+          );
+
+
+          const elementUnderPointer =
+            document.elementFromPoint(
+              upEvent.clientX,
+              upEvent.clientY
+            );
+
+
+          const targetLane =
+            elementUnderPointer
+              ? elementUnderPointer.closest(
+                  ".track-lane"
+                )
+              : null;
+
+
+          if (targetLane) {
+
+            const targetTrackId =
+              targetLane.dataset.trackId;
+
+
+            if (
+              targetTrackId &&
+              targetTrackId !== track.id
+            ) {
+
+              moveClipToTrack(
+                clip.id,
+                track.id,
+                targetTrackId
+              );
+
+            }
+
+          }
+
+      };
+
+
+      el.addEventListener(
+        "pointermove",
+        move
+      );
+
+      el.addEventListener(
+        "pointerup",
+        up
+      );
+
+      el.addEventListener(
+        "pointercancel",
+        up
+      );
+
+    }
+  );
+
+
+  return el;
+
+}
+
+
+/* =========================
+   SPOSTA CLIP TRA TRACCE
+========================= */
+
+function moveClipToTrack(
+  clipId,
+  oldTrackId,
+  newTrackId
+) {
+
+  const oldTrack =
+    tracks.find(
+      t => t.id === oldTrackId
+    );
+
+
+  const newTrack =
+    tracks.find(
+      t => t.id === newTrackId
+    );
+
+
+  if (
+    !oldTrack ||
+    !newTrack
+  ) {
+    return;
+  }
+
+
+  const clip =
+    oldTrack.clips.find(
+      c => c.id === clipId
+    );
+
+
+  if (!clip)
+    return;
+
+
+  oldTrack.clips =
+    oldTrack.clips.filter(
+      c => c.id !== clipId
+    );
+
+
+  newTrack.clips.push(
+    clip
+  );
+
+
+  selectedTrackId =
+    newTrackId;
+
+
+  renderTracks();
+
+}
+
+
+/* =========================
+   FORMA D'ONDA FINTA
+========================= */
+
+function createFakeWave() {
+
+  const heights =
+    [
+      16,24,10,32,20,38,
+      15,28,36,18,25,12,
+      34,20,29,14,37,22,
+      31,13,26,35,18,28
+    ];
+
+
+  return heights
+    .map(
+      h =>
+        `<span style="height:${h}px"></span>`
+    )
+    .join("");
+
+}
+
+
+/* =========================
+   RENDER
+========================= */
+
+function renderTracks() {
+
+  trackRows.innerHTML =
+    "";
+
+
+  tracks.forEach(
+    (track,index) => {
+
+
+      const row =
+        document.createElement(
+          "div"
+        );
+
+
+      row.className =
+        "track-row";
+
+
+      if (
+        track.id ===
+        selectedTrackId
+      ) {
+
+        row.classList.add(
+          "selected"
+        );
+
+      }
+
+
+      /* -------------------------
+         CONTROLLI
+      ------------------------- */
+
+      const controls =
+        document.createElement(
+          "div"
+        );
+
+
+      controls.className =
+        "track-controls";
+
+
+      controls.innerHTML = `
+
+        <div class="track-title-row">
+
+          <div class="track-number">
+            ${index + 1}
           </div>
+
+          <input
+            class="track-name"
+            value="${escapeHtml(track.name)}"
+          >
 
         </div>
 
 
-
-        <!-- STATO VUOTO -->
-
-        <div
-          class="empty-project"
-          id="emptyProject"
-        >
-
-          <div class="empty-planet">
-
-            <svg>
-              <use href="#earth"></use>
-            </svg>
-
-          </div>
-
-
-          <h3>
-            Il tuo progetto è vuoto
-          </h3>
-
-
-          <p>
-            Crea la prima traccia e inizia a costruire
-            il tuo paesaggio sonoro.
-            Più avanti potrai trascinare qui
-            suoni e registrazioni.
-          </p>
-
+        <div class="track-actions">
 
           <button
-            class="button button-primary"
-            id="createFirstTrack"
+            class="small-button mute-button
+            ${track.mute ? "active" : ""}"
           >
-            ＋ Crea la prima traccia
+            M
+          </button>
+
+          <button
+            class="small-button solo-button
+            ${track.solo ? "active" : ""}"
+          >
+            S
+          </button>
+
+          <button
+            class="small-button delete-button"
+          >
+            ×
           </button>
 
         </div>
 
 
-      </div>
+        <div class="volume-row">
 
+          Volume
 
-
-      <!-- BOTTOM BAR -->
-
-      <div class="bottom-bar">
-
-        <div class="status">
-
-          <div class="status-dot"></div>
-
-          <span id="projectStatus">
-            Progetto vuoto
-          </span>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="${track.volume}"
+          >
 
         </div>
 
-
-        <div class="status">
-
-          <span id="selectedStatus">
-            Nessuna traccia selezionata
-          </span>
-
-        </div>
+      `;
 
 
-        <div class="time">
-          00:00.0
-        </div>
+      /* -------------------------
+         LANE
+      ------------------------- */
 
-      </div>
-
-
-    </section>
-
-
-  </main>
-
-
-</div>
-
-
-
-<script>
-
-
-  /* ==============================
-     DATI DEL PROGETTO
-     ============================== */
-
-  let tracks = [];
-
-  let trackCounter = 0;
-
-  let selectedTrackId = null;
-
-
-
-  /* ==============================
-     ELEMENTI PAGINA
-     ============================== */
-
-  const trackRows =
-    document.getElementById("trackRows");
-
-
-  const emptyProject =
-    document.getElementById("emptyProject");
-
-
-  const addTrackButton =
-    document.getElementById("addTrackButton");
-
-
-  const createFirstTrack =
-    document.getElementById("createFirstTrack");
-
-
-  const projectStatus =
-    document.getElementById("projectStatus");
-
-
-  const selectedStatus =
-    document.getElementById("selectedStatus");
-
-
-  const newProjectButton =
-    document.getElementById("newProjectButton");
-
-
-
-  /* ==============================
-     CREA UNA TRACCIA
-     ============================== */
-
-  function addTrack() {
-
-    trackCounter++;
-
-
-    const track = {
-
-      id:
-        "track-" + trackCounter,
-
-      number:
-        trackCounter,
-
-      name:
-        "Traccia " + trackCounter,
-
-      volume:
-        100,
-
-      mute:
-        false,
-
-      solo:
-        false
-
-    };
-
-
-    tracks.push(track);
-
-
-    selectedTrackId =
-      track.id;
-
-
-    renderTracks();
-
-
-    requestAnimationFrame(() => {
-
-      const newRow =
-        document.querySelector(
-          `[data-track-id="${track.id}"]`
+      const lane =
+        document.createElement(
+          "div"
         );
 
 
-      if (newRow) {
+      lane.className =
+        "track-lane";
 
-        newRow.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest"
-        });
 
-      }
+      lane.dataset.trackId =
+        track.id;
 
-    });
 
-  }
+      lane.innerHTML = `
 
+        <div class="lane-hint">
+          Trascina qui un suono
+        </div>
 
+      `;
 
-  /* ==============================
-     SELEZIONA TRACCIA
-     ============================== */
 
-  function selectTrack(id) {
+      track.clips.forEach(
+        clip => {
 
-    selectedTrackId =
-      id;
-
-
-    renderTracks();
-
-  }
-
-
-
-  /* ==============================
-     ELIMINA TRACCIA
-     ============================== */
-
-  function deleteTrack(id) {
-
-    tracks =
-      tracks.filter(
-        track =>
-          track.id !== id
-      );
-
-
-    if (
-      selectedTrackId === id
-    ) {
-
-      selectedTrackId =
-        tracks.length
-
-          ? tracks[
-              tracks.length - 1
-            ].id
-
-          : null;
-
-    }
-
-
-    renderTracks();
-
-  }
-
-
-
-  /* ==============================
-     AGGIORNA NOME
-     ============================== */
-
-  function renameTrack(
-    id,
-    value
-  ) {
-
-    const track =
-      tracks.find(
-        track =>
-          track.id === id
-      );
-
-
-    if (track) {
-
-      track.name =
-        value;
-
-      updateBottomStatus();
-
-    }
-
-  }
-
-
-
-  /* ==============================
-     MUTE
-     ============================== */
-
-  function toggleMute(id) {
-
-    const track =
-      tracks.find(
-        track =>
-          track.id === id
-      );
-
-
-    if (!track)
-      return;
-
-
-    track.mute =
-      !track.mute;
-
-
-    renderTracks();
-
-  }
-
-
-
-  /* ==============================
-     SOLO
-     ============================== */
-
-  function toggleSolo(id) {
-
-    const track =
-      tracks.find(
-        track =>
-          track.id === id
-      );
-
-
-    if (!track)
-      return;
-
-
-    track.solo =
-      !track.solo;
-
-
-    renderTracks();
-
-  }
-
-
-
-  /* ==============================
-     VOLUME
-     ============================== */
-
-  function changeVolume(
-    id,
-    value
-  ) {
-
-    const track =
-      tracks.find(
-        track =>
-          track.id === id
-      );
-
-
-    if (!track)
-      return;
-
-
-    track.volume =
-      Number(value);
-
-
-    const label =
-      document.querySelector(
-        `[data-volume-label="${id}"]`
-      );
-
-
-    if (label) {
-
-      label.textContent =
-        value + "%";
-
-    }
-
-  }
-
-
-
-  /* ==============================
-     DISEGNA LE TRACCE
-     ============================== */
-
-  function renderTracks() {
-
-    trackRows.innerHTML =
-      "";
-
-
-    tracks.forEach(
-      (track, index) => {
-
-
-        const row =
-          document.createElement(
-            "div"
-          );
-
-
-        row.className =
-          "track-row";
-
-
-        row.dataset.trackId =
-          track.id;
-
-
-        if (
-          track.id ===
-          selectedTrackId
-        ) {
-
-          row.classList.add(
-            "selected"
+          lane.appendChild(
+            createClipElement(
+              track,
+              clip
+            )
           );
 
         }
-
-
-        /* CONTROLLI */
-
-        const controls =
-          document.createElement(
-            "div"
-          );
-
-
-        controls.className =
-          "track-controls";
-
-
-        controls.innerHTML = `
-
-          <div class="track-title-row">
-
-            <div class="track-number">
-              ${index + 1}
-            </div>
-
-            <input
-              class="track-name"
-              value="${escapeHtml(track.name)}"
-              aria-label="Nome traccia"
-            >
-
-          </div>
-
-
-          <div class="track-actions">
-
-            <button
-              class="small-button mute-button ${track.mute ? "active" : ""}"
-              title="Mute"
-            >
-              M
-            </button>
-
-            <button
-              class="small-button solo-button ${track.solo ? "active" : ""}"
-              title="Solo"
-            >
-              S
-            </button>
-
-            <button
-              class="small-button delete-button"
-              title="Elimina traccia"
-            >
-              ×
-            </button>
-
-          </div>
-
-
-          <div class="volume-row">
-
-            <span>
-              Volume
-            </span>
-
-            <input
-              type="range"
-              min="0"
-              max="100"
-              value="${track.volume}"
-            >
-
-            <span
-              class="volume-value"
-              data-volume-label="${track.id}"
-            >
-              ${track.volume}%
-            </span>
-
-          </div>
-
-        `;
-
-
-
-        /* LANE */
-
-        const lane =
-          document.createElement(
-            "div"
-          );
-
-
-        lane.className =
-          "track-lane";
-
-
-        lane.innerHTML = `
-
-          <div class="lane-hint">
-
-            Trascina qui un suono
-
-          </div>
-
-        `;
-
-
-
-        /* SELEZIONE */
-
-        controls.addEventListener(
-          "click",
-          event => {
-
-            if (
-              event.target.tagName !==
-              "BUTTON"
-            ) {
-
-              selectTrack(
-                track.id
-              );
-
-            }
-
-          }
-        );
-
-
-        lane.addEventListener(
-          "click",
-          () => {
-
-            selectTrack(
-              track.id
-            );
-
-          }
-        );
-
-
-
-        /* NOME */
-
-        const nameInput =
-          controls.querySelector(
-            ".track-name"
-          );
-
-
-        nameInput.addEventListener(
-          "focus",
-          () => {
-
-            selectTrack(
-              track.id
-            );
-
-          }
-        );
-
-
-        nameInput.addEventListener(
-          "input",
-          event => {
-
-            renameTrack(
-              track.id,
-              event.target.value
-            );
-
-          }
-        );
-
-
-
-        /* MUTE */
-
-        controls
-          .querySelector(
-            ".mute-button"
-          )
-          .addEventListener(
-            "click",
-            event => {
-
-              event.stopPropagation();
-
-              toggleMute(
-                track.id
-              );
-
-            }
-          );
-
-
-
-        /* SOLO */
-
-        controls
-          .querySelector(
-            ".solo-button"
-          )
-          .addEventListener(
-            "click",
-            event => {
-
-              event.stopPropagation();
-
-              toggleSolo(
-                track.id
-              );
-
-            }
-          );
-
-
-
-        /* ELIMINA */
-
-        controls
-          .querySelector(
-            ".delete-button"
-          )
-          .addEventListener(
-            "click",
-            event => {
-
-              event.stopPropagation();
-
-
-              deleteTrack(
-                track.id
-              );
-
-            }
-          );
-
-
-
-        /* VOLUME */
-
-        controls
-          .querySelector(
-            'input[type="range"]'
-          )
-          .addEventListener(
-            "input",
-            event => {
-
-              changeVolume(
-                track.id,
-                event.target.value
-              );
-
-            }
-          );
-
-
-
-        row.appendChild(
-          controls
-        );
-
-
-        row.appendChild(
-          lane
-        );
-
-
-        trackRows.appendChild(
-          row
-        );
-
-      }
-    );
-
-
-    updateEmptyState();
-
-    updateBottomStatus();
-
-  }
-
-
-
-  /* ==============================
-     STATO VUOTO
-     ============================== */
-
-  function updateEmptyState() {
-
-    if (
-      tracks.length === 0
-    ) {
-
-      emptyProject
-        .classList
-        .remove(
-          "hidden"
-        );
-
-    }
-
-    else {
-
-      emptyProject
-        .classList
-        .add(
-          "hidden"
-        );
-
-    }
-
-  }
-
-
-
-  /* ==============================
-     STATUS BAR
-     ============================== */
-
-  function updateBottomStatus() {
-
-    if (
-      tracks.length === 0
-    ) {
-
-      projectStatus.textContent =
-        "Progetto vuoto";
-
-
-      selectedStatus.textContent =
-        "Nessuna traccia selezionata";
-
-
-      return;
-
-    }
-
-
-    projectStatus.textContent =
-
-      tracks.length === 1
-
-        ? "1 traccia"
-
-        : tracks.length +
-          " tracce";
-
-
-    const selected =
-      tracks.find(
-        track =>
-          track.id ===
-          selectedTrackId
       );
 
 
+      /* -------------------------
+         DROP DALLA LIBRERIA
+      ------------------------- */
+
+      lane.addEventListener(
+        "dragover",
+        event => {
+
+          event.preventDefault();
+
+          lane.classList.add(
+            "drag-over"
+          );
+
+        }
+      );
+
+
+      lane.addEventListener(
+        "dragleave",
+        () => {
+
+          lane.classList.remove(
+            "drag-over"
+          );
+
+        }
+      );
+
+
+      lane.addEventListener(
+        "drop",
+        async event => {
+
+          event.preventDefault();
+
+
+          lane.classList.remove(
+            "drag-over"
+          );
+
+
+          const soundId =
+            event.dataTransfer.getData(
+              "text/sound-id"
+            );
+
+
+          if (!soundId)
+            return;
+
+
+          const rect =
+            lane.getBoundingClientRect();
+
+
+          const x =
+            event.clientX -
+            rect.left;
+
+
+          const time =
+            Math.max(
+              0,
+              x /
+              PX_PER_SECOND
+            );
+
+
+          await addSoundToTrack(
+            soundId,
+            track.id,
+            time
+          );
+
+        }
+      );
+
+
+      lane.addEventListener(
+        "click",
+        () => {
+
+          selectTrack(
+            track.id
+          );
+
+        }
+      );
+
+
+      /* -------------------------
+         NOME
+      ------------------------- */
+
+      controls
+        .querySelector(
+          ".track-name"
+        )
+        .addEventListener(
+          "input",
+          event => {
+
+            track.name =
+              event.target.value;
+
+            updateStatus();
+
+          }
+        );
+
+
+      /* MUTE */
+
+      controls
+        .querySelector(
+          ".mute-button"
+        )
+        .addEventListener(
+          "click",
+          () => {
+
+            track.mute =
+              !track.mute;
+
+            renderTracks();
+
+          }
+        );
+
+
+      /* SOLO */
+
+      controls
+        .querySelector(
+          ".solo-button"
+        )
+        .addEventListener(
+          "click",
+          () => {
+
+            track.solo =
+              !track.solo;
+
+            renderTracks();
+
+          }
+        );
+
+
+      /* DELETE */
+
+      controls
+        .querySelector(
+          ".delete-button"
+        )
+        .addEventListener(
+          "click",
+          () => {
+
+            deleteTrack(
+              track.id
+            );
+
+          }
+        );
+
+
+      /* VOLUME */
+
+      controls
+        .querySelector(
+          'input[type="range"]'
+        )
+        .addEventListener(
+          "input",
+          event => {
+
+            track.volume =
+              Number(
+                event.target.value
+              );
+
+          }
+        );
+
+
+      controls.addEventListener(
+        "click",
+        event => {
+
+          if (
+            event.target.tagName !==
+            "BUTTON"
+          ) {
+
+            selectTrack(
+              track.id
+            );
+
+          }
+
+        }
+      );
+
+
+      row.appendChild(
+        controls
+      );
+
+
+      row.appendChild(
+        lane
+      );
+
+
+      trackRows.appendChild(
+        row
+      );
+
+    }
+  );
+
+
+  emptyProject.classList.toggle(
+    "hidden",
+    tracks.length > 0
+  );
+
+
+  updateStatus();
+
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+function updateStatus() {
+
+  if (
+    tracks.length === 0
+  ) {
+
+    projectStatus.textContent =
+      "Progetto vuoto";
+
     selectedStatus.textContent =
+      "Nessuna traccia selezionata";
 
-      selected
-
-        ? "Selezionata: " +
-          selected.name
-
-        : "Nessuna traccia selezionata";
+    return;
 
   }
 
 
+  projectStatus.textContent =
+    tracks.length === 1
+      ? "1 traccia"
+      : tracks.length + " tracce";
 
-  /* ==============================
-     NUOVO PROGETTO
-     ============================== */
 
-  function newProject() {
+  const selected =
+    tracks.find(
+      t => t.id ===
+      selectedTrackId
+    );
+
+
+  selectedStatus.textContent =
+    selected
+      ? "Selezionata: " +
+        selected.name
+      : "Nessuna traccia selezionata";
+
+}
+
+
+/* =========================
+   PREVIEW LIBRERIA
+========================= */
+
+function previewSound(
+  soundId,
+  button
+) {
+
+  const sound =
+    sounds[soundId];
+
+
+  if (!sound)
+    return;
+
+
+  if (currentPreview) {
+
+    currentPreview.pause();
+
+    currentPreview.currentTime =
+      0;
+
 
     if (
-      tracks.length > 0
+      currentPreviewButton
     ) {
 
-      const confirmed =
-        confirm(
-          "Vuoi cancellare tutte le tracce e creare un nuovo progetto?"
-        );
-
-
-      if (!confirmed)
-        return;
+      currentPreviewButton.textContent =
+        "▶";
 
     }
 
-
-    tracks = [];
-
-    trackCounter = 0;
-
-    selectedTrackId = null;
+  }
 
 
-    renderTracks();
+  if (
+    currentPreviewButton ===
+    button
+  ) {
+
+    currentPreview =
+      null;
+
+    currentPreviewButton =
+      null;
+
+    return;
 
   }
 
 
-
-  /* ==============================
-     SICUREZZA TESTO
-     ============================== */
-
-  function escapeHtml(text) {
-
-    return String(text)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;");
-
-  }
+  const audio =
+    new Audio(
+      sound.file
+    );
 
 
+  currentPreview =
+    audio;
 
-  /* ==============================
-     EVENTI
-     ============================== */
+  currentPreviewButton =
+    button;
 
-  addTrackButton.addEventListener(
+
+  button.textContent =
+    "■";
+
+
+  audio.play();
+
+
+  audio.addEventListener(
+    "ended",
+    () => {
+
+      button.textContent =
+        "▶";
+
+      currentPreview =
+        null;
+
+      currentPreviewButton =
+        null;
+
+    }
+  );
+
+}
+
+
+/* =========================
+   DRAG SUONI
+========================= */
+
+document
+  .querySelectorAll(
+    ".sound-card"
+  )
+  .forEach(
+    card => {
+
+      card.addEventListener(
+        "dragstart",
+        event => {
+
+          event.dataTransfer.setData(
+            "text/sound-id",
+            card.dataset.soundId
+          );
+
+
+          event.dataTransfer.effectAllowed =
+            "copy";
+
+        }
+      );
+
+    }
+  );
+
+
+/* PREVIEW */
+
+document
+  .querySelectorAll(
+    ".preview"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        event => {
+
+          event.stopPropagation();
+
+          previewSound(
+            button.dataset.soundId,
+            button
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* + PER TABLET */
+
+document
+  .querySelectorAll(
+    ".sound-action.add"
+  )
+  .forEach(
+    button => {
+
+      button.addEventListener(
+        "click",
+        async event => {
+
+          event.stopPropagation();
+
+
+          if (
+            !selectedTrackId
+          ) {
+
+            alert(
+              "Prima crea o seleziona una traccia."
+            );
+
+            return;
+
+          }
+
+
+          const track =
+            tracks.find(
+              t =>
+                t.id ===
+                selectedTrackId
+            );
+
+
+          let start =
+            0;
+
+
+          if (
+            track.clips.length
+          ) {
+
+            start =
+              Math.max(
+                ...track.clips.map(
+                  clip =>
+                    clip.start +
+                    clip.duration
+                )
+              );
+
+          }
+
+
+          await addSoundToTrack(
+            button.dataset.soundId,
+            selectedTrackId,
+            start
+          );
+
+        }
+      );
+
+    }
+  );
+
+
+/* =========================
+   RICERCA SEMPLICE
+========================= */
+
+document
+  .getElementById(
+    "soundSearch"
+  )
+  .addEventListener(
+    "input",
+    event => {
+
+      const query =
+        event.target.value
+          .toLowerCase()
+          .trim();
+
+
+      document
+        .querySelectorAll(
+          ".sound-card"
+        )
+        .forEach(
+          card => {
+
+            const text =
+              card.innerText
+                .toLowerCase();
+
+
+            card.style.display =
+              text.includes(query)
+                ? ""
+                : "none";
+
+          }
+        );
+
+    }
+  );
+
+
+/* =========================
+   NUOVO PROGETTO
+========================= */
+
+document
+  .getElementById(
+    "newProjectButton"
+  )
+  .addEventListener(
+    "click",
+    () => {
+
+      if (
+        tracks.length &&
+        !confirm(
+          "Vuoi cancellare il progetto?"
+        )
+      ) {
+        return;
+      }
+
+
+      tracks = [];
+
+      trackCounter = 0;
+
+      clipCounter = 0;
+
+      selectedTrackId =
+        null;
+
+
+      renderTracks();
+
+    }
+  );
+
+
+/* =========================
+   BOTTONI
+========================= */
+
+document
+  .getElementById(
+    "addTrackButton"
+  )
+  .addEventListener(
     "click",
     addTrack
   );
 
 
-  createFirstTrack.addEventListener(
+document
+  .getElementById(
+    "createFirstTrack"
+  )
+  .addEventListener(
     "click",
     addTrack
   );
 
 
-  newProjectButton.addEventListener(
+document
+  .getElementById(
+    "playButton"
+  )
+  .addEventListener(
     "click",
-    newProject
+    () => {
+
+      alert(
+        "Nel prossimo passaggio attiveremo il Play dell'intera composizione."
+      );
+
+    }
   );
 
 
-  document
-    .getElementById(
-      "recordButton"
-    )
-    .addEventListener(
-      "click",
-      () => {
+/* =========================
+   UTILITY
+========================= */
 
-        alert(
-          "La registrazione dal microfono arriverà in una delle prossime fasi."
-        );
+function escapeHtml(text) {
 
-      }
-    );
+  return String(text)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;");
 
-
-  document
-    .getElementById(
-      "saveButton"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        alert(
-          "Il salvataggio del progetto verrà aggiunto più avanti."
-        );
-
-      }
-    );
+}
 
 
-  document
-    .getElementById(
-      "exportButton"
-    )
-    .addEventListener(
-      "click",
-      () => {
+/* AVVIO */
 
-        alert(
-          "L'esportazione audio verrà aggiunta dopo aver costruito il motore audio."
-        );
-
-      }
-    );
-
-
-  document
-    .getElementById(
-      "playButton"
-    )
-    .addEventListener(
-      "click",
-      () => {
-
-        alert(
-          "Prima inseriremo i suoni nella timeline, poi attiveremo Play."
-        );
-
-      }
-    );
-
-
-
-  /* AVVIO */
-
-  renderTracks();
-
+renderTracks();
 
 </script>
 
-
 </body>
-
 </html>
